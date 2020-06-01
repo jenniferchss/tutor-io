@@ -1,42 +1,39 @@
 .navbar {
     font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
-    font-size: 70%;
+    font-size: 77%;
     font-style: normal;
     font-variant: normal;
     background-color: #66AFBB;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
-.navbar-center {
-    width: 600px;
-    position: relative;
-    left:12%;
+.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.nav-link {
+    text-align: center;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 95px;
 }
 
 .nav-item {
-    margin-left: 3%;
-    margin-right: 3%;
+    text-align: center;
+    width: 95px;
+    padding-left: 8px;
+    padding-right: 12px;
 }
 
 .dropdown-item {
-    font-size: 70%;
-}
-
-.my-lg-0 {
-    width: 250px;
-    position: relative;
-    left: 17%;
-}
-
-
-.form-control-sm.btn-sm {
-    font-size: 0.7rem;
-}
-
-.navbar-right {
-    width: 60px;
-    
+    font-size: 75%;
+    text-decoration-color: #66afbb;
 }
 
 body {

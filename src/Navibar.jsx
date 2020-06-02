@@ -15,7 +15,7 @@ function Navibar() {
 return (
     <Navbar variant="dark" expand="lg" fixed="top">
         <Navbar.Brand className="navbar-brand" href="#home">
-            <img src={require('./images/logo.png')} width="100" alt="tutorio-logo" loading="lazy"></img>
+            <img src={require('./images/logo.png')} width="120" alt="tutorio-logo" loading="lazy"></img>
         </Navbar.Brand>
         
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

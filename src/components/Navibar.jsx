@@ -3,9 +3,9 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
+//import Form from "react-bootstrap/Form";
+//import FormControl from "react-bootstrap/FormControl";
+//import Button from "react-bootstrap/Button";
 //import logo from './images/logo.png';
 //import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
 
@@ -14,16 +14,16 @@ function Navibar() {
 
 return (
     <Navbar variant="dark" expand="lg" fixed="top">
-        <Navbar.Brand className="navbar-brand" href="#home">
-            <img src={require('./images/logo.png')} width="120" alt="tutorio-logo" loading="lazy"></img>
+        <Navbar.Brand className="navbar-brand" href="./Header.jsx">
+            <img src={require('../images/logo.png')} width="120" alt="tutorio-logo" loading="lazy"></img>
         </Navbar.Brand>
         
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
             <Nav activeKey="/home">
-                <Nav.Link href="#aboutus">About Us<span className="sr-only">(current)</span></Nav.Link>
-                <Nav.Link href="#howitworks">How It Works</Nav.Link>
+                <Nav.Link href="./Whitecomp.jsx/#white-comp">About Us<span className="sr-only">(current)</span></Nav.Link>
+                <Nav.Link href="./Whytutee.jsx/#howitworks">How It Works</Nav.Link>
                 <NavDropdown title="Modules" id="basic-nav-dropdown">
                     <NavDropdown.Item href="#">Faculty of Arts and Social Sciences</NavDropdown.Item>
                     <NavDropdown.Item href="#">Faculty of Engineering</NavDropdown.Item>

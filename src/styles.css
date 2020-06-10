@@ -39,15 +39,14 @@
 
 .background-img {
     width:100%;
-    opacity: 35%;
     position:absolute;
-    top: 50px;
+    top: 55px;
 }
 
 .big-logo {
     position: relative;
-    left: 35%;
-    top: 130px;
+    left: 33%;
+    top: 140px;
     
 }
 
@@ -60,31 +59,201 @@ body {
     font-style: normal;
     font-variant: normal;
     color: white;
+    height:713px;;
 }
 
 h1 {
-    font-size: 2vw;
+    font-size: 2.5vw;
 }
 
 .tagline {
     position: relative;
     text-align: center;
-    top: 200px;
+    top: 185px;
 }
 
 h2 {
-    font-size: 1.5vw;
+    font-size: 1.9vw;
 }
 
 .tagline2 {
     position: relative;
     text-align:center;
-    top: 210px;
+    top: 195px;
 }
 
 .svg-inline--fa.fa-w-14 {
     position: relative;
     width: 100%;
     height: 3rem;
-    top: 280px;
+    top: 270px;
+}
+
+.white-component {
+    position: relative;
+    width: 100.4%;
+    right: 0.4%;
+}
+
+.white-container {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    background-color: white;
+    text-align: center;
+    position: relative;
+    top: -10px;
+}
+
+.description {
+    background-color: white;
+    display: inline-block;
+    justify-content: center;
+    margin-bottom: 7%;
+    width: 31%;
+    font-size: 1.5vw;
+    color: #5c5c5c;
+    line-height: 2.2vw;
+}
+
+.title {
+    font-size: 1.8vw;
+    color: #66AFBB;
+    text-decoration: underline;
+    letter-spacing: 0.4vw;
+}
+
+.tutee {
+    color: #66AFBB;
+}
+
+.why {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    color: #5c5c5c;
+}
+
+.card-deck {
+    margin: auto;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.card {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.rate {
+    margin-left: 0px;
+}
+
+.card-img-top {
+    width: 100px;
+    margin: auto;
+}
+
+.card-title {
+    color: #66AFBB;
+    font-size: 1.8vw;
+    margin-top: 4%;
+    margin-bottom: 13%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.card-text {
+    font-size: 1.3vw;
+    padding-right: 4%;
+    padding-left: 4%;
+    line-height: 2vw;
+    color: #5c5c5c;
+}
+
+.blue-component {
+    position: relative;
+    width: 100.4%;
+    right: 0.4%;
+    background-color: white;
+    top: -10px;
+}
+
+.blue-container {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    background-color: #84C4CE;
+    text-align: center;
+    position: relative;
+    top: -50px;
+    height: 750px;
+}
+
+.tutor {
+    color: white;
+}
+
+.tutorcard {
+    color: white;
+}
+
+
+
+.carousel {
+    background-color:gray;
+    position: relative;
+    bottom: 50px;
+    height: 450px;
+}
+
+.carousel-item {
+    height: 300px;
+}
+
+
+
+
+.footer {
+    padding-left: 5%;
+    padding-right: 5%;
+    
+}
+
+.footer-item {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 1vw;
+    color: #66AFBB;
+}
+
+.line1 {
+    position: relative;
+    bottom: 14vw;
+    left: 18vw;
+}
+
+.line2 {
+    position: relative;
+    bottom: 14vw;
+    left: 42vw;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 75%;
+}
+.grid-item {
+    text-align: left;
+}
+
+.footer-info {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 1vw;
+    color: white;
 }

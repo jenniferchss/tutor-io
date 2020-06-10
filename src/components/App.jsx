@@ -12,15 +12,17 @@ function App() {
     return (<Router>
     <div>
     <Switch>
-          <Route path="/">
-            <Main />
-          </Route>
+      <Route path="/signup">
+        <Signup />
           
-          <Route path="/signup">
-            <Signup />
+      </Route>
           
-          </Route>
-        </Switch>
+      <Route path="/">
+        <Main />
+      </Route>
+          
+          
+    </Switch>
     </div>
     </Router>);
 }

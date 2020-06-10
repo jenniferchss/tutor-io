@@ -209,7 +209,19 @@ h2 {
 }
 
 .carousel-item {
-    height: 300px;
+    height: 400px;
+}
+
+.pict {
+    text-align: center;
+    margin: 3% auto 0;
+}
+
+.carousel-caption {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    bottom: 0;
 }
 
 

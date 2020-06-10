@@ -36,7 +36,7 @@ return (
                     <NavDropdown.Item href="#">Faculty of Dentistry</NavDropdown.Item>
                     <NavDropdown.Item href="#">DUKE NUS Medical School</NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="#testimony">Testimony</Nav.Link>
+                <Nav.Link href="./Testimony.jsx/#testimonies">Testimony</Nav.Link>
                 <Nav.Link href="#signin">Sign In</Nav.Link>
                 <Nav.Link href="#joinus">Join Us</Nav.Link>
             </Nav>

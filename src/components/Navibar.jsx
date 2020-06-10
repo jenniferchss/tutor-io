@@ -38,7 +38,7 @@ return (
                 </NavDropdown>
                 <Nav.Link href="./Testimony.jsx/#testimonies">Testimony</Nav.Link>
                 <Nav.Link href="#signin">Sign In</Nav.Link>
-                <Nav.Link href="#joinus">Join Us</Nav.Link>
+                <Nav.Link href="./signup">Join Us</Nav.Link>
             </Nav>
         </Navbar.Collapse>
     </Navbar>

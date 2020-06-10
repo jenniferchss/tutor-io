@@ -15,7 +15,7 @@ function Navibar() {
 
 return (
     <Navbar variant="dark" expand="lg" fixed="top">
-        <Navbar.Brand className="navbar-brand" href="./Header.jsx">
+        <Navbar.Brand className="navbar-brand" href="/">
             <img src={logo} width="120" alt="tutorio-logo" loading="lazy"/>
         </Navbar.Brand>
         
@@ -25,8 +25,8 @@ return (
             <Nav activeKey="/home">
                 {/* TODO: Your href should not point to the .jsx file.
                         It should be as simple as href="/hello/#optionalhash" */}
-                <Nav.Link href="#white-comp">About Us<span className="sr-only">(current)</span></Nav.Link>
-                <Nav.Link href="#howitworks">How It Works</Nav.Link>
+                <Nav.Link href="/#white-comp">About Us<span className="sr-only">(current)</span></Nav.Link>
+                <Nav.Link href="/#howitworks">How It Works</Nav.Link>
                 <NavDropdown title="Modules" id="basic-nav-dropdown">
                     <NavDropdown.Item href="#">Faculty of Arts and Social Sciences</NavDropdown.Item>
                     <NavDropdown.Item href="#">Faculty of Engineering</NavDropdown.Item>
@@ -39,8 +39,8 @@ return (
                     <NavDropdown.Item href="#">Faculty of Dentistry</NavDropdown.Item>
                     <NavDropdown.Item href="#">DUKE NUS Medical School</NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="#testimonies">Testimony</Nav.Link>
-                <Nav.Link href="#signin">Sign In</Nav.Link>
+                <Nav.Link href="/#testimonies">Testimony</Nav.Link>
+                <Nav.Link href="/signin">Sign In</Nav.Link>
                 <Nav.Link href="/signup">Join Us</Nav.Link>
             </Nav>
         </Navbar.Collapse>

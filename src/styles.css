@@ -228,9 +228,9 @@ h2 {
 
 
 .footer {
+    padding-top: 5%;
     padding-left: 5%;
     padding-right: 5%;
-    
 }
 
 .footer-item {
@@ -268,4 +268,66 @@ h2 {
     font-variant: normal;
     font-size: 1vw;
     color: white;
+}
+
+
+.joinus-page {
+    background-color:#f8f8f8;
+    padding-top: 15%;
+}
+.joinus-title {
+    font-size: 2rem;
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    color: #66AFBB;
+    display: block;
+    text-align: center;
+}
+.signupform {
+    padding: 5% 15% 5% 15%;
+}
+
+label {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    color: #66AFBB;
+}
+
+.btn.signup {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    margin-top: 5%;
+    margin-left: 89%;
+}
+
+@media screen and (max-width:1126px) {
+    .btn.signup {
+        margin-top: 5%;
+        margin-left:0;
+    }
+}
+
+
+
+.loginform {
+    padding: 2% 35% 5% 35%;
+
+}
+
+.btn.login {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    margin-top: 10%;
+    margin-left: 82%;
+}
+
+@media screen and (max-width:1260px) {
+    .btn.login {
+        display: block;
+        margin: 10% auto;
+    }
 }

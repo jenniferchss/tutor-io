@@ -22,7 +22,7 @@ return (<div className="footer">
             <p className="grid-item footer-info">Contact Us</p>
             <p className="grid-item footer-info">   +65 6123 4567</p>
             <p className="grid-item footer-info">   tutorio@gmail.com</p>
-            <img></img>
+            
 
         </div>
 

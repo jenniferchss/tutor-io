@@ -4,28 +4,26 @@ import {
     Switch,
     Route
   } from "react-router-dom";
+import Navibar from "./Navibar";
 import Main from "./Main.jsx";
+import Signin from "./Signin.jsx";
 import Signup from "./Signup.jsx";
+import NotFoundPage from "./NotFoundPage.jsx";
+import Footer from "./Footer";
 
-/**
- * TODO: Move this component somewhere else and make it nicer haha
- */
-const NotFoundPage = () => (
-  <div className="vh-100 vw-100 d-flex justify-content-center align-items-center">
-      <div className="text-white">Go home, you're drunk</div>
-  </div>
-);
 
 function App() {
     return (<Router>
     <div>
+      <Navibar />
       <Switch>
         <Route path="/" exact component={Main}/>
+        <Route path="/signin" exact component={Signin}/>
         <Route path="/signup" exact component={Signup}/>
         <Route path="*" component={NotFoundPage}/>
             
-            
       </Switch>
+      <Footer />
     </div>
     </Router>);
 }

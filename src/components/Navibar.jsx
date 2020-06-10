@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import logo from "../images/logo.png"; // ES6 way to import images (lazy loading)
 
 //import Form from "react-bootstrap/Form";
 //import FormControl from "react-bootstrap/FormControl";
@@ -15,15 +16,17 @@ function Navibar() {
 return (
     <Navbar variant="dark" expand="lg" fixed="top">
         <Navbar.Brand className="navbar-brand" href="./Header.jsx">
-            <img src={require('../images/logo.png')} width="120" alt="tutorio-logo" loading="lazy"></img>
+            <img src={logo} width="120" alt="tutorio-logo" loading="lazy"/>
         </Navbar.Brand>
         
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
             <Nav activeKey="/home">
-                <Nav.Link href="./Whitecomp.jsx/#white-comp">About Us<span className="sr-only">(current)</span></Nav.Link>
-                <Nav.Link href="./Whytutee.jsx/#howitworks">How It Works</Nav.Link>
+                {/* TODO: Your href should not point to the .jsx file.
+                        It should be as simple as href="/hello/#optionalhash" */}
+                <Nav.Link href="#white-comp">About Us<span className="sr-only">(current)</span></Nav.Link>
+                <Nav.Link href="#howitworks">How It Works</Nav.Link>
                 <NavDropdown title="Modules" id="basic-nav-dropdown">
                     <NavDropdown.Item href="#">Faculty of Arts and Social Sciences</NavDropdown.Item>
                     <NavDropdown.Item href="#">Faculty of Engineering</NavDropdown.Item>
@@ -36,9 +39,9 @@ return (
                     <NavDropdown.Item href="#">Faculty of Dentistry</NavDropdown.Item>
                     <NavDropdown.Item href="#">DUKE NUS Medical School</NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="./Testimony.jsx/#testimonies">Testimony</Nav.Link>
+                <Nav.Link href="#testimonies">Testimony</Nav.Link>
                 <Nav.Link href="#signin">Sign In</Nav.Link>
-                <Nav.Link href="./Signup.jsx">Join Us</Nav.Link>
+                <Nav.Link href="/signup">Join Us</Nav.Link>
             </Nav>
         </Navbar.Collapse>
     </Navbar>

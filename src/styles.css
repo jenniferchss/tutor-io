@@ -490,6 +490,7 @@ label {
 .dashboard {
     background-color: #f8f8f8;
     padding-top: 10%;
+    padding-bottom: 15%;
 }
 
 .welcomeback {
@@ -511,3 +512,57 @@ label {
 ul {
     list-style-type: none;
 }
+
+
+.modules-left {
+    padding-left: 15%;
+    padding-right: 5%;
+}
+.modules-right {
+    padding-left: 5%;
+    padding-right: 15%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+h4 {
+    font-family: 'Nunito', sans-serif;
+    color: #66AFBB;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.table {
+    background-color: white;
+    border-radius: 10px;
+}
+.table th {
+    border-top: none;
+}
+th {
+    color: #66AFBB;
+    text-align: center;
+}
+td {
+    color: #66AFBB;
+    text-align: center;
+}
+
+
+
+.editprofile {
+    padding: 10% 12% 15% 12%;
+    background-color: #f8f8f8;
+}
+h5 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2.5vw;
+    color: #5c5c5c;
+    padding-bottom: 5%;
+    text-align: center;
+}
+.save-btn {
+    margin-top: 5%;
+    font-size: 1vw;
+}
+
+

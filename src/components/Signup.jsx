@@ -43,19 +43,19 @@ function Signup() {
                 <input type="password" className="form-control" id="passwordInput" required />
             </div>
             <label for="signupForm">Register as:</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                <label class="form-check-label" for="defaultCheck1">
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                <label className="form-check-label" for="defaultCheck1">
                     Tutor
                 </label>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                <label class="form-check-label" for="defaultCheck1">
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                <label className="form-check-label" for="defaultCheck1">
                     Tutee
                 </label>
             </div>
-            <button type="submit" class="btn btn-info signup">Sign Up</button>
+            <button type="submit" className="btn btn-info signup">Sign Up</button>
 
 
         </form>

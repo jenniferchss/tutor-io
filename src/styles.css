@@ -1,3 +1,9 @@
+body {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+}
+
 .navbar {
     font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
     font-size: 77%;
@@ -470,4 +476,38 @@ label {
 
 .rememberme {
     padding-top: 5%;
+}
+
+
+
+.subnavbar {
+    margin-top: 53px;
+    background-color: #D0E4E7;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.dashboard {
+    background-color: #f8f8f8;
+    padding-top: 10%;
+}
+
+.welcomeback {
+    text-align: center;
+    margin: 2% auto 5%;
+    
+}
+
+.profile {
+    padding: 0% 5% 5% 10%;
+}
+
+.profpict {
+    width: 100%;
+    margin-top: 5%;
+    display: inline;
+}
+
+ul {
+    list-style-type: none;
 }

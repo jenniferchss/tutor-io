@@ -566,3 +566,35 @@ h5 {
 }
 
 
+.search-title {
+    color:white;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    font-size: 1.5vw;
+}
+.search-card {
+    background-color: #66AFBB;
+}
+.fac-drop {
+    font-size: 1.2vw;
+}
+
+
+.tutor-card {
+    max-width: 900px;
+}
+.tutor-name {
+    color: #66AFBB;
+}
+.card.tutor-card {
+    border-color: #5c5c5c;
+}
+.tutor-img {
+    width: 75%;
+    margin: 15% 5% 10% 15%;
+}
+.pricetag {
+    color: #66AFBB;
+    padding-top: 15%;
+}

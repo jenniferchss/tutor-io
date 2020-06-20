@@ -1,0 +1,600 @@
+body {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+}
+
+.navbar {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-size: 77%;
+    font-style: normal;
+    font-variant: normal;
+    background-color: #66AFBB;
+    padding-top: 0;
+    padding-bottom: 0;
+    
+}
+
+@media screen and (max-width:990px) {
+    .navbar {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .nav-item {
+        display: block;
+        margin: auto;
+    }
+}
+
+.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.nav-link {
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 95px;
+}
+
+.nav-item {
+    width: 95px;
+    display: inline;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-left: 8px;
+    padding-right: 12px;
+    text-align: center;
+}
+
+.dropdown-item {
+    font-size: 75%;
+    text-decoration-color: #66afbb;
+}
+
+.navbar-collapse {
+    margin: 1% 0 1% 1%;
+}
+
+
+
+
+.background-img {
+    width:100%;
+    position: absolute;
+    z-index: 0;
+}
+
+.big-logo {
+    position: relative;
+    margin-top: 10%;
+    margin-left: 33%;
+    
+}
+
+body {
+    background-color: #5c5c5c;
+}
+
+.heading {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    color: white;
+}
+
+h1 {
+    font-size: 2.5vw;
+}
+
+.tagline {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin-top: 3.5%;
+    margin-bottom: 1.5%;
+}
+
+h2 {
+    font-size: 1.9vw;
+}
+
+.tagline2 {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.svg-inline--fa.fa-w-14 {
+    position: relative;
+    width: 100%;
+    height: 2.5rem;
+    margin-top: 3%;
+    margin-bottom: 1.5%;
+}
+
+@media (min-width:415px) and (max-width:769px) {
+    .background-img {
+        width:100%;
+        position: absolute;
+        z-index: 0;
+        top: 8%;
+    }
+    .big-logo {
+        position: relative;
+        margin-top: 17%;
+        margin-left: 33%;
+    }
+    .tagline {
+        position: relative;
+        display: block;
+        text-align: center;
+        margin-top: 3.5%;
+        margin-bottom: 1%;
+    }
+    .svg-inline--fa.fa-w-14 {
+        position: relative;
+        width: 100%;
+        height: 2rem;
+        margin-top: 2%;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width:414px) {
+    .background-img {
+        width:100%;
+        position: absolute;
+        z-index: 0;
+        top: 7%;
+    }
+    .big-logo {
+        position: relative;
+        margin-top: 20%;
+        margin-left: 33%;
+    }
+    .tagline {
+        position: relative;
+        display: block;
+        text-align: center;
+        margin-top: 2.5%;
+        margin-bottom: 1%;
+    }
+    .svg-inline--fa.fa-w-14 {
+        position: relative;
+        width: 100%;
+        height: 1rem;
+        margin-top: 1%;
+        margin-bottom: 0;
+    }
+}
+
+
+
+
+.white-component {
+    position: relative;
+    width: 100.4%;
+    right: 0.4%;
+    
+}
+
+.white-container {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    background-color: white;
+    text-align: center;
+    position: relative;
+    top: -10px;
+}
+
+.description {
+    background-color: white;
+    display: inline-block;
+    justify-content: center;
+    margin-bottom: 7%;
+    width: 31%;
+    font-size: 1.5vw;
+    color: #5c5c5c;
+    line-height: 2.2vw;
+}
+
+.title {
+    font-size: 1.8vw;
+    color: #66AFBB;
+    text-decoration: underline;
+    letter-spacing: 0.4vw;
+}
+
+.tutee {
+    color: #66AFBB;
+}
+
+.why {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    color: #5c5c5c;
+}
+
+.card-deck {
+    margin: auto;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.card {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.rate {
+    margin-left: 0px;
+}
+
+.card-img-top {
+    width: 100px;
+    margin: auto;
+}
+
+.card-title {
+    color: #66AFBB;
+    font-size: 1.8vw;
+    margin-top: 4%;
+    margin-bottom: 13%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.card-text {
+    font-size: 1.3vw;
+    padding-right: 4%;
+    padding-left: 4%;
+    line-height: 2vw;
+    color: #5c5c5c;
+}
+
+@media screen and (max-width:575px) {
+    .why {
+        margin-top: 2%;
+        margin-bottom: 5%;
+        color: #5c5c5c;
+        font-size: 5vw;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+    .card-deck {
+        margin: auto;
+        padding-top: 2%;
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    .subtitle {
+        font-size: 4vw;
+        margin-bottom: 3%;
+    }
+    .card-text {
+        font-size: 2vw;
+        padding-right: 10%;
+        padding-left: 10%;
+        line-height: 3.5vw;
+        color: #5c5c5c;
+    }
+}
+
+
+
+.blue-component {
+    position: relative;
+    width: 100.4%;
+    right: 0.4%;
+    background-color: white;
+    top: -11px;
+}
+
+.blue-container {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    background-color: #84C4CE;
+    text-align: center;
+    position: relative;
+    top: -50px;
+    padding-bottom: 10%;
+}
+
+.tutor {
+    color: white;
+}
+
+.tutorcard {
+    color: white;
+}
+
+@media screen and (max-width:575px) {
+    .blue-component {
+        position: relative;
+        width: 100.4%;
+        right: 0.4%;
+        background-color: white;
+        top: -26px;
+    }
+    .tutorcard {
+        font-size: 4vw;
+        margin-bottom: 3%;
+    }
+}
+
+
+
+.carousel {
+    background-color:white;
+    position: relative;
+    bottom: 50px;
+    padding-top: 5%;
+    padding-bottom: 10%;
+}
+
+.carousel-item {
+    height: 400px;
+}
+
+.pict {
+    text-align: center;
+    margin: 3% auto 0;
+}
+
+.carousel-caption {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    color: #66AFBB;
+    bottom: 0;
+}
+
+.carousel-control-prev {
+    color: #66AFBB;
+}
+
+.capt-text {
+    color: #5c5c5c
+}
+
+@media screen and (max-width:575px) {
+    .carousel {
+        background-color:white;
+        position: relative;
+        bottom: 50px;
+        padding-top: 5%;
+    }
+    .pict {
+        text-align: center;
+        margin: 10% auto 0;
+        height: 100px;
+        width: 100px;
+    }
+    .carousel-caption {
+        font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+        font-style: normal;
+        font-variant: normal;
+        color: #66AFBB;
+        bottom: 0;
+        padding-top: 0;
+        padding-bottom: 8%;
+    }
+    .capt-title {
+        font-size: 4vw;
+    }
+    .capt-text {
+        font-size: 2vw;
+        color: #5c5c5c
+    }
+}
+
+
+
+
+.footer {
+    padding: 5% 5% 5% 5%;
+}
+
+.footer-item {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 0.8rem;
+    color: #66AFBB;
+    line-height: 2.5;
+}
+
+.footer-info {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 0.8rem;
+    color: white;
+    line-height: 2.5;
+}
+
+
+
+
+.joinus-page {
+    background-color:#f8f8f8;
+    padding-top: 15%;
+    padding-bottom: 15%;
+}
+.joinus-title {
+    font-size: 2rem;
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    color: #66AFBB;
+    display: block;
+    text-align: center;
+    padding-bottom: 3%;
+}
+.signupform {
+    padding: 5% 15% 5% 15%;
+}
+
+label {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    color: #66AFBB;
+}
+
+.btn.signup {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    margin-top: 5%;
+    margin-left: 89%;
+}
+
+@media screen and (max-width:1126px) {
+    .btn.signup {
+        margin-top: 5%;
+        margin-left:0;
+    }
+}
+
+
+
+.loginform {
+    padding: 2% 35% 5% 35%;
+
+}
+
+.rememberme {
+    padding-top: 5%;
+}
+
+
+
+.subnavbar {
+    margin-top: 53px;
+    background-color: #D0E4E7;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.dashboard {
+    background-color: #f8f8f8;
+    padding-top: 10%;
+    padding-bottom: 15%;
+}
+
+.welcomeback {
+    text-align: center;
+    margin: 2% auto 5%;
+    
+}
+
+.profile {
+    padding: 0% 5% 5% 10%;
+}
+
+.profpict {
+    width: 100%;
+    margin-top: 5%;
+    display: inline;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+.modules-left {
+    padding-left: 15%;
+    padding-right: 5%;
+}
+.modules-right {
+    padding-left: 5%;
+    padding-right: 15%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+h4 {
+    font-family: 'Nunito', sans-serif;
+    color: #66AFBB;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.table {
+    background-color: white;
+    border-radius: 10px;
+}
+.table th {
+    border-top: none;
+}
+th {
+    color: #66AFBB;
+    text-align: center;
+}
+td {
+    color: #66AFBB;
+    text-align: center;
+}
+
+
+
+.editprofile {
+    padding: 10% 12% 15% 12%;
+    background-color: #f8f8f8;
+}
+h5 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2.5vw;
+    color: #5c5c5c;
+    padding-bottom: 5%;
+    text-align: center;
+}
+.save-btn {
+    margin-top: 5%;
+    font-size: 1vw;
+}
+
+
+.search-title {
+    color:white;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    font-size: 1.5vw;
+}
+.search-card {
+    background-color: #66AFBB;
+}
+.fac-drop {
+    font-size: 1.2vw;
+}
+
+
+.tutor-card {
+    max-width: 900px;
+}
+.tutor-name {
+    color: #66AFBB;
+}
+.card.tutor-card {
+    border-color: #5c5c5c;
+}
+.tutor-img {
+    width: 75%;
+    margin: 15% 5% 10% 15%;
+}
+.pricetag {
+    color: #66AFBB;
+    padding-top: 15%;
+}

@@ -502,7 +502,7 @@ h2 {
     font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
-    color: #66AFBB;
+    color: black;
     display: block;
     text-align: center;
     padding-bottom: 3%;
@@ -535,11 +535,34 @@ label {
 
 
 
-.loginform {
+.login-form {
     padding: 2% 35% 5% 35%;
-
 }
-
+.login-form input[type="username"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.login-form input[type="email"] {
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+.login-form .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+.login-form input[type="password"] {
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+.login-form input[type="confirmpassword"] {
+    margin-bottom: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
 .rememberme {
     padding-top: 5%;
 }

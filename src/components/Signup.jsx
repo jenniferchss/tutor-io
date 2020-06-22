@@ -1,78 +1,84 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 
-function Signup() {
-    const [username, setUsername] = useState("")
-    const [emailaddress, setEmailaddress] = useState("")
-    const [password, setPassword] = useState("")
-    
-
-    function handleChangeUser (event) {
-        const username = event.target.value;
-        setUsername(username);
+export class Signup extends Component {
+    constructor() {
+        super();
+        this.state = {
+            username: "",
+            email: "",
+            password: ""
+        };
+        this.handleChangeUser = this.handleChangeUser.bind(this);
+        this.handleChangeEmail = this.handleChangeEmail.bind(this);
+        this.handleChangePassword = this.handleChangePassword.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    function handleChangeEmail(event) {
-        const emailaddress = event.target.value;
-        setEmailaddress(emailaddress);
+    handleChangeUser = e => {
+        this.setState({username: e.target.value})
     }
 
-    function handleChangePassword(event) {
-        const password = event.target.value;
-        setPassword(password);
+    handleChangeEmail = e => {
+        this.setState({email: e.target.value})
     }
 
-    function handleSubmit(event) {
-        axios.post ('http://localhost:5000/user/signup',{
-            username: username,
-            email: emailaddress,
-            password: password
+    handleChangePassword = e => {
+        this.setState({password: e.target.value})
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const newUser = {
+            username: this.state.username,
+            email: this.state.emailaddress,
+            password: this.state.password
+        }
+
+        axios.post ('http://localhost:5000/user/signup', newUser)
+        .then(res => {console.log(res)
         })
-        .then(res => console.log(res))
-        .catch(err => console.error(err));
-        event.preventDefault();
+        .catch(err => {
+            console.log(err)
+        });
+        
     }
     
-    return (<div className="text-center joinus-page" data-gr-c-s-loaded="true">
+    render() { return (<div className="text-center joinus-page" data-gr-c-s-loaded="true">
 
-    <form className="login-form">
-        
-        <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
-        
-        <label for="inputUsername" class="sr-only username-input">Username</label>
+    <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
+
+    <form onSubmit={this.handleSubmit} className="login-form">
         <input 
-            onChange={handleChangeUser}
+            onChange={this.handleChangeUser}
             type="username" 
             id="inputUsername" 
             class="form-control" 
             placeholder="@username" 
-            value={username}
+            value={this.state.username}
             required autofocus
         />
 
-        <label for="inputEmail" class="sr-only email-input">Email address</label>
         <input 
-            onChange={handleChangeEmail}
+            onChange={this.handleChangeEmail}
             type="email" 
             id="inputEmail" 
             class="form-control" 
             placeholder="Email address" 
-            value={emailaddress}
+            value={this.state.emailaddress}
             required 
         />
         
-        <label for="inputPassword" class="sr-only password-input">Password</label>
         <input 
-            onChange={handleChangePassword}
+            onChange={this.handleChangePassword}
             type="password" 
             id="inputPassword" 
             class="form-control" 
             placeholder="Password" 
-            value={password}
+            value={this.state.password}
             required 
         />
         
-        <label for="inputPassword" class="sr-only password-input">Confirm Password</label>
         <input 
             type="password" 
             id="inputConfirmPassword" 
@@ -81,11 +87,11 @@ function Signup() {
             required 
         />
         
-        <button onSubmit={handleSubmit} className="btn btn-lg btn-info btn-block" type="submit">Sign up</button>
+        <button className="btn btn-lg btn-info btn-block" type="submit">Sign up</button>
         <p class="mt-5 mb-3 text-muted">Copyright © 2020</p>
 
     </form>
 </div>);
 }
+}
 
-export default Signup;

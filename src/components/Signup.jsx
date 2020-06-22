@@ -23,7 +23,7 @@ function Signup() {
     }
 
     function handleSubmit(event) {
-        axios.post ('http://localhost:5000/user/signup',{
+        axios.post ('/user/signup',{
             username: username,
             email: emailaddress,
             password: password

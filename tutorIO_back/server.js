@@ -1,12 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const user = require("./routes/user");
 const InitiateMongoServer = require("./config/db");
 
 // Initiate Mongo Server
 InitiateMongoServer();
 
+
 const app = express();
+app.use(cors);
 
 // Middleware
 app.use(bodyParser.json());
@@ -21,8 +24,8 @@ app.use(express.json());
  */
 app.use("/user", user);
 
-app.listen(3000, () => {
-    console.log("Server started on port 3000");
+app.listen(5000, () => {
+    console.log("Server started on port 5000");
 });
 
 

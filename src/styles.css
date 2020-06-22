@@ -1,11 +1,11 @@
 body {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
 }
 
 .navbar {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-size: 77%;
     font-style: normal;
     font-variant: normal;
@@ -26,12 +26,78 @@ body {
     }
 }
 
-.navbar-brand {
-    padding-top: 0;
-    padding-bottom: 0;
+
+.navbar-loggedin {
+    background-color: rgba(0, 0, 0, 0.040);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+.mr-0 {
+    margin-right: 0;
+}
+.navbar .form-control {
+    padding: 0.75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+}
+.form-control-dark {
+    color: #ffff;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+.form-control-dark::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+  }
+.sign-out {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
 }
 
-.nav-link {
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+.sidebar-sticky {
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 0.875rem;
+}
+.afterlog-item {
+    margin-top: 0.3rem;
+}
+.sidebar .nav-link.active {
+    color: rgb(88, 164, 175);
+}
+.sidebar .nav-link:hover .feather, .sidebar .nav-link.active .feather {
+    color: inherit;
+}
+.sidebar .afterlog-link {
+    font-weight: 500;
+    color: #5c5c5c;
+}
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #999;
+}
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+
+
+.beforelog-link {
     padding-right: 0px;
     padding-left: 0px;
     padding-top: 0px;
@@ -41,7 +107,7 @@ body {
     width: 95px;
 }
 
-.nav-item {
+.beforelog-item {
     width: 95px;
     display: inline;
     margin-top: 1%;
@@ -81,7 +147,7 @@ body {
 }
 
 .heading {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
     color: white;
@@ -185,7 +251,7 @@ h2 {
 }
 
 .white-container {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
     background-color: white;
@@ -300,7 +366,7 @@ h2 {
 }
 
 .blue-container {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
     background-color: #84C4CE;
@@ -352,7 +418,7 @@ h2 {
 }
 
 .carousel-caption {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
     color: #66AFBB;
@@ -381,7 +447,7 @@ h2 {
         width: 100px;
     }
     .carousel-caption {
-        font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+        font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
         font-style: normal;
         font-variant: normal;
         color: #66AFBB;
@@ -406,7 +472,7 @@ h2 {
 }
 
 .footer-item {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
     font-size: 0.8rem;
@@ -415,7 +481,7 @@ h2 {
 }
 
 .footer-info {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
     font-size: 0.8rem;
@@ -433,7 +499,7 @@ h2 {
 }
 .joinus-title {
     font-size: 2rem;
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
     color: #66AFBB;
@@ -446,14 +512,14 @@ h2 {
 }
 
 label {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
     color: #66AFBB;
 }
 
 .btn.signup {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
     margin-top: 5%;
@@ -480,29 +546,31 @@ label {
 
 
 
-.subnavbar {
-    margin-top: 53px;
-    background-color: #D0E4E7;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
 
 .dashboard {
-    background-color: #f8f8f8;
-    padding-top: 10%;
-    padding-bottom: 15%;
+    background-color: white;
+    padding: 8% 10% 10% 10%;
 }
-
-.welcomeback {
-    text-align: center;
+.welcome-title {
+    text-align: left;
     margin: 2% auto 5%;
     
+}
+.col-left {
+    padding-left: 0;
+}
+.col-right {
+    padding-right: 0;
 }
 
 .profile {
     padding: 0% 5% 5% 10%;
 }
-
+.profile-title {
+    font-family: 'Nunito', sans-serif;
+    color: #66AFBB;
+    margin-bottom: 2%;
+}
 .profpict {
     width: 100%;
     margin-top: 5%;
@@ -515,12 +583,10 @@ ul {
 
 
 .modules-left {
-    padding-left: 15%;
     padding-right: 5%;
 }
 .modules-right {
     padding-left: 5%;
-    padding-right: 15%;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
@@ -553,12 +619,12 @@ td {
     padding: 10% 12% 15% 12%;
     background-color: #f8f8f8;
 }
-h5 {
+.editprofile-title {
     font-family: 'Nunito', sans-serif;
     font-size: 2.5vw;
     color: #5c5c5c;
     padding-bottom: 5%;
-    text-align: center;
+    
 }
 .save-btn {
     margin-top: 5%;

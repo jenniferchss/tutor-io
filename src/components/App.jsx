@@ -5,6 +5,7 @@ import {
     Route
   } from "react-router-dom";
 import Navibar from "./Navibar";
+import LoggedInNav from "./LoggedInNav.jsx";
 import Main from "./Main.jsx";
 import Signin from "./Signin.jsx";
 import Signup from "./Signup.jsx";
@@ -16,11 +17,12 @@ import TutorListing from "./TutorListing.jsx";
 import NotFoundPage from "./NotFoundPage.jsx";
 import Footer from "./Footer";
 
+var isLoggedIn = true;
 
 function App() {
     return (<Router>
     <div>
-      <Navibar />
+      {isLoggedIn === true ? <Navibar /> : <LoggedInNav />}
       <Switch>
         <Route path="/" exact component={Main}/>
         <Route path="/signin" exact component={Signin}/>

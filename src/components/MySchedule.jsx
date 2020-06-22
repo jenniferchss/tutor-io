@@ -2,7 +2,7 @@ import React from "react";
 
 function MySchedule() {
     return (<div>
-        <h5>My Schedule</h5>
+        <h5 className='profile-title'>MY SCHEDULE</h5>
     </div>);
 }
 

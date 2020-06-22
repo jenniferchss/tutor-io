@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //import Nav from "react-bootstrap/Nav";
 //import Navbar from "react-bootstrap/Navbar";
 //import NavDropdown from "react-bootstrap/NavDropdown";
@@ -13,6 +13,15 @@ import logo from "../images/logo.png"; // ES6 way to import images (lazy loading
 
 function Navibar() {
 
+    const [isClicked, setIsClicked] = useState(false);
+
+    function handleClick() {
+        setIsClicked(prevValue => {
+            return !prevValue;
+        });
+        
+    }
+
 return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
         <a className="navbar-brand" href="/">
@@ -25,7 +34,7 @@ return (
 
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul className="navbar-nav">
-                <li class="nav-item beforelog-item active">
+                <li onClick={handleClick} class="nav-item beforelog-item active">
                     <a class="nav-link beforelog-link" href="/#white-comp">About Us<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item beforelog-item">

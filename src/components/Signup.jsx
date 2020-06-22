@@ -1,65 +1,91 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 function Signup() {
-    return (<div className="joinus-page">
-        <h1 className="joinus-title">Join our Big Family!</h1>
+    const [username, setUsername] = useState("")
+    const [emailaddress, setEmailaddress] = useState("")
+    const [password, setPassword] = useState("")
+    
 
-        <form className="signupform">
-            <div className="form-row">
-                <div className="form-group col-md-6 left-side">
-                    <label for="signupForm">First Name</label>
-                    <input type="text" className="form-control" id="validationServer01" required />
-                </div>
-                <div className="form-group col-md-6 right-side">
-                    <label for="signupForm">Last Name</label>
-                    <input type="text" className="form-control" id="validationServer01" required />
-                </div>
-            </div>
-            <div className="form-group">
-                <label for="signupForm">Email Address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" required />
-            </div>
-            <div className="form-row">
-                <div className="form-group col-md-6 left-side">
-                    <label for="signupForm">Major</label>
-                    <input type="text" className="form-control" required />
-                </div>
-                <div className="form-group col-md-6 right-side">
-                    <label for="signupForm">Faculty</label>
-                    <input type="text" className="form-control" required />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="signupForm">Year</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                </select>
-            </div>
-            <div className="form-group">
-                <label for="signupForm">Password</label> 
-                <input type="password" className="form-control" id="passwordInput" required />
-            </div>
-            <label for="signupForm">Register as:</label>
-            <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                <label className="form-check-label" for="defaultCheck1">
-                    Tutor
-                </label>
-            </div>
-            <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                <label className="form-check-label" for="defaultCheck1">
-                    Tutee
-                </label>
-            </div>
-            <button type="submit" className="btn btn-info signup">Sign Up</button>
+    function handleChangeUser (event) {
+        const username = event.target.value;
+        setUsername(username);
+    }
 
+    function handleChangeEmail(event) {
+        const emailaddress = event.target.value;
+        setEmailaddress(emailaddress);
+    }
 
-        </form>
-    </div>);
+    function handleChangePassword(event) {
+        const password = event.target.value;
+        setPassword(password);
+    }
+
+    function handleSubmit(event) {
+        axios.post ('/user/signup',{
+            username: username,
+            email: emailaddress,
+            password: password
+        })
+        .then(res => console.log(res))
+        .catch(err => console.error(err));
+        event.preventDefault();
+    }
+    
+    return (<div className="text-center joinus-page" data-gr-c-s-loaded="true">
+
+    <form onSubmit={handleSubmit} className="login-form">
+        
+        <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
+        
+        <label for="inputUsername" class="sr-only username-input">Username</label>
+        <input 
+            onChange={handleChangeUser}
+            type="username" 
+            id="inputUsername" 
+            class="form-control" 
+            placeholder="@username" 
+            value={username}
+            required autofocus
+        />
+
+        <label for="inputEmail" class="sr-only email-input">Email address</label>
+        <input 
+            onChange={handleChangeEmail}
+            type="email" 
+            id="inputEmail" 
+            class="form-control" 
+            placeholder="Email address" 
+            value={emailaddress}
+            required 
+        />
+        
+        <label for="inputPassword" class="sr-only password-input">Password</label>
+        <input 
+            onChange={handleChangePassword}
+            type="password" 
+            id="inputPassword" 
+            class="form-control" 
+            placeholder="Password" 
+            value={password}
+            required 
+        />
+        
+        <label for="inputPassword" class="sr-only password-input">Confirm Password</label>
+        <input 
+            type="password" 
+            id="inputConfirmPassword" 
+            class="form-control" 
+            placeholder="Confirm password" 
+            required 
+        />
+        
+        <button className="btn btn-lg btn-info btn-block" type="submit">Sign up</button>
+        <p class="mt-5 mb-3 text-muted">Copyright © 2020</p>
+
+    </form>
+</div>);
 }
 
 export default Signup;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //import Nav from "react-bootstrap/Nav";
 //import Navbar from "react-bootstrap/Navbar";
 //import NavDropdown from "react-bootstrap/NavDropdown";
@@ -13,6 +13,15 @@ import logo from "../images/logo.png"; // ES6 way to import images (lazy loading
 
 function Navibar() {
 
+    const [isClicked, setIsClicked] = useState(false);
+
+    function handleClick() {
+        setIsClicked(prevValue => {
+            return !prevValue;
+        });
+        
+    }
+
 return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
         <a className="navbar-brand" href="/">
@@ -25,14 +34,14 @@ return (
 
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul className="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/#white-comp">About Us<span class="sr-only">(current)</span></a>
+                <li onClick={handleClick} class="nav-item beforelog-item active">
+                    <a class="nav-link beforelog-link" href="/#white-comp">About Us<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#howitworks">How It Works</a>
+                <li class="nav-item beforelog-item">
+                    <a class="nav-link beforelog-link" href="/#howitworks">How It Works</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item beforelog-item dropdown">
+                    <a class="nav-link beforelog-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Modules
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -48,14 +57,14 @@ return (
                         <a class="dropdown-item" href="#">DUKE NUS Medical School</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#testimonies">Testimony</a>
+                <li class="nav-item beforelog-item">
+                    <a class="nav-link beforelog-link" href="/#testimonies">Testimony</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/signin">Sign In</a>
+                <li class="nav-item beforelog-item">
+                    <a class="nav-link beforelog-link" href="/signin">Sign In</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/signup">Join Us</a>
+                <li class="nav-item beforelog-item">
+                    <a class="nav-link beforelog-link" href="/signup">Join Us</a>
                 </li>
             </ul>
         </div>

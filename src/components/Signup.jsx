@@ -23,7 +23,7 @@ function Signup() {
     }
 
     function handleSubmit(event) {
-        axios.post ('/user/signup',{
+        axios.post ('http://localhost:5000/user/signup',{
             username: username,
             email: emailaddress,
             password: password
@@ -35,7 +35,7 @@ function Signup() {
     
     return (<div className="text-center joinus-page" data-gr-c-s-loaded="true">
 
-    <form onSubmit={handleSubmit} className="login-form">
+    <form className="login-form">
         
         <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
         
@@ -81,7 +81,7 @@ function Signup() {
             required 
         />
         
-        <button className="btn btn-lg btn-info btn-block" type="submit">Sign up</button>
+        <button onSubmit={handleSubmit} className="btn btn-lg btn-info btn-block" type="submit">Sign up</button>
         <p class="mt-5 mb-3 text-muted">Copyright © 2020</p>
 
     </form>

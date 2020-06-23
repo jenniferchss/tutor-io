@@ -1,12 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const user = require("./routes/user");
 const InitiateMongoServer = require("./config/db");
 
 // Initiate Mongo Server
 InitiateMongoServer();
 
+
 const app = express();
+app.use(cors);
 
 // Middleware
 app.use(bodyParser.json());

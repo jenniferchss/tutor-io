@@ -66,7 +66,7 @@ function Signup() {
                     type="username" 
                     id="inputUsername" 
                     class="form-control" 
-                    placeholder="@username" 
+                    placeholder="username" 
                     value={username}
                     required autofocus
                 />

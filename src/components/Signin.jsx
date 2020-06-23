@@ -3,10 +3,16 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 function Signin() {
+    const [username, setUsername] = useState("")
     const [emailaddress, setEmailaddress] = useState("")
     const [password, setPassword] = useState("")
     const [loggedIn, setLoggedIn] = useState(false)
     const history = useHistory();
+
+    function handleChangeUsername(event) {
+        const username = event.target.value;
+        setUsername(username);
+    } 
 
     function handleChangeEmail(event) {
         const emailaddress = event.target.value;
@@ -21,6 +27,7 @@ function Signin() {
     function handleSubmit(event) {
         event.preventDefault();
         axios.post ('/user/login',{
+            username: username,
             email: emailaddress,
             password: password
         })
@@ -32,10 +39,10 @@ function Signin() {
         .catch(function(err) {
             console.error(err)
         });
-
         if (loggedIn) {
             history.push("/dashboard");
         }
+
     }
 
 
@@ -45,6 +52,16 @@ function Signin() {
             
             <h1 className="joinus-title h3 mb-3 font-weight-normal">Welcome back!</h1>
 
+            <label for="inputUsername" class="sr-only">username</label>
+            <input 
+                onChange={handleChangeUsername}
+                type="text" 
+                id="inputUsername" 
+                class="form-control" 
+                placeholder="Username" 
+                value={username}
+                required autoFocus 
+            />
             <label for="inputEmail" class="sr-only email-input">Email address</label>
             <input 
                 onChange={handleChangeEmail}
@@ -52,7 +69,8 @@ function Signin() {
                 id="inputEmail" 
                 class="form-control" 
                 placeholder="Email address" 
-                required autoFocus 
+                value={emailaddress}
+                required 
             />
             <label for="inputPassword" class="sr-only password-input">Password</label>
             <input 
@@ -61,6 +79,7 @@ function Signin() {
                 id="inputPassword" 
                 class="form-control" 
                 placeholder="Password" 
+                value={password}
                 required 
             />
             <div className="checkbox mb-3">

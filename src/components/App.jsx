@@ -17,7 +17,7 @@ import TutorListing from "./TutorListing.jsx";
 import NotFoundPage from "./NotFoundPage.jsx";
 import Footer from "./Footer";
 
-var isLoggedIn = false;
+var isLoggedIn = true;
 
 function App() {
     return (<Router>

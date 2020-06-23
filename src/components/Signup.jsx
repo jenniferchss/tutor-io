@@ -9,6 +9,7 @@ export class Signup extends Component {
             email: "",
             password: ""
         };
+
         this.handleChangeUser = this.handleChangeUser.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -17,30 +18,31 @@ export class Signup extends Component {
 
     handleChangeUser = e => {
         this.setState({username: e.target.value})
+        console.log(this.state.username)
     }
 
     handleChangeEmail = e => {
         this.setState({email: e.target.value})
+        console.log(this.state.email)
     }
 
     handleChangePassword = e => {
         this.setState({password: e.target.value})
+        console.log(this.state.password)
     }
 
     handleSubmit(e) {
+        alert('A name was submitted: ' + this.state.username);
         e.preventDefault();
         const newUser = {
             username: this.state.username,
-            email: this.state.emailaddress,
+            email: this.state.email,
             password: this.state.password
         }
 
         axios.post ('http://localhost:5000/user/signup', newUser)
-        .then(res => {console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        });
+        .then(res => {console.log(res)})
+        .catch(err => {console.log(err)});
         
     }
     
@@ -56,7 +58,7 @@ export class Signup extends Component {
             class="form-control" 
             placeholder="@username" 
             value={this.state.username}
-            required autofocus
+            required autoFocus
         />
 
         <input 
@@ -65,8 +67,8 @@ export class Signup extends Component {
             id="inputEmail" 
             class="form-control" 
             placeholder="Email address" 
-            value={this.state.emailaddress}
-            required 
+            value={this.state.email}
+            required
         />
         
         <input 
@@ -76,18 +78,18 @@ export class Signup extends Component {
             class="form-control" 
             placeholder="Password" 
             value={this.state.password}
-            required 
+            required
         />
         
         <input 
             type="password" 
             id="inputConfirmPassword" 
             class="form-control" 
-            placeholder="Confirm password" 
-            required 
+            placeholder="Confirm password"
+            required
         />
         
-        <button className="btn btn-lg btn-info btn-block" type="submit">Sign up</button>
+        <button type="submit" className="btn btn-lg btn-info btn-block">Create an account</button>
         <p class="mt-5 mb-3 text-muted">Copyright © 2020</p>
 
     </form>

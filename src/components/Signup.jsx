@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Signup() {
     const [username, setUsername] = useState("")
     const [emailaddress, setEmailaddress] = useState("")
     const [password, setPassword] = useState("")
+    const [confirmpass, setConfirmpass] = useState("")
+    const history = useHistory();
     
 
     function handleChangeUser (event) {
@@ -22,15 +25,32 @@ function Signup() {
         setPassword(password);
     }
 
+    function handleChangeConfirmpass(event) {
+        const confirmpass = event.target.value;
+        setConfirmpass(confirmpass);
+    }
+
     function handleSubmit(event) {
+        event.preventDefault();
+        if (password.length < 6) {
+            alert('Password must be at least 6 characters long!');
+        }
+        if (confirmpass !== password) {
+            alert('Password do not match!');
+        }
+        else {
         axios.post ('/user/signup',{
             username: username,
             email: emailaddress,
             password: password
         })
-        .then(res => console.log(res))
-        .catch(err => console.error(err));
-        event.preventDefault();
+        .then(function(res) {
+            history.push("/dashboard");
+            console.log(res)})
+        .catch(function(err) {
+            console.error(err);
+            alert('Username / Email is already registered')});
+        }
     }
     
     return (
@@ -68,17 +88,19 @@ function Signup() {
                     type="password" 
                     id="inputPassword" 
                     class="form-control" 
-                    placeholder="Password" 
+                    placeholder="Password (min 6 characters)" 
                     value={password}
                     required 
                 />
                 
                 <label for="inputPassword" class="sr-only password-input">Confirm Password</label>
                 <input 
+                    onChange={handleChangeConfirmpass}
                     type="password" 
                     id="inputConfirmPassword" 
                     class="form-control" 
-                    placeholder="Confirm password" 
+                    placeholder="Confirm password"
+                    value={confirmpass} 
                     required 
                 />
                 

@@ -8,11 +8,11 @@ const auth = require('../middleware/auth');
  * @param - /signup
  * @description - User SignUp
  */
-
 router.post( "/signup",
     auth.checkValid,
     authController.signUp
 );
+
 
 router.post("/login",
     auth.checkValid,

@@ -34,37 +34,37 @@ return (
 
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul className="navbar-nav">
-                <li onClick={handleClick} class="nav-item beforelog-item active">
-                    <a class="nav-link beforelog-link" href="/#white-comp">About Us<span class="sr-only">(current)</span></a>
+                <li onClick={handleClick} className="nav-item beforelog-item active">
+                    <a className="nav-link beforelog-link" href="/#white-comp">About Us<span className="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item beforelog-item">
-                    <a class="nav-link beforelog-link" href="/#howitworks">How It Works</a>
+                <li className="nav-item beforelog-item">
+                    <a className="nav-link beforelog-link" href="/#howitworks">How It Works</a>
                 </li>
-                <li class="nav-item beforelog-item dropdown">
-                    <a class="nav-link beforelog-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li className="nav-item beforelog-item dropdown">
+                    <a className="nav-link beforelog-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Modules
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Faculty of Arts and Social Sciences</a>
-                        <a class="dropdown-item" href="#">Faculty of Engineering</a>
-                        <a class="dropdown-item" href="#">Faculty of Law</a>
-                        <a class="dropdown-item" href="#">Faculty of Science</a>
-                        <a class="dropdown-item" href="#">School of Business</a>
-                        <a class="dropdown-item" href="#">School of Computing</a>
-                        <a class="dropdown-item" href="#">School of Design and Environment</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Faculty of Dentistry</a>
-                        <a class="dropdown-item" href="#">DUKE NUS Medical School</a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a className="dropdown-item" href="#">Faculty of Arts and Social Sciences</a>
+                        <a className="dropdown-item" href="#">Faculty of Engineering</a>
+                        <a className="dropdown-item" href="#">Faculty of Law</a>
+                        <a className="dropdown-item" href="#">Faculty of Science</a>
+                        <a className="dropdown-item" href="#">School of Business</a>
+                        <a className="dropdown-item" href="#">School of Computing</a>
+                        <a className="dropdown-item" href="#">School of Design and Environment</a>
+                        <div className="dropdown-divider"></div>
+                        <a className="dropdown-item" href="#">Faculty of Dentistry</a>
+                        <a className="dropdown-item" href="#">DUKE NUS Medical School</a>
                     </div>
                 </li>
-                <li class="nav-item beforelog-item">
-                    <a class="nav-link beforelog-link" href="/#testimonies">Testimony</a>
+                <li className="nav-item beforelog-item">
+                    <a className="nav-link beforelog-link" href="/#testimonies">Testimony</a>
                 </li>
-                <li class="nav-item beforelog-item">
-                    <a class="nav-link beforelog-link" href="/signin">Sign In</a>
+                <li className="nav-item beforelog-item">
+                    <a className="nav-link beforelog-link" href="/signin">Sign In</a>
                 </li>
-                <li class="nav-item beforelog-item">
-                    <a class="nav-link beforelog-link" href="/signup">Join Us</a>
+                <li className="nav-item beforelog-item">
+                    <a className="nav-link beforelog-link" href="/signup">Join Us</a>
                 </li>
             </ul>
         </div>

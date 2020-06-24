@@ -14,11 +14,13 @@ exports.checkValid = [
    
 
 exports.getLoggedInUser = function(req, res, next) {
-      const token = req.header("token");
-      if (!token) return res.status(401).json({ message: "Auth Error" });
-    
+      const token = req.headers.authorization
+      
+      if (!token) return res.status(401).json({ message: "No token provided" });
+      console.log("Token found")
       try {
         const decoded = jwt.verify(token, "randomString");
+        console.log("decoded:", JSON.stringify(decoded, null, 2));
         req.user = decoded.user;
         next();
       } catch (e) {

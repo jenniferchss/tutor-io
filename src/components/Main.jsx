@@ -6,7 +6,6 @@ import Bluecomp from "./Bluecomp";
 import Whytutor from "./Whytutor";
 import Testimony from "./Testimony";
 
-var isLoggedIn = false;
 
 function Main() {
     return (<div>

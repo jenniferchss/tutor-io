@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from "react";
+import React from "react";
 import {
     BrowserRouter as Router,
     Switch,
@@ -17,6 +17,8 @@ import TutorListing from "./TutorListing.jsx";
 import NotFoundPage from "./NotFoundPage.jsx";
 import Footer from "./Footer";
 import axios from "../axios";
+//import jwt from "jsonwebtoken";
+
 
 class App extends React.Component {
   state = {
@@ -36,35 +38,50 @@ class App extends React.Component {
 
   checkLogInStatus = () => {
     const token = localStorage.getItem('usertoken');
-    axios().get('/user/me', {
-      headers: {
+    //console.log(token);
+    
+    axios().get('/user/verifyToken', {
+      headers:{
         Authorization: token
       }
     })
-    .then(res =>{
-      if (!this.state.isLoggedIn && localStorage.getItem('usertoken') !== null) {
-        this.setIsLoggedIn(true);
-        //setUser(res.data.user)
-        console.log(res);  
+    .then(res => {
+      if (res.data === 'true' && localStorage.getItem('usertoken')!== null) {
+        this.setIsLoggedIn('true');
       }
+      else {
+        this.setIsLoggedIn('false');
+      }
+      
     })
     .catch(err => console.log(err))
+    
+    // if (token !== null) {
+    //   this.setIsLoggedIn(true);
+    //   //setUser(res.data.user) 
+    // }
+    // else {
+    //   this.setIsLoggedIn(false);
+    // }
+    
   }
 
   componentDidMount() {
+
   }
+
 
   render() {
     const {isLoggedIn} = this.state;
-    this.checkLogInStatus();
+    //this.checkLogInStatus();
     return (
       <Router>
     <div>
-      {isLoggedIn === false ? <Navibar /> : <LoggedInNav handleLogout={this.handleLogout}/>}
+      {isLoggedIn === 'false' ? <Navibar /> : <LoggedInNav handleLogout={this.handleLogout}/>}
       <Switch>
         <Route path="/" exact component={Main}/>
         <Route path="/signin" exact render={props => (
-          <Signin {...props} handleLogin={this.handleLogin} />
+          <Signin {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
         )}/>
         <Route path="/signup" exact component={Signup}/>
         <Route path="/dashboard" exact render={props => (

@@ -6,7 +6,6 @@ function Signin(props) {
     const [username, setUsername] = useState("")
     const [emailaddress, setEmailaddress] = useState("")
     const [password, setPassword] = useState("")
-    //const [loggedIn, setLoggedIn] = useState(false)
     const history = useHistory();
 
     function handleChangeUsername(event) {
@@ -33,9 +32,10 @@ function Signin(props) {
         })
         .then(function(res){
             if (res.data.token) {
-            localStorage.setItem('usertoken', res.data.token);
-            props.handleLogin();
-            history.push("/dashboard");
+                localStorage.setItem('usertoken', res.data.token);
+                props.handleLogin();
+                history.push("/dashboard");
+                console.log(res);
             }
         })
         .catch(function(err) {

@@ -27,6 +27,10 @@ router.post("/login",
 router.get("/me", 
     auth.getLoggedInUser,
     authController.getLoggedInUser 
-  );
+);
+
+router.get("/verifyToken", 
+    auth.verifyToken
+);
 
 module.exports = router;

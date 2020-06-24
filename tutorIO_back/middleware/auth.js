@@ -28,3 +28,23 @@ exports.getLoggedInUser = function(req, res, next) {
         res.status(500).send({ message: "Invalid Token" });
       }
     };
+
+exports.verifyToken = function(req,res) {
+    const token = req.headers.authorization
+    if (!token) return res.status(401).json({ message: "No token provided" });
+    console.log("Token found")
+
+    try {
+      const expiry = jwt.decode(token).exp
+      const now = new Date();
+      if(now.getTime() >= expiry * 1000) {
+        res.json('false');
+      } else {
+        res.json('true');
+      }
+    } catch(err) {
+      console.log(err);
+      res.status(500).send({message: "Invalid token"})
+    }
+    
+}

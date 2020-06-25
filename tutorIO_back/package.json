@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start:server": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -16,9 +17,7 @@
     "express-handlebars": "^4.0.4",
     "express-validator": "^6.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.19"
-  },
-  "devDependencies": {
+    "mongoose": "^5.9.19",
     "nodemon": "^2.0.4"
   }
 }

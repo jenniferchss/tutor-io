@@ -1,99 +1,116 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-export class Signup extends Component {
-    constructor() {
-        super();
-        this.state = {
-            username: "",
-            email: "",
-            password: ""
-        };
+function Signup() {
+    const [username, setUsername] = useState("")
+    const [emailaddress, setEmailaddress] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmpass, setConfirmpass] = useState("")
+    const history = useHistory();
+    
 
-        this.handleChangeUser = this.handleChangeUser.bind(this);
-        this.handleChangeEmail = this.handleChangeEmail.bind(this);
-        this.handleChangePassword = this.handleChangePassword.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+    function handleChangeUser (event) {
+        const username = event.target.value;
+        setUsername(username);
     }
 
-    handleChangeUser = e => {
-        this.setState({username: e.target.value})
-        console.log(this.state.username)
+    function handleChangeEmail(event) {
+        const emailaddress = event.target.value;
+        setEmailaddress(emailaddress);
     }
 
-    handleChangeEmail = e => {
-        this.setState({email: e.target.value})
-        console.log(this.state.email)
+    function handleChangePassword(event) {
+        const password = event.target.value;
+        setPassword(password);
     }
 
-    handleChangePassword = e => {
-        this.setState({password: e.target.value})
-        console.log(this.state.password)
+    function handleChangeConfirmpass(event) {
+        const confirmpass = event.target.value;
+        setConfirmpass(confirmpass);
     }
 
-    handleSubmit(e) {
-        alert('A name was submitted: ' + this.state.username);
-        e.preventDefault();
-        const newUser = {
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password
+    function handleSubmit(event) {
+        event.preventDefault();
+        if (password.length < 6) {
+            alert('Password must be at least 6 characters long!');
         }
-
-        axios.post ('http://localhost:5000/user/signup', newUser)
-        .then(res => {console.log(res)})
-        .catch(err => {console.log(err)});
-        
+        if (confirmpass !== password) {
+            alert('Password do not match!');
+        }
+        else {
+        axios.post ('/user/signup',{
+            username: username,
+            email: emailaddress,
+            password: password
+        })
+        .then(function(res) {
+            history.push("/dashboard");
+            console.log(res)})
+        .catch(function(err) {
+            console.error(err);
+            alert('Username / Email is already registered')});
+        }
     }
     
-    render() { return (<div className="text-center joinus-page" data-gr-c-s-loaded="true">
+    return (
+        <div className="text-center joinus-page" data-gr-c-s-loaded="true">
 
-    <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
+            <form onSubmit={handleSubmit} className="login-form">
+                
+                <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
+                
+                <label for="inputUsername" class="sr-only username-input">Username</label>
+                <input 
+                    onChange={handleChangeUser}
+                    type="username" 
+                    id="inputUsername" 
+                    class="form-control" 
+                    placeholder="@username" 
+                    value={username}
+                    required autofocus
+                />
 
-    <form onSubmit={this.handleSubmit} className="login-form">
-        <input 
-            onChange={this.handleChangeUser}
-            type="username" 
-            id="inputUsername" 
-            class="form-control" 
-            placeholder="@username" 
-            value={this.state.username}
-            required autoFocus
-        />
+                <label for="inputEmail" class="sr-only email-input">Email address</label>
+                <input 
+                    onChange={handleChangeEmail}
+                    type="email" 
+                    id="inputEmail" 
+                    class="form-control" 
+                    placeholder="Email address" 
+                    value={emailaddress}
+                    required 
+                />
+                
+                <label for="inputPassword" class="sr-only password-input">Password</label>
+                <input 
+                    onChange={handleChangePassword}
+                    type="password" 
+                    id="inputPassword" 
+                    class="form-control" 
+                    placeholder="Password (min 6 characters)" 
+                    value={password}
+                    required 
+                />
+                
+                <label for="inputPassword" class="sr-only password-input">Confirm Password</label>
+                <input 
+                    onChange={handleChangeConfirmpass}
+                    type="password" 
+                    id="inputConfirmPassword" 
+                    class="form-control" 
+                    placeholder="Confirm password"
+                    value={confirmpass} 
+                    required 
+                />
+                
+                <button className="btn btn-lg btn-info btn-block" type="submit">Sign up</button>
+                <p class="mt-5 mb-3 text-muted">Copyright © 2020</p>
 
-        <input 
-            onChange={this.handleChangeEmail}
-            type="email" 
-            id="inputEmail" 
-            class="form-control" 
-            placeholder="Email address" 
-            value={this.state.email}
-            required
-        />
-        
-        <input 
-            onChange={this.handleChangePassword}
-            type="password" 
-            id="inputPassword" 
-            class="form-control" 
-            placeholder="Password" 
-            value={this.state.password}
-            required
-        />
-        
-        <input 
-            type="password" 
-            id="inputConfirmPassword" 
-            class="form-control" 
-            placeholder="Confirm password"
-            required
-        />
-        
-        <button type="submit" className="btn btn-lg btn-info btn-block">Create an account</button>
-        <p class="mt-5 mb-3 text-muted">Copyright © 2020</p>
-
-    </form>
-</div>);
+            </form>
+        </div>
+    );
 }
 }
 
+export default Signup;

@@ -12,7 +12,7 @@ function LoggedInNav(props) {
         history.push("/signin");
     }
 
-    return (<nav className="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow">
+    return (<nav className="navbar navbar-dark fixed-top flex-nowrap p-0 shadow">
     <a className="navbar-brand navbar-loggedin col-sm-3 col-md-2 mr-0" href="/dashboard">
         <img src={logo} width="120" alt="tutorio-logo" loading="lazy" />
     </a>

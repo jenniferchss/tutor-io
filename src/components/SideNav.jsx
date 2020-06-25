@@ -1,13 +1,17 @@
 import React from "react";
 
 function SideNav() {
-    return (<nav className="col-md-2 d-md-block bg-light sidebar">
+    return (
+    
+    <nav className="col-md-2 d-md-block bg-light sidebar">
+    
     <div className="sidebar-sticky">
+       
         <ul className="nav flex-column">
             <li className="nav-item afterlog-item">
                 <a className="nav-link afterlog-link active" href="/dashboard">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                Dashboard <span class="sr-only">(current)</span>
+                Dashboard <span className="sr-only">(current)</span>
                 </a>
             </li>
             <li className="nav-item afterlog-item">
@@ -18,7 +22,7 @@ function SideNav() {
             </li>
             <li className="nav-item afterlog-item">
                 <a className="nav-link afterlog-link" href="/mymodules">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
                 My Modules
                 </a>
             </li>
@@ -34,14 +38,10 @@ function SideNav() {
                 Manage My Account
                 </a>
             </li>
-            <li className="nav-item afterlog-item">
-                <a className="nav-link afterlog-link" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                Integrations
-                </a>
-            </li>
+            
         </ul>
     </div>
+    
 </nav>)
 }
 

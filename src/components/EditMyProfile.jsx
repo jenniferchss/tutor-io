@@ -40,6 +40,14 @@ function EditMyProfile() {
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <h5 className="editprofile-title">Edit My Profile</h5>
                 <form onSubmit={handleSave}>
+                <a href="#" class="profile-pic">
+                <div class="profile-pic">
+
+                    <span class="glyphicon glyphicon-camera"></span>
+                    <span>Change Image</span>
+
+                </div>
+                </a>
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label for="inputFirstName">First Name</label>
@@ -113,7 +121,25 @@ function EditMyProfile() {
                         <input type="file" className="form-control-file" id="exampleFormControlFile1"/>
                     </div>
                 </form>
-                
+
+                <div className="form-group">
+                <label for="signupForm">Register as:</label>
+                <div className="form-check">
+                    <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                    <label className="form-check-label" for="defaultCheck1">
+                        Tutor
+                    </label>
+                </div>
+                <div className="form-check">
+                    <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                    <label className="form-check-label" for="defaultCheck1">
+                        Tutee
+                    </label>
+                </div>
+                <small className="form-text text-muted">You can be both!</small>
+                </div>
+
+                <div className="form-group">
                 <label for="signupForm">Availability:</label>
                 <div className="form-check">
                     <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
@@ -126,6 +152,7 @@ function EditMyProfile() {
                     <label className="form-check-label" for="defaultCheck1">
                         Offline
                     </label>
+                </div>
                 </div>
 
                 <button type="submit" className="btn btn-info save-btn">Save Changes</button>

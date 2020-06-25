@@ -26,6 +26,11 @@ body {
     }
 }
 
+.navbar-nav .dropdown-menu {
+    position: static;
+    float: left;
+}
+
 
 .navbar-loggedin {
     background-color: rgba(0, 0, 0, 0.040);
@@ -60,7 +65,7 @@ body {
     bottom: 0;
     left: 0;
     z-index: 100;
-    padding: 48px 0 0;
+    padding: 60px 0 0;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 .sidebar-sticky {
@@ -294,7 +299,7 @@ h2 {
     padding-right: 6%;
 }
 
-.card {
+.card.card-main {
     margin-top: 2%;
     margin-bottom: 2%;
     border-color: transparent;
@@ -547,6 +552,16 @@ label {
     margin-bottom: -1px;
     border-radius: 0;
 }
+.email-input {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#inputLoginPass {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
 .login-form .form-control {
     position: relative;
     box-sizing: border-box;
@@ -575,6 +590,8 @@ label {
     padding: 8% 10% 10% 10%;
 }
 .welcome-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 3vw;
     text-align: left;
     margin: 2% auto 5%;
     
@@ -586,22 +603,43 @@ label {
     padding-right: 0;
 }
 
-.profile {
-    padding: 0% 5% 5% 10%;
-}
+
 .profile-title {
     font-family: 'Nunito', sans-serif;
     color: #66AFBB;
     margin-bottom: 2%;
+    margin-top: 0;
 }
 .profpict {
     width: 100%;
     margin-top: 5%;
     display: inline;
 }
-
 ul {
     list-style-type: none;
+}
+.right-profile {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.name-dashboard {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 3vw;
+}
+.smallIcon {
+    width: 3%;
+    margin-right: 1%;
+    display: inline;
+}
+.smallInfo {
+    display: inline;
+    margin-right: 5%;
+    font-size: 1vw;
+}
+.biography {
+    margin-top: 2%;
 }
 
 
@@ -649,6 +687,36 @@ td {
     padding-bottom: 5%;
     
 }
+.profile-pic {
+    background-image: url('https://s3-eu-west-1.amazonaws.com/lynks-blog/wp-content/uploads/2016/10/11153439/rsz_1shutterstock_325243652.jpg');
+    border-radius: 50%;
+    border-color: #999;
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+.profile-pic:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+.profile-pic span {
+    display: inline-block;
+    padding-top: 4.5em;
+    padding-bottom: 4.5em;
+}
+
 .save-btn {
     margin-top: 5%;
     font-size: 1vw;
@@ -686,4 +754,10 @@ td {
 .pricetag {
     color: #66AFBB;
     padding-top: 15%;
+}
+
+
+.card.profile {
+    margin-bottom: 5%;
+
 }

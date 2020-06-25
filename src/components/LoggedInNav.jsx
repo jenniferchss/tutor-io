@@ -8,7 +8,7 @@ function LoggedInNav(props) {
 
     function handleClickLogout() {
         props.handleLogout();
-        localStorage.remove('usertoken');
+        localStorage.clear();
         history.push("/signin");
     }
 

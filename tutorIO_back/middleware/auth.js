@@ -38,12 +38,14 @@ exports.verifyToken = function(req,res) {
       const expiry = jwt.decode(token).exp
       const now = new Date();
       if(now.getTime() >= expiry * 1000) {
+        //console.log('MASUK FALSE');
         res.json('false');
       } else {
+        //console.log('MASUK TRUE +' + token);
         res.json('true');
       }
     } catch(err) {
-      console.log(err);
+      // console.log(err);
       res.status(500).send({message: "Invalid token"})
     }
     

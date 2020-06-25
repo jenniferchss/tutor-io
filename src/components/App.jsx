@@ -38,7 +38,7 @@ class App extends React.Component {
 
   checkLogInStatus = () => {
     const token = localStorage.getItem('usertoken');
-    //console.log(token);
+    console.log(token);
 
     if (!token) {
       this.setIsLoggedIn('false');
@@ -88,12 +88,36 @@ class App extends React.Component {
 
   render() {
     const {isLoggedIn} = this.state;
-    //this.checkLogInStatus();
+    // this.checkLogInStatus();
     return (
       <Router>
     <div>
-      {isLoggedIn === 'false' ? <Navibar /> : <LoggedInNav handleLogout={this.handleLogout}/>}
-      <Switch>
+      {isLoggedIn === 'false' ? 
+      <div>
+      <Navibar />
+        <Switch> 
+          <Route path="/" exact component={Main}/>
+          <Route path="/signin" exact render={props => (
+            <Signin {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
+          )}/>
+          <Route path="/signup" exact component={Signup}/>
+          <Route path="*" exact component={NotFoundPage}/>
+        </Switch> 
+      <Footer />
+      </div>
+       : <div> <LoggedInNav handleLogout={this.handleLogout}/> 
+       <Switch>
+        <Route path="/dashboard" exact render={props => (
+          <Dashboard {...props} isLoggedIn={isLoggedIn} />
+        )}/>
+        <Route path="/mymodules" exact component={MyModules}/>
+        <Route path="/editprofile" exact component={EditMyProfile}/>
+        <Route path="/manageaccount" exact component={Privacy}/>
+        <Route path="/tutorlisting" exact component={TutorListing}/>
+        <Route path="*" exact component={NotFoundPage}/>
+       </Switch>
+      </div>}
+      {/* <Switch>
         <Route path="/" exact component={Main}/>
         <Route path="/signin" exact render={props => (
           <Signin {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
@@ -109,7 +133,7 @@ class App extends React.Component {
         <Route path="*" exact component={NotFoundPage}/>
             
       </Switch>
-      <Footer />
+      <Footer /> */}
     </div>
     </Router>
     );

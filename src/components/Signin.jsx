@@ -38,9 +38,10 @@ function Signin(props) {
                 //console.log(res);
             }
         })
-        .catch(function(err) {
-            console.error(err)
-        });
+        .catch(err => {
+            console.log(err);
+            alert(JSON.stringify(err, null, 2));
+          });
         
     }
 
@@ -57,7 +58,7 @@ function Signin(props) {
                 onChange={handleChangeUsername}
                 type="text" 
                 id="inputUsername" 
-                class="form-control" 
+                className="form-control" 
                 placeholder="Username" 
                 value={username}
                 required autoFocus 
@@ -65,9 +66,9 @@ function Signin(props) {
             <label for="inputEmail" className="sr-only email-input">Email address</label>
             <input 
                 onChange={handleChangeEmail}
-                type="email" 
+                type="text" 
                 id="inputEmail" 
-                class="form-control" 
+                className="form-control" 
                 placeholder="Email address" 
                 value={emailaddress}
                 required 
@@ -77,7 +78,7 @@ function Signin(props) {
                 onChange={handleChangePassword}
                 type="password" 
                 id="inputPassword" 
-                class="form-control" 
+                className="form-control" 
                 placeholder="Password" 
                 value={password}
                 required 

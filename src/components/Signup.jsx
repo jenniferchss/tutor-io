@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../axios";
 import { useHistory } from "react-router-dom";
 
-function Signup() {
+function Signup(props) {
     const [username, setUsername] = useState("")
     const [emailaddress, setEmailaddress] = useState("")
     const [password, setPassword] = useState("")
@@ -39,14 +39,18 @@ function Signup() {
             alert('Password do not match!');
         }
         else {
-        axios.post ('/user/signup',{
+        axios().post ('/user/signup',{
             username: username,
             email: emailaddress,
             password: password
         })
         .then(function(res) {
-            history.push("/dashboard");
-            console.log(res)})
+            if (res.data.token) {
+                localStorage.setItem('usertoken', res.data.token);
+                props.handleLogin();
+                history.push("/dashboard");
+            }
+        })
         .catch(function(err) {
             console.error(err);
             alert('Username / Email is already registered')});
@@ -66,7 +70,7 @@ function Signup() {
                     type="username" 
                     id="inputUsername" 
                     class="form-control" 
-                    placeholder="@username" 
+                    placeholder="username" 
                     value={username}
                     required autofocus
                 />

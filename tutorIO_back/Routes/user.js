@@ -8,11 +8,11 @@ const auth = require('../middleware/auth');
  * @param - /signup
  * @description - User SignUp
  */
-
 router.post( "/signup",
     auth.checkValid,
     authController.signUp
 );
+
 
 router.post("/login",
     auth.checkValid,
@@ -27,6 +27,10 @@ router.post("/login",
 router.get("/me", 
     auth.getLoggedInUser,
     authController.getLoggedInUser 
-  );
+);
+
+router.get("/verifyToken", 
+    auth.verifyToken
+);
 
 module.exports = router;

@@ -1,31 +1,85 @@
-import React from "react";
+import React, { useState } from "react";
 import SideNav from "./SideNav";
 
+
 function EditMyProfile() {
+    
+    const [fName, setFName] = useState("")
+    const [lName, setLName] = useState("")
+    const [major, setMajor] = useState("")
+    const [faculty, setFaculty] = useState("")
+
+    function handleChangeFName(event) {
+        const fname = event.target.value;
+        setFName(fname);
+    }
+    function handleChangeLName(event) {
+        const lname = event.target.value;
+        setLName(lname);
+    }
+    function handleChangeMajor(event) {
+        const major = event.target.value;
+        setMajor(major);
+    }
+    function handleChangeFaculty(event) {
+        const faculty = event.target.value;
+        setFaculty(faculty);
+    }
+
+    function handleSave(event) {
+        event.preventDefault();
+        //axios.get();
+
+    }
+
+
     return (<div className="editprofile">
         <div className="row">
             <SideNav />
             
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <h5 className="editprofile-title">Edit My Profile</h5>
-                <form>
+                <form onSubmit={handleSave}>
                 <div className="form-row">
                     <div className="form-group col-md-6">
-                    <label for="inputFirstName">First Name</label>
-                    <input type="text" className="form-control" id="inputFirstName"/>
+                        <label for="inputFirstName">First Name</label>
+                        <input 
+                            onChange={handleChangeFName} 
+                            type="text" 
+                            className="form-control" 
+                            id="inputFirstName" 
+                            value={fName} 
+                        />
                     </div>
                     <div className="form-group col-md-6">
-                    <label for="inputLastName">Last Name</label>
-                    <input type="password" className="form-control" id="inputLastName"/>
+                        <label for="inputLastName">Last Name</label>
+                        <input 
+                            onChange={handleChangeLName}
+                            type="password" 
+                            className="form-control" 
+                            id="inputLastName" 
+                            value={lName} 
+                        />
                     </div>
                 </div>
                 <div className="form-group">
                     <label for="inputMajor">Major</label>
-                    <input type="text" className="form-control" id="inputMajor"/>
+                    <input 
+                        onChange={handleChangeMajor}
+                        type="text" 
+                        className="form-control" 
+                        id="inputMajor" 
+                        value={major} 
+                    />
                 </div>
                 <div className="form-group">
                     <label for="inputFaculty">Faculty</label>
-                    <input type="text" className="form-control" id="inputFaculty"/>
+                    <input 
+                        onChange={handleChangeFaculty}
+                        type="text" 
+                        className="form-control" 
+                        id="inputFaculty" 
+                        value={faculty} />
                 </div>
                 <div className="form-group">
                     <label for="signupForm">Year</label>

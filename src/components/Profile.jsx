@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function Profile() {
+function Profile(props) {
+    
     return (<div className="profile">
         <h5 className="profile-title">PROFILE</h5>
         <div class="row no-gutters">
@@ -9,10 +10,10 @@ function Profile() {
             </div>
             <div class="col-sm-6 col-md-8">
                 <ul className="list-title">
-                    <li>Name:</li>
+                    <li>Name: {props.firstName} {props.lastName}</li>
                     <li>Year:</li>
-                    <li>Major, Faculty:</li>
-                    <li>Telegram:</li>
+                    <li>Major, Faculty: {props.major}, {props.faculty}</li>
+                    <li>Telegram: {props.telegram}</li>
                     <li>Registered as:</li>
                 </ul>
             </div>

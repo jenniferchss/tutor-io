@@ -32,7 +32,7 @@ exports.getLoggedInUser = function(req, res, next) {
 exports.verifyToken = function(req,res) {
     const token = req.headers.authorization
     if (!token) return res.status(401).json({ message: "No token provided" });
-    console.log("Token found")
+    //console.log("Token found")
 
     try {
       const expiry = jwt.decode(token).exp

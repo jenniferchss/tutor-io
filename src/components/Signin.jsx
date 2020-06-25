@@ -35,7 +35,7 @@ function Signin(props) {
                 localStorage.setItem('usertoken', res.data.token);
                 props.handleLogin();
                 history.push("/dashboard");
-                console.log(res);
+                //console.log(res);
             }
         })
         .catch(function(err) {

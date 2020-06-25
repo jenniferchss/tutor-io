@@ -39,22 +39,34 @@ class App extends React.Component {
   checkLogInStatus = () => {
     const token = localStorage.getItem('usertoken');
     //console.log(token);
+
+    if (!token) {
+      this.setIsLoggedIn('false');
+    }
+    else { 
     
-    axios().get('/user/verifyToken', {
-      headers:{
-        Authorization: token
-      }
-    })
-    .then(res => {
-      if (res.data === 'true' && localStorage.getItem('usertoken')!== null) {
-        this.setIsLoggedIn('true');
-      }
-      else {
+      axios().get('/user/verifyToken', {
+        headers:{
+          Authorization: token
+        }
+      })
+      .then(res => {
+        if (res.data === 'true' && localStorage.getItem('usertoken')!== null) {
+          this.setIsLoggedIn('true');
+          // console.log(res);
+        }
+        else {
+          this.setIsLoggedIn('false');
+        }
+        
+      })
+      .catch(err => {
+        console.log(err);
         this.setIsLoggedIn('false');
-      }
-      
-    })
-    .catch(err => console.log(err))
+      })
+
+    }
+    
     
     // if (token !== null) {
     //   this.setIsLoggedIn(true);
@@ -67,8 +79,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-
+    this.checkLogInStatus();
   }
+  // componentWillUnmount() {
+  //   clearInterval(this.interval);
+  // }
 
 
   render() {

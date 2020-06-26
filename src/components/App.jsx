@@ -8,7 +8,7 @@ import Navibar from "./Navibar";
 import LoggedInNav from "./LoggedInNav.jsx";
 import Main from "./Main.jsx";
 import Signin from "./Signin.jsx";
-import {Signup} from "./Signup.jsx";
+import Signup from "./Signup.jsx";
 import Dashboard from "./Dashboard.jsx";
 import MyModules from "./MyModules.jsx";
 import EditMyProfile from "./EditMyProfile";
@@ -106,7 +106,9 @@ class App extends React.Component {
           <Route path="/signin" exact render={props => (
             <Signin {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
           )}/>
-          <Route path="/signup" exact component={Signup}/>
+          <Route path="/signup" exact render={props => (
+            <Signup {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
+          )}/>
           <Route path="/fassmods" exact component={ModulesOfFass}/>
           <Route path="/enginmods" exact component={ModulesOfEngin}/>
           <Route path="/fosmods" exact component={ModulesOfSci}/>

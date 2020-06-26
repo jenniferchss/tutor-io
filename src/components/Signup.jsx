@@ -69,7 +69,7 @@ function Signup(props) {
                     onChange={handleChangeUser}
                     type="username" 
                     id="inputUsername" 
-                    class="form-control" 
+                    className="form-control" 
                     placeholder="username" 
                     value={username}
                     required autofocus
@@ -80,7 +80,7 @@ function Signup(props) {
                     onChange={handleChangeEmail}
                     type="email" 
                     id="inputEmail" 
-                    class="form-control" 
+                    className="form-control" 
                     placeholder="Email address" 
                     value={emailaddress}
                     required 
@@ -91,7 +91,7 @@ function Signup(props) {
                     onChange={handleChangePassword}
                     type="password" 
                     id="inputPassword" 
-                    class="form-control" 
+                    className="form-control" 
                     placeholder="Password (min 6 characters)" 
                     value={password}
                     required 
@@ -102,19 +102,18 @@ function Signup(props) {
                     onChange={handleChangeConfirmpass}
                     type="password" 
                     id="inputConfirmPassword" 
-                    class="form-control" 
+                    className="form-control" 
                     placeholder="Confirm password"
                     value={confirmpass} 
                     required 
                 />
                 
                 <button className="btn btn-lg btn-info btn-block" type="submit">Sign up</button>
-                <p class="mt-5 mb-3 text-muted">Copyright © 2020</p>
+                <p className="mt-5 mb-3 text-muted">Copyright © 2020</p>
 
             </form>
         </div>
     );
-}
 }
 
 export default Signup;

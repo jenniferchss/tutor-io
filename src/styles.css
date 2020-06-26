@@ -766,19 +766,7 @@ td {
     
 }
 .profile-pic {
-    background-image: url('https://s3-eu-west-1.amazonaws.com/lynks-blog/wp-content/uploads/2016/10/11153439/rsz_1shutterstock_325243652.jpg');
-    border-radius: 50%;
-    border-color: #999;
-    height: 150px;
-    width: 150px;
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: multiply;
-    vertical-align: middle;
-    text-align: center;
-    color: transparent;
-    transition: all .3s ease;
-    text-decoration: none;
+    color: #999;
 }
 
 .profile-pic:hover {

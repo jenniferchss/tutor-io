@@ -2,14 +2,14 @@ const {check} = require("express-validator");
 const jwt = require("jsonwebtoken");
 
 
-checkTokenExist = function(token) { 
+function checkTokenExist(token, res) { 
   if (!token) return res.status(400).json({ message: "No token provided" });
     // console.log("Token found")
 }
 
 exports.getLoggedInUser = function(req, res, next) {
     const token = req.headers.authorization;
-    checkTokenExist(token);
+    checkTokenExist(token, res);
     try {
         const decoded = jwt.verify(token, "randomString");
         //console.log("decoded:", JSON.stringify(decoded, null, 2));
@@ -23,7 +23,7 @@ exports.getLoggedInUser = function(req, res, next) {
 
 exports.verifyToken = function(req, res) {
     const token = req.headers.authorization;
-    checkTokenExist(token);
+    checkTokenExist(token, res);
     try {
       const expiry = jwt.decode(token).exp
       const now = new Date();

@@ -14,7 +14,7 @@ return (<div className="white-container" id="howitworks">
 
 
     <div className="card-deck">
-        <div className="card find">
+        <div className="card card-main find">
             <img src={require("../images/findyourtutor@2x.png")} className="card-img-top" alt="findyourtutor" />
             
             <div className="card-body">
@@ -24,7 +24,7 @@ return (<div className="white-container" id="howitworks">
             
         </div>
 
-        <div className="card schedule">
+        <div className="card card-main schedule">
             <img src={require("../images/schedule@2x.png")} className="card-img-top" alt="schedule" />
             
             <div className="card-body">
@@ -33,7 +33,7 @@ return (<div className="white-container" id="howitworks">
             </div>
             
         </div>
-        <div className="card rate">
+        <div className="card card-main rate">
             <img src={require("../images/rate@2x.png")} className="card-img-top" alt="rate" />
             
             <div className="card-body">

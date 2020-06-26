@@ -1,8 +1,8 @@
 import React from "react";
 
 function MySchedule() {
-    return (<div>
-        <h5 className='profile-title'>MY SCHEDULE</h5>
+    return (<div className='card'>
+        <h4 className='profile-title card-header'>MY SCHEDULE</h4>
     </div>);
 }
 

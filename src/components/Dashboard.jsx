@@ -31,18 +31,13 @@ function Dashboard(props) {
                 {currentTime < 12 && <h3 className="welcome-title">Good morning, name! </h3>}
                 {currentTime > 12 && currentTime < 18 ? <h3 className="welcome-title">Good afternoon, name! </h3> : null}
                 {currentTime > 18 && <h3 className="welcome-title">Good evening, name! </h3>}
-                <h1>Status: {props.isLoggedIn} </h1>
+                <h5>Status: {props.isLoggedIn} </h5>
+                <hr />
                 
-                <div className="row">
-                    <div className="col-lg-6 col-left">
-                        <Profile/>
-                    </div>
+                <Profile/>
 
-                    <div className="col-lg-6 col-right">
-                        <MySchedule/>
-                    </div>
+                <MySchedule/>
 
-                </div>
             </main>
         </div>
     </div>);

@@ -35,12 +35,12 @@ function Signin(props) {
                 localStorage.setItem('usertoken', res.data.token);
                 props.handleLogin();
                 history.push("/dashboard");
-                //console.log(res);
+                console.log(res);
             }
         })
         .catch(err => {
             console.log(err);
-            alert(JSON.stringify(err, null, 2));
+            alert("Have you connected to the database?");
           });
         
     }
@@ -48,37 +48,27 @@ function Signin(props) {
 
     return (<div className="text-center joinus-page" data-gr-c-s-loaded="true">
 
-        <form className="login-form">
+        <form onSubmit={handleSubmit} className="login-form">
             
             <h1 className="joinus-title h3 mb-3 font-weight-normal">Welcome back!</h1>
-            <h1>Status: {props.isLoggedIn}</h1>
+            <h5>Status: {props.isLoggedIn}</h5>
 
-            <label for="inputUsername" className="sr-only">username</label>
-            <input 
-                onChange={handleChangeUsername}
-                type="text" 
-                id="inputUsername" 
-                className="form-control" 
-                placeholder="Username" 
-                value={username}
-                required autoFocus 
-            />
             <label for="inputEmail" className="sr-only email-input">Email address</label>
             <input 
                 onChange={handleChangeEmail}
                 type="text" 
                 id="inputEmail" 
-                className="form-control" 
+                className="form-control email-input" 
                 placeholder="Email address" 
                 value={emailaddress}
-                required 
+                required autoFocus
             />
             <label for="inputPassword" className="sr-only password-input">Password</label>
             <input 
                 onChange={handleChangePassword}
-                type="password" 
-                id="inputPassword" 
-                className="form-control" 
+                type="password"
+                id="inputLoginPass"
+                className="form-control password-input" 
                 placeholder="Password" 
                 value={password}
                 required 

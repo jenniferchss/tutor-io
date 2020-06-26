@@ -26,6 +26,11 @@ body {
     }
 }
 
+.navbar-nav .dropdown-menu {
+    position: static;
+    float: left;
+}
+
 
 .navbar-loggedin {
     background-color: rgba(0, 0, 0, 0.040);
@@ -60,7 +65,7 @@ body {
     bottom: 0;
     left: 0;
     z-index: 100;
-    padding: 48px 0 0;
+    padding: 60px 0 0;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 .sidebar-sticky {
@@ -294,7 +299,7 @@ h2 {
     padding-right: 6%;
 }
 
-.card {
+.card.card-main {
     margin-top: 2%;
     margin-bottom: 2%;
     border-color: transparent;
@@ -465,6 +470,84 @@ h2 {
 }
 
 
+.mods-list {
+    background-color: #f8f8f8;
+    padding: 10%;
+}
+@media (min-width: 600px) and (max-width: 990px) {
+    .mods-list {
+        padding: 15%;
+    }
+}
+@media screen and (max-width: 599px) {
+    .mods-list {
+        padding: 20%;
+    }
+    .active-link {
+        font-size: 2vw;
+    }
+    .link-tab {
+        color: #555555;
+        font-size: 2vw;
+    }
+    .table-title {
+        font-size: 3vw;
+    }
+    .table-content {
+        border-top: 1px;
+        color: black;
+        font-size: 3vw;
+    }
+}
+.mods-tabs {
+    border-bottom: 1px solid #ddd;
+}
+.mods-tabs>li {
+    margin-bottom: -1px;
+}
+.mods-tabs>.active>a, .mods-tabs>.active>a:hover, .mods-tabs>.active>a:focus {
+    color: #66AFBB;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
+}
+.mods-tabs>li>a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 20px;
+    border: 1px solid transparent;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+}
+.mods-tabs>li>a, .nav-pills>li>a {
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-right: 2px;
+    line-height: 14px;
+}
+.nav>li>a {
+    display: block;
+}
+.link-tab {
+    color: #555555;
+}
+.link-tab:hover {
+    color: #66AFBB;
+}
+.card.tab-content {
+    background-color: white;
+    padding: 5%;
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.table-content {
+    border-top: 1px;
+    color: black;
+}
+
 
 
 .footer {
@@ -547,6 +630,16 @@ label {
     margin-bottom: -1px;
     border-radius: 0;
 }
+.email-input {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#inputLoginPass {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
 .login-form .form-control {
     position: relative;
     box-sizing: border-box;
@@ -575,6 +668,8 @@ label {
     padding: 8% 10% 10% 10%;
 }
 .welcome-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 3vw;
     text-align: left;
     margin: 2% auto 5%;
     
@@ -586,22 +681,43 @@ label {
     padding-right: 0;
 }
 
-.profile {
-    padding: 0% 5% 5% 10%;
-}
+
 .profile-title {
     font-family: 'Nunito', sans-serif;
     color: #66AFBB;
     margin-bottom: 2%;
+    margin-top: 0;
 }
 .profpict {
     width: 100%;
     margin-top: 5%;
     display: inline;
 }
-
 ul {
     list-style-type: none;
+}
+.right-profile {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.name-dashboard {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 3vw;
+}
+.smallIcon {
+    width: 3%;
+    margin-right: 1%;
+    display: inline;
+}
+.smallInfo {
+    display: inline;
+    margin-right: 5%;
+    font-size: 1vw;
+}
+.biography {
+    margin-top: 2%;
 }
 
 
@@ -649,6 +765,24 @@ td {
     padding-bottom: 5%;
     
 }
+.profile-pic {
+    color: #999;
+}
+
+.profile-pic:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+.profile-pic span {
+    display: inline-block;
+    padding-top: 4.5em;
+    padding-bottom: 4.5em;
+}
+
 .save-btn {
     margin-top: 5%;
     font-size: 1vw;
@@ -686,4 +820,10 @@ td {
 .pricetag {
     color: #66AFBB;
     padding-top: 15%;
+}
+
+
+.card.profile {
+    margin-bottom: 5%;
+
 }

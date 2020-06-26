@@ -9,7 +9,7 @@ return (<div className="blue-container">
     </h3>
 
     <div className="card-deck">
-        <div className="card">
+        <div className="card card-main">
             <img src={require("../images/signup@2x.png")} className="card-img-top" alt="signup" />
             
             <div className="card-body">
@@ -19,7 +19,7 @@ return (<div className="blue-container">
             
         </div>
 
-        <div className="card">
+        <div className="card card-main">
             <img src={require("../images/business@2x.png")} className="card-img-top" alt="buildup" />
             
             <div className="card-body">
@@ -28,7 +28,7 @@ return (<div className="blue-container">
             </div>
             
         </div>
-        <div className="card">
+        <div className="card card-main">
             <img src={require("../images/earn@2x.png")} className="card-img-top" alt="earnextra" />
             
             <div className="card-body">

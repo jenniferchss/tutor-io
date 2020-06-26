@@ -52,7 +52,7 @@ function Profile(props) {
     }
     
     return (<div className="profile card">
-        {handleLoad()};
+        {handleLoad()}
         <h4 className="profile-title card-header">PROFILE</h4>
         <div class="row card-body">
             <div class="col-6 col-md-4">

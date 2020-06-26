@@ -1,39 +1,29 @@
 const {check} = require("express-validator");
 const jwt = require("jsonwebtoken");
 
-exports.checkValid = [
-        check("username", "Please Enter a Valid Username")
-        .not()
-        .isEmpty(),
-        check("email", "Please enter a valid email").isEmail(),
-        check("password", "Please enter a valid password").isLength({
-            min: 6
-        })
-    ];
 
-   
+checkTokenExist = function(token) { 
+  if (!token) return res.status(400).json({ message: "No token provided" });
+    // console.log("Token found")
+}
 
 exports.getLoggedInUser = function(req, res, next) {
-      const token = req.headers.authorization
-      
-      if (!token) return res.status(401).json({ message: "No token provided" });
-      console.log("Token found")
-      try {
+    const token = req.headers.authorization;
+    checkTokenExist(token);
+    try {
         const decoded = jwt.verify(token, "randomString");
-        console.log("decoded:", JSON.stringify(decoded, null, 2));
+        //console.log("decoded:", JSON.stringify(decoded, null, 2));
         req.user = decoded.user;
         next();
-      } catch (e) {
+    } catch (e) {
         console.error(e);
-        res.status(500).send({ message: "Invalid Token" });
-      }
-    };
+        res.status(500).json({ message: "Invalid Token" });
+    }
+};
 
-exports.verifyToken = function(req,res) {
-    const token = req.headers.authorization
-    if (!token) return res.status(401).json({ message: "No token provided" });
-    //console.log("Token found")
-
+exports.verifyToken = function(req, res) {
+    const token = req.headers.authorization;
+    checkTokenExist(token);
     try {
       const expiry = jwt.decode(token).exp
       const now = new Date();
@@ -46,7 +36,8 @@ exports.verifyToken = function(req,res) {
       }
     } catch(err) {
       // console.log(err);
-      res.status(500).send({message: "Invalid token"})
-    }
-    
+      res.status(500).json({message: "Invalid token"})
+    }   
 }
+
+

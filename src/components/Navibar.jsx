@@ -45,13 +45,13 @@ return (
                     Modules
                     </a>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item" href="#">Faculty of Arts and Social Sciences</a>
-                        <a className="dropdown-item" href="#">Faculty of Engineering</a>
+                        <a className="dropdown-item" href="/fassmods">Faculty of Arts and Social Sciences</a>
+                        <a className="dropdown-item" href="/enginmods">Faculty of Engineering</a>
                         <a className="dropdown-item" href="#">Faculty of Law</a>
-                        <a className="dropdown-item" href="#">Faculty of Science</a>
-                        <a className="dropdown-item" href="#">School of Business</a>
-                        <a className="dropdown-item" href="#">School of Computing</a>
-                        <a className="dropdown-item" href="#">School of Design and Environment</a>
+                        <a className="dropdown-item" href="/fosmods">Faculty of Science</a>
+                        <a className="dropdown-item" href="/bizmods">School of Business</a>
+                        <a className="dropdown-item" href="/socmods">School of Computing</a>
+                        <a className="dropdown-item" href="/sdemods">School of Design and Environment</a>
                         <div className="dropdown-divider"></div>
                         <a className="dropdown-item" href="#">Faculty of Dentistry</a>
                         <a className="dropdown-item" href="#">DUKE NUS Medical School</a>

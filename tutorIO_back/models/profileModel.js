@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ProfileSchema = mongoose.Schema({
     userID: {
@@ -7,19 +7,36 @@ const ProfileSchema = mongoose.Schema({
     },
     userName: {
       type: String,
-      required: true
     },
-    name: {
-      type: String
+    firstName: {
+      type: String,
+    },
+    lastName: {
+      type: String,
     },
     year: {
-        type: String
+        type: String,
     },
     faculty: {
-        type: String
+        type: String,
     },
     major: {
-        type: String
+        type: String,
+    },
+    telegram: {
+      type: String,
+    },
+    biography: {
+      type: String,
+    },
+    qualifications: { //foto /pdf
+      type: String,
+    },
+    isTutor: {
+      type: Boolean,
+    },
+    isTutee: {
+      type: Boolean,
     },
     createdAt: {
       type: Date,

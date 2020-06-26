@@ -66,16 +66,16 @@ function EditMyProfile() {
             }
         })
         .then (res => {
-            const fname = res.data.firstName;
-            const lname = res.data.lastName;
-            const major = res.data.major;
-            const faculty = res.data.faculty;
-            const year = res.data.year;
-            const telegram = res.data.telegram;
-            const bio = res.data.biography;
-            const qualif = res.data.qualifications;
-            const isTutor = res.data.isTutor;
-            const isTutee = res.data.isTutee;
+            const fname = res.data[0].firstName;
+            const lname = res.data[0].lastName;
+            const major = res.data[0].major;
+            const faculty = res.data[0].faculty;
+            const year = res.data[0].year;
+            const telegram = res.data[0].telegram;
+            const bio = res.data[0].biography;
+            const qualif = res.data[0].qualifications;
+            const isTutor = res.data[0].isTutor;
+            const isTutee = res.data[0].isTutee;
             console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
             setFName(fname);
             setLName(lname);
@@ -99,6 +99,13 @@ function EditMyProfile() {
         const token = localStorage.getItem('usertoken');
 
         axios().put('/user/editProfile', {
+            firstName: fName,
+            lastName: lName,
+            major: major,
+            faculty: faculty,
+            telegram: telegram,
+            biography: bio,
+            qualifications: qualif,
             headers:{
                 Authorization: token
             }

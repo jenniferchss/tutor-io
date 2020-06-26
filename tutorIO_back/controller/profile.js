@@ -8,6 +8,7 @@ exports.editUserProfile = async(req,res) => {
             faculty,
             major,
             telegram,
+            biography,
             qualifications,
             isTutor,
             isTutee } = req.body;
@@ -20,6 +21,7 @@ exports.editUserProfile = async(req,res) => {
                       "faculty": faculty, 
                       "major": major,
                       "telegram": telegram,
+                      "biography": biography,
                       "qualifications": qualifications,
                       "isTutor": isTutor,
                       "isTutee": isTutee

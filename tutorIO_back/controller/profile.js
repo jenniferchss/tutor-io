@@ -1,4 +1,3 @@
-const User = require("../models/userModel");
 const Profile = require("../models/profileModel");
 
 exports.editUserProfile = async(req,res) => {

@@ -3,6 +3,10 @@ const router = express.Router();
 const authController = require('../controller/auth');
 const auth = require('../middleware/auth');
 const profileController = require('../controller/profile');
+const tutorController = require('../controller/tutor');
+const moduleController = require('../controller/module');
+
+// Router for Authentication
 
 /**
  * @method - POST
@@ -41,6 +45,8 @@ router.get("/verifyToken",
     auth.verifyToken
 );
 
+// Router for Profile
+
 /**
  * @method - GET
  * @description - Verify the token (check login status)
@@ -52,22 +58,59 @@ router.get("/userProfile",
 )
 
 /**
+ * @method - PATCH
+ * @description - Edit User Profile
+ * @param - /user/editProfile
+ */
+router.patch("/editProfile",
+    auth.getLoggedInUser,
+    profileController.editUserProfile
+)
+
+// Router for Tutors
+
+/**
  * @method - GET
  * @description - Get list of all tutors
  * @param - /user/getAllTutor 
  */
 router.get("/getAllTutor",
-    profileController.getAllTutors
+    tutorController.getAllTutors
 )
 
 /**
- * @method - PUT
- * @description - Edit User Profile
- * @param - /user/editProfile
+ * @method - PATCH
+ * @description - To set the user become a tutor
+ * @param - /user/createTutor
  */
-router.put("/editProfile",
+router.patch("/createTutor",
     auth.getLoggedInUser,
-    profileController.editUserProfile
+    tutorController.createTutor
+)
+
+router.delete("/deleteTutor",
+    auth.getLoggedInUser,
+    tutorController.deleteTutor
+)
+
+router.get("/findSpecificTutor",
+    moduleController.getTeachingTutor
+)
+
+router.put("/addModule",
+    auth.getLoggedInUser,
+    tutorController.tutorRegisterModule,
+    moduleController.createModuleAddTutor
+)
+
+router.delete("/deleteModule",
+    auth.getLoggedInUser,
+    tutorController.tutorDeleteModule,
+    moduleController.removeTutor
+)
+
+router.get("/getAllModules",
+    moduleController.getListOfModules
 )
 
 

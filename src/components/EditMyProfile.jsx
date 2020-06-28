@@ -112,6 +112,7 @@ function EditMyProfile() {
         })
         .then (res => {
             console.log("SAVE SUCCESS: " + JSON.stringify(res, null, 2));
+            alert("Changes saved!");
         })
         .catch (err => {
             console.log("ERROR SAVE: " + err);

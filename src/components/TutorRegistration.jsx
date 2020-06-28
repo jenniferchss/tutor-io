@@ -1,12 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SideNav from "./SideNav";
+import axios from "../axios";
 import DeleteRegMod from "./DeleteRegMod";
 import Select from "react-dropdown-select";
 
 
 function TutorRegistration() {
+    const [isTutor, setIsTutor] = useState(false)
     const [moduleCode, setModuleCode] = useState("")
     const [fee, setFee] = useState("")
+
+    useEffect(() => {
+        const token = localStorage.getItem('usertoken');
+
+        axios().get('/user/userProfile', {
+            headers:{
+              Authorization: token
+            }
+        })
+        .then (res => {
+            const isTutor = res.data[0].isTutor;
+            console.log("GET PROFILE: " + JSON.stringify(res, null, 2));
+            console.log("isTutor: " + isTutor);
+            setIsTutor(isTutor);
+        })
+        .catch (err => {
+            console.log(err);
+        })
+    }, [])
+
+    function handleClickYes() {
+        const token = localStorage.getItem('usertoken');
+        axios().patch('/user/createTutor', {
+            headers:{
+              Authorization: token
+            }
+        })
+        .then (res => {
+            const isTutor = true;
+            console.log("UPDATE PROFILE: " + JSON.stringify(res, null, 2));
+            console.log("isTutor: " + isTutor);
+            setIsTutor(isTutor);
+        })
+        .catch (err => {
+            console.log(err);
+        })
+        
+    }
+
 
     function handleChangeModule(value) {
         const module = value[0].label;
@@ -30,6 +71,25 @@ function TutorRegistration() {
     ];
     // const modulesList = ["CS1010", "CS1101S"];
 
+    function handleDeactivate() {
+        const token = localStorage.getItem('usertoken');
+        axios().delete('/user/deleteTutor', {
+            headers:{
+              Authorization: token
+            }
+        })
+        .then (res => {
+            const isTutor = false;
+            console.log("UPDATE PROFILE: " + JSON.stringify(res, null, 2));
+            console.log("isTutor: " + isTutor);
+            setIsTutor(isTutor);
+        })
+        .catch (err => {
+            console.log(err);
+        })
+
+    }
+
     
 
     return (<div className="tutor-registration">
@@ -44,12 +104,12 @@ function TutorRegistration() {
                     Tutor Registration</h3>
                 <hr></hr>
 
-                <div className="before-regTutor">
-                    <h5>Do you want to register to be a tutor?</h5>
-                    <button type="submit" className="btn btn-info">Yes</button>
+                <div id="before-reg" className={`${isTutor ? "hide-div" : ""}`}>
+                    <h5 className="tutor-reg">Do you want to register to be a tutor?</h5>
+                    <button onClick={handleClickYes} type="submit" className="btn btn-info">Yes, I want to help my peers!</button>
                 </div>
 
-                <div className="after-regTutor">
+                <div id="after-reg" className={`${isTutor ? "" : "hide-div"}`}>
                     <form onSubmit={handleSubmit}>
                     
                         <label className="module-code">MODULE CODE</label>
@@ -95,7 +155,7 @@ function TutorRegistration() {
                         {/* </tbody> */}
                     {/* </table> */}
                     <label className="module-code">FEE OFFERED</label>
-                    <div className="form-row">
+                    <div className="form-row fee-offered">
                         <div className="form-group col-md-6">
                             <input 
                                 onChange={handleChangeFee} 
@@ -109,6 +169,13 @@ function TutorRegistration() {
                             <button type="submit" className="btn btn-info mod-regis-btn">Save</button>
                         </div>
                     </div>
+
+                    <hr />
+                    <h5 className="module-code deactivate-acc">Deactivate Tutor Account</h5>
+                    <small className="deactivate-sm">Once you deactivate your tutor account, the list of your taught modules will be deleted. 
+                        You can still register to be a tutor in the future, but the list of your modules taught in 
+                        the past cannot be recovered.</small>
+                    <button onClick={handleDeactivate} type="submit" className="btn btn-danger btn-sm deactivate-btn">Deactivate</button>
 
                 </div>
                 

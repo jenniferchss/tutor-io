@@ -9,8 +9,7 @@ exports.editUserProfile = async(req,res) => {
             telegram,
             biography,
             qualifications,
-            isTutor,
-            isTutee } = req.body;
+             } = req.body;
     try {
         console.log(firstName)
         const profile = await Profile.updateOne(
@@ -23,8 +22,6 @@ exports.editUserProfile = async(req,res) => {
                       "telegram": telegram,
                       "biography": biography,
                       "qualifications": qualifications,
-                      "isTutor": isTutor,
-                      "isTutee": isTutee
                     }
 
             })

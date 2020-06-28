@@ -49,7 +49,7 @@ router.get("/verifyToken",
 
 /**
  * @method - GET
- * @description - Verify the token (check login status)
+ * @description - Get user profile
  * @param - /user/userProfile
  */
 router.get("/userProfile",

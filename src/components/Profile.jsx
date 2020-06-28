@@ -62,17 +62,16 @@ function Profile(props) {
                     <h3 className="name-dashboard">{fName} {lName}</h3>
                     <img src={require("../images/correct.svg")} className="smallIcon" alt="smallIcon"></img>
                     {isTutor === true ? <h5 className="smallInfo text-muted">
-                        Tutor
-                    </h5> : null}
-                    {isTutee === true ? <h5 className="smallInfo text-muted">
+                        Tutor/Tutee
+                    </h5> : <h5 className="smallInfo text-muted">
                         Tutee
-                    </h5> : null}
+                    </h5>}
                     <img src={require("../images/study.svg")} className="smallIcon" alt="smallIcon"></img>
                     <h5 className="smallInfo text-muted">{major}, {faculty}</h5>
                     <img src={require("../images/mortarboard.svg")} className="smallIcon" alt="smallIcon"></img>
-                    <h5 className="smallInfo text-muted">Year {year}</h5>
+                    <h5 className="smallInfo text-muted">Year 2{year}</h5>
                     <img src={require("../images/telegram.svg")} className="smallIcon" alt="smallIcon"></img>
-                    <h5 className="smallInfo text-muted">@{telegram}</h5>
+                    <h5 className="smallInfo text-muted">{telegram}</h5>
                     <p className="biography">{bio} Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus viverra 
                     adipiscing at in tellus integer feugiat. Condimentum mattis pellentesque id nibh 

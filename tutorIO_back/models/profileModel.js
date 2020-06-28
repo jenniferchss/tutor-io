@@ -11,7 +11,7 @@ const ProfileSchema = mongoose.Schema({
     },
     firstName: {
       type: String,
-      default: "firstName",
+      default: " ",
     },
     lastName: {
       type: String,

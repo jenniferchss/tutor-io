@@ -13,6 +13,7 @@ exports.editUserProfile = async(req,res) => {
             isTutor,
             isTutee } = req.body;
     try {
+        console.log(firstName)
         const profile = await Profile.updateOne(
             { "userID" : req.user.id}, 
             { $set: { "firstName": firstName,
@@ -28,7 +29,7 @@ exports.editUserProfile = async(req,res) => {
                     }
 
             })
-        res.json("BERHASIL");   
+        res.json("BERHASIL" + JSON.stringify(profile,null,2));   
     } catch (e) {
         res.json({ message: "Error in Fetching profile" });
     }

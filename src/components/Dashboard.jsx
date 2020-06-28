@@ -1,38 +1,50 @@
 import React, { useState, useEffect } from "react";
-//import SubNavbar from "./SubNavbar.jsx";
 import SideNav from "./SideNav.jsx";
 import Profile from "./Profile.jsx";
 import MySchedule from "./MySchedule.jsx";
-// import axios from "../axios";
+import axios from "../axios";
 
 
 const currentTime = new Date().getHours();
 
 function Dashboard(props) {
-    // const [name, setName] = useState("")
 
-    // function handleChangeName() {
-    //     axios().get("/user/me", { withCredentials: true })
-    //     .then(res =>{
-    //         setName(res.data.username)
-    //     })
-    //     .catch(err => console.log(err))
-    // }
+    const [fName, setFName] = useState("")
+    const [lName, setLName] = useState("")
 
-    // useEffect(() => {
-    //     handleChangeName();
-    // })
+    function handleLoad(event) {
+        const token = localStorage.getItem('usertoken');
+
+        axios().get('/user/userProfile', {
+            headers:{
+              Authorization: token
+            }
+        })
+        .then (res => {
+            const fname = res.data[0].firstName;
+            const lname = res.data[0].lastName;
+            // console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
+            setFName(fname);
+            setLName(lname);
+        })
+        .catch (err => {
+            console.log(err);
+        })
+
+    }
+    
 
     return (<div className="dashboard container-fluid">
+        {handleLoad()}
         <div className="row">
             <SideNav />
 
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">    
-                {currentTime < 12 && <h3 className="welcome-title">Good morning, name! </h3>}
-                {currentTime > 12 && currentTime < 18 ? <h3 className="welcome-title">Good afternoon, name! </h3> : null}
-                {currentTime > 18 && <h3 className="welcome-title">Good evening, name! </h3>}
-                <h5>Status: {props.isLoggedIn} </h5>
-                <hr />
+                {currentTime < 12 && <h3 className="welcome-title">Good morning, {fName}! </h3>}
+                {currentTime > 12 && currentTime < 18 ? <h3 className="welcome-title">Good afternoon, {fName}! </h3> : null}
+                {currentTime > 18 && <h3 className="welcome-title">Good evening, {fName}! </h3>}
+                {/* <h5>Status: {props.isLoggedIn} </h5> */}
+                {/* <hr /> */}
                 
                 <Profile/>
 

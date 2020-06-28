@@ -61,11 +61,11 @@ router.get("/getAllTutor",
 )
 
 /**
- * @method - PUT
+ * @method - PATCH
  * @description - Edit User Profile
  * @param - /user/editProfile
  */
-router.put("/editProfile",
+router.patch("/editProfile",
     auth.getLoggedInUser,
     profileController.editUserProfile
 )

@@ -59,7 +59,10 @@ body {
 }
 .form-control.inner {
     padding: 0;
-    background-color: transparent;
+    
+}
+.search-bar {
+    background-color: rgba(253, 253, 253, 0.342);;
 }
 .autocomplete {
     /*the container must be positioned relative:*/
@@ -711,7 +714,7 @@ label {
 }
 .welcome-title {
     font-family: 'Nunito', sans-serif;
-    font-size: 3vw;
+    font-size: 2.5vw;
     text-align: left;
     margin: 2% auto 5%;
     
@@ -722,6 +725,63 @@ label {
 .col-right {
     padding-right: 0;
 }
+
+
+.tutor-registration {
+    background-color: white;
+    padding: 10%;
+}
+.page-title {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 3vw;
+    margin-bottom: 0.5rem;
+    color: #333333;
+    display: inline-block;
+}
+.module-code {
+    font-family: 'Nunito', sans-serif;
+    margin-top: 5%;
+}
+#inputModuleCode {
+    width: 75%;
+}
+#ul-regmod {
+    padding-inline-start: 0;
+}
+/* Style the list items */
+.mod-reg-ul .mod-reg-li {
+    border: 1px solid #ddd;
+    margin-top: -1px; /* Prevent double borders */
+    background-color: white;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+    position: relative;
+}
+/* Add a light grey background color on hover */
+.mod-reg-ul .mod-reg-li:hover {
+    background-color: #66AFBB;
+    color: white;
+}
+/* Style the close button (span) */
+.delete-mod {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    padding: 12px 16px;
+    transform: translate(0%, -50%);
+}
+.delete-mod:hover {background: #bbb;}
+
+#inputFee {
+    width: 75%;
+}
+
 
 
 .profile-title {
@@ -746,7 +806,7 @@ ul {
     font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
-    font-size: 3vw;
+    font-size: 2.5vw;
 }
 .smallIcon {
     width: 3%;
@@ -782,7 +842,7 @@ h4 {
     background-color: white;
     border-radius: 10px;
 }
-.table th {
+/* .table th {
     border-top: none;
 }
 th {
@@ -792,13 +852,13 @@ th {
 td {
     color: #66AFBB;
     text-align: center;
-}
+} */
 
 
 
 .editprofile {
     padding: 10% 12% 15% 12%;
-    background-color: #f8f8f8;
+    background-color: white;
 }
 .editprofile-title {
     font-family: 'Nunito', sans-serif;

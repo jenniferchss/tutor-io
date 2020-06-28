@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SideNav from "./SideNav";
 import axios from "../axios";
 
@@ -19,6 +19,7 @@ function EditMyProfile() {
     function handleChangeFName(event) {
         const fname = event.target.value;
         setFName(fname);
+        console.log(fname);
     }
     function handleChangeLName(event) {
         const lname = event.target.value;
@@ -57,7 +58,7 @@ function EditMyProfile() {
         setIsTutee(isTutee);
     }
 
-    function handleLoad(event) {
+    useEffect(() => {
         const token = localStorage.getItem('usertoken');
 
         axios().get('/user/userProfile', {
@@ -91,14 +92,13 @@ function EditMyProfile() {
         .catch (err => {
             console.log(err);
         })
-
-    }
+    }, [])
 
     function handleSave(event) {
         event.preventDefault();
         const token = localStorage.getItem('usertoken');
 
-        axios().put('/user/editProfile', {
+        axios().patch('/user/editProfile', {
             firstName: fName,
             lastName: lName,
             major: major,
@@ -111,25 +111,21 @@ function EditMyProfile() {
             }
         })
         .then (res => {
-            console.log("SAVE SUCCESS: " + res);
+            console.log("SAVE SUCCESS: " + JSON.stringify(res, null, 2));
         })
         .catch (err => {
             console.log("ERROR SAVE: " + err);
         })
     }
 
-    // function componentDidMount() {
-    //     handleLoad();
-    // }
-
 
     return (<div className="editprofile">
-        {handleLoad()};
         <div className="row">
             <SideNav />
             
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <h5 className="editprofile-title">Edit My Profile</h5>
+                <h3 className="page-title">Edit My Profile</h3>
+                <hr></hr>
                 <form onSubmit={handleSave}>
                 <p><a href="#" class="profile-pic">Change profile picture</a></p>
                 <div className="form-row">
@@ -147,7 +143,7 @@ function EditMyProfile() {
                         <label for="inputLastName">Last Name</label>
                         <input 
                             onChange={handleChangeLName}
-                            type="password" 
+                            type="text" 
                             className="form-control" 
                             id="inputLastName" 
                             value={lName} 
@@ -196,17 +192,13 @@ function EditMyProfile() {
 
                 <div className="form-group">
                     <label for="inputBio">Biography</label>
-                    <textarea onChange={handleChangeBiography} className="form-control" id="inputBio" rows="3">
-                        {bio}
-                    </textarea>
+                    <textarea onChange={handleChangeBiography} className="form-control" id="inputBio" rows="3" value={bio}> </textarea>
                     <small id="bioHelp" className="form-text text-muted">Tell us something interesting about yourself! (e.g. your personality, teaching style, hobbies, etc.)</small>
                 </div>
 
                 <div className="form-group">
                     <label for="inputQual">Qualifications</label>
-                    <textarea onChange={handleChangeQualif} className="form-control" id="inputBio" rows="3">
-                        {qualif}
-                    </textarea>
+                    <textarea onChange={handleChangeQualif} className="form-control" id="inputBio" rows="3" value={qualif}> </textarea>
                     <small id="qualHelp" className="form-text text-muted">*to be edited later* (integrate with backend)</small>
                 </div>
 
@@ -217,7 +209,7 @@ function EditMyProfile() {
                     </div>
                 </form>
 
-                <div className="form-group">
+                {/* <div className="form-group">
                 <label for="signupForm">Register as:</label>
                 <div className="form-check">
                     <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
@@ -248,7 +240,7 @@ function EditMyProfile() {
                         Offline
                     </label>
                 </div>
-                </div>
+                </div> */}
 
                 <button type="submit" className="btn btn-info save-btn">Save Changes</button>
                 </form>

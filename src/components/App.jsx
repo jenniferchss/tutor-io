@@ -10,7 +10,7 @@ import Main from "./Main.jsx";
 import Signin from "./Signin.jsx";
 import Signup from "./Signup.jsx";
 import Dashboard from "./Dashboard.jsx";
-import MyModules from "./MyModules.jsx";
+import TutorRegistration from "./TutorRegistration.jsx";
 import EditMyProfile from "./EditMyProfile";
 import Privacy from "./Privacy.jsx";
 import TutorListing from "./TutorListing.jsx";
@@ -124,7 +124,7 @@ class App extends React.Component {
         <Route path="/dashboard" exact render={props => (
           <Dashboard {...props} isLoggedIn={isLoggedIn} />
         )}/>
-        <Route path="/mymodules" exact component={MyModules}/>
+        <Route path="/tutorregis" exact component={TutorRegistration}/>
         <Route path="/editprofile" exact component={EditMyProfile}/>
         <Route path="/manageaccount" exact component={Privacy}/>
         <Route path="/tutorlisting" exact component={TutorListing}/>

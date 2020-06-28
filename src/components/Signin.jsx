@@ -51,7 +51,7 @@ function Signin(props) {
         <form onSubmit={handleSubmit} className="login-form">
             
             <h1 className="joinus-title h3 mb-3 font-weight-normal">Welcome back!</h1>
-            <h5>Status: {props.isLoggedIn}</h5>
+            {/* <h5>Status: {props.isLoggedIn}</h5> */}
 
             <label for="inputEmail" className="sr-only email-input">Email address</label>
             <input 

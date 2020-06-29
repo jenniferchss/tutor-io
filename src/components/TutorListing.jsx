@@ -1,9 +1,76 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../axios";
+import SOCTab from "./SOCTab";
+import FASSTab from "./FASSTab";
+import BizTab from "./BizTab";
+import ScienceTab from "./ScienceTab";
+import SDETab from "./SDETab";
+import EnginTab from "./EnginTab";
+
 
 function TutorListing() {
+    const [tutorList, setTutorList] = useState([])
+
+    useEffect(() => {
+        const moduleCode = localStorage.getItem('request');
+
+        axios().get('/user/userProfile/', {
+            params: moduleCode
+        })
+        .then (res => {
+            console.log("LOAD PROFILES: " + JSON.stringify(res, null, 2));
+            setTutorList(res.data);
+        })
+        .catch (err => {
+            console.log(err);
+        })
+    }, []);
+    
+    function selectTab(item) {
+        if (item === 'School Of Computing') {
+            return <SOCTab />;
+        }
+        if (item === 'Arts & Social Sciences') {
+            return <FASSTab />;
+        }
+        if (item === 'School Of Business') {
+            return <BizTab />;
+        }
+        if (item === 'Engineering') {
+            return <EnginTab />;
+        }
+        if (item === 'Science') {
+            return <ScienceTab />;
+        }
+        if (item === 'School Of Design And Environment') {
+            return <SDETab />;
+        }
+    }
+
+    
+
     return (<div className="editprofile">
-    <h5>Find the right tutor for you!</h5>
-        <div className="card mb-3 search-card">
+    <h5 className="tutorlist-title">Find the right <strong className="highlighted">tutor</strong> for you!</h5>
+
+    {/* {(() => {
+        switch (localStorage.getItem('facreq')) {
+            case 'School Of Computing': return <SOCTab />;
+            case 'Arts & Social Sciences': return <FASSTab />;
+            case 'School Of Business': return <BizTab />;
+            case 'Engineering': return <EnginTab />;
+            case 
+            case 'School Of Design And Environment': return <SDETab />;
+            default:
+                return null;
+        }
+    })} */}
+    {selectTab(localStorage.getItem('facreq'))}
+    
+    <div class="card tab-content">
+
+        <h4 className="tutlist-modcode">Module: <strong className="modcode-title">{localStorage.getItem('request')}</strong></h4>
+
+        {/* <div className="card mb-3 search-card">
             <div className="row no-gutters">
                 <div className="col-md-6">
                     <h3 className="search-title">FACULTY</h3>
@@ -40,18 +107,20 @@ function TutorListing() {
                     </li>
                 </div>
             </div>
-        </div>
+        </div> */}
         
         <div className="card mb-3 tutor-card">
-            <div className="row no-gutters">
+            {tutorList.map(tutor => {
+                return (
+                <div className="row no-gutters">
                 <div className="col-md-3">
-                <img src={require("../images/chessa@2x.png")} className="card-img tutor-img" alt="tutor-img" />
+                <img src={require("../images/profile@2x.png")} className="card-img tutor-img" alt="tutor-img" />
                 </div>
                 <div className="col-md-6">
                     <div className="card-body">
-                        <h4 class="tutor-name">Jennifer Chessa</h4>
-                        <h7 class="major">Data Science & Analytics</h7>
-                        <p>I'm very passionate in teaching and eager to meet you guys and share my knowledge and experiences.</p>
+                        <h4 class="tutor-name">{tutor.firstName} {tutor.lastName}</h4>
+                        <h7 class="major">{tutor.major}</h7>
+                        <p>{tutor.biography}</p>
                         <p className="text-muted">Teaching: CS2030, CS2040, ST2334</p>
                     </div>
                 </div>
@@ -59,30 +128,11 @@ function TutorListing() {
                     <h3 className="pricetag">$20 - $25</h3>
                     <p className="text-muted">per hour</p>
                 </div>
-            </div>
+            </div>)
+            })}
+            
         </div>
-
-        <div className="card mb-3 tutor-card">
-            <div className="row no-gutters">
-                <div className="col-md-3">
-                <img src={require("../images/chessa@2x.png")} className="card-img tutor-img" alt="tutor-img" />
-                </div>
-                <div className="col-md-6">
-                    <div className="card-body">
-                        <h4 class="tutor-name">Jennifer Chessa</h4>
-                        <h7 class="major">Data Science & Analytics</h7>
-                        <p>I'm very passionate in teaching and eager to meet you guys and share my knowledge and experiences.</p>
-                        <p className="text-muted">Teaching: CS2030, CS2040, ST2334</p>
-                    </div>
-                </div>
-                <div className="col-md-3">
-                    <h3 className="pricetag">$20 - $25</h3>
-                    <p className="text-muted">per hour</p>
-                </div>
-            </div>
         </div>
-
-
     </div>)
 }
 

@@ -926,3 +926,22 @@ td {
     margin-bottom: 5%;
 
 }
+
+
+.tutorlist-title {
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 5%;
+    font-size: 3vw;
+}
+.highlighted {
+    color: #66AFBB;
+}
+.tutlist-modcode {
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 3%;
+    margin-top: 0.5%;
+    color: black;
+}
+.modcode-title {
+    color: #66AFBB;
+}

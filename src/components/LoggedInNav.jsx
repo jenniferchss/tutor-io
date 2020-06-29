@@ -52,7 +52,7 @@ function LoggedInNav(props) {
 
     <form className="form-control form-control-dark w-100 outer" autocomplete="off" action="/action_page.php">
       {/* <div class="autocomplete form-control form-control-light w-100 inner"> */}
-      {/* <input onClick={} id="myInput" className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/> */}
+      <input id="myInput" className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/>
       {/* <Dropdown
         placeholder='Search'
         
@@ -67,7 +67,7 @@ function LoggedInNav(props) {
         value={searchBar}
         placeholder="Search..."/> */}
       {/* </div> */}
-      <Autocomplete
+      {/* <Autocomplete
           className="search-bar form-control form-control-light w-100"
           value={moduleCode}
           onChange={(event, newValue) => {
@@ -79,9 +79,9 @@ function LoggedInNav(props) {
           }}
           id="controllable-states-demo"
           options={modulesList}
-          style={{ width: 300 }}
+          style={{ width: 100 }}
           renderInput={(params) => <TextField {...params} label="Search Module" variant="outlined" />}
-      />
+      /> */}
     </form>
       
     <ul className="navbar-nav px-3">

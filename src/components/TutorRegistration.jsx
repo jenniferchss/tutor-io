@@ -7,15 +7,19 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 
 function TutorRegistration() {
-    const modulesList = ["CS1010", "CS1101S", "CS2030"]
+    const [options, setOptions] = useState([])
     const [isTutor, setIsTutor] = useState(false)
-    const [moduleCode, setModuleCode] = useState(modulesList[0])
+    const [moduleCode, setModuleCode] = useState(options[0])
     const [inputCode, setInputCode] = useState("")
+    // const [moduleTitle, setModuleTitle] = useState("")
+    // const [faculty, setFaculty] = useState("")
     const [fee, setFee] = useState("")
+
 
     useEffect(() => {
         const token = localStorage.getItem('usertoken');
 
+        //GET USER TUTOR STATUS//
         axios().get('/user/userProfile', {
             headers:{
               Authorization: token
@@ -29,7 +33,19 @@ function TutorRegistration() {
         })
         .catch (err => {
             console.log(err);
-        })
+        });
+
+        //GET ALL MODULE CODE LIST//
+        axios().get('/user/getAllModules')
+        .then ( res => {
+                console.log(res.data)
+                setOptions(res.data)
+
+            })
+        .catch (err => {
+            console.log(err);
+        });
+
     }, [])
 
     function handleClickYes() {
@@ -51,31 +67,58 @@ function TutorRegistration() {
         
     }
 
-
     // function handleChangeModule(value) {
     //     const module = value;
     //     console.log(module);
     //     // console.log(event.target.value);
     //     setModuleCode(module);
     // }
-    function handleSubmit() {
 
+    function handleSubmit(event) {
+        event.preventDefault();
+        const token = localStorage.getItem('usertoken');
+        let moduleTitle = "";
+        let faculty = "";
+
+
+        let i = 0;
+        for (i = 0; i<2231; i++) {
+            if (options[i].name === moduleCode) {
+                // console.log("options: " + JSON.stringify(options[i], null, 2));
+                // console.log("moduleTile: " + options[i].moduleTitle);
+                // console.log("faculty: " + options[i].faculty);
+                moduleTitle = options[i].moduleTitle;
+                faculty = options[i].faculty;
+                // console.log("KETEMU: " + moduleTitle + ", " + faculty);
+            }
+        }
+        // setModuleTitle(options[i].moduleTitle);
+        // setFaculty(options[i].faculty);
+        // console.log("moduleCode: " + moduleCode);
+        // console.log("moduleTitle: " + moduleTitle);
+        // console.log("faculty: " + faculty);
+
+        axios().put ('/user/addModule',{
+            name: moduleCode,
+            moduleTitle: moduleTitle,
+            faculty: faculty,
+            headers:{
+                Authorization: token
+            }
+        })
+        .then(function(res) {
+            console.log(res)
+            alert("You have successfully registered!")
+        })
+        .catch(function(err) {
+            console.error(err);
+        });
     }
+
     function handleChangeFee(event) {
         const fee = event.target.value;
         setFee(fee);
     }
-
-    // const modulesList = [
-    //     {label: "CS1010", value: 1},
-    //     {label: "CS1101S", value: 2},
-    //     {label: "CS1231", value: 3},
-    //     {label: "CS2030", value: 4},
-    // ];
-    // const modulesList = [
-    //     {name: "CS1010", value: "CS1010"}, 
-    //     {name: "CS1101S", value: "CS1101S"},
-    //     {name: "CS2030", value: "CS2030"}];
 
 
 
@@ -133,7 +176,7 @@ function TutorRegistration() {
                                     setInputCode(newInputValue);
                                     }}
                                     id="controllable-states-demo"
-                                    options={modulesList}
+                                    options={options.map((option) => option.name)}
                                     style={{ width: 300 }}
                                     renderInput={(params) => <TextField {...params} label="Search Module" variant="outlined" />}
                                 />

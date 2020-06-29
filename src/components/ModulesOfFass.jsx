@@ -25,6 +25,8 @@ function ModulesOfFass() {
   function handleClick(moduleCode,faculty) {
     localStorage.setItem('request', moduleCode);
     localStorage.setItem('facreq', faculty);
+    console.log('request: ' + localStorage.setItem('request', moduleCode))
+    console.log('facreq: ' + localStorage.setItem('request', moduleCode))
   }
   
     return (<div className="well mods-list">

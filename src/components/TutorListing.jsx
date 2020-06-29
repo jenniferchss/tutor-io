@@ -121,17 +121,84 @@ function TutorListing() {
                         <h4 class="tutor-name">{tutor.firstName} {tutor.lastName}</h4>
                         <h7 class="major">{tutor.major}</h7>
                         <p>{tutor.biography}</p>
-                        <p className="text-muted">Teaching: CS2030, CS2040, ST2334</p>
+                        <p className="text-muted">Teaching: CS1231</p>
                     </div>
                 </div>
                 <div className="col-md-3">
-                    <h3 className="pricetag">$20 - $25</h3>
+                    <h3 className="pricetag">$10 - $20</h3>
                     <p className="text-muted">per hour</p>
                 </div>
             </div>)
             })}
             
         </div>
+
+        <div className="card mb-3 tutor-card">
+            
+                <div className="row no-gutters">
+                <div className="col-md-3">
+                <img src={require("../images/profile@2x.png")} className="card-img tutor-img" alt="tutor-img" />
+                </div>
+                <div className="col-md-6">
+                    <div className="card-body">
+                        <h4 class="tutor-name">Christopher Robin</h4>
+                        <h7 class="major">Computer Science</h7>
+                        <p>My name is Robin and I love playing games!</p>
+                        <p className="text-muted">Teaching: CS1231, CS2010, CS2030, CS2040</p>
+                    </div>
+                </div>
+                <div className="col-md-3">
+                    <h3 className="pricetag">$20 - $25</h3>
+                    <p className="text-muted">per hour</p>
+                </div>
+            </div>
+            
+        </div>
+
+        <div className="card mb-3 tutor-card">
+            
+                <div className="row no-gutters">
+                <div className="col-md-3">
+                <img src={require("../images/profile@2x.png")} className="card-img tutor-img" alt="tutor-img" />
+                </div>
+                <div className="col-md-6">
+                    <div className="card-body">
+                        <h4 class="tutor-name">Yap Li Shuen</h4>
+                        <h7 class="major">Data Science & Analytics</h7>
+                        <p>Hi! I really love cooking and teaching others :) </p>
+                        <p className="text-muted">Teaching: CS1231, MA1101R</p>
+                    </div>
+                </div>
+                <div className="col-md-3">
+                    <h3 className="pricetag">Free</h3>
+                    <p className="text-muted">per hour</p>
+                </div>
+            </div>
+            
+        </div>
+
+        <div className="card mb-3 tutor-card">
+            
+                <div className="row no-gutters">
+                <div className="col-md-3">
+                <img src={require("../images/profile@2x.png")} className="card-img tutor-img" alt="tutor-img" />
+                </div>
+                <div className="col-md-6">
+                    <div className="card-body">
+                        <h4 class="tutor-name">Edwin Zhang</h4>
+                        <h7 class="major">Business Analytics</h7>
+                        <p>Hi! You can hit me up anytime for questions related to modules I'm teaching!</p>
+                        <p className="text-muted">Teaching: CS1231, MA1101R, CS2030, ...</p>
+                    </div>
+                </div>
+                <div className="col-md-3">
+                    <h3 className="pricetag">$15 - $25</h3>
+                    <p className="text-muted">per hour</p>
+                </div>
+            </div>
+            
+        </div>
+
         </div>
     </div>)
 }

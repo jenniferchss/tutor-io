@@ -189,7 +189,7 @@ function TutorRegistration() {
                     </form>
                     
 
-                    <label className="module-code">MODULES LISTED</label>
+                    {/* <label className="module-code">MODULES LISTED</label> */}
                     {/* <table id="modules-listed" class="table mod-list"> */}
                         {/* <thead>
                             <tr>
@@ -197,13 +197,13 @@ function TutorRegistration() {
                             </tr>
                         </thead> */}
                         {/* <tbody> */}
-                        <ul id="ul-regmod"className="mod-reg-ul">
+                        {/* <ul id="ul-regmod"className="mod-reg-ul">
                             <li className="mod-reg-li">CS1010<span onClick={DeleteRegMod} className="delete-mod">x</span></li>
                             <li className="mod-reg-li">CS1010S<span onClick={DeleteRegMod} className="delete-mod">x</span></li>
                             <li className="mod-reg-li">CS1101S<span onClick={DeleteRegMod} className="delete-mod">x</span></li>
                             <li className="mod-reg-li">CS2030<span onClick={DeleteRegMod} className="delete-mod">x</span></li>
                             <li className="mod-reg-li">CS2040<span onClick={DeleteRegMod} className="delete-mod">x</span></li>
-                        </ul>
+                        </ul> */}
                         {/* </tbody> */}
                     {/* </table> */}
                     <label className="module-code">FEE OFFERED</label>

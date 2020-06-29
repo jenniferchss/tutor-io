@@ -1,23 +1,36 @@
-const Module = require("../models/profileModel");
-const axios = require("./axios");
+const Module = require("../models/moduleModel");
+// const axios = require("axios");
+var fetch = require('node-fetch');
 
 exports.createModuleAddTutor = async(req, res) =>  {
     try{
-        const reqModule = req.module
+        const reqModule = req.body
+        console.log("temp Module: " + reqModule)
         const reqTutor = req.tempTutor.userID
-        const tempModule = await Module.find({"moduleCode": reqModule})
-        
+        console.log("temp Tutor: " + reqTutor)
+
+        let tempModule = await Module.find({"moduleCode": reqModule.name}).then(items => {
+            return items[0]
+        })
+
+        console.log(tempModule)
+
         if(!tempModule) {
             let module = new Module({
-                "moduleCode":  reqModule,
-                $push: {"tutorsTeaching": reqTutor},
+                "moduleCode":  reqModule.name,
+                "moduleTitle": reqModule.moduleTitle,
+                "faculty": reqModule.faculty,
                 numOfTutors: 1
             })
+            module.tutorsTeaching.push(reqTutor)
             module.save();
             res.json("Module created and Tutor added");
         } else {
             tempModule.tutorsTeaching.push(reqTutor);
-            numOfTutors.add(1);
+            let tempNum = tempModule.numOfTutors
+            tempNum++
+            tempModule.numOfTutors = tempNum
+            tempModule.save();
             res.json("Tutor added");
         }
     } catch (err) {
@@ -28,7 +41,12 @@ exports.createModuleAddTutor = async(req, res) =>  {
 exports.getTeachingTutor = async(req, res) => {
     try {
         const reqModule = req.body
-        const module = await Module.find({"moduleCode": reqModule})
+        console.log(reqModule)
+        const module = await Module.find({"moduleCode": reqModule.moduleCode}).then(items => {
+            return items[0]
+        })
+
+        console.log(module)
         const teachingTutors = module.tutorsTeaching
         res.json(teachingTutors);
 
@@ -42,11 +60,17 @@ exports.removeTutor = async (req, res) => {
         const reqModule = req.module
         const reqTutor = req.tempTutor.userID
         
-        await Module.updateOne(
-            {"moduleCode": reqModule},
-            {$pull: { "tutorsTeaching": reqTutor }},
-            {"$inc": { "numOfTutors": -1 } }
-        );
+        let tempModule = await Module.find({"moduleCode": reqModule}).then(items => {
+            return items[0]
+        })
+
+        tempModule.tutorsTeaching.pull(reqTutor);
+
+        let tempNum = tempModule.numOfTutors
+        tempNum--
+        tempModule.numOfTutors = tempNum
+        
+        tempModule.save()
 
         res.json({message: "Removed tutor from this module"});
 
@@ -55,25 +79,48 @@ exports.removeTutor = async (req, res) => {
     }
 }
 
-exports.getListOfModules = async (req, res) => {
+exports.getListOfModules = function (req, res) {
     try {
-        axios().get('https://api.nusmods.com/2018-2019/1/moduleCodes.json')
-        .then(res => response.json())
-        .then(async responseJson => {
-            var result = [];
-            var counter = 0;
-            responseJson.map(x => {
-                var parseMod = {};
-                parseMod['id'] = counter;
-                parseMod['name'] = x;
-                counter++;
-                result.push(parseMod);
-            });
-
-            res.json(result);
-        })  
+        fetch('https://nusmods.com/api/2018-2019/modules.json')
+            .then((response) => {
+                return response.json()
+            })
+            .then(async responseJson => {
+                var result = [];
+                var counter = 0;
+                responseJson.forEach(element => {
+                    if (element.CorsBiddingStats) {
+                        const obj = {
+                            id: counter,
+                            name: element.ModuleCode,
+                            moduleTitle: element.ModuleTitle,
+                            faculty: element.CorsBiddingStats[0].Faculty
+                        }
+                        counter++
+                        result.push(obj)
+                    }
+                })
+                res.json(result);
+            })
     } catch (err) {
+            console.log(err)
             res.json({message: "Error in fetching modules"})
     }
 }
+
+exports.getListofSpecificModules = function (req,res) {
+    try {
+        const reqFaculty = req.body
+        let modules = await Module.find({"faculty": reqFaculty})
+        res.json(modules);   
+    } catch(err) {
+        res.status(400).json({message: "Error in fetching tutor"})
+    }
+}
+
+    
+
+
+
+
 

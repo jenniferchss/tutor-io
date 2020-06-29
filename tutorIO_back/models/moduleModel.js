@@ -6,11 +6,19 @@ const ModuleSchema = mongoose.Schema({
       required: true
     },
     tutorsTeaching: {
-      type:[{ type: Schema.Types.ObjectId, ref: 'Profile' }]
+      type:[String]
     },
     numOfTutors: {
         type: Number,
         default: 0
+    },
+    moduleTitle:{
+      type: String,
+      required: true
+    },
+    faculty:{
+      type: String,
+      required: true
     },
     createdAt: {
       type: Date,

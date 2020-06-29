@@ -81,20 +81,16 @@ exports.getAllTutors = async(req, res) => {
 
 exports.tutorRegisterModule = async(req, res, next) => {
     try {
-        const tutor = await Tutor.find({"userID" : req.user.id})
-        const module = req.body.module
-
-        // for (i=0; i<tutor.taughtModules.length(); i++) {
-        //     if (tutor.taughtModules[i] === module) {
-        //         res.json({message: "Registered"})
-        //     }
-        // }
-
-        if (tutor.taughtModules.includes( module)) {
-            res.json({message: "Registered"})
+        let tutor = await Tutor.find({"userID" : req.user.id}).then(items => {
+            return items[0]
+        })
+        let module = req.body
+        console.log(module)
+        if (tutor.taughtModules.includes(module.name)) {
+            res.json("Registered")
         } else {
-            tutor.taughtModules.push(module)
-            req.module = module
+            tutor.taughtModules.push(module.name)
+            tutor.save()
             req.tempTutor = tutor
             next();
         }    
@@ -106,15 +102,18 @@ exports.tutorRegisterModule = async(req, res, next) => {
 
 exports.tutorDeleteModule = async(req, res, next) => {
     try {
-        const tutorID = req.user.id
-        const module = req.body.module
-        Tutor.update(
-            { userID: tutorID },
-            { $pull: { "taughtModules": module } }
-          );
-          
+        let tutorID = req.user.id
+        let module = req.body.module
+       
+        let tutor = await Tutor.find({"userID": tutorID}).then(items => {
+            return items[0]
+        })
+        tutor.taughtModules.pull(module)
+
+        tutor.save()
+
         req.module = module
-        req.tempTutor =  tutorID
+        req.tempTutor = tutor
         next();
     }
     catch (err) {

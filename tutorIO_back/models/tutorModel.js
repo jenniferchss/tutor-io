@@ -7,7 +7,7 @@ const TutorSchema = mongoose.Schema({
     },
     taughtModules: {
         type: [String],
-        default: undefined
+        default: ["CS1010"]
     },
 });
 

@@ -29,4 +29,4 @@ const getInstance = () => {
   });
 }
 
-exports.axios = getInstance;
+module.exports = getInstance;

@@ -12,7 +12,6 @@ exports.editUserProfile = async(req,res) => {
             isTutor,
             isTutee } = req.body;
     try {
-        console.log(firstName)
         const profile = await Profile.updateOne(
             { "userID" : req.user.id}, 
             { $set: { "firstName": firstName,
@@ -28,7 +27,7 @@ exports.editUserProfile = async(req,res) => {
                     }
 
             })
-        res.json("BERHASIL" + JSON.stringify(profile,null,2));   
+        res.json("BERHASIL");   
     } catch (e) {
         res.json({ message: "Error in Fetching profile" });
     }
@@ -43,11 +42,4 @@ exports.getUserProfile = async(req, res) => {
       }
 }
 
-exports.getAllTutors = async(req, res) => {
-    try {
-        const tutorList = await Profile.find({"isTutor" : true});
-        res.json(tutorList);
-    } catch (e) {
-        res.status(400).json({message: "Error in Fetching tutors"});
-    }
-}
+

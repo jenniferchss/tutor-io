@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import SideNav from "./SideNav";
 import axios from "../axios";
 import DeleteRegMod from "./DeleteRegMod";
-import Select from "react-dropdown-select";
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 
 function TutorRegistration() {
+    const modulesList = ["CS1010", "CS1101S", "CS2030"]
     const [isTutor, setIsTutor] = useState(false)
-    const [moduleCode, setModuleCode] = useState("")
+    const [moduleCode, setModuleCode] = useState(modulesList[0])
+    const [inputCode, setInputCode] = useState("")
     const [fee, setFee] = useState("")
 
     useEffect(() => {
@@ -49,12 +52,12 @@ function TutorRegistration() {
     }
 
 
-    function handleChangeModule(value) {
-        const module = value[0].label;
-        console.log(module);
-        // console.log(event.target.value);
-        setModuleCode(module);
-    }
+    // function handleChangeModule(value) {
+    //     const module = value;
+    //     console.log(module);
+    //     // console.log(event.target.value);
+    //     setModuleCode(module);
+    // }
     function handleSubmit() {
 
     }
@@ -63,13 +66,18 @@ function TutorRegistration() {
         setFee(fee);
     }
 
-    const modulesList = [
-        {label: "CS1010", value: 1},
-        {label: "CS1101S", value: 2},
-        {label: "CS1231", value: 3},
-        {label: "CS2030", value: 4},
-    ];
-    // const modulesList = ["CS1010", "CS1101S"];
+    // const modulesList = [
+    //     {label: "CS1010", value: 1},
+    //     {label: "CS1101S", value: 2},
+    //     {label: "CS1231", value: 3},
+    //     {label: "CS2030", value: 4},
+    // ];
+    // const modulesList = [
+    //     {name: "CS1010", value: "CS1010"}, 
+    //     {name: "CS1101S", value: "CS1101S"},
+    //     {name: "CS2030", value: "CS2030"}];
+
+
 
     function handleDeactivate() {
         const token = localStorage.getItem('usertoken');
@@ -113,22 +121,23 @@ function TutorRegistration() {
                     <form onSubmit={handleSubmit}>
                     
                         <label className="module-code">MODULE CODE</label>
-                        <div className="form-row">
+                        <div className="form-row modcode-row">
                             <div className="form-group col-md-6">
-                                <Select 
-                                    className="module-box"
-                                    options={modulesList} 
-                                    onChange={handleChangeModule} 
+                                <Autocomplete
                                     value={moduleCode}
-                                    placeholder="Select Module"/>
-                                    
-                                {/* <input 
-                                 
-                                type="text" 
-                                className="form-control module-box" 
-                                id="inputModuleCode" 
-                                 
-                                /> */}
+                                    onChange={(event, newValue) => {
+                                    setModuleCode(newValue);
+                                    }}
+                                    inputValue={inputCode}
+                                    onInputChange={(event, newInputValue) => {
+                                    setInputCode(newInputValue);
+                                    }}
+                                    id="controllable-states-demo"
+                                    options={modulesList}
+                                    style={{ width: 300 }}
+                                    renderInput={(params) => <TextField {...params} label="Search Module" variant="outlined" />}
+                                />
+
                             </div>
                             <div className="form-group col-md-6">
                                 <button type="submit" className="btn btn-info mod-regis-btn">Submit</button>

@@ -76,20 +76,14 @@ function Profile(props) {
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus viverra 
                     adipiscing at in tellus integer feugiat. Condimentum mattis pellentesque id nibh 
                     tortor id aliquet lectus proin. Gravida in fermentum et sollicitudin ac orci. Vel 
-                    risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. Curabitur 
-                    gravida arcu ac tortor dignissim convallis. Commodo ullamcorper a lacus vestibulum 
-                    sed. Id eu nisl nunc mi ipsum. Purus sit amet luctus venenatis lectus magna fringilla. 
-                    Amet justo donec enim diam vulputate ut pharetra.
+                    risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. 
                     </p>
                     <hr />
                     <p className="biography"> {qualif} Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus viverra 
                     adipiscing at in tellus integer feugiat. Condimentum mattis pellentesque id nibh 
                     tortor id aliquet lectus proin. Gravida in fermentum et sollicitudin ac orci. Vel 
-                    risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. Curabitur 
-                    gravida arcu ac tortor dignissim convallis. Commodo ullamcorper a lacus vestibulum 
-                    sed. Id eu nisl nunc mi ipsum. Purus sit amet luctus venenatis lectus magna fringilla. 
-                    Amet justo donec enim diam vulputate ut pharetra.
+                    risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. 
 
                     </p>
             </div>

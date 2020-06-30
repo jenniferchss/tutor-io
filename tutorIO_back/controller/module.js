@@ -111,7 +111,7 @@ exports.getListOfModules = function (req, res) {
 exports.getListofSpecificModules = function (req,res) {
     try {
         const reqFaculty = req.body
-        let modules = await Module.find({"faculty": reqFaculty})
+        let modules = Module.find({"faculty": reqFaculty})
         res.json(modules);   
     } catch(err) {
         res.status(400).json({message: "Error in fetching tutor"})

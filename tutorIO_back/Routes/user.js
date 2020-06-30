@@ -113,5 +113,9 @@ router.get("/getAllModules",
     moduleController.getListOfModules
 )
 
+router.get("/getTaughtModules",
+    auth.getLoggedInUser,
+    moduleController.getTaughtModules
+)
 
 module.exports = router;

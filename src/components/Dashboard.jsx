@@ -8,9 +8,7 @@ import axios from "../axios";
 const currentTime = new Date().getHours();
 
 function Dashboard(props) {
-
     const [fName, setFName] = useState("")
-    const [lName, setLName] = useState("")
 
     function handleLoad(event) {
         const token = localStorage.getItem('usertoken');
@@ -22,10 +20,8 @@ function Dashboard(props) {
         })
         .then (res => {
             const fname = res.data[0].firstName;
-            const lname = res.data[0].lastName;
             // console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
             setFName(fname);
-            setLName(lname);
         })
         .catch (err => {
             console.log(err);

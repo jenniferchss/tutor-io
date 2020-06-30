@@ -945,3 +945,8 @@ td {
 .modcode-title {
     color: #66AFBB;
 }
+
+.mods-pg.col-lg-10 {
+    padding-left: 0;
+    padding-right: 0;
+}

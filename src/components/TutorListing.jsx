@@ -123,7 +123,7 @@ function TutorListing() {
                         <h4 class="tutor-name">{tutor[0].firstName} {tutor[0].lastName}</h4>
                         <h7 class="major">{tutor[0].major}</h7>
                         <p>{tutor[0].biography}</p>
-                        <p className="text-muted">Teaching: CS1231</p>
+                        <p className="text-muted">Teaching: ...</p>
                     </div>
                 </div>
                 <div className="col-md-3">
@@ -134,7 +134,7 @@ function TutorListing() {
         </div>)
         })}
 
-        <div className="card mb-3 tutor-card">
+        {/* <div className="card mb-3 tutor-card">
             
                 <div className="row no-gutters">
                 <div className="col-md-3">
@@ -196,9 +196,9 @@ function TutorListing() {
                     <h3 className="pricetag">$15 - $25</h3>
                     <p className="text-muted">per hour</p>
                 </div>
-            </div>
+            </div> */}
             
-        </div>
+        {/* </div> */}
 
         </div>
     </div>)

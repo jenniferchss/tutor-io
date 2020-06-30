@@ -2,6 +2,15 @@ const Module = require("../models/moduleModel");
 // const axios = require("axios");
 var fetch = require('node-fetch');
 
+const getAllModulesFromFaculty = async (fac) => {
+    return new Promise ((resolve, reject) => {
+        Module.find({"faculty": fac})
+        .then(modList => {
+            resolve(modList)
+        })
+    })
+}
+
 exports.createModuleAddTutor = async(req, res) =>  {
     try{
         const reqModule = req.body
@@ -38,18 +47,16 @@ exports.createModuleAddTutor = async(req, res) =>  {
     }
 }
 
-exports.getTeachingTutor = async(req, res) => {
+exports.getTeachingTutor = async(req, res, next) => {
     try {
-        const reqModule = req.body
+        const reqModule = req.params.module
         console.log(reqModule)
-        const module = await Module.find({"moduleCode": reqModule.moduleCode}).then(items => {
+        const module = await Module.find({"moduleCode": reqModule}).then(items => {
             return items[0]
         })
-
         console.log(module)
-        const teachingTutors = module.tutorsTeaching
-        res.json(teachingTutors);
-
+        req.teachingTutors = module.tutorsTeaching
+        next();
     } catch(err) {
         res.status(400).json({message: "Error in fetching tutor"})
     }
@@ -108,10 +115,14 @@ exports.getListOfModules = function (req, res) {
     }
 }
 
-exports.getListofSpecificModules = function (req,res) {
+exports.getListofSpecificModules = async (req,res) => {
     try {
-        const reqFaculty = req.body
-        let modules = Module.find({"faculty": reqFaculty})
+        let reqFaculty = req.params.faculty
+        let fac = reqFaculty.split("_")
+        fac = fac.join(" ").trim();
+        console.log("fac = " + fac);
+        let modules = await getAllModulesFromFaculty(fac)
+        console.log(modules)
         res.json(modules);   
     } catch(err) {
         res.status(400).json({message: "Error in fetching tutor"})

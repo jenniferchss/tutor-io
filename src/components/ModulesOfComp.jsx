@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../axios";
+import SOCTab from "./SOCTab";
 
 function ModulesOfComp() {
+  const [moduleList, setModuleList] = useState([]);
+
+  useEffect(() => {
+    axios().get('/user/findSpecificModules/School_Of_Computing')
+    .then(res => {
+      console.log(res);
+      setModuleList(res.data);
+    })
+    .catch (err => {
+      console.log(err);
+    });
+  }, [])
+
+  function handleClick(moduleCode,faculty) {
+    localStorage.setItem('request', moduleCode);
+    localStorage.setItem('facreq', faculty);
+  }
+
     return (<div className="well mods-list">
-    <ul className="nav nav-tabs mods-tabs">
-      <li><a className="link-tab" href="/fassmods">FASS</a></li>
-      <li><a className="link-tab" href="/enginmods">FOE</a></li>
-      <li><a className="link-tab" href="/fosmods">FOS</a></li>
-      <li><a className="link-tab" href="/bizmods">Business</a></li>
-      <li className="active"><a className="active-link" href="#">School of Computing</a></li>
-      <li><a className="link-tab" href="/sdemods">SDE</a></li>
-      
-    </ul>
-    <div class="card tab-content">
-    <table class="table mod-list">
+    <SOCTab />
+    <div className="card tab-content">
+      <table className="table mod-list">
             <thead>
                 <tr>
                 <th className="table-title" scope="col">MODULE CODE</th>
@@ -20,21 +32,17 @@ function ModulesOfComp() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td className="table-content">...</td>
-                <td className="table-content">-</td>
-                </tr>
-                <tr>
-                <td className="table-content">...</td>
-                <td className="table-content">-</td>
-                </tr>
-                <tr>
-                <td className="table-content">...</td>
-                <td className="table-content">-</td>
-                </tr>
+              {moduleList.map(mod => {
+                return (
+                  <tr key={mod.moduleCode}>
+                  <td className="table-content">
+                    <a onClick={handleClick(mod.moduleCode, mod.faculty)} href="/tutorlisting">{mod.moduleCode}</a>
+                  </td>
+                  <td className="table-content">{mod.numOfTutors}</td>
+                  </tr>)
+              })}
             </tbody>
-        </table>
-      
+      </table>
     </div>
   </div>);
 }

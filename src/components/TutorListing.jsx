@@ -14,12 +14,15 @@ function TutorListing() {
     useEffect(() => {
         const moduleCode = localStorage.getItem('request');
 
-        axios().get('/user/userProfile/', {
-            params: moduleCode
-        })
+        axios().get('/user/findSpecificTutor/'+moduleCode)
+        // , {
+        //     params: moduleCode
+        // })
         .then (res => {
             console.log("LOAD PROFILES: " + JSON.stringify(res, null, 2));
+            console.log(res.data)
             setTutorList(res.data);
+            console.log(tutorList)
         })
         .catch (err => {
             console.log(err);
@@ -108,19 +111,18 @@ function TutorListing() {
                 </div>
             </div>
         </div> */}
-        
-        <div className="card mb-3 tutor-card">
-            {tutorList.map(tutor => {
-                return (
+        {tutorList.map(tutor => {
+        return (
+            <div className="card mb-3 tutor-card">
                 <div className="row no-gutters">
                 <div className="col-md-3">
                 <img src={require("../images/profile@2x.png")} className="card-img tutor-img" alt="tutor-img" />
                 </div>
                 <div className="col-md-6">
                     <div className="card-body">
-                        <h4 class="tutor-name">{tutor.firstName} {tutor.lastName}</h4>
-                        <h7 class="major">{tutor.major}</h7>
-                        <p>{tutor.biography}</p>
+                        <h4 class="tutor-name">{tutor[0].firstName} {tutor[0].lastName}</h4>
+                        <h7 class="major">{tutor[0].major}</h7>
+                        <p>{tutor[0].biography}</p>
                         <p className="text-muted">Teaching: CS1231</p>
                     </div>
                 </div>
@@ -128,10 +130,9 @@ function TutorListing() {
                     <h3 className="pricetag">$10 - $20</h3>
                     <p className="text-muted">per hour</p>
                 </div>
-            </div>)
-            })}
-            
-        </div>
+            </div>   
+        </div>)
+        })}
 
         <div className="card mb-3 tutor-card">
             

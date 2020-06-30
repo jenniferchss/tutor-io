@@ -122,6 +122,20 @@ exports.tutorDeleteModule = async(req, res, next) => {
 }
 
 
+exports.getTaughtModules = async (req, res) => {
+    try {
+        let tutorID = req.user.id
+
+        let tutor = await Tutor.find({"userID": tutorID}).then(items => {
+            return items[0]
+        })
+        let listModules = tutor.taughtModules
+        res.json(listModules);
+    } catch(err) {
+        res.status(400).json({message: "Error in fetching tutor"})
+    }
+}
+
 
 
 

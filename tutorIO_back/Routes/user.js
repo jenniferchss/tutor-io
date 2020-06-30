@@ -49,7 +49,7 @@ router.get("/verifyToken",
 
 /**
  * @method - GET
- * @description - Verify the token (check login status)
+ * @description - Get user profile
  * @param - /user/userProfile
  */
 router.get("/userProfile",
@@ -93,8 +93,9 @@ router.delete("/deleteTutor",
     tutorController.deleteTutor
 )
 
-router.get("/findSpecificTutor",
-    moduleController.getTeachingTutor
+router.get("/findSpecificTutor/:module",
+    moduleController.getTeachingTutor,
+    profileController.getTeachingTutors
 )
 
 router.put("/addModule",
@@ -113,9 +114,9 @@ router.get("/getAllModules",
     moduleController.getListOfModules
 )
 
-router.get("/getTaughtModules",
-    auth.getLoggedInUser,
-    moduleController.getTaughtModules
+router.get("/findSpecificModules/:faculty",
+    moduleController.getListofSpecificModules
 )
+
 
 module.exports = router;

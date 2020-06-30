@@ -11,6 +11,16 @@ const getAllModulesFromFaculty = async (fac) => {
     })
 }
 
+const findModule= async (moduleCode) => {
+    return new Promise ((resolve, reject) => {
+        Module.find({"moduleCode": moduleCode})
+        .then(module => {
+            console.log("Module found: "+ module)
+            resolve(module)
+        })
+    })
+}
+
 exports.createModuleAddTutor = async(req, res) =>  {
     try{
         const reqModule = req.body
@@ -49,13 +59,21 @@ exports.createModuleAddTutor = async(req, res) =>  {
 
 exports.getTeachingTutor = async(req, res, next) => {
     try {
-        const reqModule = req.params.module
-        console.log(reqModule)
-        const module = await Module.find({"moduleCode": reqModule}).then(items => {
+        let reqModule = req.params.module
+        
+        const module = await findModule(reqModule).then(items => {
             return items[0]
         })
-        console.log(module)
+
+        // let tutorsID = [];
+
+        // for(var i = 0; i < module.tutorsTeaching.length; i++) {
+        //     console.log(module.tutorsTeaching[i])
+        //     tutorsID.push(module.tutorsTeaching[i])
+        // }
+
         req.teachingTutors = module.tutorsTeaching
+        console.log(req.teachingTutors)
         next();
     } catch(err) {
         res.status(400).json({message: "Error in fetching tutor"})

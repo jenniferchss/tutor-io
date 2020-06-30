@@ -8,8 +8,9 @@ function ModulesOfBiz() {
   useEffect(() => {
     axios().get('/user/findSpecificModules/School_Of_Business')
     .then(res => {
-      console.log(res);
+      console.log(res.data);
       setModuleList(res.data);
+      console.log(moduleList)
     })
     .catch (err => {
       console.log(err);

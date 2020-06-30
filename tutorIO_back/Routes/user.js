@@ -95,7 +95,7 @@ router.delete("/deleteTutor",
 
 router.get("/findSpecificTutor/:module",
     moduleController.getTeachingTutor,
-    profileController.getTeachingTutors
+    profileController.getTutorsProfile
 )
 
 router.put("/addModule",

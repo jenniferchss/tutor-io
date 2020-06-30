@@ -49,12 +49,13 @@ exports.getUserProfile = async(req, res) => {
       }
 }
 
-exports.getTeachingTutors = async(req, res) => {
+exports.getTutorsProfile = async(req, res) => {
     try{
         let listTutors = req.teachingTutors
+        console.log(listTutors)
         let profileTutors = [];
 
-        for(var i=0; i < listTutors.length(); i++) {
+        for(var i=0; i < listTutors.length; i++) {
             let profile = await getUserProfile(listTutors[i])
             profileTutors.push(profile)
         }

@@ -950,3 +950,20 @@ td {
     padding-left: 0;
     padding-right: 0;
 }
+
+
+.modal-header {
+    background-color: #66b0bbe5;
+}
+.modal-title {
+    color: white;
+}
+.modal-body {
+    margin-bottom: 5%;
+    margin-right: 5%;
+}
+
+
+.error-page {
+    background-color: white;
+}

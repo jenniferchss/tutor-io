@@ -3,9 +3,11 @@ import axios from "../axios";
 import ScienceTab from "./ScienceTab";
 import SideNav from "./SideNav";
 import Footer from "./Footer";
+import { useHistory } from "react-router-dom";
 
 function ModulesOfSci(props) {
   const [moduleList, setModuleList] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     axios().get('/user/findSpecificModules/Science')
@@ -17,6 +19,14 @@ function ModulesOfSci(props) {
       console.log(err);
     });
   }, [])
+
+  function redirectLogIn() {
+    history.push('/signin');
+  }
+
+  function redirectSignUp() {
+    history.push('/signup');
+  }
 
   function handleClick(moduleCode, faculty) {
     localStorage.setItem('request', moduleCode);
@@ -39,12 +49,36 @@ function ModulesOfSci(props) {
             <tbody>
               {moduleList.map(mod => {return (
                   <tr key={mod.moduleCode}>
-                  <td className="table-content">{mod.moduleCode}</td>
+                  <td className="table-content">
+                    <a data-toggle="modal" data-target="#login-alert" href="#">{mod.moduleCode}</a>
+                  </td>
                   <td className="table-content">{mod.numOfTutors}</td>
                   </tr>)
               })}
             </tbody>
       </table>
+
+      {/* <!-- Modal --> */}
+      <div class="modal fade" id="login-alert" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Hi there!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Please log in / register to explore the full list of the tutors available.
+              </div>
+              <div class="modal-footer">
+                <button onClick={redirectLogIn} type="button" class="btn btn-secondary" data-dismiss="modal">Log In</button>
+                <button onClick={redirectSignUp} type="button" class="btn btn-info" data-dismiss="modal">Sign Up</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
   </div> :
   <div className="right-side-modlist">

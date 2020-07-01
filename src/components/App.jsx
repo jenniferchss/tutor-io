@@ -161,23 +161,6 @@ class App extends React.Component {
         <Route path="*" exact component={NotFoundPage}/>
        </Switch>
       </div>}
-      {/* <Switch>
-        <Route path="/" exact component={Main}/>
-        <Route path="/signin" exact render={props => (
-          <Signin {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
-        )}/>
-        <Route path="/signup" exact component={Signup}/>
-        <Route path="/dashboard" exact render={props => (
-          <Dashboard {...props} isLoggedIn={isLoggedIn} />
-        )}/>
-        <Route path="/mymodules" exact component={MyModules}/>
-        <Route path="/editprofile" exact component={EditMyProfile}/>
-        <Route path="/manageaccount" exact component={Privacy}/>
-        <Route path="/tutorlisting" exact component={TutorListing}/>
-        <Route path="*" exact component={NotFoundPage}/>
-            
-      </Switch>
-      <Footer /> */}
     </div>
     </Router>
     );

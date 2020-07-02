@@ -83,21 +83,30 @@ exports.getTeachingTutor = async(req, res, next) => {
 exports.removeTutor = async (req, res) => {
     try {
         const reqModule = req.module
+
+        console.log(reqModule)
+
         const reqTutor = req.tempTutor.userID
+        console.log(reqTutor)
         
-        let tempModule = await Module.find({"moduleCode": reqModule}).then(items => {
-            return items[0]
+        let tempModule = await Module.findOne({"moduleCode": reqModule}).then(items => {
+            return items
         })
 
-        tempModule.tutorsTeaching.pull(reqTutor);
+        if ( tempModule.tutorsTeaching.includes(reqTutor)){
+            tempModule.tutorsTeaching.pull(reqTutor);
 
-        let tempNum = tempModule.numOfTutors
-        tempNum--
-        tempModule.numOfTutors = tempNum
+            let tempNum = tempModule.numOfTutors
+            tempNum--
+            tempModule.numOfTutors = tempNum
+            
+            tempModule.save()
+    
+            res.json({message: "Removed tutor from this module"}); 
+        } else {
+            res.json({message: "Cannot find tutor"})
+        }
         
-        tempModule.save()
-
-        res.json({message: "Removed tutor from this module"});
 
     } catch (err) {
         res.status(400).json({message: "Error in removing tutor"})

@@ -48,7 +48,7 @@ function Signup(props) {
             if (res.data.token) {
                 localStorage.setItem('usertoken', res.data.token);
                 props.handleLogin();
-                history.push("/dashboard");
+                history.push("/editprofile");
             }
         })
         .catch(function(err) {

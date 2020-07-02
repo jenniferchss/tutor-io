@@ -762,10 +762,14 @@ label {
 .delete-mod:hover {background: #bbb;}
 
 #inputFee {
-    width: 75%;
+    width: 70%;
 }
 .fee-offered {
     margin-bottom: 5%;
+}
+.small-note-fee {
+    display: block;
+    margin-bottom: 2%;
 }
 .deactivate-acc {
     margin-top: 5%;

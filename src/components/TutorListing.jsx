@@ -22,7 +22,7 @@ function TutorListing() {
             console.log("LOAD PROFILES: " + JSON.stringify(res, null, 2));
             console.log(res.data)
             setTutorList(res.data);
-            console.log(tutorList)
+            // console.log(tutorList)
         })
         .catch (err => {
             console.log(err);

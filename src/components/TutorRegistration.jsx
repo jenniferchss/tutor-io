@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import SideNav from "./SideNav";
 import axios from "../axios";
-import DeleteRegMod from "./DeleteRegMod";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { useHistory } from 'react-router-dom';
 
 
 function TutorRegistration() {
@@ -11,9 +11,9 @@ function TutorRegistration() {
     const [isTutor, setIsTutor] = useState(false)
     const [moduleCode, setModuleCode] = useState(options[0])
     const [inputCode, setInputCode] = useState("")
-    // const [moduleTitle, setModuleTitle] = useState("")
-    // const [faculty, setFaculty] = useState("")
+    const [modulesTaught, setModulesTaught] = useState([])
     const [fee, setFee] = useState("")
+    const history = useHistory();
 
 
     useEffect(() => {
@@ -46,6 +46,17 @@ function TutorRegistration() {
             console.log(err);
         });
 
+        //GET ALL TAUGHT MODULES//
+        axios().get('/user/getTaughtModules', {
+            headers:{
+              Authorization: token
+            }
+        })
+        .then ( res => {
+            console.log(res.data);
+            setModulesTaught(res.data);
+        })
+
     }, [])
 
     function handleClickYes() {
@@ -67,15 +78,8 @@ function TutorRegistration() {
         
     }
 
-    // function handleChangeModule(value) {
-    //     const module = value;
-    //     console.log(module);
-    //     // console.log(event.target.value);
-    //     setModuleCode(module);
-    // }
 
     function handleSubmit(event) {
-        event.preventDefault();
         const token = localStorage.getItem('usertoken');
         let moduleTitle = "";
         let faculty = "";
@@ -92,11 +96,6 @@ function TutorRegistration() {
                 // console.log("KETEMU: " + moduleTitle + ", " + faculty);
             }
         }
-        // setModuleTitle(options[i].moduleTitle);
-        // setFaculty(options[i].faculty);
-        // console.log("moduleCode: " + moduleCode);
-        // console.log("moduleTitle: " + moduleTitle);
-        // console.log("faculty: " + faculty);
 
         axios().put ('/user/addModule',{
             name: moduleCode,
@@ -107,12 +106,53 @@ function TutorRegistration() {
             }
         })
         .then(function(res) {
-            console.log(res)
-            alert("You have successfully registered!")
+            console.log(res);
+            if (res.data === 'Registered') {
+                alert("You have registered this module before!")
+            }
+            else {
+                alert("You have successfully registered!")
+            }
         })
         .catch(function(err) {
             console.error(err);
         });
+    }
+
+    function deleteRegMod(item) {
+        
+        const token = localStorage.getItem('usertoken');
+        const module = item;
+        // console.log("Ini module yang dikirim " + module)
+        axios().put('/user/deleteModule', {
+            module: module,
+            headers:{
+                Authorization: token
+            }
+        })
+        .then (res => {
+            console.log("UPDATED TAUGHT MODULES: " + JSON.stringify(res.data, null, 2))
+            if (res.data.message === "Removed tutor from this module") {
+                deleteItem();
+                // history.push('/tutorregis')
+            }
+        })
+        .catch (err => {
+            console.log(err);
+        })
+    }
+
+    function deleteItem() {
+        /* Get all elements with class="close" */
+        var closebtns = document.getElementsByClassName("delete-mod");
+        var i;
+
+        /* Loop through the elements, and hide the parent, when clicked on */
+        for (i = 0; i < closebtns.length; i++) {
+            closebtns[i].addEventListener("click", function() {
+            this.parentElement.style.display = 'none';
+            });
+        }
     }
 
     function handleChangeFee(event) {
@@ -189,24 +229,27 @@ function TutorRegistration() {
                     </form>
                     
 
-                    {/* <label className="module-code">MODULES LISTED</label> */}
-                    {/* <table id="modules-listed" class="table mod-list"> */}
-                        {/* <thead>
+                    <label className="module-code">MODULES LISTED</label>
+                    <table id="modules-listed" class="table mod-list">
+                        <thead>
                             <tr>
                             <th id="mod-listed-title" className="table-title" scope="col">Module Code</th>
                             </tr>
-                        </thead> */}
-                        {/* <tbody> */}
-                        {/* <ul id="ul-regmod"className="mod-reg-ul">
-                            <li className="mod-reg-li">CS1010<span onClick={DeleteRegMod} className="delete-mod">x</span></li>
-                            <li className="mod-reg-li">CS1010S<span onClick={DeleteRegMod} className="delete-mod">x</span></li>
-                            <li className="mod-reg-li">CS1101S<span onClick={DeleteRegMod} className="delete-mod">x</span></li>
-                            <li className="mod-reg-li">CS2030<span onClick={DeleteRegMod} className="delete-mod">x</span></li>
-                            <li className="mod-reg-li">CS2040<span onClick={DeleteRegMod} className="delete-mod">x</span></li>
-                        </ul> */}
-                        {/* </tbody> */}
-                    {/* </table> */}
+                        </thead>
+                        <tbody>
+                        <ul id="ul-regmod"className="mod-reg-ul">
+                            {modulesTaught.map(module => {
+                                return (
+                                    <li className="mod-reg-li">{module}<span onClick={() => deleteRegMod(module)} className="delete-mod">x</span></li>
+                                )
+                            })}
+                        </ul>
+                        </tbody>
+                    </table>
+
+
                     <label className="module-code">FEE OFFERED</label>
+                    <small className="small-note-fee">This fee will be displayed on your profile, and this fee will be offered for all modules you are teaching. You can put in a range if you are offering different prices for different modules!</small>
                     <div className="form-row fee-offered">
                         <div className="form-group col-md-6">
                             <input 
@@ -218,7 +261,7 @@ function TutorRegistration() {
                             />
                         </div>
                         <div className="form-group col-md-6">
-                            <button type="submit" className="btn btn-info mod-regis-btn">Save</button>
+                            <button type="submit" className="btn btn-info">Save</button>
                         </div>
                     </div>
 

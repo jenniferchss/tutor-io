@@ -40,5 +40,28 @@ exports.verifyToken = function(req, res) {
     }   
 }
 
-// exports.verifyPassword = function(req, res)
+exports.verifyPassword = async (req, res, next) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      errors: errors.array()
+    });
+  }
+
+  const { oldPassword } = req.body;
+
+  const user = await User.findById(req.user.id);
+
+  const isMatch = await bcrypt.compare(oldPassword, user.password);
+
+  
+  if (!isMatch){
+    return res.status(400).json({
+      message: "Incorrect Password !"
+    })
+  }
+
+  next();
+}
 

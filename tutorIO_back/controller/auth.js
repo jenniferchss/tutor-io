@@ -142,28 +142,8 @@ exports.getLoggedInUser = async (req, res) => {
 
 exports.changePassword = async (req,res) => {
   try {
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        errors: errors.array()
-      });
-    }
-
-    const { oldPassword, reqEmail, reqPassword } = req.body;
-
-    const user = await User.findById(req.user.id);
-
-    const isMatch = await bcrypt.compare(oldPassword, user.password);
-    
-    if (!isMatch){
-      return res.status(400).json({
-        message: "Incorrect Password !"
-      })
-    }
-
+      const reqPassword = req.body.newPassword;
       const salt = await bcrypt.genSalt(10);
-      user.email = await reqEmail;
       user.password = await bcrypt.hash(reqPassword, salt);
 
       const payload = {
@@ -189,4 +169,4 @@ exports.changePassword = async (req,res) => {
   } catch (err) {
     res.status(400).json({ message: "Error in Fetching user" });
   }
-}
+};

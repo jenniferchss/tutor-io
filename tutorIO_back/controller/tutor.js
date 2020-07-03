@@ -91,7 +91,7 @@ exports.deleteTutor = async(req, res) => {
 
             let tutor = await findTutor(ID);
 
-            req.tutorID = ;
+            
             req.taughtMods = tutor.taughtModules;
             console.log(req.taughtMods)
 
@@ -99,7 +99,7 @@ exports.deleteTutor = async(req, res) => {
                 if(err) console.log(err);
                 console.log("Successful deletion");
             });
-            console.log("User is no longer a tutor")
+            res.json({message: "User is no longer a tutor"})
             
         } 
     } catch(err) {
@@ -141,12 +141,10 @@ exports.tutorRegisterModule = async(req, res, next) => {
 exports.tutorDeleteModule = async(req, res, next) => {
     try {
         let tutorID = req.user.id
-       
+        let module = req.body.module
         console.log(module)
 
-        let tutor = await Tutor.findOne({"userID": tutorID}).then(items => {
-            return items
-        })
+        let tutor = await findTutor(tutorID)
 
         console.log("Sebelum delete" + tutor)
 
@@ -213,7 +211,7 @@ exports.getFee = async (req, res) => {
 
 exports.getTutorProfile = async(req, res) => {
     try {
-        let tutorID = req.user.id
+        let tutorID = req.body.userID
         let tutor = await findTutor(tutorID)
         res.json(tutor)
     } catch (err) {

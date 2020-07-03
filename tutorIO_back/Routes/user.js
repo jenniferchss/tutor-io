@@ -45,6 +45,11 @@ router.get("/verifyToken",
     auth.verifyToken
 );
 
+router.put("/changePassword",
+    auth.verifyPassword,
+    authController.changePassword
+)
+
 // Router for Profile
 
 /**
@@ -88,8 +93,9 @@ router.patch("/createTutor",
     tutorController.createTutor
 )
 
-router.delete("/deleteTutor",
+router.put("/deleteTutor",
     auth.getLoggedInUser,
+    moduleController.removeTaughtModules,
     tutorController.deleteTutor
 )
 
@@ -131,6 +137,10 @@ router.get("/getFee",
 router.get("/getTaughtModules",
     auth.getLoggedInUser,
     tutorController.getTaughtModules
+)
+
+router.get("/tutorProfile",
+    tutorController.getTutorProfile
 )
 
 

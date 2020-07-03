@@ -7,8 +7,21 @@ const TutorSchema = mongoose.Schema({
     },
     taughtModules: {
         type: [String],
-        default: ["CS1010"]
     },
+    tutorProfile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'profile'
+    },
+    fee: {
+        type: String,
+        default: 0
+    },
+    comments: {
+        type: [{
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'comment'
+        }]
+      }
 });
 
 module.exports = mongoose.model("tutor", TutorSchema);

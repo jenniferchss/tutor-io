@@ -6,7 +6,10 @@ const ModuleSchema = mongoose.Schema({
       required: true
     },
     tutorsTeaching: {
-      type:[String]
+      type: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'tutor'
+      }]
     },
     numOfTutors: {
         type: Number,
@@ -22,7 +25,7 @@ const ModuleSchema = mongoose.Schema({
     },
     createdAt: {
       type: Date,
-      default: Date.now()
+      default: Date.now() 
     }
   });
   

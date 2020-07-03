@@ -95,7 +95,7 @@ router.delete("/deleteTutor",
 
 router.get("/findSpecificTutor/:module",
     moduleController.getTeachingTutor,
-    profileController.getTutorsProfile
+    tutorController.getTutorsProfile
 )
 
 router.put("/addModule",
@@ -117,6 +117,17 @@ router.get("/getAllModules",
 router.get("/findSpecificModules/:faculty",
     moduleController.getListofSpecificModules
 )
+
+router.put("/updateFee",
+    auth.getLoggedInUser,
+    tutorController.updateFee
+)
+
+router.get("/getFee",
+    auth.getLoggedInUser,
+    tutorController.getFee
+)
+
 
 
 module.exports = router;

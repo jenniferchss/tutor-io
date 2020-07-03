@@ -49,20 +49,4 @@ exports.getUserProfile = async(req, res) => {
       }
 }
 
-exports.getTutorsProfile = async(req, res) => {
-    try{
-        let listTutors = req.teachingTutors
-        console.log(listTutors)
-        let profileTutors = [];
-
-        for(var i=0; i < listTutors.length; i++) {
-            let profile = await getUserProfile(listTutors[i])
-            profileTutors.push(profile)
-        }
-        res.json(profileTutors);
-        
-    } catch(err) {
-        res.status(400).json({ message: "Error in Fetching user" });
-    }
-}
 

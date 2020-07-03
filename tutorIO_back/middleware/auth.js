@@ -40,4 +40,5 @@ exports.verifyToken = function(req, res) {
     }   
 }
 
+// exports.verifyPassword = function(req, res)
 

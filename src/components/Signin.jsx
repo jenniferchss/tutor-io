@@ -79,7 +79,7 @@ function Signin(props) {
                 </label>
             </div>
             <button className="btn btn-lg btn-info btn-block" type="submit">Sign in</button>
-            <p className="mt-5 mb-3 text-muted">© 2020-</p>
+            <p className="mt-5 mb-3 text-muted">© 2020</p>
 
         </form>
     </div>);

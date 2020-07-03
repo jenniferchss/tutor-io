@@ -76,15 +76,15 @@ function TutorListing() {
                 </div>
                 <div className="col-md-6">
                     <div className="card-body">
-                        <h4 class="tutor-name">{tutor[0].firstName} {tutor[0].lastName}</h4>
-                        <h7 class="major">{tutor[0].major}</h7>
-                        {tutor[0].biography.length > 100 ? <p>{tutor[0].biography.slice(0,100)} ...</p>
-                        : <p>{tutor[0].biography}</p>}
-                        <p className="text-muted">Teaching: ...</p>
+                        <h4 class="tutor-name">{tutor.tutorProfile.firstName} {tutor.tutorProfile.lastName}</h4>
+                        <h7 class="major">{tutor.tutorProfile.major}</h7>
+                        {tutor.tutorProfile.biography.length > 100 ? <p>{tutor.tutorProfile.biography.slice(0,100)} ...</p>
+                        : <p>{tutor.tutorProfile.biography}</p>}
+                        <p className="text-muted">Teaching: {tutor.taughtModules.map((mod) => {return mod + ", "})}</p>
                     </div>
                 </div>
                 <div className="col-md-3">
-                    <h3 className="pricetag">$10 - $20</h3>
+                    <h3 className="pricetag">{tutor.fee}</h3>
                     <p className="text-muted">per hour</p>
                 </div>
             </div>   

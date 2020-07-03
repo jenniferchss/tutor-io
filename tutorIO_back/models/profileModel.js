@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 
 const ProfileSchema = mongoose.Schema({
     userID: {
@@ -42,10 +43,6 @@ const ProfileSchema = mongoose.Schema({
       default: " ",
     },
     isTutor: {
-      type: Boolean,
-      default: false,
-    },
-    isTutee: {
       type: Boolean,
       default: false,
     },

@@ -12,27 +12,59 @@ const getTutorList = async () => {
     })
 }
 
+const findTutor = async(id) => {
+    return new Promise((resolve,reject) => {
+        Tutor.findOne({"userID" : id})
+        .then(tutor => {
+            resolve(tutor)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
+const findTutorByID = async(id) => {
+    return new Promise((resolve,reject) => {
+        Tutor.findOne({"_id" : id})
+        .then(tutor => {
+            resolve(tutor)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
+
+const findTutorProfile = async(id) => {
+    return new Promise((resolve,reject) => {
+        Profile.findOne({"userID" : id})
+        .then(profi => {
+            resolve(profi)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
 exports.createTutor = async (req, res) => {
     try {
         const ID = req.user.id
-        console.log("ini ID: "+ ID)
-        let tutor = await Tutor.find({"userID": ID}).then(items => {
-            return items[0]
-        })
+        
+        let tutor = await findTutor(ID);
+        
 
         if (tutor) {
             console.log("masuk if ke satu")
             res.json({message: "User is already a tutor"})
         } else {
+
             console.log("masuk if ke dua")
-            let userProfile = await Profile.find({"userID": ID}).then(items => {
-                return items[0]
-            })
+            let userProfile = await findTutorProfile(ID)
             userProfile.isTutor = true
+            // console.log("Ini user profiel " + userProfile)
             tutor = new Tutor({
-                "userID": userProfile.userID
+                "userID": userProfile.userID,
+                "tutorProfile": userProfile,
             })
-            console.log(userProfile)
+
+            console.log(tutor.tutorProfile)
             userProfile.save()
             tutor.save()
             res.json({message: "User is now a tutor"})
@@ -103,7 +135,6 @@ exports.tutorRegisterModule = async(req, res, next) => {
 exports.tutorDeleteModule = async(req, res, next) => {
     try {
         let tutorID = req.user.id
-        let module = req.body.module
        
         console.log(module)
 
@@ -134,8 +165,8 @@ exports.getTaughtModules = async (req, res) => {
     try {
         let tutorID = req.user.id
 
-        let tutor = await Tutor.find({"userID": tutorID}).then(items => {
-            return items[0]
+        let tutor = await Tutor.findOne({"userID": tutorID}).then(items => {
+            return items
         })
         let listModules = tutor.taughtModules
         res.json(listModules);
@@ -143,6 +174,65 @@ exports.getTaughtModules = async (req, res) => {
         res.status(400).json({message: "Error in fetching tutor"})
     }
 }
+
+exports.updateFee = async (req,res) => {
+    try {
+        let tutorID = req.user.id
+        let fee = req.body.fee
+
+        console.log(tutorID)
+        console.log(fee)
+        await Tutor.updateOne(
+            { "userID" : tutorID}, 
+            { $set: { "fee": fee}
+            })
+
+        res.json({message: "Updated fee"})
+    }
+    catch (err) {
+        res.status(400).json({message: "Error in updating fees"})
+    }
+}
+
+exports.getFee = async (req, res) => {
+    try {
+        let tutorID = req.user.id
+        let tutor = await findTutor(tutorID)
+        res.json(tutor.fee);
+    }
+    catch (err) {
+        res.status(400).json({message: "Error in fetching fees"})
+    }
+}
+
+exports.getTutorProfile = async(req, res) => {
+    try {
+        let tutorID = req.user.id
+        let tutor = await findTutor(tutorID)
+        res.json(tutor)
+    } catch (err) {
+        res.status(400).json({message: "Error in fetching tutor's profile"})
+    }
+}
+
+exports.getTutorsProfile = async(req, res) => {
+    try{
+        let listTutors = req.teachingTutors
+        console.log(listTutors)
+        let tutors = [];
+
+        for(var i=0; i < listTutors.length; i++) {
+            let tutor = await findTutorByID(listTutors[i])
+            tutor.tutorProfile = await findTutorProfile(tutor.userID)
+            tutors.push(tutor)
+        }
+        res.json(tutors);
+        
+    } catch(err) {
+        res.status(400).json({ message: "Error in Fetching user" });
+    }
+}
+
 
 
 

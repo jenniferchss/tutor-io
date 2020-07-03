@@ -138,3 +138,55 @@ exports.getLoggedInUser = async (req, res) => {
       res.status(400).json({ message: "Error in Fetching user" });
     }
 };
+
+
+exports.changePassword = async (req,res) => {
+  try {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array()
+      });
+    }
+
+    const { oldPassword, reqEmail, reqPassword } = req.body;
+
+    const user = await User.findById(req.user.id);
+
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+    
+    if (!isMatch){
+      return res.status(400).json({
+        message: "Incorrect Password !"
+      })
+    }
+
+      const salt = await bcrypt.genSalt(10);
+      user.email = await reqEmail;
+      user.password = await bcrypt.hash(reqPassword, salt);
+
+      const payload = {
+        user: {
+          id: user.id
+        }
+      }
+
+      jwt.sign(
+        payload,
+        "randomString",
+        {
+          expiresIn: "1h"
+        },
+        (err, token) => {
+          if (err) throw err;
+          res.status(200).json({
+            token
+          });
+        }
+      );
+    
+  } catch (err) {
+    res.status(400).json({ message: "Error in Fetching user" });
+  }
+}

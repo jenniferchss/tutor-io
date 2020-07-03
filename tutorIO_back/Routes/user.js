@@ -128,6 +128,10 @@ router.get("/getFee",
     tutorController.getFee
 )
 
+router.get("/getTaughtModules",
+    auth.getLoggedInUser,
+    tutorController.getTaughtModules
+)
 
 
 module.exports = router;

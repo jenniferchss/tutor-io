@@ -85,16 +85,22 @@ exports.deleteTutor = async(req, res) => {
         if (!tutor) {
             res.json({message: "User is not a tutor"})
         } else {
-            let userProfile = await Profile.find({"userID": ID}).then(items => {
-                return items[0]
-            })
+            let userProfile = await findTutorProfile(ID);
             userProfile.isTutor = false;
-            userProfile.save()
+            userProfile.save();
+
+            let tutor = await findTutor(ID);
+
+            req.tutorID = ;
+            req.taughtMods = tutor.taughtModules;
+            console.log(req.taughtMods)
+
             Tutor.deleteOne({"userID": ID}, function (err) {
                 if(err) console.log(err);
                 console.log("Successful deletion");
             });
-            res.json({message: "User is no longer a tutor"})
+            console.log("User is no longer a tutor")
+            
         } 
     } catch(err) {
         res.status(400).json({message:"Error in deleting tutor"})

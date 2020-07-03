@@ -1,4 +1,5 @@
 const Module = require("../models/moduleModel");
+const Tutor = require("../models/tutorModel");
 // const axios = require("axios");
 var fetch = require('node-fetch');
 const { getNodeText } = require("@testing-library/react");
@@ -21,6 +22,17 @@ const findModule= async (moduleCode) => {
         })
     })
 }
+
+const findTutor = async(id) => {
+    return new Promise((resolve,reject) => {
+        Tutor.findOne({"userID" : id})
+        .then(tutor => {
+            resolve(tutor)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
 
 exports.createModuleAddTutor = async(req, res) =>  {
     try{
@@ -144,6 +156,31 @@ exports.getListofSpecificModules = async (req,res) => {
     }
 }
 
+
+//Only when tutor deactivate their tutor status
+exports.removeTaughtModules = async (req, res, next) => {  
+    try {
+        const ID = req.user.id
+        let tutor = await findTutor(ID)
+        let taughtMods = await tutor.taughtModules
+
+        for(let i =0; i<taughtModules.length; i++) {
+            
+            let tempModule = await findModule(taughtMods[i])
+
+            if(tempModule.tutorsTeaching.includes(tutor)) {
+                tempModule.tutorsTeaching.pull(tutor);
+                let tempNum = tempModule.numOfTutors
+                tempNum--
+                tempModule.numOfTutors = tempNum
+                tempModule.save()
+            }
+        }
+        next();
+    } catch (err) {
+        res.status(400).json({message: "Error in removing modules"})
+    }
+}
     
 
 

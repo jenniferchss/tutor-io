@@ -51,6 +51,11 @@ function TutorListing() {
         }
     }
 
+    function handleClick(userid) {
+        localStorage.setItem('userid', userid);
+        console.log('saved userid: ' + localStorage.getItem('userid'));
+    }
+
     
 
     return (<div className="tutor-listing">
@@ -76,7 +81,9 @@ function TutorListing() {
                 </div>
                 <div className="col-md-6">
                     <div className="card-body">
-                        <h4 class="tutor-name">{tutor.tutorProfile.firstName} {tutor.tutorProfile.lastName}</h4>
+                        <h4 class="tutor-name">
+                        <a onClick={() => handleClick(tutor.tutorProfile.userID)} href="/profile">{tutor.tutorProfile.firstName} {tutor.tutorProfile.lastName}</a>
+                        </h4>
                         <h7 class="major">{tutor.tutorProfile.major}</h7>
                         {tutor.tutorProfile.biography.length > 100 ? <p>{tutor.tutorProfile.biography.slice(0,100)} ...</p>
                         : <p>{tutor.tutorProfile.biography}</p>}

@@ -36,8 +36,8 @@ function ModulesOfFass(props) {
   function handleClick(moduleCode,faculty) {
     localStorage.setItem('request', moduleCode);
     localStorage.setItem('facreq', faculty);
-    console.log('request: ' + localStorage.setItem('request', moduleCode))
-    console.log('facreq: ' + localStorage.setItem('request', moduleCode))
+    // console.log('request: ' + localStorage.setItem('request', moduleCode))
+    // console.log('facreq: ' + localStorage.setItem('request', moduleCode))
   }
   
     return (<div>

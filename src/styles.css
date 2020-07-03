@@ -925,6 +925,16 @@ td {
     font-size: 0.9rem;
 }
 
+.manage-title {
+    color: #66AFBB;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+#password-title {
+    color: black;
+}
+
+
 
 .search-title {
     color:white;

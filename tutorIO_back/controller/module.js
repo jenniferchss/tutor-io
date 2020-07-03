@@ -1,4 +1,5 @@
 const Module = require("../models/moduleModel");
+const Tutor = require("../models/tutorModel");
 // const axios = require("axios");
 var fetch = require('node-fetch');
 const { getNodeText } = require("@testing-library/react");
@@ -21,6 +22,17 @@ const findModule= async (moduleCode) => {
         })
     })
 }
+
+const findTutor = async(id) => {
+    return new Promise((resolve,reject) => {
+        Tutor.findOne({"userID" : id})
+        .then(tutor => {
+            resolve(tutor)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
 
 exports.createModuleAddTutor = async(req, res) =>  {
     try{
@@ -78,8 +90,9 @@ exports.getTeachingTutor = async(req, res, next) => {
 
 exports.removeTutor = async (req, res) => {
     try {
-        const reqModule = req.module
-        const reqTutor = req.tempTutor
+        const reqModule = req.body.module
+        const reqTutor = req.tempTutor._id
+        
         
         let tempModule = await findModule(reqModule)
 
@@ -91,8 +104,8 @@ exports.removeTutor = async (req, res) => {
             tempModule.numOfTutors = tempNum
             
             tempModule.save()
-    
-            res.json({message: "Removed tutor from this module"});
+
+            res.json({message:"User is no longer tutor of this module"})
         } else {
             res.json({message: "User is not a tutor of this module"})
         }
@@ -144,6 +157,39 @@ exports.getListofSpecificModules = async (req,res) => {
     }
 }
 
+
+//Only when tutor deactivate their tutor status
+exports.removeTaughtModules = async (req, res, next) => {  
+    try {
+        const ID = req.user.id
+        let tutor = await findTutor(ID);
+
+        let tutorID = tutor._id
+        let taughtMods = tutor.taughtModules
+
+        console.log(tutorID)
+        console.log(taughtMods)
+
+        for(let i =0; i<taughtMods.length; i++) {
+            
+            let tempModule = await findModule(taughtMods[i])
+
+            if(tempModule.tutorsTeaching.includes(tutorID)) {
+                tempModule.tutorsTeaching.pull(tutorID);
+                
+                let tempNum = tempModule.numOfTutors
+                tempNum--
+                tempModule.numOfTutors = tempNum
+                tempModule.save()
+            }
+
+
+        }
+        next();
+    } catch (err) {
+        res.status(400).json({message: "Error in removing modules"})
+    }
+}
     
 
 

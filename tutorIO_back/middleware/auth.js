@@ -1,5 +1,8 @@
-const {check} = require("express-validator");
+const {validationResult} = require("express-validator");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+const User = require("../models/userModel");
 
 
 function checkTokenExist(token, res) { 
@@ -40,5 +43,34 @@ exports.verifyToken = function(req, res) {
     }   
 }
 
-// exports.verifyPassword = function(req, res)
+exports.verifyPassword = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array()
+      });
+    }
+
+    const oldPassword  = req.body.oldPassword;
+    const user = await User.findById(req.user.id);
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+
+    console.log(user)
+  
+    if (!isMatch){
+      return res.status(400).json({
+        message: "Incorrect Password !"
+      })
+    }
+
+    req.user = user;
+
+    next();
+
+  } catch(err) {
+    res.status(500).json({message: "Error in fetching user"})
+  }
+}
 

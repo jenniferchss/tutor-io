@@ -46,6 +46,7 @@ router.get("/verifyToken",
 );
 
 router.put("/changePassword",
+    auth.getLoggedInUser,
     auth.verifyPassword,
     authController.changePassword
 )
@@ -142,7 +143,5 @@ router.get("/getTaughtModules",
 router.get("/tutorProfile",
     tutorController.getTutorProfile
 )
-
-
 
 module.exports = router;

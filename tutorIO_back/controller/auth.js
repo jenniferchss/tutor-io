@@ -143,8 +143,12 @@ exports.getLoggedInUser = async (req, res) => {
 exports.changePassword = async (req,res) => {
   try {
       const reqPassword = req.body.newPassword;
+      let user = req.user
+      
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(reqPassword, salt);
+
+      await user.save();
 
       const payload = {
         user: {
@@ -167,6 +171,41 @@ exports.changePassword = async (req,res) => {
       );
     
   } catch (err) {
-    res.status(400).json({ message: "Error in Fetching user" });
+    res.status(400).json({ message: "Error in changing password" });
   }
 };
+
+exports.changeEmail = async(req, res) => {
+  try {
+    const reqPassword = req.body.newPassword;
+    let user = req.user
+      
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(reqPassword, salt);
+
+    await user.save();
+
+    const payload = {
+      user: {
+        id: user.id
+      }
+    }
+
+    jwt.sign(
+      payload,
+      "randomString",
+      {
+        expiresIn: "1h"
+      },
+      (err, token) => {
+        if (err) throw err;
+        res.status(200).json({
+          token
+        });
+      }
+    );
+    
+  } catch (err) {
+    res.status(400).json({ message: "Error in changing password" });
+  }
+}

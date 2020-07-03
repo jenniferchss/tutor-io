@@ -5,6 +5,7 @@ const auth = require('../middleware/auth');
 const profileController = require('../controller/profile');
 const tutorController = require('../controller/tutor');
 const moduleController = require('../controller/module');
+const commentController = require('../controller/comment');
 
 // Router for Authentication
 
@@ -49,6 +50,12 @@ router.put("/changePassword",
     auth.getLoggedInUser,
     auth.verifyPassword,
     authController.changePassword
+)
+
+router.put("/changeEmail",
+    auth.getLoggedInUser,
+    auth.verifyPassword,
+    authController.changeEmail
 )
 
 // Router for Profile
@@ -142,6 +149,13 @@ router.get("/getTaughtModules",
 
 router.get("/tutorProfile",
     tutorController.getTutorProfile
+)
+
+// Routes for comments
+
+router.post("/postComment",
+    auth.getLoggedInUser,
+    commentController.postComment
 )
 
 module.exports = router;

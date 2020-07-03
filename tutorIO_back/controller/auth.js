@@ -177,35 +177,19 @@ exports.changePassword = async (req,res) => {
 
 exports.changeEmail = async(req, res) => {
   try {
-    const reqPassword = req.body.newPassword;
-    let user = req.user
-      
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(reqPassword, salt);
+    const reqEmail = req.body.newEmail;
+
+    console.log(reqEmail)
+
+    let user = req.user;
+
+    user.email = reqEmail;
 
     await user.save();
 
-    const payload = {
-      user: {
-        id: user.id
-      }
-    }
+    res.json({message: "Changed email"})
 
-    jwt.sign(
-      payload,
-      "randomString",
-      {
-        expiresIn: "1h"
-      },
-      (err, token) => {
-        if (err) throw err;
-        res.status(200).json({
-          token
-        });
-      }
-    );
-    
   } catch (err) {
-    res.status(400).json({ message: "Error in changing password" });
+    res.status(400).json({ message: "Error in changing email" });
   }
 }

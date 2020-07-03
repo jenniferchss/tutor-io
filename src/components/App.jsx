@@ -23,7 +23,7 @@ import ModulesOfSci from "./ModulesOfSci";
 import ModulesOfBiz from "./ModulesOfBiz";
 import ModulesOfComp from "./ModulesOfComp";
 import ModulesOfSde from "./ModulesOfSde";
-//import jwt from "jsonwebtoken";
+import TutorProfile from "./TutorProfile";
 
 
 class App extends React.Component {
@@ -158,6 +158,7 @@ class App extends React.Component {
           <Route path="/sdemods" exact render={props => (
             <ModulesOfSde {...props} isLoggedIn={isLoggedIn} />
           )}/>
+        <Route path="/profile" exact component ={TutorProfile}/>
         <Route path="*" exact component={NotFoundPage}/>
        </Switch>
       </div>}

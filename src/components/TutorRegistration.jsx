@@ -143,7 +143,7 @@ function TutorRegistration() {
     }
 
     function deleteItem() {
-        /* Get all elements with class="close" */
+        /* Get all elements with class="delete-mod" */
         var closebtns = document.getElementsByClassName("delete-mod");
         var i;
 

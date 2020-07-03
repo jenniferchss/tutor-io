@@ -13,8 +13,7 @@ function EditMyProfile() {
     const [telegram, setTelegram] = useState("")
     const [bio, setBiography] = useState("")
     const [qualif, setQualifications] = useState("")
-    const [isTutor, setIsTutor] = useState(false);
-    const [isTutee, setIsTutee] = useState(false);
+    
 
     function handleChangeFName(event) {
         const fname = event.target.value;
@@ -35,6 +34,7 @@ function EditMyProfile() {
     }
     function handleChangeYear(event) {
         const year = event.target.value;
+        console.log(year);
         setYear(year);
     }
     function handleChangeTelegram(event) {
@@ -49,14 +49,7 @@ function EditMyProfile() {
         const qualif = event.target.value;
         setQualifications(qualif);
     }
-    function handleChangeIsTutor(event) {
-        const isTutor = event.target.value;
-        setIsTutor(isTutor);
-    }
-    function handleChangeIsTutee(event) {
-        const isTutee = event.target.value;
-        setIsTutee(isTutee);
-    }
+    
 
     useEffect(() => {
         const token = localStorage.getItem('usertoken');
@@ -75,8 +68,6 @@ function EditMyProfile() {
             const telegram = res.data[0].telegram;
             const bio = res.data[0].biography;
             const qualif = res.data[0].qualifications;
-            const isTutor = res.data[0].isTutor;
-            const isTutee = res.data[0].isTutee;
             console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
             setFName(fname);
             setLName(lname);
@@ -86,8 +77,6 @@ function EditMyProfile() {
             setTelegram(telegram);
             setBiography(bio);
             setQualifications(qualif);
-            setIsTutor(isTutor);
-            setIsTutee(isTutee);
         })
         .catch (err => {
             console.log(err);
@@ -103,6 +92,7 @@ function EditMyProfile() {
             lastName: lName,
             major: major,
             faculty: faculty,
+            year: year,
             telegram: telegram,
             biography: bio,
             qualifications: qualif,
@@ -173,7 +163,10 @@ function EditMyProfile() {
                 </div>
                 <div className="form-group">
                     <label for="signupForm">Year</label>
-                    <select className="form-control" id="exampleFormControlSelect1">
+                    <select 
+                    onChange={handleChangeYear}
+                    className="form-control" id="exampleFormControlSelect1"
+                    value={year}>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>

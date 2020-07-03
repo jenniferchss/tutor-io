@@ -23,7 +23,7 @@ import ModulesOfSci from "./ModulesOfSci";
 import ModulesOfBiz from "./ModulesOfBiz";
 import ModulesOfComp from "./ModulesOfComp";
 import ModulesOfSde from "./ModulesOfSde";
-//import jwt from "jsonwebtoken";
+import TutorProfile from "./TutorProfile";
 
 
 class App extends React.Component {
@@ -109,12 +109,24 @@ class App extends React.Component {
           <Route path="/signup" exact render={props => (
             <Signup {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
           )}/>
-          <Route path="/fassmods" exact component={ModulesOfFass}/>
-          <Route path="/enginmods" exact component={ModulesOfEngin}/>
-          <Route path="/fosmods" exact component={ModulesOfSci}/>
-          <Route path="/bizmods" exact component={ModulesOfBiz}/>
-          <Route path="/socmods" exact component={ModulesOfComp}/>
-          <Route path="/sdemods" exact component={ModulesOfSde}/>
+          <Route path="/fassmods" exact render={props => (
+            <ModulesOfFass {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+          <Route path="/enginmods" exact render={props => (
+            <ModulesOfEngin {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+          <Route path="/fosmods" exact render={props => (
+            <ModulesOfSci {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+          <Route path="/bizmods" exact render={props => (
+            <ModulesOfBiz {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+          <Route path="/socmods" exact render={props => (
+            <ModulesOfComp {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+          <Route path="/sdemods" exact render={props => (
+            <ModulesOfSde {...props} isLoggedIn={isLoggedIn} />
+          )}/>
           <Route path="*" exact component={NotFoundPage}/>
         </Switch> 
       <Footer />
@@ -128,32 +140,28 @@ class App extends React.Component {
         <Route path="/editprofile" exact component={EditMyProfile}/>
         <Route path="/manageaccount" exact component={Privacy}/>
         <Route path="/tutorlisting" exact component={TutorListing}/>
-        <Route path="/fassmods" exact component={ModulesOfFass}/>
-        <Route path="/enginmods" exact component={ModulesOfEngin}/>
-        <Route path="/fosmods" exact component={ModulesOfSci}/>
-        <Route path="/bizmods" exact component={ModulesOfBiz}/>
-        <Route path="/socmods" exact component={ModulesOfComp}/>
-        <Route path="/sdemods" exact component={ModulesOfSde}/>
+        <Route path="/fassmods" exact render={props => (
+            <ModulesOfFass {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+          <Route path="/enginmods" exact render={props => (
+            <ModulesOfEngin {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+          <Route path="/fosmods" exact render={props => (
+            <ModulesOfSci {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+          <Route path="/bizmods" exact render={props => (
+            <ModulesOfBiz {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+          <Route path="/socmods" exact render={props => (
+            <ModulesOfComp {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+          <Route path="/sdemods" exact render={props => (
+            <ModulesOfSde {...props} isLoggedIn={isLoggedIn} />
+          )}/>
+        <Route path="/profile" exact component ={TutorProfile}/>
         <Route path="*" exact component={NotFoundPage}/>
        </Switch>
       </div>}
-      {/* <Switch>
-        <Route path="/" exact component={Main}/>
-        <Route path="/signin" exact render={props => (
-          <Signin {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
-        )}/>
-        <Route path="/signup" exact component={Signup}/>
-        <Route path="/dashboard" exact render={props => (
-          <Dashboard {...props} isLoggedIn={isLoggedIn} />
-        )}/>
-        <Route path="/mymodules" exact component={MyModules}/>
-        <Route path="/editprofile" exact component={EditMyProfile}/>
-        <Route path="/manageaccount" exact component={Privacy}/>
-        <Route path="/tutorlisting" exact component={TutorListing}/>
-        <Route path="*" exact component={NotFoundPage}/>
-            
-      </Switch>
-      <Footer /> */}
     </div>
     </Router>
     );

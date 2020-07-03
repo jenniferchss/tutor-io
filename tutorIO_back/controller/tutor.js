@@ -119,8 +119,8 @@ exports.getAllTutors = async(req, res) => {
 
 exports.tutorRegisterModule = async(req, res, next) => {
     try {
-        let tutor = await Tutor.find({"userID" : req.user.id}).then(items => {
-            return items[0]
+        let tutor = await Tutor.findOne({"userID" : req.user.id}).then(items => {
+            return items
         })
         let module = req.body
         console.log(module)
@@ -142,15 +142,23 @@ exports.tutorDeleteModule = async(req, res, next) => {
     try {
         let tutorID = req.user.id
        
-        let tutor = await Tutor.find({"userID": tutorID}).then(items => {
-            return items[0]
+        console.log(module)
+
+        let tutor = await Tutor.findOne({"userID": tutorID}).then(items => {
+            return items
         })
+
+        console.log("Sebelum delete" + tutor)
+
         tutor.taughtModules.pull(module)
+
+        console.log("Setelah delete" + tutor)
 
         tutor.save()
 
         req.module = module
         req.tempTutor = tutor
+
         next();
     }
     catch (err) {
@@ -230,6 +238,7 @@ exports.getTutorsProfile = async(req, res) => {
         res.status(400).json({ message: "Error in Fetching user" });
     }
 }
+
 
 
 

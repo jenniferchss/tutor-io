@@ -6,6 +6,7 @@ import BizTab from "./BizTab";
 import ScienceTab from "./ScienceTab";
 import SDETab from "./SDETab";
 import EnginTab from "./EnginTab";
+import SideNav from "./SideNav";
 
 
 function TutorListing() {
@@ -22,7 +23,7 @@ function TutorListing() {
             console.log("LOAD PROFILES: " + JSON.stringify(res, null, 2));
             console.log(res.data)
             setTutorList(res.data);
-            console.log(tutorList)
+            // console.log(tutorList)
         })
         .catch (err => {
             console.log(err);
@@ -52,65 +53,20 @@ function TutorListing() {
 
     
 
-    return (<div className="editprofile">
+    return (<div className="tutor-listing">
+    <div className="row">
+        <SideNav />
+
+        <main role="main" className="col-md-9 ml-sm-auto col-lg-10 mods-pg">
+            <div className="editprofile">
     <h5 className="tutorlist-title">Find the right <strong className="highlighted">tutor</strong> for you!</h5>
 
-    {/* {(() => {
-        switch (localStorage.getItem('facreq')) {
-            case 'School Of Computing': return <SOCTab />;
-            case 'Arts & Social Sciences': return <FASSTab />;
-            case 'School Of Business': return <BizTab />;
-            case 'Engineering': return <EnginTab />;
-            case 
-            case 'School Of Design And Environment': return <SDETab />;
-            default:
-                return null;
-        }
-    })} */}
     {selectTab(localStorage.getItem('facreq'))}
     
     <div class="card tab-content">
 
         <h4 className="tutlist-modcode">Module: <strong className="modcode-title">{localStorage.getItem('request')}</strong></h4>
 
-        {/* <div className="card mb-3 search-card">
-            <div className="row no-gutters">
-                <div className="col-md-6">
-                    <h3 className="search-title">FACULTY</h3>
-                    <li class="nav-item dropdown">
-                        <h3 class="nav-link dropdown-toggle fac-drop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Choose Faculty</h3>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Faculty of Arts and Social Sciences</a>
-                            <a class="dropdown-item" href="#">Faculty of Engineering</a>
-                            <a class="dropdown-item" href="#">Faculty of Law</a>
-                            <a class="dropdown-item" href="#">Faculty of Science</a>
-                            <a class="dropdown-item" href="#">School of Business</a>
-                            <a class="dropdown-item" href="#">School of Computing</a>
-                            <a class="dropdown-item" href="#">School of Design and Environment</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Faculty of Dentistry</a>
-                            <a class="dropdown-item" href="#">DUKE NUS Medical School</a>
-                        </div>
-                    </li>
-                </div>
-                <div className="col-md-6">
-                    <h3 className="search-title">MODULE CODE</h3>
-                    <li class="nav-item dropdown">
-                        <h3 class="nav-link dropdown-toggle fac-drop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Choose Module</h3>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">CS1010</a>
-                            <a class="dropdown-item" href="#">CS1010C</a>
-                            <a class="dropdown-item" href="#">CS1010S</a>
-                            <a class="dropdown-item" href="#">CS1231</a>
-                            <a class="dropdown-item" href="#">CS2030</a>
-                            <a class="dropdown-item" href="#">CS2040</a>
-                        </div>
-                    </li>
-                </div>
-            </div>
-        </div> */}
         {tutorList.map(tutor => {
         return (
             <div className="card mb-3 tutor-card">
@@ -122,8 +78,9 @@ function TutorListing() {
                     <div className="card-body">
                         <h4 class="tutor-name">{tutor[0].firstName} {tutor[0].lastName}</h4>
                         <h7 class="major">{tutor[0].major}</h7>
-                        <p>{tutor[0].biography}</p>
-                        <p className="text-muted">Teaching: CS1231</p>
+                        {tutor[0].biography.length > 100 ? <p>{tutor[0].biography.slice(0,100)} ...</p>
+                        : <p>{tutor[0].biography}</p>}
+                        <p className="text-muted">Teaching: ...</p>
                     </div>
                 </div>
                 <div className="col-md-3">
@@ -134,7 +91,7 @@ function TutorListing() {
         </div>)
         })}
 
-        <div className="card mb-3 tutor-card">
+        {/* <div className="card mb-3 tutor-card">
             
                 <div className="row no-gutters">
                 <div className="col-md-3">
@@ -196,11 +153,14 @@ function TutorListing() {
                     <h3 className="pricetag">$15 - $25</h3>
                     <p className="text-muted">per hour</p>
                 </div>
-            </div>
+            </div> */}
             
-        </div>
+        {/* </div> */}
 
         </div>
+    </div>
+    </main>
+    </div>
     </div>)
 }
 

@@ -3,10 +3,9 @@ import React from "react";
 function SideNav() {
     return (
     
-    <nav className="col-md-2 d-md-block bg-light sidebar">
-    
-    <div className="sidebar-sticky">
-       
+    <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+   
+       <div className="sidebar-sticky pt-3">
         <ul className="nav flex-column">
             <li className="nav-item afterlog-item">
                 <a className="nav-link afterlog-link active" href="/dashboard">
@@ -40,7 +39,8 @@ function SideNav() {
             </li>
             
         </ul>
-    </div>
+        </div>
+    
     
 </nav>)
 }

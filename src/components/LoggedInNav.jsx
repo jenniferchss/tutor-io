@@ -44,11 +44,14 @@ function LoggedInNav(props) {
   //     {label: "CS2030", value: 4},
   // ];
 
-    return (<nav className="navbar navbar-dark fixed-top flex-nowrap p-0 shadow">
-    <a className="navbar-brand navbar-loggedin col-sm-3 col-md-2 mr-0" href="/dashboard">
+    return (<nav className="sidenav navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow">
+    <a className="navbar-brand navbar-loggedin col-md-3 col-lg-2 mr-0 px-3" href="/dashboard">
         <img src={logo} width="120" alt="tutorio-logo" loading="lazy" />
     </a>
     
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
 
     <form className="form-control form-control-dark w-100 outer" autocomplete="off" action="/action_page.php">
       {/* <div class="autocomplete form-control form-control-light w-100 inner"> */}

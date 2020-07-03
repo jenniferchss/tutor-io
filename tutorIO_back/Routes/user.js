@@ -104,7 +104,7 @@ router.put("/addModule",
     moduleController.createModuleAddTutor
 )
 
-router.delete("/deleteModule",
+router.put("/deleteModule",
     auth.getLoggedInUser,
     tutorController.tutorDeleteModule,
     moduleController.removeTutor
@@ -128,6 +128,10 @@ router.get("/getFee",
     tutorController.getFee
 )
 
+router.get("/getTaughtModules",
+    auth.getLoggedInUser,
+    tutorController.getTaughtModules
+)
 
 
 

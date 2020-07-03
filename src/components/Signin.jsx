@@ -3,15 +3,15 @@ import { useHistory } from "react-router-dom";
 import axios from "../axios";
 
 function Signin(props) {
-    const [username, setUsername] = useState("")
+    // const [username, setUsername] = useState("")
     const [emailaddress, setEmailaddress] = useState("")
     const [password, setPassword] = useState("")
     const history = useHistory();
 
-    function handleChangeUsername(event) {
-        const username = event.target.value;
-        setUsername(username);
-    } 
+    // function handleChangeUsername(event) {
+    //     const username = event.target.value;
+    //     setUsername(username);
+    // } 
 
     function handleChangeEmail(event) {
         const emailaddress = event.target.value;
@@ -26,7 +26,7 @@ function Signin(props) {
     function handleSubmit(event) {
         event.preventDefault();
         axios().post ('/user/login',{
-            username: username,
+            // username: username,
             email: emailaddress,
             password: password
         })

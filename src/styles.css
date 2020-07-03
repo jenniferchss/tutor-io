@@ -83,6 +83,12 @@ body {
     padding: 60px 0 0;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
+@media (max-width: 767.98px) {
+    .sidebar {
+        top: 5rem;
+    }
+}
+
 .sidebar-sticky {
     position: sticky;
     top: 0;
@@ -113,6 +119,10 @@ body {
     width: 16px;
     height: 16px;
     vertical-align: text-bottom;
+}
+.sidenav .navbar-toggler {
+    top: .25rem;
+    right: 1rem;
 }
 
 
@@ -490,20 +500,22 @@ h2 {
     padding: 10%;
 }
 @media (min-width: 600px) and (max-width: 990px) {
-    .mods-list {
-        padding: 15%;
-    }
-}
-@media screen and (max-width: 599px) {
-    .mods-list {
-        padding: 20%;
-    }
     .active-link {
-        font-size: 2vw;
+        font-size: 0.9rem;
     }
     .link-tab {
         color: #555555;
-        font-size: 2vw;
+        font-size: 0.9rem;
+    }
+}
+@media screen and (max-width: 599px) {
+    
+    .active-link {
+        font-size: 0.6rem;
+    }
+    .link-tab {
+        color: #555555;
+        font-size: 0.6rem;
     }
     .table-title {
         font-size: 3vw;
@@ -680,13 +692,13 @@ label {
 
 .dashboard {
     background-color: white;
-    padding: 8% 10% 10% 10%;
+    padding: 5% 10% 10% 10%;
 }
 .welcome-title {
     font-family: 'Nunito', sans-serif;
-    font-size: 2.5vw;
+    font-size: 2rem;
     text-align: left;
-    margin: 2% auto 5%;
+    margin: 1% auto 5%;
     
 }
 .col-left {
@@ -699,7 +711,7 @@ label {
 
 .tutor-registration {
     background-color: white;
-    padding: 10%;
+    padding: 8% 10% 10% 10%;
 }
 .tutor-reg {
     margin-top: 3%;
@@ -712,7 +724,7 @@ label {
     font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
-    font-size: 3vw;
+    font-size: 2.5rem;
     margin-bottom: 0.5rem;
     color: #333333;
     display: inline-block;
@@ -762,10 +774,14 @@ label {
 .delete-mod:hover {background: #bbb;}
 
 #inputFee {
-    width: 75%;
+    width: 70%;
 }
 .fee-offered {
     margin-bottom: 5%;
+}
+.small-note-fee {
+    display: block;
+    margin-bottom: 2%;
 }
 .deactivate-acc {
     margin-top: 5%;
@@ -803,7 +819,7 @@ ul {
     font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
     font-style: normal;
     font-variant: normal;
-    font-size: 2.5vw;
+    font-size: 2.2rem;
 }
 .smallIcon {
     width: 3%;
@@ -813,10 +829,27 @@ ul {
 .smallInfo {
     display: inline;
     margin-right: 3%;
-    font-size: 1vw;
+    font-size: 0.8rem;
 }
 .biography {
     margin-top: 2%;
+}
+@media (max-width:575px) {
+    .avatar-col {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 3%;
+    }
+    .name-dashboard {
+        font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+        font-style: normal;
+        font-variant: normal;
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    .info-row {
+        text-align: center;
+    }
 }
 
 
@@ -884,7 +917,7 @@ td {
 
 .save-btn {
     margin-top: 5%;
-    font-size: 1vw;
+    font-size: 0.9rem;
 }
 
 
@@ -944,4 +977,87 @@ td {
 }
 .modcode-title {
     color: #66AFBB;
+}
+
+.mods-pg.col-lg-10 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+.modal-header {
+    background-color: #66b0bbe5;
+}
+.modal-title {
+    color: white;
+}
+.modal-body {
+    margin-bottom: 5%;
+    margin-right: 5%;
+}
+
+
+.error-page {
+    background-color: white;
+}
+
+.tutor-profile {
+    background-color: white;
+    padding: 8% 10% 10% 12%;
+}
+
+.profile-header {
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 1.1rem;
+    margin-top: 4%;
+    color: #66AFBB;
+}
+
+.mods-pg.profile-pg {
+    
+}
+.card-body.comments-card {
+    padding: 0;
+}
+
+.comments-title {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    color: #66AFBB;
+    margin-top: 1.25rem;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    margin-bottom: 2rem;
+}
+.profpict-sm {
+    width: 100%;
+    margin: 1.25rem;
+    display: inline;
+}
+.name-comment {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 1rem;
+    display: inline;
+    padding-bottom: 3%;
+}
+.date-comment {
+    margin-left: 2%;
+}
+.comments-div {
+    margin-right: 1.25rem;
+    margin-left: 1.25rem;
+}
+.my-comment {
+    padding-right: 2rem;
+}
+.comment-box {
+    width: 100%;
+}
+.post-btn {
+    margin: 1.25rem;
 }

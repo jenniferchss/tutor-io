@@ -148,6 +148,7 @@ router.get("/getTaughtModules",
 )
 
 router.get("/tutorProfile/:tutorID",
+    auth.getLoggedInUser,
     tutorController.getTutorProfile
 )
 
@@ -161,5 +162,7 @@ router.post("/postComment",
 router.put("/deleteComment",
     commentController.removeComment
 )
+
+// Routes for rating
 
 module.exports = router;

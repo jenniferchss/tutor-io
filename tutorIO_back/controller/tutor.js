@@ -243,7 +243,9 @@ exports.getTutorProfile = async(req, res) => {
             Comments.push(comment);
         }
         
-        res.json({tutor, Comments})
+        let loggedInUser = req.user.id
+
+        res.json({tutor, Comments, loggedInUser})
     } catch (err) {
         res.status(400).json({message: "Error in fetching tutor's profile"})
     }

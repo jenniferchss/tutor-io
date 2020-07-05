@@ -14,7 +14,6 @@ function TutorProfile() {
     const [qualif, setQualifications] = useState("")
     
     useEffect(() => {
-        // const token = localStorage.getItem('usertoken');
         const userid = localStorage.getItem('userid');
         console.log("userid: " + userid);
 
@@ -28,7 +27,7 @@ function TutorProfile() {
             // const telegram = res.data[0].telegram;
             // const bio = res.data[0].biography;
             // const qualif = res.data[0].qualifications;
-            console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
+
             // setFName(fname);
             // setLName(lname);
             // setMajor(major);

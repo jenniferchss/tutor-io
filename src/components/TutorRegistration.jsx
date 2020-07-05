@@ -38,7 +38,7 @@ function TutorRegistration() {
         //GET ALL MODULE CODE LIST//
         axios().get('/user/getAllModules')
         .then ( res => {
-                console.log(res.data)
+                // console.log("GET MODULES: " + res.data)
                 setOptions(res.data)
 
         })

@@ -18,9 +18,7 @@ function TutorProfile() {
         const userid = localStorage.getItem('userid');
         console.log("userid: " + userid);
 
-        axios().get('/user/tutorProfile', {
-            userID: userid
-        })
+        axios().get('/user/tutorProfile/'+userid)
         .then (res => {
             // const fname = res.data[0].firstName;
             // const lname = res.data[0].lastName;

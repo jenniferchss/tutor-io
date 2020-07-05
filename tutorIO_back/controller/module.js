@@ -1,8 +1,10 @@
 const Module = require("../models/moduleModel");
 const Tutor = require("../models/tutorModel");
 // const axios = require("axios");
-var fetch = require('node-fetch');
-const { getNodeText } = require("@testing-library/react");
+
+// var fetch = require('node-fetch');
+const result = require("../moduleList");
+
 
 const getAllModulesFromFaculty = async (fac) => {
     return new Promise ((resolve, reject) => {
@@ -116,27 +118,31 @@ exports.removeTutor = async (req, res) => {
 
 exports.getListOfModules = function (req, res) {
     try {
-        fetch('https://nusmods.com/api/2018-2019/modules.json')
-            .then((response) => {
-                return response.json()
-            })
-            .then(async responseJson => {
-                var result = [];
-                var counter = 0;
-                responseJson.forEach(element => {
-                    if (element.CorsBiddingStats) {
-                        const obj = {
-                            id: counter,
-                            name: element.ModuleCode,
-                            moduleTitle: element.ModuleTitle,
-                            faculty: element.CorsBiddingStats[0].Faculty
-                        }
-                        counter++
-                        result.push(obj)
-                    }
-                })
-                res.json(result);
-            })
+        console.log("MASUK SINI")
+        // fetch('https://nusmods.com/api/2018-2019/modules.json')
+        //     .then((response) => {
+        //         return response.json()
+        //     })
+        //     .then(async responseJson => {
+        //         var result = [];
+        //         var counter = 0;
+        //         responseJson.forEach(element => {
+        //             if (element.CorsBiddingStats) {
+        //                 const obj = {
+        //                     id: counter,
+        //                     name: element.ModuleCode,
+        //                     moduleTitle: element.ModuleTitle,
+        //                     faculty: element.CorsBiddingStats[0].Faculty
+        //                 }
+        //                 counter++
+        //                 result.push(obj)
+        //             }
+        //         })
+       
+
+       
+        res.json(result);
+        
     } catch (err) {
             console.log(err)
             res.json({message: "Error in fetching modules"})

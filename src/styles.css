@@ -604,7 +604,7 @@ h2 {
 
 .joinus-page {
     background-color:#f8f8f8;
-    padding-top: 15%;
+    padding-top: 10%;
     padding-bottom: 15%;
 }
 .joinus-title {
@@ -646,7 +646,7 @@ label {
 
 
 .login-form {
-    padding: 2% 35% 5% 35%;
+    padding: 0 35% 5% 35%;
 }
 .login-form input[type="username"] {
     margin-bottom: -1px;
@@ -685,6 +685,11 @@ label {
 }
 .rememberme {
     padding-top: 5%;
+}
+@media (max-width: 780px) {
+    .login-form {
+        padding: 8% 25% 5% 25%;
+    }
 }
 
 
@@ -919,6 +924,16 @@ td {
     margin-top: 5%;
     font-size: 0.9rem;
 }
+
+.manage-title {
+    color: #66AFBB;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+#password-title {
+    color: black;
+}
+
 
 
 .search-title {

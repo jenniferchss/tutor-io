@@ -38,10 +38,10 @@ function TutorRegistration() {
         //GET ALL MODULE CODE LIST//
         axios().get('/user/getAllModules')
         .then ( res => {
-                console.log(res.data)
+                // console.log("GET MODULES: " + res.data)
                 setOptions(res.data)
 
-            })
+        })
         .catch (err => {
             console.log(err);
         });
@@ -56,6 +56,23 @@ function TutorRegistration() {
             console.log(res.data);
             setModulesTaught(res.data);
         })
+        .catch (err => {
+            console.log(err);
+        });
+
+        //GET TUTOR FEES
+        axios().get('/user/getFee', {
+            headers:{
+                Authorization: token
+              }
+        })
+        .then ( res => {
+            console.log("FEE: " + res.data);
+            setFee(res.data);
+        })
+        .catch (err => {
+            console.log(err);
+        });
 
     }, [])
 
@@ -160,11 +177,27 @@ function TutorRegistration() {
         setFee(fee);
     }
 
-
+    function handleSaveFee(event) {
+        event.preventDefault();
+        const token = localStorage.getItem('usertoken');
+        axios().put('/user/updateFee', {
+            fee: fee,
+            headers:{
+                Authorization: token
+            }
+        })
+        .then ( res => {
+            console.log(res);
+            alert("Change of fee saved!");
+        })
+        .catch (err => {
+            console.log(err);
+        })
+    }
 
     function handleDeactivate() {
         const token = localStorage.getItem('usertoken');
-        axios().delete('/user/deleteTutor', {
+        axios().put('/user/deleteTutor', {
             headers:{
               Authorization: token
             }
@@ -261,7 +294,7 @@ function TutorRegistration() {
                             />
                         </div>
                         <div className="form-group col-md-6">
-                            <button type="submit" className="btn btn-info">Save</button>
+                            <button onClick={handleSaveFee} type="submit" className="btn btn-info">Save</button>
                         </div>
                     </div>
 

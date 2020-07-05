@@ -13,38 +13,38 @@ function TutorProfile() {
     const [bio, setBiography] = useState("")
     const [qualif, setQualifications] = useState("")
     
-    // useEffect(() => {
-    //     const token = localStorage.getItem('usertoken');
+    useEffect(() => {
+        // const token = localStorage.getItem('usertoken');
+        const userid = localStorage.getItem('userid');
+        console.log("userid: " + userid);
 
-    //     axios().get('/user/userProfile', {
-    //         headers:{
-    //           Authorization: token
-    //         }
-    //     })
-    //     .then (res => {
-    //         const fname = res.data[0].firstName;
-    //         const lname = res.data[0].lastName;
-    //         const major = res.data[0].major;
-    //         const faculty = res.data[0].faculty;
-    //         const year = res.data[0].year;
-    //         const telegram = res.data[0].telegram;
-    //         const bio = res.data[0].biography;
-    //         const qualif = res.data[0].qualifications;
-    //         console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
-    //         setFName(fname);
-    //         setLName(lname);
-    //         setMajor(major);
-    //         setFaculty(faculty);
-    //         setYear(year);
-    //         setTelegram(telegram);
-    //         setBiography(bio);
-    //         setQualifications(qualif);
+        axios().get('/user/tutorProfile', {
+            userID: userid
+        })
+        .then (res => {
+            // const fname = res.data[0].firstName;
+            // const lname = res.data[0].lastName;
+            // const major = res.data[0].major;
+            // const faculty = res.data[0].faculty;
+            // const year = res.data[0].year;
+            // const telegram = res.data[0].telegram;
+            // const bio = res.data[0].biography;
+            // const qualif = res.data[0].qualifications;
+            console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
+            // setFName(fname);
+            // setLName(lname);
+            // setMajor(major);
+            // setFaculty(faculty);
+            // setYear(year);
+            // setTelegram(telegram);
+            // setBiography(bio);
+            // setQualifications(qualif);
             
-    //     })
-    //     .catch (err => {
-    //         console.log(err);
-    //     })
-    // }, []);
+        })
+        .catch (err => {
+            console.log(err);
+        })
+    }, []);
 
     return (<div className="tutor-profile">
     <div className="row">
@@ -53,7 +53,6 @@ function TutorProfile() {
         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 mods-pg profile-pg">
             
         <div className="profile card">
-        {/* {handleLoad()} */}
         <h4 className="profile-title card-header">PROFILE</h4>
         <div class="row card-body">
             <div class="col-6 col-md-4 avatar-col">

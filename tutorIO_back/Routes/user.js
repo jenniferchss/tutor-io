@@ -147,7 +147,7 @@ router.get("/getTaughtModules",
     tutorController.getTaughtModules
 )
 
-router.get("/tutorProfile",
+router.get("/tutorProfile/:tutorID",
     tutorController.getTutorProfile
 )
 

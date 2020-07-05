@@ -232,7 +232,7 @@ exports.getFee = async (req, res) => {
 
 exports.getTutorProfile = async(req, res) => {
     try {
-        let tutorID = req.body.userID 
+        let tutorID = req.params.tutorID 
         let tutor = await findTutor(tutorID)
         tutor.tutorProfile = await findTutorProfile(tutor.userID)
 

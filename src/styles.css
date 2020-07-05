@@ -1067,12 +1067,25 @@ td {
     margin-right: 1.25rem;
     margin-left: 1.25rem;
 }
-.my-comment {
+/* .my-comment {
     padding-right: 2rem;
-}
+} */
 .comment-box {
     width: 100%;
 }
 .post-btn {
     margin: 1.25rem;
 }
+.my-comment {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+/* .shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+}
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+} */
+  

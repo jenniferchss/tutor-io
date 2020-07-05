@@ -21,7 +21,14 @@ const TutorSchema = mongoose.Schema({
           type: mongoose.Schema.Types.ObjectId,
           ref: 'comment'
         }]
-      }
+    },
+    ratings :{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'rating'
+    },
+    totalRating: {
+        type: Number
+    }
 });
 
 module.exports = mongoose.model("tutor", TutorSchema);

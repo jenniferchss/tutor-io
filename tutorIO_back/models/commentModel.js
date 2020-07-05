@@ -9,9 +9,22 @@ const CommentSchema = mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'profile'
     },
-    content: {
+    firstName: {
         type: String,
         default: "",
+    },
+    lastName: {
+        type: String,
+        default: "",
+    },
+    userID: {
+        type: String,
+    },
+    isTutor: {
+        type: Boolean,
+    },
+    content: {
+        type: String
     }
 });
 

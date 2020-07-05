@@ -1,6 +1,7 @@
 const Tutor = require("../models/tutorModel");
 const Profile = require("../models/profileModel");
-
+const Comment = require("../models/commentModel");
+const Rating = require("../models/ratingModel");
 
 const getTutorList = async () => {
     return new Promise((resolve, reject) => {
@@ -38,6 +39,26 @@ const findTutorProfile = async(id) => {
         Profile.findOne({"userID" : id})
         .then(profi => {
             resolve(profi)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
+const findComment = async (id) => {
+    return new Promise((resolve, reject) => {
+        Comment.find({"_id": id})
+        .then(comment => {
+            resolve(comment)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
+const findProfile = async (id) => {
+    return new Promise((resolve, reject) => {
+        Profile.find({"_id": id})
+        .then(prof => {
+            resolve(prof)
         })
         .catch(err => reject(err.message))
     })
@@ -214,7 +235,15 @@ exports.getTutorProfile = async(req, res) => {
         let tutorID = req.body.userID 
         let tutor = await findTutor(tutorID)
         tutor.tutorProfile = await findTutorProfile(tutor.userID)
-        res.json(tutor)
+
+        let Comments = []
+        for(let i=0; i<tutor.comments.length; i++) {
+            let comment = await findComment(tutor.comments[i])
+            console.log(comment)
+            Comments.push(comment);
+        }
+        
+        res.json({tutor, Comments})
     } catch (err) {
         res.status(400).json({message: "Error in fetching tutor's profile"})
     }
@@ -235,6 +264,41 @@ exports.getTutorsProfile = async(req, res) => {
         
     } catch(err) {
         res.status(400).json({ message: "Error in Fetching user" });
+    }
+}
+
+exports.giveRating = async(req, res) => {
+    try {
+        const userID = req.user.id
+        const rate = req.body.rate
+        const tutorID = req.body.tutorID
+
+        let rating = new Rating({
+            userID : userID,
+            rate: rate
+        });
+
+        rating.save();
+
+        let tutor = await findTutor(tutorID);
+
+        tutor.ratings.push(rating);
+
+        let average = 0;
+
+        for(var i=0; i<tutor.ratings.length;i++) {
+            average += tutor.ratings[i]
+        }
+
+        average = average / tutor.ratings.length
+        tutor.tutorRating = average
+
+        tutor.save();
+
+        res.json({message:"Rated"});
+
+    } catch (err) {
+        res.status(400).json({ message: "Error in saving rating" });
     }
 }
 

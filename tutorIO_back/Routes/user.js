@@ -158,4 +158,8 @@ router.post("/postComment",
     commentController.postComment
 )
 
+router.put("/deleteComment",
+    commentController.removeComment
+)
+
 module.exports = router;

@@ -22,6 +22,16 @@ const findTutor = async(id) => {
     })
 }
 
+const findComment = async(id) => {
+    return new Promise((resolve,reject) => {
+        Comment.findOne({"_id" : id})
+        .then(comment => {
+            resolve(comment)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
 exports.postComment = async (req, res) => {
     try {
         const {
@@ -31,9 +41,17 @@ exports.postComment = async (req, res) => {
         
         const commentProfile = await findProfile(req.user.id);
 
+        let cFname = commentProfile.firstName;
+        let cLname = commentProfile.lastName;
+        let isTutor = commentProfile.isTutor;
+        let cID = commentProfile.userID;
+
         let comment = new Comment({
-            profile: commentProfile,
-            content: content
+            content: content,
+            firstName: cFname,
+            lastName: cLname,
+            isTutor: isTutor,
+            userID : cID
         });
 
         comment.save();
@@ -45,5 +63,24 @@ exports.postComment = async (req, res) => {
 
     } catch (err) {
         res.status(400).json({message: "Error in fetching tutor"});
+    }
+}
+
+exports.removeComment = async (req, res) => {
+    try {
+        const tutorID = req.body.userID
+        let tutor = await findTutor(tutorID);
+
+        const commentID = req.body.comID
+
+        tutor.comments.pull(commentID)
+        tutor.save();
+
+        await Comment.findByIdAndDelete(commentID)
+
+        res.json({message:"Deleted comment"})
+
+    } catch(err) {
+        res.status(400).json({message: "Error in deleting comment"});
     }
 }

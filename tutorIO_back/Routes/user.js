@@ -6,6 +6,7 @@ const profileController = require('../controller/profile');
 const tutorController = require('../controller/tutor');
 const moduleController = require('../controller/module');
 const commentController = require('../controller/comment');
+const ratingController = require('../controller/rating');
 
 // Router for Authentication
 
@@ -164,5 +165,16 @@ router.put("/deleteComment",
 )
 
 // Routes for rating
+
+router.post("/giveRating",
+    auth.getLoggedInUser,
+    ratingController.giveRating,
+    ratingController.countAverage
+)
+
+router.post("/updateRating",
+    ratingController.updateRating,
+    ratingController.countAverage
+)
 
 module.exports = router;

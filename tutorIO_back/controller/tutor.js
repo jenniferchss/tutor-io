@@ -54,11 +54,11 @@ const findComment = async (id) => {
     })
 }
 
-const findProfile = async (id) => {
+const findRating = async (id) => {
     return new Promise((resolve, reject) => {
-        Profile.find({"_id": id})
-        .then(prof => {
-            resolve(prof)
+        Rating.findOne({"_id": id})
+        .then(rating => {
+            resolve(rating)
         })
         .catch(err => reject(err.message))
     })
@@ -244,8 +244,22 @@ exports.getTutorProfile = async(req, res) => {
         }
         
         let loggedInUser = req.user.id
+        let yourRate = 0;
+        let yourRateID = 0;
 
-        res.json({tutor, Comments, loggedInUser})
+        console.log(loggedInUser)
+        
+
+        for(var i=0; i<tutor.ratings.length;i++) {
+            let rating = await findRating(tutor.ratings[i])
+            if( rating.userID === loggedInUser) {
+                yourRateID = tutor.ratings[i]
+                yourRate = rating.rate
+                break;
+            }
+        }
+
+        res.json({tutor, Comments, loggedInUser, yourRate, yourRateID})
     } catch (err) {
         res.status(400).json({message: "Error in fetching tutor's profile"})
     }
@@ -269,40 +283,6 @@ exports.getTutorsProfile = async(req, res) => {
     }
 }
 
-exports.giveRating = async(req, res) => {
-    try {
-        const userID = req.user.id
-        const rate = req.body.rate
-        const tutorID = req.body.tutorID
-
-        let rating = new Rating({
-            userID : userID,
-            rate: rate
-        });
-
-        rating.save();
-
-        let tutor = await findTutor(tutorID);
-
-        tutor.ratings.push(rating);
-
-        let average = 0;
-
-        for(var i=0; i<tutor.ratings.length;i++) {
-            average += tutor.ratings[i]
-        }
-
-        average = average / tutor.ratings.length
-        tutor.tutorRating = average
-
-        tutor.save();
-
-        res.json({message:"Rated"});
-
-    } catch (err) {
-        res.status(400).json({ message: "Error in saving rating" });
-    }
-}
 
 
 

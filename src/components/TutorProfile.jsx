@@ -12,6 +12,8 @@ function TutorProfile() {
     const [telegram, setTelegram] = useState("")
     const [bio, setBiography] = useState("")
     const [qualif, setQualifications] = useState("")
+    const [commentList, setCommentList] = useState([]);
+    const [isTutor, setIsTutor] = useState(false)
     
     useEffect(() => {
         // const token = localStorage.getItem('usertoken');
@@ -20,23 +22,27 @@ function TutorProfile() {
 
         axios().get('/user/tutorProfile/'+userid)
         .then (res => {
-            // const fname = res.data[0].firstName;
-            // const lname = res.data[0].lastName;
-            // const major = res.data[0].major;
-            // const faculty = res.data[0].faculty;
-            // const year = res.data[0].year;
-            // const telegram = res.data[0].telegram;
-            // const bio = res.data[0].biography;
-            // const qualif = res.data[0].qualifications;
+            const fname = res.data.tutor.tutorProfile.firstName;
+            const lname = res.data.tutor.tutorProfile.lastName;
+            const major = res.data.tutor.tutorProfile.major;
+            const faculty = res.data.tutor.tutorProfile.faculty;
+            const year = res.data.tutor.tutorProfile.year;
+            const telegram = res.data.tutor.tutorProfile.telegram;
+            const bio = res.data.tutor.tutorProfile.biography;
+            const qualif = res.data.tutor.tutorProfile.qualifications;
+            const comments = res.data.Comments;
+            const isTutor = res.data.tutor.tutorProfile.isTutor;
             console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
-            // setFName(fname);
-            // setLName(lname);
-            // setMajor(major);
-            // setFaculty(faculty);
-            // setYear(year);
-            // setTelegram(telegram);
-            // setBiography(bio);
-            // setQualifications(qualif);
+            setFName(fname);
+            setLName(lname);
+            setMajor(major);
+            setFaculty(faculty);
+            setYear(year);
+            setTelegram(telegram);
+            setBiography(bio);
+            setQualifications(qualif);
+            setCommentList(comments);
+            setIsTutor(isTutor);
             
         })
         .catch (err => {
@@ -75,12 +81,12 @@ function TutorProfile() {
                     <p className="biography">{bio}</p>
                     <hr />
                     <h6 className="profile-header">Qualifications</h6>
-                    <p className="biography"> {qualif}</p>
+                    <p className="biography">{qualif}</p>
             </div>
         </div>
         </div>
 
-            <Comments/>
+        {isTutor === true ? <Comments commentList={commentList}/> : null}
         
         </main>
     </div>

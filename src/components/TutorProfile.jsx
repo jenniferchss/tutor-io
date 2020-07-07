@@ -16,7 +16,6 @@ function TutorProfile() {
     const [isTutor, setIsTutor] = useState(false)
     
     useEffect(() => {
-        // const token = localStorage.getItem('usertoken');
         const userid = localStorage.getItem('userid');
         console.log("userid: " + userid);
 

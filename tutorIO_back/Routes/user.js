@@ -6,6 +6,7 @@ const profileController = require('../controller/profile');
 const tutorController = require('../controller/tutor');
 const moduleController = require('../controller/module');
 const commentController = require('../controller/comment');
+const ratingController = require('../controller/rating');
 
 // Router for Authentication
 
@@ -148,6 +149,7 @@ router.get("/getTaughtModules",
 )
 
 router.get("/tutorProfile/:tutorID",
+    auth.getLoggedInUser,
     tutorController.getTutorProfile
 )
 
@@ -160,6 +162,19 @@ router.post("/postComment",
 
 router.put("/deleteComment",
     commentController.removeComment
+)
+
+// Routes for rating
+
+router.post("/giveRating",
+    auth.getLoggedInUser,
+    ratingController.giveRating,
+    ratingController.countAverage
+)
+
+router.post("/updateRating",
+    ratingController.updateRating,
+    ratingController.countAverage
 )
 
 module.exports = router;

@@ -9,8 +9,9 @@ const currentTime = new Date().getHours();
 
 function Dashboard(props) {
     const [fName, setFName] = useState("")
+    console.log(currentTime);
 
-    function handleLoad(event) {
+    useEffect(() => {
         const token = localStorage.getItem('usertoken');
 
         axios().get('/user/userProfile', {
@@ -27,20 +28,18 @@ function Dashboard(props) {
         .catch (err => {
             console.log(err);
         })
-
-    }
+    }, []);
 
     return (<div className="dashboard container-fluid">
-        {handleLoad()}
+        {/* {handleLoad()} */}
         <div className="row">
             <SideNav />
 
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">    
                 {currentTime < 12 && <h3 className="welcome-title">Good morning, <strong>{fName}</strong>! </h3>}
-                {currentTime > 12 && currentTime < 18 ? <h3 className="welcome-title">Good afternoon, <strong>{fName}</strong>! </h3> : null}
-                {currentTime > 18 && <h3 className="welcome-title">Good evening, <strong>{fName}</strong>! </h3>}
-                {/* <h5>Status: {props.isLoggedIn} </h5> */}
-                {/* <hr /> */}
+                {currentTime >= 12 && currentTime < 18 ? <h3 className="welcome-title">Good afternoon, <strong>{fName}</strong>! </h3> : null}
+                {currentTime >= 18 && <h3 className="welcome-title">Good evening, <strong>{fName}</strong>! </h3>}
+                
                 
                 <Profile/>
 

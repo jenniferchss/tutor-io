@@ -12,7 +12,7 @@ function Profile(props) {
     const [bio, setBiography] = useState("")
     const [qualif, setQualifications] = useState("")
     const [isTutor, setIsTutor] = useState(false);
-    const [isTutee, setIsTutee] = useState(false);
+    // const [isTutee, setIsTutee] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem('usertoken');
@@ -32,7 +32,7 @@ function Profile(props) {
             const bio = res.data[0].biography;
             const qualif = res.data[0].qualifications;
             const isTutor = res.data[0].isTutor;
-            const isTutee = res.data[0].isTutee;
+            // const isTutee = res.data[0].isTutee;
             console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
             setFName(fname);
             setLName(lname);
@@ -43,7 +43,7 @@ function Profile(props) {
             setBiography(bio);
             setQualifications(qualif);
             setIsTutor(isTutor);
-            setIsTutee(isTutee);
+            // setIsTutee(isTutee);
         })
         .catch (err => {
             console.log(err);
@@ -53,11 +53,11 @@ function Profile(props) {
     return (<div className="profile card">
         {/* {handleLoad()} */}
         <h4 className="profile-title card-header">PROFILE</h4>
-        <div class="row card-body">
-            <div class="col-6 col-md-4 avatar-col">
+        <div className="row card-body">
+            <div className="col-6 col-md-4 avatar-col">
                 <img src={require("../images/profile@2x.png")} className="profpict" alt="profpict" />
             </div>
-            <div class="col-sm-6 col-md-8 right-profile">
+            <div className="col-sm-6 col-md-8 right-profile">
                     <h3 className="name-dashboard">{fName} {lName}</h3>
                     <div className="info-row">
                     <img src={require("../images/correct.svg")} className="smallIcon" alt="smallIcon"></img>

@@ -8,8 +8,7 @@ import axios from "../axios";
 const currentTime = new Date().getHours();
 
 function Dashboard(props) {
-    const [fName, setFName] = useState("")
-    console.log(currentTime);
+    const [fName, setFName] = useState("");
 
     useEffect(() => {
         const token = localStorage.getItem('usertoken');

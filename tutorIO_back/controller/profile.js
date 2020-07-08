@@ -10,6 +10,41 @@ const getUserProfile = async (id) => {
     })
 }
 
+const getTutorProfile = async(id) => {
+    try {
+    let tutorID = id
+    let tutor = await findTutor(tutorID)
+    tutor.tutorProfile = await findTutorProfile(tutor.userID)
+
+    let Comments = []
+    for(let i=0; i<tutor.comments.length; i++) {
+        let comment = await findComment(tutor.comments[i])
+        console.log(comment)
+        Comments.push(comment);
+    }
+    
+    let loggedInUser = req.user.id
+    let yourRate = 0;
+    let yourRateID = 0;
+
+    console.log(loggedInUser)
+    
+
+    for(var i=0; i<tutor.ratings.length;i++) {
+        let rating = await findRating(tutor.ratings[i])
+        if( rating.userID === loggedInUser) {
+            yourRateID = tutor.ratings[i]
+            yourRate = rating.rate
+            break;
+        }
+    }
+
+    res.json({tutor, Comments, loggedInUser, yourRate, yourRateID})
+    } catch (err) {
+    res.status(400).json({message: "Error in fetching tutor's profile"})
+    }
+}
+
 exports.editUserProfile = async(req,res) => {
     const { firstName,
             lastName,
@@ -44,10 +79,16 @@ exports.getUserProfile = async(req, res) => {
     try {
         const id = req.user.id
         const userProfile = await getUserProfile(id)
-        res.json(userProfile);
+        if (userProfile.isTutor) {
+            getTutorProfile(id);
+        } else {
+            res.json(userProfile);
+        }
       } catch (e) {
         res.status(400).json({ message: "Error in Fetching user" });
       }
 }
+
+
 
 

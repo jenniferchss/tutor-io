@@ -33,7 +33,6 @@ const findTutorByID = async(id) => {
     })
 }
 
-
 const findTutorProfile = async(id) => {
     return new Promise((resolve,reject) => {
         Profile.findOne({"userID" : id})
@@ -137,7 +136,6 @@ exports.getAllTutors = async(req, res) => {
     }
 }
 
-
 exports.tutorRegisterModule = async(req, res, next) => {
     try {
         let tutor = await Tutor.findOne({"userID" : req.user.id}).then(items => {
@@ -184,7 +182,6 @@ exports.tutorDeleteModule = async(req, res, next) => {
         res.status(400).json({message: "Error in fetching tutor"})
     }
 }
-
 
 exports.getTaughtModules = async (req, res) => {
     try {
@@ -282,7 +279,6 @@ exports.getTutorsProfile = async(req, res) => {
         res.status(400).json({ message: "Error in Fetching user" });
     }
 }
-
 
 
 

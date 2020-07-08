@@ -3,7 +3,7 @@ const imageModel = require('../models/imageModel');
 
 
 //IMPORT CLOUDINARY CONFIG HERE
-let cloud = require('./cloudinaryConfig');
+let cloud = require('../config/cloudinaryConfig');
 
 exports.createApp = (req, res) => {
     try {

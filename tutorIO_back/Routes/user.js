@@ -68,7 +68,8 @@ router.put("/changeEmail",
  */
 router.get("/userProfile",
     auth.getLoggedInUser,
-    profileController.getUserProfile
+    profileController.getUserProfile,
+    profileController.getTutorProfile
 )
 
 /**

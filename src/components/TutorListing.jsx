@@ -91,7 +91,7 @@ function TutorListing() {
                     </div>
                 </div>
                 <div className="col-md-3">
-                    <h3 className="pricetag">{tutor.fee}</h3>
+                    <h3 className="pricetag">${tutor.fee}</h3>
                     <p className="text-muted">per hour</p>
                 </div>
             </div>   

@@ -5,7 +5,7 @@ function Comments(props) {
     const [comment, setComment] = useState("");
     // const [commentList, setCommentList] = useState([]);
     const commentList = props.commentList;
-    console.log("commentList: " + JSON.stringify(commentList, null, 2));
+    // console.log("commentList: " + JSON.stringify(commentList, null, 2));
 
     // useEffect(() => {
     //     axios().get('/user/findSpecificModules/School_Of_Computing')
@@ -50,7 +50,7 @@ function Comments(props) {
         
     <div class="profile card">
         <div class="card-body comments-card">
-            <h5 class="comments-title">Comments (..)</h5>
+            <h5 class="comments-title">Comments ({commentList.length})</h5>
             <hr />
 
             {/* PEOPLE'S COMMENTS */}

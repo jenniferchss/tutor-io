@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../axios";
 
 function Profile(props) {
@@ -14,7 +14,7 @@ function Profile(props) {
     const [isTutor, setIsTutor] = useState(false);
     const [isTutee, setIsTutee] = useState(false);
 
-    function handleLoad(event) {
+    useEffect(() => {
         const token = localStorage.getItem('usertoken');
 
         axios().get('/user/userProfile', {
@@ -48,11 +48,10 @@ function Profile(props) {
         .catch (err => {
             console.log(err);
         })
-
-    }
+    }, []);
     
     return (<div className="profile card">
-        {handleLoad()}
+        {/* {handleLoad()} */}
         <h4 className="profile-title card-header">PROFILE</h4>
         <div class="row card-body">
             <div class="col-6 col-md-4 avatar-col">

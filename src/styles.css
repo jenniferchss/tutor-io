@@ -1082,10 +1082,33 @@ td {
 }
 
 
-/* .shadow-textarea textarea.form-control::placeholder {
-    font-weight: 300;
+.tutee-ratings {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    color: #66AFBB;
 }
-.shadow-textarea textarea.form-control {
-    padding-left: 0.8rem;
-} */
-  
+.ave-ratings {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 4rem;
+}
+.rating-sec {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+input[type="radio"] {
+    display: none;
+}
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+}
+.based-on {
+    margin-bottom: 3%;
+}
+.rate-btn {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}

@@ -51,9 +51,9 @@ const ProfileSchema = mongoose.Schema({
       default: Date.now()
     },
     img: { 
-      data: Buffer, 
-      contentType: String 
-   }
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'image'
+    }
 });
 
 module.exports = mongoose.model("profile", ProfileSchema);

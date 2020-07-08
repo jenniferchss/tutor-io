@@ -9,26 +9,31 @@ function Rating(props) {
     const history = useHistory();
     const token = localStorage.getItem('usertoken');
     const tutorid = localStorage.getItem('userid');
+    const loggedinuser = localStorage.getItem('loggedinuser');
+    console.log("tutorid: " + tutorid);
+    console.log("loggedinuser: " + loggedinuser);
 
     function handleRate() {
-        //kasi token, minta tutorID, my rating
-        
-        
-        axios().post('/user/giveRating', {
-            rate: rating,
-            tutorID: tutorid,
-            headers:{
-                Authorization: token
-            }
-        })
-        .then( res => {
-            console.log(res);
-            alert("You have successfully rated this tutor!");
-            history.push('/profile');
-        })
-        .catch (err => {
-            console.log(err);
-        })
+        if (loggedinuser === tutorid) {
+            alert("You cannot rate yourself!")
+        }
+        else {
+            axios().post('/user/giveRating', {
+                rate: rating,
+                tutorID: tutorid,
+                headers:{
+                    Authorization: token
+                }
+            })
+            .then( res => {
+                console.log(res);
+                alert("You have successfully rated this tutor!");
+                history.push('/profile');
+            })
+            .catch (err => {
+                console.log(err);
+            })
+        }
     }
 
     function handleUpdateRate() {
@@ -83,7 +88,7 @@ function Rating(props) {
         :
         <div>
             <p>You have rated <strong>{props.rate} stars</strong> for this tutor.</p>
-            <button onClick={handleUpdateRate} type="submit" className="btn btn-info rate-btn">Update your rating</button>
+            <button onClick={handleUpdateRate} type="submit" className="btn btn-info btn-sm updaterate-btn">Update your rating</button>
         </div>}
         
 </div>)

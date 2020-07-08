@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SideNav from "./SideNav";
 import axios from "../axios";
+import { useHistory } from "react-router-dom";
 
 
 function EditMyProfile() {
@@ -13,6 +14,7 @@ function EditMyProfile() {
     const [telegram, setTelegram] = useState("")
     const [bio, setBiography] = useState("")
     const [qualif, setQualifications] = useState("")
+    const history = useHistory();
     
 
     function handleChangeFName(event) {
@@ -103,6 +105,7 @@ function EditMyProfile() {
         .then (res => {
             console.log("SAVE SUCCESS: " + JSON.stringify(res, null, 2));
             alert("Changes saved!");
+            history.push('/dashboard');
         })
         .catch (err => {
             console.log("ERROR SAVE: " + err);

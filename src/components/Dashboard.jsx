@@ -20,15 +20,15 @@ function Dashboard(props) {
         })
         .then (res => {
             const fname = res.data[0].firstName;
-            // console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
+            console.log("LOAD DATA Dashboard: " + JSON.stringify(res, null, 2));
             setFName(fname);
+            localStorage.setItem('loggedinuser', res.data[0].userID);
         })
         .catch (err => {
             console.log(err);
         })
 
     }
-    
 
     return (<div className="dashboard container-fluid">
         {handleLoad()}

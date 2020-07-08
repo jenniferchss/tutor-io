@@ -33,6 +33,7 @@ function Signin(props) {
         .then(function(res){
             if (res.data.token) {
                 localStorage.setItem('usertoken', res.data.token);
+                localStorage.setItem('loggedinuser', res.data.user._id);
                 props.handleLogin();
                 history.push("/dashboard");
                 console.log(res);
@@ -40,8 +41,16 @@ function Signin(props) {
         })
         .catch(err => {
             console.log(err);
-            alert("Have you connected to the database?");
-          });
+            if (err.response.data.message === "User Not Exist") {
+                alert("User is not registered. Please make an account first.");
+            }
+            else if (err.response.data.message === "Incorrect Password !") {
+                alert("Incorrect password!");
+            }
+            else {
+                alert("Have you connected to the database?");
+            }
+        });
         
     }
 

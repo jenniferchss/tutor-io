@@ -54,6 +54,6 @@ exports.createApp = (req, res) => {
         }
     });
     } catch(execptions) {
-        console.log(execptions)
+        res.json({message :"Error in upload images!"})
     }
 }

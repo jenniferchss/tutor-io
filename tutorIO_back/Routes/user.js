@@ -177,4 +177,27 @@ router.post("/updateRating",
     ratingController.countAverage
 )
 
+// // Routes for images
+// app.post("/image-upload", (request, response) => {
+//     // collected image from a user
+//     const data = {
+//       image: request.body.image,
+//     }
+
+//     // upload image here
+//     cloudinary.uploader.upload(data.image)
+//     .then((result) => {
+//       response.status(200).send({
+//         message: "success",
+//         result,
+//       });
+//     }).catch((error) => {
+//       response.status(500).send({
+//         message: "failure",
+//         error,
+//       });
+//     });
+
+// });
+
 module.exports = router;

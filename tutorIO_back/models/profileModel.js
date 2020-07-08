@@ -51,8 +51,8 @@ const ProfileSchema = mongoose.Schema({
       default: Date.now()
     },
     img: { 
-    data: Buffer, 
-    contentType: String 
+      data: Buffer, 
+      contentType: String 
    }
 });
 

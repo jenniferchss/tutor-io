@@ -1,5 +1,6 @@
 const Profile = require("../models/profileModel");
 
+
 const getUserProfile = async (id) => {
     return new Promise ((resolve, reject) => {
         Profile.find({"userID": id})

@@ -1,6 +1,5 @@
 const Profile = require("../models/profileModel");
 const Tutor = require("../models/tutorModel");
-const Profile = require("../models/profileModel");
 const Comment = require("../models/commentModel");
 const Rating = require("../models/ratingModel");
 
@@ -19,6 +18,16 @@ const findTutorProfile = async(id) => {
         Profile.findOne({"userID" : id})
         .then(profi => {
             resolve(profi)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
+const findTutor = async(id) => {
+    return new Promise((resolve,reject) => {
+        Tutor.findOne({"userID" : id})
+        .then(tutor => {
+            resolve(tutor)
         })
         .catch(err => reject(err.message))
     })

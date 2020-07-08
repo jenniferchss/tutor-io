@@ -1,4 +1,8 @@
 const Profile = require("../models/profileModel");
+const Tutor = require("../models/tutorModel");
+const Profile = require("../models/profileModel");
+const Comment = require("../models/commentModel");
+const Rating = require("../models/ratingModel");
 
 
 const getUserProfile = async (id) => {
@@ -10,8 +14,38 @@ const getUserProfile = async (id) => {
     })
 }
 
+const findTutorProfile = async(id) => {
+    return new Promise((resolve,reject) => {
+        Profile.findOne({"userID" : id})
+        .then(profi => {
+            resolve(profi)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
+const findComment = async (id) => {
+    return new Promise((resolve, reject) => {
+        Comment.find({"_id": id})
+        .then(comment => {
+            resolve(comment)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
+const findRating = async (id) => {
+    return new Promise((resolve, reject) => {
+        Rating.findOne({"_id": id})
+        .then(rating => {
+            resolve(rating)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
 const getTutorProfile = async(id) => {
-    try {
+try {
     let tutorID = id
     let tutor = await findTutor(tutorID)
     tutor.tutorProfile = await findTutorProfile(tutor.userID)
@@ -40,9 +74,9 @@ const getTutorProfile = async(id) => {
     }
 
     res.json({tutor, Comments, loggedInUser, yourRate, yourRateID})
-    } catch (err) {
+} catch (err) {
     res.status(400).json({message: "Error in fetching tutor's profile"})
-    }
+}
 }
 
 exports.editUserProfile = async(req,res) => {

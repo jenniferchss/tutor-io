@@ -42,8 +42,8 @@ function ModulesOfBiz(props) {
       {props.isLoggedIn === 'false' ?
       <div className="well mods-list">
       <BizTab />
-      <div class="card tab-content">
-        <table class="table mod-list">
+      <div className="card tab-content">
+        <table className="table mod-list">
               <thead>
                   <tr>
                   <th className="table-title" scope="col">MODULE CODE</th>
@@ -64,21 +64,21 @@ function ModulesOfBiz(props) {
         </table>
 
         {/* <!-- Modal --> */}
-        <div class="modal fade" id="login-alert" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Hi there!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div className="modal fade" id="login-alert" data-backdrop="static" data-keyboard="false" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="staticBackdropLabel">Hi there!</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 Please log in / register to explore the full list of the tutors available.
               </div>
-              <div class="modal-footer">
-                <button onClick={redirectLogIn} type="button" class="btn btn-secondary" data-dismiss="modal">Log In</button>
-                <button onClick={redirectSignUp} type="button" class="btn btn-info" data-dismiss="modal">Sign Up</button>
+              <div className="modal-footer">
+                <button onClick={redirectLogIn} type="button" className="btn btn-secondary" data-dismiss="modal">Log In</button>
+                <button onClick={redirectSignUp} type="button" className="btn btn-info" data-dismiss="modal">Sign Up</button>
               </div>
             </div>
           </div>
@@ -93,8 +93,8 @@ function ModulesOfBiz(props) {
       <main role="main" className="col-md-9 ml-sm-auto col-lg-10 mods-pg">
         <div className="well mods-list">
         <BizTab />
-          <div class="card tab-content">
-            <table class="table mod-list">
+          <div className="card tab-content">
+            <table className="table mod-list">
                   <thead>
                       <tr>
                       <th className="table-title" scope="col">MODULE CODE</th>

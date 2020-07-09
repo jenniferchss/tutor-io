@@ -121,10 +121,10 @@ function EditMyProfile() {
                 <h3 className="page-title">Edit My Profile</h3>
                 <hr></hr>
                 <form onSubmit={handleSave}>
-                <p><a href="#" class="profile-pic">Change profile picture</a></p>
+                <p><a href="#" className="profile-pic">Change profile picture</a></p>
                 <div className="form-row">
                     <div className="form-group col-md-6">
-                        <label for="inputFirstName">First Name</label>
+                        <label htmlFor="inputFirstName">First Name</label>
                         <input 
                             onChange={handleChangeFName} 
                             type="text" 
@@ -134,7 +134,7 @@ function EditMyProfile() {
                         />
                     </div>
                     <div className="form-group col-md-6">
-                        <label for="inputLastName">Last Name</label>
+                        <label htmlFor="inputLastName">Last Name</label>
                         <input 
                             onChange={handleChangeLName}
                             type="text" 
@@ -145,7 +145,7 @@ function EditMyProfile() {
                     </div>
                 </div>
                 <div className="form-group">
-                    <label for="inputMajor">Major</label>
+                    <label htmlFor="inputMajor">Major</label>
                     <input 
                         onChange={handleChangeMajor}
                         type="text" 
@@ -155,7 +155,7 @@ function EditMyProfile() {
                     />
                 </div>
                 <div className="form-group">
-                    <label for="inputFaculty">Faculty</label>
+                    <label htmlFor="inputFaculty">Faculty</label>
                     <input 
                         onChange={handleChangeFaculty}
                         type="text" 
@@ -165,7 +165,7 @@ function EditMyProfile() {
                     />
                 </div>
                 <div className="form-group">
-                    <label for="signupForm">Year</label>
+                    <label htmlFor="signupForm">Year</label>
                     <select 
                     onChange={handleChangeYear}
                     className="form-control" id="exampleFormControlSelect1"
@@ -177,7 +177,7 @@ function EditMyProfile() {
                     </select>
                 </div>
                 <div className="form-group">
-                    <label for="inputTele">Telegram</label>
+                    <label htmlFor="inputTele">Telegram</label>
                     <input 
                         onChange={handleChangeTelegram}
                         type="text" 
@@ -188,58 +188,24 @@ function EditMyProfile() {
                 </div>
 
                 <div className="form-group">
-                    <label for="inputBio">Biography</label>
+                    <label htmlFor="inputBio">Biography</label>
                     <textarea onChange={handleChangeBiography} className="form-control" id="inputBio" rows="3" value={bio}> </textarea>
                     <small id="bioHelp" className="form-text text-muted">Tell us something interesting about yourself! (e.g. your personality, teaching style, hobbies, etc.)</small>
                 </div>
 
                 <div className="form-group">
-                    <label for="inputQual">Qualifications</label>
+                    <label htmlFor="inputQual">Qualifications</label>
                     <textarea onChange={handleChangeQualif} className="form-control" id="inputBio" rows="3" value={qualif}> </textarea>
                     <small id="qualHelp" className="form-text text-muted">*to be edited later* (integrate with backend)</small>
                 </div>
 
-                <form>
-                    <div className="form-group">
-                        <label for="exampleFormControlFile1">Upload File</label>
-                        <input type="file" className="form-control-file" id="exampleFormControlFile1"/>
-                    </div>
-                </form>
-
-                {/* <div className="form-group">
-                <label for="signupForm">Register as:</label>
-                <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                    <label className="form-check-label" for="defaultCheck1">
-                        Tutor
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                    <label className="form-check-label" for="defaultCheck1">
-                        Tutee
-                    </label>
-                </div>
-                <small className="form-text text-muted">You can be both!</small>
-                </div>
-
                 <div className="form-group">
-                <label for="signupForm">Availability:</label>
-                <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                    <label className="form-check-label" for="defaultCheck1">
-                        Online
-                    </label>
+                    <label htmlFor="exampleFormControlFile1">Upload File</label>
+                    <input type="file" className="form-control-file" id="exampleFormControlFile1"/>
                 </div>
-                <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                    <label className="form-check-label" for="defaultCheck1">
-                        Offline
-                    </label>
-                </div>
-                </div> */}
 
                 <button type="submit" className="btn btn-info save-btn">Save Changes</button>
+                
                 </form>
             </main>
         </div>

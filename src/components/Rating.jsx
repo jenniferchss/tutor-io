@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "../axios";
-import { useHistory } from "react-router-dom";
+
 
 function Rating(props) {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
-    const history = useHistory();
     const token = localStorage.getItem('usertoken');
     const tutorid = localStorage.getItem('userid');
     const loggedinuser = localStorage.getItem('loggedinuser');
@@ -16,6 +15,7 @@ function Rating(props) {
     function handleRate() {
         if (loggedinuser === tutorid) {
             alert("You cannot rate yourself!")
+            window.location.reload();
         }
         else {
             axios().post('/user/giveRating', {
@@ -28,7 +28,7 @@ function Rating(props) {
             .then( res => {
                 console.log(res);
                 alert("You have successfully rated this tutor!");
-                history.push('/profile');
+                window.location.reload();
             })
             .catch (err => {
                 console.log(err);
@@ -46,7 +46,7 @@ function Rating(props) {
         .then( res => {
             console.log(res);
             alert("You have successfully updated this tutor!");
-            history.push('/profile');
+            window.location.reload();
         })
         .catch (err => {
             console.log(err);
@@ -62,7 +62,7 @@ function Rating(props) {
             const ratingValue = i+1;
 
             return (
-                <label>
+                <label key={i}>
                     <input 
                         type="radio" 
                         name="rating" 

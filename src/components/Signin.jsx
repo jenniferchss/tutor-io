@@ -62,7 +62,7 @@ function Signin(props) {
             <h1 className="joinus-title h3 mb-3 font-weight-normal">Welcome back!</h1>
             {/* <h5>Status: {props.isLoggedIn}</h5> */}
 
-            <label for="inputEmail" className="sr-only email-input">Email address</label>
+            <label htmlFor="inputEmail" className="sr-only email-input">Email address</label>
             <input 
                 onChange={handleChangeEmail}
                 type="text" 
@@ -72,7 +72,7 @@ function Signin(props) {
                 value={emailaddress}
                 required autoFocus
             />
-            <label for="inputPassword" className="sr-only password-input">Password</label>
+            <label htmlFor="inputPassword" className="sr-only password-input">Password</label>
             <input 
                 onChange={handleChangePassword}
                 type="password"

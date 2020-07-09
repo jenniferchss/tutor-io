@@ -64,7 +64,7 @@ function Signup(props) {
                 
                 <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
                 
-                <label for="inputUsername" class="sr-only username-input">Username</label>
+                <label htmlFor="inputUsername" className="sr-only username-input">Username</label>
                 <input 
                     onChange={handleChangeUser}
                     type="username" 
@@ -72,10 +72,10 @@ function Signup(props) {
                     className="form-control" 
                     placeholder="username" 
                     value={username}
-                    required autofocus
+                    required autoFocus
                 />
 
-                <label for="inputEmail" class="sr-only email-input">Email address</label>
+                <label htmlFor="inputEmail" className="sr-only email-input">Email address</label>
                 <input 
                     onChange={handleChangeEmail}
                     type="email" 
@@ -86,7 +86,7 @@ function Signup(props) {
                     required 
                 />
                 
-                <label for="inputPassword" class="sr-only password-input">Password</label>
+                <label htmlFor="inputPassword" className="sr-only password-input">Password</label>
                 <input 
                     onChange={handleChangePassword}
                     type="password" 
@@ -97,7 +97,7 @@ function Signup(props) {
                     required 
                 />
                 
-                <label for="inputPassword" class="sr-only password-input">Confirm Password</label>
+                <label htmlFor="inputPassword" className="sr-only password-input">Confirm Password</label>
                 <input 
                     onChange={handleChangeConfirmpass}
                     type="password" 

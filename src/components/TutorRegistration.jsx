@@ -275,22 +275,22 @@ function TutorRegistration() {
                     
 
                     <label className="module-code">MODULES LISTED</label>
-                    <table id="modules-listed" class="table mod-list">
+                    <table id="modules-listed" className="table mod-list">
                         <thead>
                             <tr>
                             <th id="mod-listed-title" className="table-title" scope="col">Module Code</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        
                         <ul id="ul-regmod"className="mod-reg-ul">
                             {modulesTaught.map(module => {
                                 // setToDelete(module);
                                 return (
-                                    <li className="mod-reg-li">{module}<span onClick={() => deleteRegMod(module)} className="delete-mod">x</span></li>
+                                    <li className="mod-reg-li" key={module}>{module}<span onClick={() => deleteRegMod(module)} className="delete-mod">x</span></li>
                                 )
                             })}
                         </ul>
-                        </tbody>
+                        
                     </table>
 
 

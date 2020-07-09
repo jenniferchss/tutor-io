@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios";
 
+
 function Comments(props) {
     const [comment, setComment] = useState("");
     // const [commentList, setCommentList] = useState([]);
     const commentList = props.commentList;
+    
     // console.log("commentList: " + JSON.stringify(commentList, null, 2));
 
     // useEffect(() => {
@@ -34,7 +36,8 @@ function Comments(props) {
             }
         })
         .then( res => {
-            console.log(res)
+            console.log(res);
+            window.location.reload();
         })
         .catch (err => {
             console.log(err);
@@ -48,15 +51,15 @@ function Comments(props) {
 
     return (<div className="comments-sec">
         
-    <div class="profile card">
-        <div class="card-body comments-card">
-            <h5 class="comments-title">Comments ({commentList.length})</h5>
+    <div className="profile card">
+        <div className="card-body comments-card">
+            <h5 className="comments-title">Comments ({commentList.length})</h5>
             <hr />
 
             {/* PEOPLE'S COMMENTS */}
             {commentList === undefined ? null :
             commentList.map(mod => {return (
-                <div className="comment row">
+                <div className="comment row" key={mod[0].userID}>
                     <div className="col-1">
                     <img src={require("../images/profile@2x.png")} className="profpict-sm" alt="profpict" />
                     </div>
@@ -79,25 +82,19 @@ function Comments(props) {
 
             {/* MY COMMENT */}
             <div className="my-comment">
-                {/* <textarea 
-                    onChange={handleChange}
-                    className="comment-box" 
-                    placeholder="Post a public comment here."
-                    value= {comment}>
-                </textarea> */}
                 <div className="form-group shadow-textarea">
-                <textarea 
-                    onChange={handleChange}
-                    className="form-control z-depth-1"
-                    rows="3" 
-                    placeholder="Post a public comment here."
-                    value={comment}
-                >
-                </textarea>
+                    <textarea 
+                        onChange={handleChange}
+                        className="form-control z-depth-1"
+                        rows="3" 
+                        placeholder="Post a public comment here."
+                        value={comment}
+                    >
+                    </textarea>
                 </div>
                 
                 <div className="text-right">
-                <button onClick={handlePost} type="submit" className="btn btn-info post-btn">Post</button>
+                    <button onClick={handlePost} type="submit" className="btn btn-info post-btn">Post</button>
                 </div>
                 
                 

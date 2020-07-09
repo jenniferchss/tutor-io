@@ -70,11 +70,11 @@ function TutorProfile() {
             
         <div className="profile card">
         <h4 className="profile-title card-header">PROFILE</h4>
-        <div class="row card-body">
-            <div class="col-6 col-md-4 avatar-col">
+        <div className="row card-body">
+            <div className="col-6 col-md-4 avatar-col">
                 <img src={require("../images/profile@2x.png")} className="profpict" alt="profpict" />
             </div>
-            <div class="col-sm-6 col-md-8 right-profile">
+            <div className="col-sm-6 col-md-8 right-profile">
                     <h3 className="name-dashboard">{fName} {lName}</h3>
                     <div className="info-row">
                     <img src={require("../images/correct.svg")} className="smallIcon" alt="smallIcon"></img>
@@ -95,7 +95,7 @@ function TutorProfile() {
                     {isTutor === true ? <div>
                         <h6 className="profile-header">Modules Taught</h6>
                         <p className="biography">{modsTaught.map(mod => {
-                            return (<li>{mod}</li>
+                            return (<li key={mod}>{mod}</li>
                             )
                         })}</p>
                         <hr />

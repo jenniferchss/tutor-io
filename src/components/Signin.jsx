@@ -34,6 +34,7 @@ function Signin(props) {
             if (res.data.token) {
                 localStorage.setItem('usertoken', res.data.token);
                 localStorage.setItem('loggedinuser', res.data.user._id);
+                localStorage.setItem('userid', res.data.user._id);
                 props.handleLogin();
                 history.push("/dashboard");
                 console.log(res);

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import SideNav from "./SideNav.jsx";
 import Profile from "./Profile.jsx";
 import MySchedule from "./MySchedule.jsx";
+import Rating from "./Rating";
+import Comments from "./Comments";
 import axios from "../axios";
 
 
@@ -9,6 +11,19 @@ const currentTime = new Date().getHours();
 
 function Dashboard(props) {
     const [fName, setFName] = useState("");
+    const [lName, setLName] = useState("");
+    const [major, setMajor] = useState("");
+    const [faculty, setFaculty] = useState("");
+    const [year, setYear] = useState("");
+    const [telegram, setTelegram] = useState("");
+    const [bio, setBiography] = useState("");
+    const [modsTaught, setModsTaught] = useState([]);
+    const [qualif, setQualifications] = useState("");
+    const [rate, setRate] = useState("");
+    const [aveRate, setAveRate] = useState("");
+    const [rateList, setRateList] = useState([]);
+    const [commentList, setCommentList] = useState([]);
+    const [isTutor, setIsTutor] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem('usertoken');
@@ -19,10 +34,65 @@ function Dashboard(props) {
             }
         })
         .then (res => {
-            const fname = res.data[0].firstName;
-            console.log("LOAD DATA Dashboard: " + JSON.stringify(res, null, 2));
-            setFName(fname);
-            localStorage.setItem('loggedinuser', res.data[0].userID);
+            if (res.data.tutor === undefined) {
+                console.log("LOAD DATA no tutor: " + JSON.stringify(res, null, 2));
+                console.log("res.data.tutor: " + res.data.tutor);
+                const fname = res.data.firstName;
+                const lname = res.data.lastName;
+                const major = res.data.major;
+                const faculty = res.data.faculty;
+                const year = res.data.year;
+                const telegram = res.data.telegram;
+                const bio = res.data.biography;
+                const qualif = res.data.qualifications;
+                const isTutor = res.data.isTutor;
+                setFName(fname);
+                setLName(lname);
+                setMajor(major);
+                setFaculty(faculty);
+                setYear(year);
+                setTelegram(telegram);
+                setBiography(bio);
+                setQualifications(qualif);
+                setIsTutor(isTutor);
+                localStorage.setItem('loggedinuser', res.data.userID);
+            }
+            else {
+                console.log("LOAD DATA tutor: " + JSON.stringify(res, null, 2));
+                const fname = res.data.tutor.tutorProfile.firstName;
+                const lname = res.data.tutor.tutorProfile.lastName;
+                const major = res.data.tutor.tutorProfile.major;
+                const faculty = res.data.tutor.tutorProfile.faculty;
+                const year = res.data.tutor.tutorProfile.year;
+                const telegram = res.data.tutor.tutorProfile.telegram;
+                const bio = res.data.tutor.tutorProfile.biography;
+                const modsTaught = res.data.tutor.taughtModules;
+                const qualif = res.data.tutor.tutorProfile.qualifications;
+                const rate = res.data.yourRate;
+                const aveRate = res.data.tutor.totalRating;
+                const rateList = res.data.tutor.ratings;
+                const comments = res.data.Comments;
+                const isTutor = res.data.tutor.tutorProfile.isTutor;
+                setFName(fname);
+                setLName(lname);
+                setMajor(major);
+                setFaculty(faculty);
+                setYear(year);
+                setTelegram(telegram);
+                setBiography(bio);
+                setModsTaught(modsTaught);
+                setQualifications(qualif);
+                setRate(rate);
+                setAveRate(aveRate);
+                setRateList(rateList);
+                setCommentList(comments);
+                setIsTutor(isTutor);
+                localStorage.setItem('yourRateID', res.data.yourRateID);
+                localStorage.setItem('loggedinuser', res.data.tutor.tutorProfile.userID);
+                localStorage.setItem('userid', res.data.tutor.tutorProfile.userID);
+                // console.log("loggedinuser 1: " + localStorage.getItem('loggedinuser'));
+                // console.log("userid 1: " + localStorage.getItem('userid'));
+            }
         })
         .catch (err => {
             console.log(err);
@@ -30,7 +100,6 @@ function Dashboard(props) {
     }, []);
 
     return (<div className="dashboard container-fluid">
-        {/* {handleLoad()} */}
         <div className="row">
             <SideNav />
 
@@ -40,9 +109,23 @@ function Dashboard(props) {
                 {currentTime >= 18 && <h3 className="welcome-title">Good evening, <strong>{fName}</strong>! </h3>}
                 
                 
-                <Profile/>
+                <Profile
+                    fName={fName}
+                    lName={lName}
+                    major={major}
+                    faculty={faculty}
+                    year={year}
+                    telegram={telegram}
+                    bio={bio}
+                    modsTaught={modsTaught}
+                    qualif={qualif}
+                    isTutor={isTutor}
+                />
 
                 <MySchedule/>
+
+                {isTutor === true ? <Rating rate={rate} aveRate={aveRate} rateList={rateList}/> : null}
+                {isTutor === true ? <Comments commentList={commentList}/> : null}
 
             </main>
         </div>

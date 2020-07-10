@@ -6,6 +6,8 @@ function Comments(props) {
     const [comment, setComment] = useState("");
     // const [commentList, setCommentList] = useState([]);
     const commentList = props.commentList;
+    const tutorid = localStorage.getItem('userid');
+    const loggedinuser = localStorage.getItem('loggedinuser');
     
     // console.log("commentList: " + JSON.stringify(commentList, null, 2));
 
@@ -79,8 +81,8 @@ function Comments(props) {
             })}
                 
             
-
-            {/* MY COMMENT */}
+        {loggedinuser !== tutorid ?
+            // {/* MY COMMENT */}
             <div className="my-comment">
                 <div className="form-group shadow-textarea">
                     <textarea 
@@ -96,9 +98,9 @@ function Comments(props) {
                 <div className="text-right">
                     <button onClick={handlePost} type="submit" className="btn btn-info post-btn">Post</button>
                 </div>
-                
-                
+ 
             </div>
+        : null }
             
         </div>
 </div>

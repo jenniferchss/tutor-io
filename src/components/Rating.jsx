@@ -58,38 +58,43 @@ function Rating(props) {
         <hr/>
         <h5 className="ave-ratings">{props.aveRate}</h5>
         <h6 className="text-muted based-on">based on ({props.rateList.length}) rating(s).</h6>
-        {[...Array(5)].map((star, i) => {
-            const ratingValue = i+1;
-
-            return (
-                <label key={i}>
-                    <input 
-                        type="radio" 
-                        name="rating" 
-                        value={ratingValue} 
-                        onClick={() => setRating(ratingValue)}
-                    />
-                    <FaStar 
-                        className="star" 
-                        color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-                        size={50} 
-                        onMouseEnter={() => setHover(ratingValue)}
-                        onMouseLeave={() => setHover(null)}
-                    />
-                </label>
-            )
-        })}
-        
-        
-
-        {props.rate === 0 ? <div>
-        <button onClick={handleRate} type="submit" className="btn btn-info rate-btn">Rate this tutor</button>
-        </div>
-        :
+        {loggedinuser !== tutorid ? 
         <div>
-            <p>You have rated <strong>{props.rate} stars</strong> for this tutor.</p>
-            <button onClick={handleUpdateRate} type="submit" className="btn btn-info btn-sm updaterate-btn">Update your rating</button>
-        </div>}
+            {[...Array(5)].map((star, i) => {
+                const ratingValue = i+1;
+    
+                return (
+                    <label key={i}>
+                        <input 
+                            type="radio" 
+                            name="rating" 
+                            value={ratingValue} 
+                            onClick={() => setRating(ratingValue)}
+                        />
+                        <FaStar 
+                            className="star" 
+                            color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                            size={50} 
+                            onMouseEnter={() => setHover(ratingValue)}
+                            onMouseLeave={() => setHover(null)}
+                        />
+                    </label>
+                )
+            })}
+            
+            {props.rate === 0 ? <div>
+            <button onClick={handleRate} type="submit" className="btn btn-info rate-btn">Rate this tutor</button>
+            </div>
+            :
+            <div>
+                <p>You have rated <strong>{props.rate} stars</strong> for this tutor.</p>
+                <button onClick={handleUpdateRate} type="submit" className="btn btn-info btn-sm updaterate-btn">Update your rating</button>
+            </div>}
+
+        </div>
+        : null}
+        
+       
         
 </div>)
 }

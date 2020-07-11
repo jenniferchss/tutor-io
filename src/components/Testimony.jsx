@@ -1,7 +1,8 @@
 import React from "react";
 //import Carousel from "react-bootstrap/Carousel";
 
-function Testimony() {return(
+function Testimony() {
+    return(
 
     <div id="testimonies" className="carousel slide" data-ride="carousel">
         <ol className="carousel-indicators">

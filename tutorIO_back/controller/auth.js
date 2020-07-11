@@ -258,7 +258,8 @@ exports.verifyUser = async(req, res) => {
 
 exports.resendEmail = async(req, res) => {
   try{
-    let email = req.email
+    let email = req.body.email
+    console.log(email)
     const user = await findUser(email);
 
     if(!user) {

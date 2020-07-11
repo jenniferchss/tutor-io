@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const {cors, corsConfig} = require("./middleware/cors");
 const user = require("./routes/user");
 const InitiateMongoServer = require("./config/db");
+require("dotenv").config();
 
 // Initiate Mongo Server
 try {
@@ -18,6 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors(corsConfig));
+app.use( express.static( "public" ) );
+
 
 /**
  * Router Middleware
@@ -26,6 +29,8 @@ app.use(cors(corsConfig));
  */
 app.use("/user", user);
 
-app.listen(5000, () => {
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
     console.log("Server started on port 5000");
 });

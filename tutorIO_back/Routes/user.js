@@ -7,6 +7,7 @@ const tutorController = require('../controller/tutor');
 const moduleController = require('../controller/module');
 const commentController = require('../controller/comment');
 const ratingController = require('../controller/rating');
+const emailController = require('../controller/email');
 const imageController = require('../controller/image');
 const upload = require('../config/multerConfig');
 
@@ -18,7 +19,7 @@ const upload = require('../config/multerConfig');
  * @description - User SignUp
  */
 router.post( "/signup",
-    authController.signUp
+    authController.signUp,
 );
 
 /**
@@ -59,6 +60,15 @@ router.put("/changeEmail",
     auth.getLoggedInUser,
     auth.verifyPassword,
     authController.changeEmail
+)
+
+router.post("/verifyUser", 
+    auth.getLoggedInUser,
+    authController.verifyUser
+)
+
+router.post("/resendEmail",
+    authController.resendEmail
 )
 
 // Router for Profile

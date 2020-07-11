@@ -74,4 +74,22 @@ exports.verifyPassword = async (req, res, next) => {
   }
 }
 
+exports.checkTokenUser = function(req, res, next) {
+  console.log("req.headers: " + JSON.stringify(req.headers, null, 2));
+  console.log("NO SPLIT: " + req.headers.authorization);
+  console.log("HEADER: " + req.headers.authorization.split(' ')[1])
+  const token = req.headers.authorization.split(' ')[1];
+  console.log("TOKEN: " + token);
+  checkTokenExist(token, res);
+  try {
+      const decoded = jwt.verify(token, "randomString");
+      // console.log("decoded:", JSON.stringify(decoded, null, 2));
+      req.user = decoded.user;
+      next();
+  } catch (e) {
+      console.error(e);
+      res.status(500).json({ message: "Invalid Token" });
+  }
+};
+
 

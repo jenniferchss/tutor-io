@@ -46,7 +46,7 @@ class App extends React.Component {
 
   checkLogInStatus = () => {
     const token = localStorage.getItem('usertoken');
-    console.log(token);
+    // console.log(token);
 
     if (!token) {
       this.setIsLoggedIn('false');
@@ -110,7 +110,7 @@ class App extends React.Component {
           )}/>
           <Route path="/verifyemail" exact component={VerifyEmail}/>
           <Route path="/verify/:token" exact render={props => (
-            <Verifying {...props}/>)}/>
+            <Verifying {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />)}/>
           <Route path="/failedverify" exact component={FailedToVerify}/>
           <Route path="/fassmods" exact render={props => (
             <ModulesOfFass {...props} isLoggedIn={isLoggedIn} />

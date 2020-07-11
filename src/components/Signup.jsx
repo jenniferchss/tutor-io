@@ -54,6 +54,7 @@ function Signup(props) {
         .then(function(res) {
             // if (res.data.token) {
                 // localStorage.setItem('usertoken', res.data.token);
+                localStorage.clear();
                 localStorage.setItem('useremail', emailaddress);
                 // props.handleLogin();
                 history.push("/verifyemail");
@@ -72,27 +73,32 @@ function Signup(props) {
                 
                 <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
                 
-                <label htmlFor="inputFName" className="sr-only username-input">First Name</label>
-                <input 
-                    onChange={handleChangeFName}
-                    type="firstName" 
-                    id="inputFName" 
-                    className="form-control" 
-                    placeholder="first name" 
-                    value={firstName}
-                    required autoFocus
-                />
-
-                <label htmlFor="inputLName" className="sr-only username-input">Last Name</label>
-                <input 
-                    onChange={handleChangeLName}
-                    type="lastName" 
-                    id="inputLName" 
-                    className="form-control" 
-                    placeholder="last name" 
-                    value={lastName}
-                    required
-                />
+                <div className="form-row">
+                    <div className="form-group col-md-6">
+                        <label htmlFor="inputFName" className="sr-only username-input">First Name</label>
+                        <input 
+                            onChange={handleChangeFName}
+                            type="firstName" 
+                            id="inputFName" 
+                            className="form-control" 
+                            placeholder="First name" 
+                            value={firstName}
+                            required autoFocus
+                        />
+                    </div>
+                    <div className="form-group col-md-6">
+                        <label htmlFor="inputLName" className="sr-only username-input">Last Name</label>
+                        <input 
+                            onChange={handleChangeLName}
+                            type="lastName" 
+                            id="inputLName" 
+                            className="form-control" 
+                            placeholder="Last name" 
+                            value={lastName}
+                            required
+                        />
+                    </div>
+                </div>
 
                 <label htmlFor="inputEmail" className="sr-only email-input">Email address</label>
                 <input 

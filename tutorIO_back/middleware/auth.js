@@ -15,7 +15,7 @@ exports.getLoggedInUser = function(req, res, next) {
     checkTokenExist(token, res);
     try {
         const decoded = jwt.verify(token, "randomString");
-        //console.log("decoded:", JSON.stringify(decoded, null, 2));
+        // console.log("decoded:", JSON.stringify(decoded, null, 2));
         req.user = decoded.user;
         next();
     } catch (e) {

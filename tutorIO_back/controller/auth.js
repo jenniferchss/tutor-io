@@ -16,6 +16,16 @@ const findUser = async(email) => {
   })
 }
 
+const findUserByIdentity = async(id) => {
+  return new Promise((resolve,reject) => {
+      User.findOne({"_id" : id})
+      .then(user => {
+          resolve(user)
+      })
+      .catch(err => reject(err.message))
+  })
+}
+
 exports.signUp = async (req, res, next) => {
     try {
       const errors = validationResult(req);
@@ -217,7 +227,8 @@ exports.changeEmail = async(req, res) => {
 
 exports.verifyUser = async(req, res) => {
   try {
-    let user = req.user
+    let id = req.user.id
+    let user = await findUserByIdentity(id)
     user.isVerified = true;
     user.save();
     
@@ -241,7 +252,7 @@ exports.verifyUser = async(req, res) => {
       }
     );
   } catch (err) {
-    res.status(400).json({ message: "Error in changing email" });
+    res.status(400).json({ message: "Error in verify user" });
   }
 }
 

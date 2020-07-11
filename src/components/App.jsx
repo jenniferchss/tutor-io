@@ -10,6 +10,7 @@ import Main from "./Main.jsx";
 import Signin from "./Signin.jsx";
 import Signup from "./Signup.jsx";
 import VerifyEmail from "./VerifyEmail";
+import Verifying from "./Verifying";
 import FailedToVerify from "./FailedToVerify";
 import Dashboard from "./Dashboard.jsx";
 import TutorRegistration from "./TutorRegistration.jsx";
@@ -108,6 +109,8 @@ class App extends React.Component {
             <Signup {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
           )}/>
           <Route path="/verifyemail" exact component={VerifyEmail}/>
+          <Route path="/verify/:token" exact render={props => (
+            <Verifying {...props}/>)}/>
           <Route path="/failedverify" exact component={FailedToVerify}/>
           <Route path="/fassmods" exact render={props => (
             <ModulesOfFass {...props} isLoggedIn={isLoggedIn} />

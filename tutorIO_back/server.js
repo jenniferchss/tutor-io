@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const {cors, corsConfig} = require("./middleware/cors");
 const user = require("./routes/user");
 const InitiateMongoServer = require("./config/db");
+const morgan = require("morgan");
+
 require("dotenv").config();
 
 // Initiate Mongo Server
@@ -15,6 +17,7 @@ try {
 const app = express();
 
 // Middleware
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());

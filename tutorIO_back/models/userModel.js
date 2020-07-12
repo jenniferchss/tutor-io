@@ -24,6 +24,9 @@ const UserSchema = mongoose.Schema({
   isVerified: {
     type: Boolean,
     default: false
+  },
+  secretString: {
+    type: String
   }
 });
 

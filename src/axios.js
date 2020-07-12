@@ -9,22 +9,33 @@ const AXIOS_CONFIG = {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json; charset=utf-8',
     'Access-Control-Allow-Headers': 'Authorization',
-    'Authorization' : 'Bearer '
   },
 };
 
-const public_instance = axios.create(AXIOS_CONFIG);
+const getPublicInstance = (additionalHeaders) => {
+  return axios.create({
+    ...AXIOS_CONFIG,
+    headers: {
+      ...AXIOS_CONFIG.headers,
+      ...additionalHeaders
+    }
+  });
+}
 
-const getInstance = () => {
+const getInstance = (additionalHeaders) => {
   const token = window.localStorage.getItem("usertoken");
   if (token === null) {
-    return public_instance;
+    return getPublicInstance();
+  }
+  if (!additionalHeaders) {
+    additionalHeaders = {};
   }
   return axios.create({
     ...AXIOS_CONFIG,
     headers: {
       ...AXIOS_CONFIG.headers,
-      Authorization: token
+      Authorization: token,
+      ...additionalHeaders
     }
   });
 }

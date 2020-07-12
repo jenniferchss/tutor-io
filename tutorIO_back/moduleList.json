@@ -9,7 +9,7 @@
         "id": 1,
         "name": "ACC1002X",
         "moduleTitle": "Financial Accounting",
-        "faculty": "Engineering"
+        "faculty": "School of Business"
     },
     {
         "id": 2,
@@ -27,13 +27,13 @@
         "id": 4,
         "name": "ACC1701X",
         "moduleTitle": "Accounting for Decision Makers",
-        "faculty": "Engineering"
+        "faculty": "School of Business"
     },
     {
         "id": 5,
         "name": "ACC2002",
         "moduleTitle": "Managerial Accounting",
-        "faculty": "School Of Computing"
+        "faculty": "School of Business"
     },
     {
         "id": 6,
@@ -339,25 +339,25 @@
         "id": 56,
         "name": "BSP1004X",
         "moduleTitle": "Legal Environment Of Business",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 57,
         "name": "BSP1005",
         "moduleTitle": "Managerial Economics",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 58,
         "name": "BSP1702X",
         "moduleTitle": "Legal Environment of Business",
-        "faculty": "Engineering"
+        "faculty": "School Of Business"
     },
     {
         "id": 59,
         "name": "BSP1703",
         "moduleTitle": "Managerial Economics",
-        "faculty": "Engineering"
+        "faculty": "School Of Business"
     },
     {
         "id": 60,
@@ -771,13 +771,13 @@
         "id": 128,
         "name": "CG2271",
         "moduleTitle": "Real-Time Operating Systems",
-        "faculty": "School Of Computing"
+        "faculty": "Engineering"
     },
     {
         "id": 129,
         "name": "CG3002",
         "moduleTitle": "Embedded Systems Design Project",
-        "faculty": "Joint Multi-Disciplinary Programmes"
+        "faculty": "Engineering"
     },
     {
         "id": 130,
@@ -1035,7 +1035,7 @@
         "id": 172,
         "name": "CM1401",
         "moduleTitle": "Chemistry for Life Sciences",
-        "faculty": "School Of Computing"
+        "faculty": "Science"
     },
     {
         "id": 173,
@@ -1053,13 +1053,13 @@
         "id": 175,
         "name": "CM1501",
         "moduleTitle": "Organic Chemistry for Engineers",
-        "faculty": "School Of Computing"
+        "faculty": "Science"
     },
     {
         "id": 176,
         "name": "CM1502",
         "moduleTitle": "General and Physical Chemistry for Engineers",
-        "faculty": "Engineering"
+        "faculty": "Science"
     },
     {
         "id": 177,
@@ -1677,13 +1677,13 @@
         "id": 279,
         "name": "CS1010",
         "moduleTitle": "Programming Methodology",
-        "faculty": "Arts & Social Sciences"
+        "faculty": "School Of Computing"
     },
     {
         "id": 280,
         "name": "CS1010E",
         "moduleTitle": "Programming Methodology",
-        "faculty": "Arts & Social Sciences"
+        "faculty": "School Of Computing"
     },
     {
         "id": 281,
@@ -1695,25 +1695,25 @@
         "id": 282,
         "name": "CS1010S",
         "moduleTitle": "Programming Methodology",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 283,
         "name": "CS1020",
         "moduleTitle": "Data Structures and Algorithms I",
-        "faculty": "Arts & Social Sciences"
+        "faculty": "School Of Computing"
     },
     {
         "id": 284,
         "name": "CS1020E",
         "moduleTitle": "Data Structures and Algorithms I",
-        "faculty": "Arts & Social Sciences"
+        "faculty": "School Of Computing"
     },
     {
         "id": 285,
         "name": "CS1231",
         "moduleTitle": "Discrete Structures",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 286,
@@ -1725,19 +1725,19 @@
         "id": 287,
         "name": "CS2030",
         "moduleTitle": "Programming Methodology II",
-        "faculty": "Engineering"
+        "faculty": "School Of Computing"
     },
     {
         "id": 288,
         "name": "CS2040",
         "moduleTitle": "Data Structures and Algorithms",
-        "faculty": "Engineering"
+        "faculty": "School Of Computing"
     },
     {
         "id": 289,
         "name": "CS2040C",
         "moduleTitle": "Data Structures and Algorithms",
-        "faculty": "Engineering"
+        "faculty": "School Of Computing"
     },
     {
         "id": 290,
@@ -1755,13 +1755,13 @@
         "id": 292,
         "name": "CS2102",
         "moduleTitle": "Database Systems",
-        "faculty": "Arts & Social Sciences"
+        "faculty": "School Of Computing"
     },
     {
         "id": 293,
         "name": "CS2103",
         "moduleTitle": "Software Engineering",
-        "faculty": "Engineering"
+        "faculty": "School Of Computing"
     },
     {
         "id": 294,
@@ -1803,7 +1803,7 @@
         "id": 300,
         "name": "CS2220",
         "moduleTitle": "Introduction to Computational Biology",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 301,
@@ -1815,7 +1815,7 @@
         "id": 302,
         "name": "CS3103",
         "moduleTitle": "Computer Networks Practice",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 303,
@@ -1845,13 +1845,13 @@
         "id": 307,
         "name": "CS3223",
         "moduleTitle": "Database Systems Implementation",
-        "faculty": "Arts & Social Sciences"
+        "faculty": "School Of Computing"
     },
     {
         "id": 308,
         "name": "CS3230",
         "moduleTitle": "Design and Analysis of Algorithms",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 309,
@@ -1881,13 +1881,13 @@
         "id": 313,
         "name": "CS3240",
         "moduleTitle": "Interaction Design",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 314,
         "name": "CS3241",
         "moduleTitle": "Computer Graphics",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 315,
@@ -1899,13 +1899,13 @@
         "id": 316,
         "name": "CS3243",
         "moduleTitle": "Introduction to Artificial Intelligence",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 317,
         "name": "CS3244",
         "moduleTitle": "Machine Learning",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 318,
@@ -1953,13 +1953,13 @@
         "id": 325,
         "name": "CS4220",
         "moduleTitle": "Knowledge Discovery Methods in Bioinformatics",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 326,
         "name": "CS4221",
         "moduleTitle": "Database Applications Design and Tuning",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 327,
@@ -1995,7 +1995,7 @@
         "id": 332,
         "name": "CS4231",
         "moduleTitle": "Parallel and Distributed Algorithms",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 333,
@@ -2037,13 +2037,13 @@
         "id": 339,
         "name": "CS4243",
         "moduleTitle": "Computer Vision and Pattern Recognition",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 340,
         "name": "CS4244",
         "moduleTitle": "Knowledge Representation and Reasoning",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 341,
@@ -2055,19 +2055,19 @@
         "id": 342,
         "name": "CS4247",
         "moduleTitle": "Graphics Rendering Techniques",
-        "faculty": "Engineering"
+        "faculty": "School Of Computing"
     },
     {
         "id": 343,
         "name": "CS4248",
         "moduleTitle": "Natural Language Processing",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 344,
         "name": "CS4249",
         "moduleTitle": "Phenomena and Theories of Human-Computer Interaction",
-        "faculty": "Joint Multi-Disciplinary Programmes"
+        "faculty": "School Of Computing"
     },
     {
         "id": 345,
@@ -2241,7 +2241,7 @@
         "id": 373,
         "name": "DAO1704X",
         "moduleTitle": "Decision Analytics using Spreadsheets",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 374,
@@ -2253,7 +2253,7 @@
         "id": 375,
         "name": "DAO2703",
         "moduleTitle": "Operations and Technology Management",
-        "faculty": "Engineering"
+        "faculty": "School Of Business"
     },
     {
         "id": 376,
@@ -2295,7 +2295,7 @@
         "id": 382,
         "name": "DSC2006",
         "moduleTitle": "Operations Management",
-        "faculty": "Engineering"
+        "faculty": "School Of Business"
     },
     {
         "id": 383,
@@ -2421,7 +2421,7 @@
         "id": 403,
         "name": "EC1301",
         "moduleTitle": "Principles of Economics",
-        "faculty": "Science"
+        "faculty": "Arts & Social Sciences"
     },
     {
         "id": 404,
@@ -2739,7 +2739,7 @@
         "id": 456,
         "name": "EE2023",
         "moduleTitle": "Signals and Systems",
-        "faculty": "School Of Computing"
+        "faculty": "Engineering"
     },
     {
         "id": 457,
@@ -3393,7 +3393,7 @@
         "id": 565,
         "name": "ES1000",
         "moduleTitle": "Foundation Academic English",
-        "faculty": "School Of Computing"
+        "faculty": "Arts & Social Sciences"
     },
     {
         "id": 566,
@@ -3405,7 +3405,7 @@
         "id": 567,
         "name": "ES1531",
         "moduleTitle": "Critical Thinking And Writing",
-        "faculty": "Engineering"
+        "faculty": "Arts & Social Sciences"
     },
     {
         "id": 568,
@@ -3621,19 +3621,19 @@
         "id": 603,
         "name": "FIN2004",
         "moduleTitle": "Finance",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 604,
         "name": "FIN2004X",
         "moduleTitle": "Finance",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 605,
         "name": "FIN2704X",
         "moduleTitle": "Finance",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 606,
@@ -3645,7 +3645,7 @@
         "id": 607,
         "name": "FIN3101B",
         "moduleTitle": "Corporate Finance",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 608,
@@ -3669,7 +3669,7 @@
         "id": 611,
         "name": "FIN3103A",
         "moduleTitle": "Financial Markets",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 612,
@@ -3699,13 +3699,13 @@
         "id": 616,
         "name": "FIN3117",
         "moduleTitle": "Bank Management",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 617,
         "name": "FIN3118",
         "moduleTitle": "Financial Risk Management",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 618,
@@ -3759,7 +3759,7 @@
         "id": 626,
         "name": "FIN4112K",
         "moduleTitle": "SIF: Applied Portfolio Management Techniques",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 627,
@@ -4779,7 +4779,7 @@
         "id": 796,
         "name": "GEK1549",
         "moduleTitle": "Critical Thinking And Writing",
-        "faculty": "Non-Faculty-Based Departments"
+        "faculty": "Arts & Social Sciences"
     },
     {
         "id": 797,
@@ -5475,7 +5475,7 @@
         "id": 912,
         "name": "HR2002",
         "moduleTitle": "Human Capital in Organizations",
-        "faculty": "Engineering"
+        "faculty": "Arts & Social Sciences"
     },
     {
         "id": 913,
@@ -6189,7 +6189,7 @@
         "id": 1031,
         "name": "IT1001",
         "moduleTitle": "Introduction to Computing",
-        "faculty": "Science"
+        "faculty": "School Of Computing"
     },
     {
         "id": 1032,
@@ -8187,13 +8187,13 @@
         "id": 1364,
         "name": "MKT1003X",
         "moduleTitle": "Principles of Marketing",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 1365,
         "name": "MKT1705X",
         "moduleTitle": "Principles of Marketing",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 1366,
@@ -8217,19 +8217,19 @@
         "id": 1369,
         "name": "MKT3402",
         "moduleTitle": "Consumer Behaviour",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 1370,
         "name": "MKT3402A",
         "moduleTitle": "Consumer Behaviour",
-        "faculty": "School Of Computing"
+        "faculty": "School Of Business"
     },
     {
         "id": 1371,
         "name": "MKT3402B",
         "moduleTitle": "Consumer Behaviour",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 1372,
@@ -8253,7 +8253,7 @@
         "id": 1375,
         "name": "MKT3418",
         "moduleTitle": "Product And Brand Management",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 1376,
@@ -8271,7 +8271,7 @@
         "id": 1378,
         "name": "MKT3426",
         "moduleTitle": "Global Marketing",
-        "faculty": "School Of Computing"
+        "faculty": "School Of Business"
     },
     {
         "id": 1379,
@@ -8493,13 +8493,13 @@
         "id": 1415,
         "name": "MNO1001X",
         "moduleTitle": "Management And Organisation",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 1416,
         "name": "MNO1706X",
         "moduleTitle": "Organisational Behavior",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 1417,
@@ -8517,7 +8517,7 @@
         "id": 1419,
         "name": "MNO3301",
         "moduleTitle": "Organisational Behaviour",
-        "faculty": "Science"
+        "faculty": "School Of Business"
     },
     {
         "id": 1420,
@@ -9453,7 +9453,7 @@
         "id": 1575,
         "name": "NM4210",
         "moduleTitle": "User Experience Design",
-        "faculty": "School Of Computing"
+        "faculty": "Arts & Social Sciences"
     },
     {
         "id": 1576,
@@ -9483,7 +9483,7 @@
         "id": 1580,
         "name": "NM4227",
         "moduleTitle": "Playable Art",
-        "faculty": "School Of Computing"
+        "faculty": "Arts & Social Sciences"
     },
     {
         "id": 1581,
@@ -12195,13 +12195,13 @@
         "id": 2032,
         "name": "ST1131",
         "moduleTitle": "Introduction to Statistics",
-        "faculty": "Arts & Social Sciences"
+        "faculty": "Science"
     },
     {
         "id": 2033,
         "name": "ST1232",
         "moduleTitle": "Statistics for Life Sciences",
-        "faculty": "School Of Computing"
+        "faculty": "Science"
     },
     {
         "id": 2034,
@@ -13023,13 +13023,13 @@
         "id": 2170,
         "name": "TR2201",
         "moduleTitle": "Entrepreneurial Marketing",
-        "faculty": "School Of Computing"
+        "faculty": "School Of Business"
     },
     {
         "id": 2171,
         "name": "TR3001",
         "moduleTitle": "New Product Development",
-        "faculty": "Engineering"
+        "faculty": "School Of Business"
     },
     {
         "id": 2172,

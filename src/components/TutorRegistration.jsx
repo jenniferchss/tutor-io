@@ -14,8 +14,10 @@ function TutorRegistration() {
     const [modulesTaught, setModulesTaught] = useState([])
     const [fee, setFee] = useState("")
     const history = useHistory();
+    // const [toDelete, setToDelete] = useState("");
 
-
+    // console.log("moduleCode: " + JSON.stringify(moduleCode, null, 2));
+    // console.log("inputCode: " + JSON.stringify(inputCode, null, 2));
     useEffect(() => {
         const token = localStorage.getItem('usertoken');
 
@@ -38,9 +40,8 @@ function TutorRegistration() {
         //GET ALL MODULE CODE LIST//
         axios().get('/user/getAllModules')
         .then ( res => {
-                // console.log("GET MODULES: " + res.data)
-                setOptions(res.data)
-
+            // console.log("GET MODULES: " + JSON.stringify(res.data, null, 2))
+            setOptions(res.data);
         })
         .catch (err => {
             console.log(err);
@@ -53,7 +54,7 @@ function TutorRegistration() {
             }
         })
         .then ( res => {
-            console.log(res.data);
+            console.log("TAUGHT MODULES: " + res.data);
             setModulesTaught(res.data);
         })
         .catch (err => {
@@ -67,7 +68,7 @@ function TutorRegistration() {
               }
         })
         .then ( res => {
-            console.log("FEE: " + res.data);
+            // console.log("FEE: " + res.data);
             setFee(res.data);
         })
         .catch (err => {
@@ -75,6 +76,14 @@ function TutorRegistration() {
         });
 
     }, [])
+
+    const groupedOptions = options.map((option) => {
+        const firstLetter = option.name[0].toUpperCase();
+        return {
+          firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+          ...option,
+        };
+    });
 
     function handleClickYes() {
         const token = localStorage.getItem('usertoken');
@@ -149,14 +158,14 @@ function TutorRegistration() {
         })
         .then (res => {
             console.log("UPDATED TAUGHT MODULES: " + JSON.stringify(res.data, null, 2))
-            if (res.data.message === "Removed tutor from this module") {
-                deleteItem();
-                // history.push('/tutorregis')
-            }
+            deleteItem();
+            // history.push('/tutorregis')
+            
         })
         .catch (err => {
             console.log(err);
-        })
+        });
+        
     }
 
     function deleteItem() {
@@ -242,14 +251,17 @@ function TutorRegistration() {
                                 <Autocomplete
                                     value={moduleCode}
                                     onChange={(event, newValue) => {
-                                    setModuleCode(newValue);
+                                    setModuleCode(newValue.name);
                                     }}
                                     inputValue={inputCode}
                                     onInputChange={(event, newInputValue) => {
                                     setInputCode(newInputValue);
                                     }}
                                     id="controllable-states-demo"
-                                    options={options.map((option) => option.name)}
+                                    // options={groupedOptions.map((option) => option.name)}
+                                    options={groupedOptions.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+                                    groupBy={(option) => option.firstLetter}
+                                    getOptionLabel={(option) => option.name}
                                     style={{ width: 300 }}
                                     renderInput={(params) => <TextField {...params} label="Search Module" variant="outlined" />}
                                 />
@@ -263,21 +275,22 @@ function TutorRegistration() {
                     
 
                     <label className="module-code">MODULES LISTED</label>
-                    <table id="modules-listed" class="table mod-list">
+                    <table id="modules-listed" className="table mod-list">
                         <thead>
                             <tr>
                             <th id="mod-listed-title" className="table-title" scope="col">Module Code</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        
                         <ul id="ul-regmod"className="mod-reg-ul">
                             {modulesTaught.map(module => {
+                                // setToDelete(module);
                                 return (
-                                    <li className="mod-reg-li">{module}<span onClick={() => deleteRegMod(module)} className="delete-mod">x</span></li>
+                                    <li className="mod-reg-li" key={module}>{module}<span onClick={() => deleteRegMod(module)} className="delete-mod">x</span></li>
                                 )
                             })}
                         </ul>
-                        </tbody>
+                        
                     </table>
 
 

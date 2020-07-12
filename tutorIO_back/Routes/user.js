@@ -63,7 +63,7 @@ router.put("/changeEmail",
 )
 
 router.post("/verifyUser", 
-    auth.getLoggedInUser,
+    auth.checkTokenUser,
     authController.verifyUser
 )
 

@@ -80,7 +80,7 @@ exports.signUp = async (req, res, next) => {
       const token = jwt.sign(
         payload,
         "randomString", {
-                expiresIn: '1d'
+                expiresIn: '7d'
             },
       );
       
@@ -242,7 +242,7 @@ exports.verifyUser = async(req, res) => {
       payload,
       "randomString",
       {
-        expiresIn: "1h"
+        expiresIn: "5h"
       },
       (err, token) => {
         if (err) throw err;
@@ -275,7 +275,7 @@ exports.resendEmail = async(req, res) => {
     const token = jwt.sign(
       payload,
       "randomString", {
-              expiresIn: '1d'
+              expiresIn: '7d'
           },
     );
     

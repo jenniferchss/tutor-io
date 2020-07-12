@@ -23,7 +23,7 @@ function Navibar() {
     }
 
 return (
-    <nav className="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-dark sticky-top shadow">
         <a className="navbar-brand" href="/">
             <img src={logo} width="120" alt="tutorio-logo" loading="lazy" />
         </a>
@@ -34,7 +34,7 @@ return (
 
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul className="navbar-nav">
-                <li onClick={handleClick} className="nav-item beforelog-item active">
+                <li onClick={handleClick} className="nav-item beforelog-item">
                     <a className="nav-link beforelog-link" href="/#white-comp">About Us<span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item beforelog-item">

@@ -3,6 +3,9 @@ body {
     font-style: normal;
     font-variant: normal;
 }
+body, html {
+    height: 100%;
+  }
 
 .navbar {
     font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
@@ -1082,10 +1085,84 @@ td {
 }
 
 
-/* .shadow-textarea textarea.form-control::placeholder {
-    font-weight: 300;
+.tutee-ratings {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    color: #66AFBB;
 }
-.shadow-textarea textarea.form-control {
-    padding-left: 0.8rem;
+.ave-ratings {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 4rem;
+}
+.rating-sec {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+input[type="radio"] {
+    display: none;
+}
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+}
+.based-on {
+    margin-bottom: 3%;
+}
+.rate-btn {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.updaterate-btn {
+    margin-bottom: 2%;
+}
+
+
+/* .verify-pg {
+    background-color: white;
 } */
-  
+.verify-pg {
+    background-image: url(./images/background-logo-sm.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    height: 100%;
+    padding-top: 8%;
+    padding-bottom: 20%;
+}
+.failed-verify {
+    margin-left: 30%;
+    margin-right: 30%;
+    font-family: 'Nunito', sans-serif;
+}
+.pls-verify-title {
+    margin-bottom: 7%;
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 1.5rem;
+}
+.mail {
+    width: 30%;
+    margin-top: 5%;
+}
+.pls-verify-text {
+    margin-bottom: 7%;
+    font-family: 'Nunito', sans-serif;
+}
+@media (max-width: 600px) {
+    .failed-verify {
+        margin-left: 20%;
+        margin-right: 20%;
+        font-family: 'Nunito', sans-serif;
+    }
+}
+
+
+.main-body {
+    position: relative;
+    overflow-y: scroll;
+}

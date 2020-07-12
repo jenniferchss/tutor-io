@@ -5,7 +5,7 @@ import React from "react";
 function Whytutor() {
 return (<div className="blue-container">
     <h3 className="why">
-        Why should you join as a <span class="tutor">Tutor</span>?
+        Why should you join as a <span className="tutor">Tutor</span>?
     </h3>
 
     <div className="card-deck">

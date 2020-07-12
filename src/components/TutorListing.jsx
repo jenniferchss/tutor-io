@@ -68,30 +68,30 @@ function TutorListing() {
 
     {selectTab(localStorage.getItem('facreq'))}
     
-    <div class="card tab-content">
+    <div className="card tab-content">
 
         <h4 className="tutlist-modcode">Module: <strong className="modcode-title">{localStorage.getItem('request')}</strong></h4>
 
         {tutorList.map(tutor => {
         return (
-            <div className="card mb-3 tutor-card">
+            <div className="card mb-3 tutor-card" key={tutor}>
                 <div className="row no-gutters">
                 <div className="col-md-3">
                 <img src={require("../images/profile@2x.png")} className="card-img tutor-img" alt="tutor-img" />
                 </div>
                 <div className="col-md-6">
                     <div className="card-body">
-                        <h4 class="tutor-name">
+                        <h4 className="tutor-name">
                         <a onClick={() => handleClick(tutor.tutorProfile.userID)} href="/profile">{tutor.tutorProfile.firstName} {tutor.tutorProfile.lastName}</a>
                         </h4>
-                        <h7 class="major">{tutor.tutorProfile.major}</h7>
+                        <h6 className="major">{tutor.tutorProfile.major}</h6>
                         {tutor.tutorProfile.biography.length > 100 ? <p>{tutor.tutorProfile.biography.slice(0,100)} ...</p>
                         : <p>{tutor.tutorProfile.biography}</p>}
                         <p className="text-muted">Teaching: {tutor.taughtModules.map((mod) => {return mod + ", "})}</p>
                     </div>
                 </div>
                 <div className="col-md-3">
-                    <h3 className="pricetag">{tutor.fee}</h3>
+                    <h3 className="pricetag">${tutor.fee}</h3>
                     <p className="text-muted">per hour</p>
                 </div>
             </div>   

@@ -33,6 +33,8 @@ function Signin(props) {
         .then(function(res){
             if (res.data.token) {
                 localStorage.setItem('usertoken', res.data.token);
+                localStorage.setItem('loggedinuser', res.data.user._id);
+                localStorage.setItem('userid', res.data.user._id);
                 props.handleLogin();
                 history.push("/dashboard");
                 console.log(res);
@@ -40,8 +42,16 @@ function Signin(props) {
         })
         .catch(err => {
             console.log(err);
-            alert("Have you connected to the database?");
-          });
+            if (err.response.data.message === "User Not Exist") {
+                alert("User is not registered. Please make an account first.");
+            }
+            else if (err.response.data.message === "Incorrect Password !") {
+                alert("Incorrect password!");
+            }
+            else {
+                alert("Have you connected to the database?");
+            }
+        });
         
     }
 
@@ -53,7 +63,7 @@ function Signin(props) {
             <h1 className="joinus-title h3 mb-3 font-weight-normal">Welcome back!</h1>
             {/* <h5>Status: {props.isLoggedIn}</h5> */}
 
-            <label for="inputEmail" className="sr-only email-input">Email address</label>
+            <label htmlFor="inputEmail" className="sr-only email-input">Email address</label>
             <input 
                 onChange={handleChangeEmail}
                 type="text" 
@@ -63,7 +73,7 @@ function Signin(props) {
                 value={emailaddress}
                 required autoFocus
             />
-            <label for="inputPassword" className="sr-only password-input">Password</label>
+            <label htmlFor="inputPassword" className="sr-only password-input">Password</label>
             <input 
                 onChange={handleChangePassword}
                 type="password"

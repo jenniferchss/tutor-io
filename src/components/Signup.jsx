@@ -3,16 +3,22 @@ import axios from "../axios";
 import { useHistory } from "react-router-dom";
 
 function Signup(props) {
-    const [username, setUsername] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
     const [emailaddress, setEmailaddress] = useState("")
     const [password, setPassword] = useState("")
     const [confirmpass, setConfirmpass] = useState("")
     const history = useHistory();
     
 
-    function handleChangeUser (event) {
-        const username = event.target.value;
-        setUsername(username);
+    function handleChangeFName (event) {
+        const firstName = event.target.value;
+        setFirstName(firstName);
+    }
+
+    function handleChangeLName (event) {
+        const lastName = event.target.value;
+        setLastName(lastName);
     }
 
     function handleChangeEmail(event) {
@@ -40,16 +46,19 @@ function Signup(props) {
         }
         else {
         axios().post ('/user/signup',{
-            username: username,
+            firstName: firstName,
+            lastName: lastName,
             email: emailaddress,
             password: password
         })
         .then(function(res) {
-            if (res.data.token) {
-                localStorage.setItem('usertoken', res.data.token);
-                props.handleLogin();
-                history.push("/editprofile");
-            }
+            // if (res.data.token) {
+                // localStorage.setItem('usertoken', res.data.token);
+                localStorage.clear();
+                localStorage.setItem('useremail', emailaddress);
+                // props.handleLogin();
+                history.push("/verifyemail");
+            // }
         })
         .catch(function(err) {
             console.error(err);
@@ -64,18 +73,34 @@ function Signup(props) {
                 
                 <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
                 
-                <label for="inputUsername" class="sr-only username-input">Username</label>
-                <input 
-                    onChange={handleChangeUser}
-                    type="username" 
-                    id="inputUsername" 
-                    className="form-control" 
-                    placeholder="username" 
-                    value={username}
-                    required autofocus
-                />
+                <div className="form-row">
+                    <div className="form-group col-md-6">
+                        <label htmlFor="inputFName" className="sr-only username-input">First Name</label>
+                        <input 
+                            onChange={handleChangeFName}
+                            type="firstName" 
+                            id="inputFName" 
+                            className="form-control" 
+                            placeholder="First name" 
+                            value={firstName}
+                            required autoFocus
+                        />
+                    </div>
+                    <div className="form-group col-md-6">
+                        <label htmlFor="inputLName" className="sr-only username-input">Last Name</label>
+                        <input 
+                            onChange={handleChangeLName}
+                            type="lastName" 
+                            id="inputLName" 
+                            className="form-control" 
+                            placeholder="Last name" 
+                            value={lastName}
+                            required
+                        />
+                    </div>
+                </div>
 
-                <label for="inputEmail" class="sr-only email-input">Email address</label>
+                <label htmlFor="inputEmail" className="sr-only email-input">Email address</label>
                 <input 
                     onChange={handleChangeEmail}
                     type="email" 
@@ -86,7 +111,7 @@ function Signup(props) {
                     required 
                 />
                 
-                <label for="inputPassword" class="sr-only password-input">Password</label>
+                <label htmlFor="inputPassword" className="sr-only password-input">Password</label>
                 <input 
                     onChange={handleChangePassword}
                     type="password" 
@@ -97,7 +122,7 @@ function Signup(props) {
                     required 
                 />
                 
-                <label for="inputPassword" class="sr-only password-input">Confirm Password</label>
+                <label htmlFor="inputPassword" className="sr-only password-input">Confirm Password</label>
                 <input 
                     onChange={handleChangeConfirmpass}
                     type="password" 

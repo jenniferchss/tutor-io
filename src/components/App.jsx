@@ -9,6 +9,9 @@ import LoggedInNav from "./LoggedInNav.jsx";
 import Main from "./Main.jsx";
 import Signin from "./Signin.jsx";
 import Signup from "./Signup.jsx";
+import VerifyEmail from "./VerifyEmail";
+import Verifying from "./Verifying";
+import FailedToVerify from "./FailedToVerify";
 import Dashboard from "./Dashboard.jsx";
 import TutorRegistration from "./TutorRegistration.jsx";
 import EditMyProfile from "./EditMyProfile";
@@ -39,12 +42,11 @@ class App extends React.Component {
 
   handleLogout = () => {
     this.setIsLoggedIn('false');
-    //setUser({});
   }
 
   checkLogInStatus = () => {
     const token = localStorage.getItem('usertoken');
-    console.log(token);
+    // console.log(token);
 
     if (!token) {
       this.setIsLoggedIn('false');
@@ -87,9 +89,6 @@ class App extends React.Component {
   componentDidMount() {
     this.checkLogInStatus();
   }
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
 
 
   render() {
@@ -109,6 +108,10 @@ class App extends React.Component {
           <Route path="/signup" exact render={props => (
             <Signup {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
           )}/>
+          <Route path="/verifyemail" exact component={VerifyEmail}/>
+          <Route path="/verify/:token" exact render={props => (
+            <Verifying {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />)}/>
+          <Route path="/failedverify" exact component={FailedToVerify}/>
           <Route path="/fassmods" exact render={props => (
             <ModulesOfFass {...props} isLoggedIn={isLoggedIn} />
           )}/>

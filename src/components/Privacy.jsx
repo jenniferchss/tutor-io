@@ -29,11 +29,11 @@ function Privacy() {
 
                 <h5 className="module-code manage-title">Change Password</h5>
                 <div className="form-group">
-                    <label id="password-title" for="signupForm">Old Password</label> 
+                    <label id="password-title" htmlFor="signupForm">Old Password</label> 
                     <input type="password" className="form-control" id="passwordInput" required />
                 </div>
                 <div className="form-group">
-                    <label id="password-title" for="signupForm">New Password</label> 
+                    <label id="password-title" htmlFor="signupForm">New Password</label> 
                     <input type="password" className="form-control" id="passwordInput" required />
                 </div>
                 {/* <div>

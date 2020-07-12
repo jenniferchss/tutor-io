@@ -49,11 +49,11 @@ function LoggedInNav(props) {
         <img src={logo} width="120" alt="tutorio-logo" loading="lazy" />
     </a>
     
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
     </button>
 
-    <form className="form-control form-control-dark w-100 outer" autocomplete="off" action="/action_page.php">
+    <form className="form-control form-control-dark w-100 outer" autoComplete="off" action="/action_page.php">
       {/* <div class="autocomplete form-control form-control-light w-100 inner"> */}
       <input id="myInput" className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/>
       {/* <Dropdown

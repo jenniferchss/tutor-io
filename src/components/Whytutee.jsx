@@ -6,10 +6,10 @@ function Whytutee() {
 return (<div className="white-container" id="howitworks">
     
     <h4 className="description">
-        <span class="title">tutor.io</span> is a trusted and helpful website that helps NUS students in finding the best tutor for effective peer teaching.
+        <span className="title">tutor.io</span> is a trusted and helpful website that helps NUS students in finding the best tutor for effective peer teaching.
     </h4>
     <h3 className="why">
-        Why should you join as a <span class="tutee">Tutee</span>?
+        Why should you join as a <span className="tutee">Tutee</span>?
     </h3>
 
 

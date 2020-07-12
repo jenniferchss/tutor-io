@@ -8,8 +8,7 @@ import Testimony from "./Testimony";
 
 
 function Main() {
-    return (<div>
-        
+    return (<div className="main-body" data-spy="scroll" data-target="#scroll-example" data-offset="0">
         <Header />
         <Whitecomp />
         <Whytutee />

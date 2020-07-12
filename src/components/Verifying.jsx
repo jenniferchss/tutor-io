@@ -4,28 +4,25 @@ import { useHistory } from "react-router-dom";
 
 function Verifying(props) {
     const history = useHistory();
-    console.log('params.token: ' + props.match.params.token);
+    const token = props.match.params.token;
+    console.log('params.token: ' + token);
 
     useEffect(() => {
     axios().post('/user/verifyUser', {
-        headers: {
-            Authorization: props.match.params.token
-        }
+        token : token
     })
     .then ( res => {
         console.log(res);
-        if (res.user.isVerified) {
+        if (res.data.user.isVerified) {
             localStorage.setItem('usertoken', res.data.token);
             props.handleLogin();
-            history.push('/editmyprofile');
+            history.push('/editprofile');
         }
         else {
             history.push('/failedverify');
         }
     })
-    .catch ( err => {
-        console.log(err)
-    })
+    .catch (console.error)
 }, []);
 
 

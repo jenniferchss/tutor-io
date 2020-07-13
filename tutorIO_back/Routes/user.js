@@ -160,6 +160,11 @@ router.get("/getTaughtModules",
     tutorController.getTaughtModules
 )
 
+router.post("/updateCalendarLink",
+    auth.getLoggedInUser,
+    profileController.updateCalendarLink
+)
+
 router.get("/tutorProfile/:tutorID",
     auth.getLoggedInUser,
     tutorController.getTutorProfile

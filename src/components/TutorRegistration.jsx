@@ -28,7 +28,7 @@ function TutorRegistration() {
             }
         })
         .then (res => {
-            const isTutor = res.data[0].isTutor;
+            const isTutor = res.data.tutor.tutorProfile.isTutor;
             console.log("GET PROFILE: " + JSON.stringify(res, null, 2));
             console.log("isTutor: " + isTutor);
             setIsTutor(isTutor);

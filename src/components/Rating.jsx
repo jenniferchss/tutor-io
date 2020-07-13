@@ -11,6 +11,7 @@ function Rating(props) {
     const loggedinuser = localStorage.getItem('loggedinuser');
     console.log("tutorid: " + tutorid);
     console.log("loggedinuser: " + loggedinuser);
+    console.log("rating: " + rating);
 
     function handleRate() {
         if (loggedinuser === tutorid) {
@@ -56,8 +57,8 @@ function Rating(props) {
     return (<div className="rating-sec">
         <h5 className="tutee-ratings">Tutee Ratings</h5>
         <hr/>
-        <h5 className="ave-ratings">{props.aveRate}</h5>
-        <h6 className="text-muted based-on">based on ({props.rateList.length}) rating(s).</h6>
+        <h5 className="ave-ratings">{props.aveRate === undefined ? 0 : props.aveRate}</h5>
+        <h6 className="text-muted based-on">based on ({props.rateList.length === 0 ? 0 : props.rateList.length}) rating(s).</h6>
         {loggedinuser !== tutorid ? 
         <div>
             {[...Array(5)].map((star, i) => {
@@ -76,7 +77,7 @@ function Rating(props) {
                             color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
                             size={50} 
                             onMouseEnter={() => setHover(ratingValue)}
-                            onMouseLeave={() => setHover(null)}
+                            onMouseLeave={() => setHover(0)}
                         />
                     </label>
                 )

@@ -1050,6 +1050,9 @@ td {
     margin-right: 1.25rem;
     margin-bottom: 2rem;
 }
+.no-comments {
+    margin-left: 1.25rem;
+}
 .profpict-sm {
     width: 100%;
     margin: 1.25rem;

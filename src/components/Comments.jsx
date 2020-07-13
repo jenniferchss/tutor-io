@@ -9,6 +9,7 @@ function Comments(props) {
     const tutorid = localStorage.getItem('userid');
     const loggedinuser = localStorage.getItem('loggedinuser');
     
+    console.log(commentList);
     // console.log("commentList: " + JSON.stringify(commentList, null, 2));
 
     // useEffect(() => {
@@ -59,7 +60,7 @@ function Comments(props) {
             <hr />
 
             {/* PEOPLE'S COMMENTS */}
-            {commentList === undefined ? null :
+            {commentList.length === 0 ? <p className="no-comments">No comments</p> :
             commentList.map(mod => {return (
                 <div className="comment row" key={mod[0].userID}>
                     <div className="col-1">

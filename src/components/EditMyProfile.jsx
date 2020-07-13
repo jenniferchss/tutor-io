@@ -62,23 +62,45 @@ function EditMyProfile() {
             }
         })
         .then (res => {
-            const fname = res.data[0].firstName;
-            const lname = res.data[0].lastName;
-            const major = res.data[0].major;
-            const faculty = res.data[0].faculty;
-            const year = res.data[0].year;
-            const telegram = res.data[0].telegram;
-            const bio = res.data[0].biography;
-            const qualif = res.data[0].qualifications;
-            console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
-            setFName(fname);
-            setLName(lname);
-            setMajor(major);
-            setFaculty(faculty);
-            setYear(year);
-            setTelegram(telegram);
-            setBiography(bio);
-            setQualifications(qualif);
+            if (res.data.tutor === undefined) {
+                console.log("LOAD DATA no tutor: " + JSON.stringify(res, null, 2));
+                console.log("res.data.tutor: " + res.data.tutor);
+                const fname = res.data.firstName;
+                const lname = res.data.lastName;
+                const major = res.data.major;
+                const faculty = res.data.faculty;
+                const year = res.data.year;
+                const telegram = res.data.telegram;
+                const bio = res.data.biography;
+                const qualif = res.data.qualifications;
+                setFName(fname);
+                setLName(lname);
+                setMajor(major);
+                setFaculty(faculty);
+                setYear(year);
+                setTelegram(telegram);
+                setBiography(bio);
+                setQualifications(qualif);
+            }
+            else {
+                console.log("LOAD DATA tutor: " + JSON.stringify(res, null, 2));
+                const fname = res.data.tutor.tutorProfile.firstName;
+                const lname = res.data.tutor.tutorProfile.lastName;
+                const major = res.data.tutor.tutorProfile.major;
+                const faculty = res.data.tutor.tutorProfile.faculty;
+                const year = res.data.tutor.tutorProfile.year;
+                const telegram = res.data.tutor.tutorProfile.telegram;
+                const bio = res.data.tutor.tutorProfile.biography;
+                const qualif = res.data.tutor.tutorProfile.qualifications;
+                setFName(fname);
+                setLName(lname);
+                setMajor(major);
+                setFaculty(faculty);
+                setYear(year);
+                setTelegram(telegram);
+                setBiography(bio);
+                setQualifications(qualif);
+            }
         })
         .catch (err => {
             console.log(err);

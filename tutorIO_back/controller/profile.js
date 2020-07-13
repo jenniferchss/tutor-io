@@ -129,6 +129,28 @@ exports.editUserProfile = async(req,res) => {
         }
 }
 
+exports.updateCalendarLink = async (req, res) => {
+    try{
+        const link = req.body.link;
+        const userID = req.user.id;
+
+        if(!link) {
+            res.status(400).json("No link provided")
+        }
+
+        const profile = await Profile.updateOne(
+            {"userID" : userID},
+            { $set: {
+                "calendarLink" : link
+            }
+        });
+
+        res.json("Calendar link updated")
+    } catch (e) {
+        res.json({ message: "Error in Fetching profile" });
+    }
+}
+
 
 
 

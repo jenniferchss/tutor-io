@@ -145,7 +145,7 @@ exports.updateCalendarLink = async (req, res) => {
             }
         });
 
-        res.json("Calendar link updated")
+        res.json("Calendar link updated") 
     } catch (e) {
         res.json({ message: "Error in Fetching profile" });
     }

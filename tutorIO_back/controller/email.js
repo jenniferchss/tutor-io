@@ -12,9 +12,11 @@ exports.verifyUserRegis = async response => {
         );
 
         const user = response.user
-        const token = response.token
+        // TODO: Create a column in db called "emailverifytoken"
+        // Generate a short length secure string ~ 16 chars
         const domain = 'http://localhost:3000'
     
+        // /verify?token=acbdabcdabcdabcd&email=abcdef%40gmail.com -> URL (percent) Encode
         var verifURL = domain + '/verify' + '/' + token
     
         const data = {
@@ -22,6 +24,36 @@ exports.verifyUserRegis = async response => {
             to: user.email,
             subject: 'Confirm your account',
             html: ejs.render(file, {user, verifURL}), 
+        }
+    
+        emailer.sendEmail(data, (err, info, response) => {
+            if(err) reject(err);
+            else resolve(info,response);
+        });
+    })  
+}
+
+exports.sendForgotEmail = async response => {
+    console.log("ini response" + JSON.stringify(response, null, 2)) 
+    return new Promise((resolve, reject) => {
+        
+        const file = fs.readFileSync(
+            emailTemplate + '/forgotPassword.ejs', 'ascii'
+        );
+
+        const user = response.user
+        // TODO: Create a column in db called "emailverifytoken"
+        // Generate a short length secure string ~ 16 chars
+        const domain = 'http://localhost:3000'
+    
+        // /verify?token=acbdabcdabcdabcd&email=abcdef%40gmail.com -> URL (percent) Encode
+        var forgotURL = domain + '/updatePassword' + '/' + token
+    
+        const data = {
+            from: 'tutor.io <tutor.io.official@gmail.com>',
+            to: user.email,
+            subject: 'Confirm your account',
+            html: ejs.render(file, {user, forgotURL}), 
         }
     
         emailer.sendEmail(data, (err, info, response) => {

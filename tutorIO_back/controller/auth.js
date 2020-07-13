@@ -196,7 +196,7 @@ exports.changePassword = async (req,res) => {
         (err, token) => {
           if (err) throw err;
           res.status(200).json({
-            token
+            token, user
           });
         }
       );
@@ -212,10 +212,19 @@ exports.changeEmail = async(req, res) => {
 
     console.log(reqEmail)
 
+    let user = await User.findOne({
+      email: email
+    });
+
+    if (user) {
+    return res.status(400).json({
+        msg: "Email Already Exists"
+    });
+    } 
+
     let user = req.user;
-
     user.email = reqEmail;
-
+    user.isVerified = false;
     await user.save();
 
     res.json({message: "Changed email"})
@@ -296,6 +305,65 @@ exports.resendEmail = async(req, res) => {
     res.json(err.message);
   }
 }
+
+exports.forgetPassword = async (req, res) => {
+  try{
+    let email = req.body.email
+    console.log(email)
+    const user = await findUser(email);
+
+    if(!user) {
+      res.status(400).json("User does not exists");
+    }
+
+    const payload = {
+      user: {
+        id: user.id
+      }
+    }
+
+    const token = jwt.sign(
+      payload,
+      "randomString", {
+              expiresIn: '7d'
+          },
+    );
+    
+    const response = {
+      token: token,
+      user: user
+    }   
+
+    UserEmailer.sendForgotEmail(response)
+    .then((info,response) => {
+      res.json({
+        message: "Email sent"
+      });
+    })
+    .catch(err => res.json(err.message));
+
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Error in Saving");
+  }
+}
+
+exports.updateForgotPassword = async (req, res) => {
+  try {
+    const reqPassword = req.body.newPassword;
+    let user = await findUserByIdentity(req.body.token);
+    
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(reqPassword, salt);
+    await user.save();
+
+    res.json("Password updated");
+
+  } catch (err) {
+    res.status(400).json("Error in updating new password")
+  }
+}
+
 
 
 

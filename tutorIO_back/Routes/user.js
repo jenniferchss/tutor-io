@@ -71,6 +71,14 @@ router.post("/resendEmail",
     authController.resendEmail
 )
 
+router.post("/forgetPassword",
+    authController.forgetPassword
+)
+
+router.post("/updateForgotPassword",
+    authController.updateForgotPassword
+)
+
 // Router for Profile
 
 /**

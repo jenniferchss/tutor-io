@@ -12,13 +12,12 @@ function VerifyEmail() {
         })
         .catch(function(err) {
             console.error(err);
-            alert('Error!')});
-        }
+            alert('Error!')
+        });
+    }
 
 
-    return (<div className="verify-pg">
-         {/* <img className="verify-background" src={require("../images/background-logo-sm.png")} alt="background-img" loading="lazy"></img> */}
-         
+    return (<div className="verify-pg">         
          <div className="card text-center failed-verify">
             <div className="card-header">
                 Email Verification

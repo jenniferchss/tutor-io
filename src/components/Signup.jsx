@@ -52,13 +52,9 @@ function Signup(props) {
             password: password
         })
         .then(function(res) {
-            // if (res.data.token) {
-                // localStorage.setItem('usertoken', res.data.token);
-                localStorage.clear();
-                localStorage.setItem('useremail', emailaddress);
-                // props.handleLogin();
-                history.push("/verifyemail");
-            // }
+            localStorage.clear();
+            localStorage.setItem('useremail', emailaddress);
+            history.push("/verifyemail");
         })
         .catch(function(err) {
             console.error(err);
@@ -133,7 +129,9 @@ function Signup(props) {
                     required 
                 />
                 
-                <button className="btn btn-lg btn-info btn-block" type="submit">Sign up</button>
+                <button className="btn btn-lg btn-info btn-block signin-btn" type="submit">Sign up</button>
+                <small className="link-sign text-center">Already have an account? <a className="no-account" href="/signin">Sign in</a></small>
+
                 <p className="mt-5 mb-3 text-muted">Copyright © 2020</p>
 
             </form>

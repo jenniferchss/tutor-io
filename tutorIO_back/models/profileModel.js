@@ -54,7 +54,8 @@ const ProfileSchema = mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'image'
     }, calendarLink: {
-      type: String
+      type: String,
+      default: ""
     }
 });
 

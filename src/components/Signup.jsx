@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "../axios";
 import { useHistory } from "react-router-dom";
+import Alert from "./Alert";
 
 function Signup(props) {
     const [firstName, setFirstName] = useState("")
@@ -8,6 +9,7 @@ function Signup(props) {
     const [emailaddress, setEmailaddress] = useState("")
     const [password, setPassword] = useState("")
     const [confirmpass, setConfirmpass] = useState("")
+    const [alert, setAlert] = useState("");
     const history = useHistory();
     
 
@@ -39,10 +41,10 @@ function Signup(props) {
     function handleSubmit(event) {
         event.preventDefault();
         if (password.length < 6) {
-            alert('Password must be at least 6 characters long!');
+            setAlert('Password must be at least 6 characters long!');
         }
         if (confirmpass !== password) {
-            alert('Password do not match!');
+            setAlert('Password do not match!');
         }
         else {
         axios().post ('/user/signup',{
@@ -58,11 +60,12 @@ function Signup(props) {
         })
         .catch(function(err) {
             console.error(err);
-            alert('Username / Email is already registered')});
+            setAlert('Username / Email is already registered')});
         }
     }
     
-    return (
+    return (<div>                
+        {alert ? <Alert msg={alert}/> : null}
         <div className="text-center joinus-page" data-gr-c-s-loaded="true">
 
             <form onSubmit={handleSubmit} className="login-form">
@@ -136,7 +139,7 @@ function Signup(props) {
 
             </form>
         </div>
-    );
+</div>);
 }
 
 export default Signup;

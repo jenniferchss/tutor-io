@@ -213,7 +213,7 @@ exports.changeEmail = async(req, res) => {
     console.log(reqEmail)
 
     let user = await User.findOne({
-      email: email
+      email: reqEmail
     });
 
     if (user) {
@@ -222,7 +222,7 @@ exports.changeEmail = async(req, res) => {
     });
     } 
 
-    let user = req.user;
+    user = req.user;
     user.email = reqEmail;
     user.isVerified = false;
     await user.save();
@@ -332,7 +332,7 @@ exports.forgetPassword = async (req, res) => {
     const response = {
       token: token,
       user: user
-    }   
+    };   
 
     UserEmailer.sendForgotEmail(response)
     .then((info,response) => {
@@ -350,15 +350,21 @@ exports.forgetPassword = async (req, res) => {
 
 exports.updateForgotPassword = async (req, res) => {
   try {
+    
     const reqPassword = req.body.newPassword;
-    let user = await findUserByIdentity(req.body.token);
+    let id = req.user.id
+    let user = await findUserByIdentity(id)
+    console.log(user)
     
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(reqPassword, salt);
+    console.log(user.password)
+    
+    
     await user.save();
-
+    console.log("masuk save")
+    
     res.json("Password updated");
-
   } catch (err) {
     res.status(400).json("Error in updating new password")
   }

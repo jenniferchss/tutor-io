@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SideNav from "./SideNav";
 import axios from "../axios";
 import { useHistory } from "react-router-dom";
+import GreenAlert from "./GreenAlert";
 
 
 function EditMyProfile() {
@@ -14,6 +15,7 @@ function EditMyProfile() {
     const [telegram, setTelegram] = useState("")
     const [bio, setBiography] = useState("")
     const [qualif, setQualifications] = useState("")
+    const [message, setMessage] = useState("");
     const history = useHistory();
     
 
@@ -126,7 +128,7 @@ function EditMyProfile() {
         })
         .then (res => {
             console.log("SAVE SUCCESS: " + JSON.stringify(res, null, 2));
-            alert("Changes saved!");
+            setMessage("Changes saved!");
             history.push('/dashboard');
         })
         .catch (err => {
@@ -140,6 +142,7 @@ function EditMyProfile() {
             <SideNav />
             
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+                {message ? <GreenAlert msg={message}/> : null}
                 <h3 className="page-title">Edit My Profile</h3>
                 <hr></hr>
                 <form onSubmit={handleSave}>

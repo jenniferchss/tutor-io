@@ -4,6 +4,8 @@ import axios from "../axios";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useHistory } from 'react-router-dom';
+import Alert from "./Alert";
+import GreenAlert from "./GreenAlert";
 
 
 function TutorRegistration() {
@@ -13,6 +15,8 @@ function TutorRegistration() {
     const [inputCode, setInputCode] = useState("")
     const [modulesTaught, setModulesTaught] = useState([])
     const [fee, setFee] = useState("")
+    const [alert, setAlert] = useState("");
+    const [message, setMessage] = useState("");
     const history = useHistory();
     // const [toDelete, setToDelete] = useState("");
 
@@ -134,10 +138,10 @@ function TutorRegistration() {
         .then(function(res) {
             console.log(res);
             if (res.data === 'Registered') {
-                alert("You have registered this module before!")
+                setAlert("You have registered this module before!")
             }
             else {
-                alert("You have successfully registered!")
+                setMessage("You have successfully registered!")
             }
         })
         .catch(function(err) {
@@ -197,7 +201,7 @@ function TutorRegistration() {
         })
         .then ( res => {
             console.log(res);
-            alert("Change of fee saved!");
+            setMessage("Change of fee saved!");
         })
         .catch (err => {
             console.log(err);
@@ -230,6 +234,9 @@ function TutorRegistration() {
             <SideNav />
 
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+                {alert ? <Alert msg={alert}/> : null}
+                {message ? <GreenAlert msg={message}/> : null}
+
                 <h3 className="page-title" 
                     data-toggle="tooltip" 
                     data-placement="bottom" 

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "../axios";
+import Alert from "./Alert";
+import GreenAlert from "./GreenAlert";
 
 function ForgotPassword() {
-
     const [email, setEmail] = useState("")
+    const [message, setMessage] = useState("")
+    const [warning, setWarning] = useState("")
 
     function handleChangeEmail(event) {
         const email = event.target.value;
@@ -11,21 +14,24 @@ function ForgotPassword() {
     }
 
     function handleSend() {
-        axios().post('/user/resendEmail', {
+        axios().post('/user/forgetPassword', {
             email: email
         })
         .then (res => {
-            alert('Password reset link has been sent to ' + email);
+            console.log(res);
+            setMessage('Password reset link has been sent to ' + email);
         })
         .catch(function(err) {
             console.error(err);
-            alert('Error!')
+            setWarning('Email address is not registered.')
         });
     }
 
 
     return (<div className="verify-pg">
-    
+    {message ? <GreenAlert msg={message}/> : null}
+    {warning ? <Alert msg={warning}/> : null}
+
     <div className="card text-center failed-verify">
        <div className="card-header">
            Forgot Password

@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "../axios";
+import GreenAlert from "./GreenAlert";
 
 function VerifyEmail() {
+    const [message, setMessage] = useState("");
 
     function handleClick() {
         axios().post('/user/resendEmail', {
             email: localStorage.getItem('useremail')
         })
         .then (res => {
-            alert('Verification link has been sent to ' + localStorage.getItem('useremail'));
+            setMessage('Verification link has been sent to ' + localStorage.getItem('useremail'));
         })
         .catch(function(err) {
             console.error(err);
@@ -17,8 +19,10 @@ function VerifyEmail() {
     }
 
 
-    return (<div className="verify-pg">         
-         <div className="card text-center failed-verify">
+    return (<div className="verify-pg">
+        {message ? <GreenAlert msg={message}/> : null}
+         
+        <div className="card text-center failed-verify">
             <div className="card-header">
                 Email Verification
             </div>

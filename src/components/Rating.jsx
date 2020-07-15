@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "../axios";
+import Alert from "./Alert";
+import GreenAlert from "./GreenAlert";
 
 
 function Rating(props) {
@@ -9,13 +11,15 @@ function Rating(props) {
     const token = localStorage.getItem('usertoken');
     const tutorid = localStorage.getItem('userid');
     const loggedinuser = localStorage.getItem('loggedinuser');
+    const [alert, setAlert] = useState("");
+    const [message, setMessage] = useState("");
     console.log("tutorid: " + tutorid);
     console.log("loggedinuser: " + loggedinuser);
     console.log("rating: " + rating);
 
     function handleRate() {
         if (loggedinuser === tutorid) {
-            alert("You cannot rate yourself!")
+            setAlert("You cannot rate yourself!")
             window.location.reload();
         }
         else {
@@ -28,7 +32,7 @@ function Rating(props) {
             })
             .then( res => {
                 console.log(res);
-                alert("You have successfully rated this tutor!");
+                setMessage("You have successfully rated this tutor!");
                 window.location.reload();
             })
             .catch (err => {
@@ -46,7 +50,7 @@ function Rating(props) {
         })
         .then( res => {
             console.log(res);
-            alert("You have successfully updated this tutor!");
+            setMessage("You have successfully updated this tutor!");
             window.location.reload();
         })
         .catch (err => {
@@ -55,6 +59,10 @@ function Rating(props) {
     }
 
     return (<div className="rating-sec">
+        {alert ? <Alert msg={alert}/> : null}
+        {message ? <GreenAlert msg={message}/> : null}
+
+
         <h5 className="tutee-ratings">Tutee Ratings</h5>
         <hr/>
         <h5 className="ave-ratings">{props.aveRate === undefined ? 0 : props.aveRate}</h5>

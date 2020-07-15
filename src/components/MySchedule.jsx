@@ -6,7 +6,7 @@ function MySchedule(props) {
     const [URL, setURL] = useState("");
     // console.log("before input: " + calendarURL)
     // console.log("URL: " + URL)
-
+    
     function handleChangeURL(event) {
         const URL = event.target.value;
         setURL(URL);
@@ -35,7 +35,7 @@ function MySchedule(props) {
 
     return (<div className='card'>
         <h4 className='profile-title card-header'>MY SCHEDULE</h4>
-        {localStorage.getItem('calendarURL') === undefined ? 
+        {localStorage.getItem('calendarURL') === "" ? 
         <div className="form-group sync-calendar">
             <label className="inputCalURL"
             htmlFor="inputURL">Sync Google Calendar</label>
@@ -60,7 +60,7 @@ function MySchedule(props) {
     
     <iframe 
         title="my-calendar"
-        src={localStorage.getItem('calendarURL')} 
+        src={props.calendarURL} 
         style={{border:0}}
         width="100%" 
         height="600" 

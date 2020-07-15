@@ -686,13 +686,33 @@ label {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-.rememberme {
-    padding-top: 5%;
+.forgot-password {
+    text-align: left;
+    color: #66AFBB;
+}
+.forgot-pw {
+    color: #66AFBB;
+}
+.signin-btn {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.link-sign {
+    display: block;
+}
+.no-account {
+    color: #66AFBB;
 }
 @media (max-width: 780px) {
     .login-form {
         padding: 8% 25% 5% 25%;
     }
+}
+.email-box {
+    text-align: center;
+    display: inline;
+    max-width: 85%;
+    margin-bottom: 5%;
 }
 
 
@@ -1050,6 +1070,9 @@ td {
     margin-right: 1.25rem;
     margin-bottom: 2rem;
 }
+.no-comments {
+    margin-left: 1.25rem;
+}
 .profpict-sm {
     width: 100%;
     margin: 1.25rem;
@@ -1165,4 +1188,29 @@ input[type="radio"] {
 .main-body {
     position: relative;
     overflow-y: scroll;
+}
+
+
+
+.inputCalURL{
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+.sync-calendar {
+    padding: 5%;
+}
+.calendarURL-box {
+    max-width: 75%;
+    display: inline;
+}
+.sync-btn {
+    display: inline;
+    margin-left: 2%;
+}
+
+
+.alert {
+    margin-bottom: 0;
 }

@@ -19,6 +19,7 @@ exports.verifyUserRegis = async response => {
         const domain = 'http://localhost:3000'
     
         // /verify?token=acbdabcdabcdabcd&email=abcdef%40gmail.com -> URL (percent) Encode
+        const token = response.token;
         var verifURL = domain + '/verify' + '/' + token
     
         const data = {
@@ -53,13 +54,15 @@ exports.sendForgotEmail = async response => {
         console.log("token " + token)
         
         const domain = 'http://localhost:3000'
-       
+    
+        // /verify?token=acbdabcdabcdabcd&email=abcdef%40gmail.com -> URL (percent) Encode
+        const token = response.token;
         var forgotURL = domain + '/updatePassword' + '/' + token
     
         const data = {
             from: 'tutor.io <tutor.io.official@gmail.com>',
             to: user.email,
-            subject: 'Confirm your account',
+            subject: 'Reset your password',
             html: ejs.render(file, {user, forgotURL}), 
         }
     

@@ -76,6 +76,7 @@ router.post("/forgetPassword",
 )
 
 router.post("/updateForgotPassword",
+    auth.checkTokenUser,
     authController.updateForgotPassword
 )
 

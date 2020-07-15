@@ -24,6 +24,8 @@ function Dashboard(props) {
     const [rateList, setRateList] = useState([]);
     const [commentList, setCommentList] = useState([]);
     const [isTutor, setIsTutor] = useState(false);
+    const [calendarURL, setCalendarURL] = useState("");
+    // console.log("first render: " + calendarURL);
 
     useEffect(() => {
         const token = localStorage.getItem('usertoken');
@@ -46,6 +48,7 @@ function Dashboard(props) {
                 const bio = res.data.biography;
                 const qualif = res.data.qualifications;
                 const isTutor = res.data.isTutor;
+                const calendarURL = res.data.calendarLink;
                 setFName(fname);
                 setLName(lname);
                 setMajor(major);
@@ -55,6 +58,8 @@ function Dashboard(props) {
                 setBiography(bio);
                 setQualifications(qualif);
                 setIsTutor(isTutor);
+                setCalendarURL(calendarURL);
+                localStorage.setItem('calendarURL', calendarURL);
                 localStorage.setItem('loggedinuser', res.data.userID);
             }
             else {
@@ -73,6 +78,7 @@ function Dashboard(props) {
                 const rateList = res.data.tutor.ratings;
                 const comments = res.data.Comments;
                 const isTutor = res.data.tutor.tutorProfile.isTutor;
+                const calendarURL = res.data.tutor.tutorProfile.calendarLink;
                 setFName(fname);
                 setLName(lname);
                 setMajor(major);
@@ -87,6 +93,8 @@ function Dashboard(props) {
                 setRateList(rateList);
                 setCommentList(comments);
                 setIsTutor(isTutor);
+                setCalendarURL(calendarURL);
+                localStorage.setItem('calendarURL', calendarURL);
                 localStorage.setItem('yourRateID', res.data.yourRateID);
                 localStorage.setItem('loggedinuser', res.data.tutor.tutorProfile.userID);
                 localStorage.setItem('userid', res.data.tutor.tutorProfile.userID);
@@ -122,7 +130,7 @@ function Dashboard(props) {
                     isTutor={isTutor}
                 />
 
-                <MySchedule/>
+                <MySchedule calendarURL={calendarURL} setCalendarURL={setCalendarURL}/>
 
                 {isTutor === true ? <Rating rate={rate} aveRate={aveRate} rateList={rateList}/> : null}
                 {isTutor === true ? <Comments commentList={commentList}/> : null}

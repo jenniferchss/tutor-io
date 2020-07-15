@@ -5,19 +5,21 @@ import {
     Route
   } from "react-router-dom";
 import Navibar from "./Navibar";
-import LoggedInNav from "./LoggedInNav.jsx";
-import Main from "./Main.jsx";
-import Signin from "./Signin.jsx";
-import Signup from "./Signup.jsx";
+import LoggedInNav from "./LoggedInNav";
+import Main from "./Main";
+import Signin from "./Signin";
+import ForgotPassword from "./ForgotPassword";
+import UpdatePassword from "./UpdatePassword";
+import Signup from "./Signup";
 import VerifyEmail from "./VerifyEmail";
 import Verifying from "./Verifying";
 import FailedToVerify from "./FailedToVerify";
-import Dashboard from "./Dashboard.jsx";
-import TutorRegistration from "./TutorRegistration.jsx";
+import Dashboard from "./Dashboard";
+import TutorRegistration from "./TutorRegistration";
 import EditMyProfile from "./EditMyProfile";
-import Privacy from "./Privacy.jsx";
-import TutorListing from "./TutorListing.jsx";
-import NotFoundPage from "./NotFoundPage.jsx";
+import Privacy from "./Privacy";
+import TutorListing from "./TutorListing";
+import NotFoundPage from "./NotFoundPage";
 import Footer from "./Footer";
 import axios from "../axios";
 import ModulesOfFass from "./ModulesOfFass";
@@ -27,6 +29,7 @@ import ModulesOfBiz from "./ModulesOfBiz";
 import ModulesOfComp from "./ModulesOfComp";
 import ModulesOfSde from "./ModulesOfSde";
 import TutorProfile from "./TutorProfile";
+
 
 
 class App extends React.Component {
@@ -105,6 +108,9 @@ class App extends React.Component {
           <Route path="/signin" exact render={props => (
             <Signin {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
           )}/>
+          <Route path="/forgotpassword" exact component={ForgotPassword} />
+          <Route path="/updatePassword/:token" exact render={props => (
+            <UpdatePassword {...props} />)}/>
           <Route path="/signup" exact render={props => (
             <Signup {...props} isLoggedIn={isLoggedIn} handleLogin={this.handleLogin} />
           )}/>

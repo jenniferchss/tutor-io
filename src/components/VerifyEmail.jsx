@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "../axios";
+import GreenAlert from "./GreenAlert";
 
 function VerifyEmail() {
+    const [message, setMessage] = useState("");
 
     function handleClick() {
         axios().post('/user/resendEmail', {
             email: localStorage.getItem('useremail')
         })
         .then (res => {
-            alert('Verification link has been sent to ' + localStorage.getItem('useremail'));
+            setMessage('Verification link has been sent to ' + localStorage.getItem('useremail'));
         })
         .catch(function(err) {
             console.error(err);
-            alert('Error!')});
-        }
+            alert('Error!')
+        });
+    }
 
 
     return (<div className="verify-pg">
-         {/* <img className="verify-background" src={require("../images/background-logo-sm.png")} alt="background-img" loading="lazy"></img> */}
+        {message ? <GreenAlert msg={message}/> : null}
          
-         <div className="card text-center failed-verify">
+        <div className="card text-center failed-verify">
             <div className="card-header">
                 Email Verification
             </div>

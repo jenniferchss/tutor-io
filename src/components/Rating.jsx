@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "../axios";
+import Alert from "./Alert";
+import GreenAlert from "./GreenAlert";
 
 
 function Rating(props) {
@@ -9,12 +11,15 @@ function Rating(props) {
     const token = localStorage.getItem('usertoken');
     const tutorid = localStorage.getItem('userid');
     const loggedinuser = localStorage.getItem('loggedinuser');
+    const [alert, setAlert] = useState("");
+    const [message, setMessage] = useState("");
     console.log("tutorid: " + tutorid);
     console.log("loggedinuser: " + loggedinuser);
+    console.log("rating: " + rating);
 
     function handleRate() {
         if (loggedinuser === tutorid) {
-            alert("You cannot rate yourself!")
+            setAlert("You cannot rate yourself!")
             window.location.reload();
         }
         else {
@@ -27,7 +32,7 @@ function Rating(props) {
             })
             .then( res => {
                 console.log(res);
-                alert("You have successfully rated this tutor!");
+                setMessage("You have successfully rated this tutor!");
                 window.location.reload();
             })
             .catch (err => {
@@ -45,7 +50,7 @@ function Rating(props) {
         })
         .then( res => {
             console.log(res);
-            alert("You have successfully updated this tutor!");
+            setMessage("You have successfully updated this tutor!");
             window.location.reload();
         })
         .catch (err => {
@@ -54,10 +59,14 @@ function Rating(props) {
     }
 
     return (<div className="rating-sec">
+        {alert ? <Alert msg={alert}/> : null}
+        {message ? <GreenAlert msg={message}/> : null}
+
+
         <h5 className="tutee-ratings">Tutee Ratings</h5>
         <hr/>
-        <h5 className="ave-ratings">{props.aveRate}</h5>
-        <h6 className="text-muted based-on">based on ({props.rateList.length}) rating(s).</h6>
+        <h5 className="ave-ratings">{props.aveRate === undefined ? 0 : props.aveRate}</h5>
+        <h6 className="text-muted based-on">based on ({props.rateList.length === 0 ? 0 : props.rateList.length}) rating(s).</h6>
         {loggedinuser !== tutorid ? 
         <div>
             {[...Array(5)].map((star, i) => {
@@ -76,7 +85,7 @@ function Rating(props) {
                             color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
                             size={50} 
                             onMouseEnter={() => setHover(ratingValue)}
-                            onMouseLeave={() => setHover(null)}
+                            onMouseLeave={() => setHover(0)}
                         />
                     </label>
                 )

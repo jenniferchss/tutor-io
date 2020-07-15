@@ -222,7 +222,7 @@ exports.changeEmail = async(req, res) => {
     });
     } 
 
-    let user = req.user;
+    user = req.user;
     user.email = reqEmail;
     user.isVerified = false;
     await user.save();

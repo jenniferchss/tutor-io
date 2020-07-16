@@ -2,7 +2,7 @@ const Profile = require("../models/profileModel");
 const Tutor = require("../models/tutorModel");
 const Comment = require("../models/commentModel");
 const Rating = require("../models/ratingModel");
-
+const { cloudinary } = require('../config/cloudinaryConfig');
 
 const getUserProfile = async (id) => {
     return new Promise ((resolve, reject) => {
@@ -10,6 +10,7 @@ const getUserProfile = async (id) => {
         .then(profile => {
             resolve(profile)
         })
+        .catch(err => reject(err.message))
     })
 }
 
@@ -150,6 +151,32 @@ exports.updateCalendarLink = async (req, res) => {
         res.json({ message: "Error in Fetching profile" });
     }
 }
+
+exports.uploadImage = async (req, res) => {
+    try {
+        let id = req.user.id;
+        let userProfile = await getUserProfile(id);
+
+        const fileStr = req.body.fileString;
+        console.log("fileStr " + fileStr)
+        
+        const uploadedResponse = await cloudinary.uploader.upload(
+            fileStr, {
+                upload_preset: 'tutor_io'
+            })
+
+        console.log("uploadedResponse " + uploadedResponse);
+
+        userProfile.image = uploadedResponse.public_id;
+        await userProfile.save();
+       
+        res.json("Image uploaded");
+    } catch (err) {
+        res.status(400).json("Error in uploading image")
+    }
+}
+
+
 
 
 

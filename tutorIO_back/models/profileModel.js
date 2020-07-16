@@ -38,7 +38,7 @@ const ProfileSchema = mongoose.Schema({
       type: String,
       default: " ",
     },
-    qualifications: { //foto /pdf
+    qualifications: { 
       type: String,
       default: " ",
     },
@@ -50,9 +50,9 @@ const ProfileSchema = mongoose.Schema({
       type: Date,
       default: Date.now()
     },
-    img: { 
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'image'
+    image: { 
+      type: String,
+      default: ""
     }, calendarLink: {
       type: String,
       default: ""

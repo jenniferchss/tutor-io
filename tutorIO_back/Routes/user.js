@@ -8,8 +8,8 @@ const moduleController = require('../controller/module');
 const commentController = require('../controller/comment');
 const ratingController = require('../controller/rating');
 const emailController = require('../controller/email');
-const imageController = require('../controller/image');
-const upload = require('../config/multerConfig');
+// const imageController = require('../controller/image');
+// const upload = require('../config/multerConfig');
 
 // Router for Authentication
 
@@ -102,6 +102,11 @@ router.patch("/editProfile",
     profileController.editUserProfile
 )
 
+router.post("/uploadImage",
+    auth.getLoggedInUser,
+    profileController.uploadImage
+)
++
 // Router for Tutors
 
 /**

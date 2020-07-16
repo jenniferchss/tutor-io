@@ -926,22 +926,22 @@ td {
     
 }
 .profile-pic {
-    color: #999;
+    color: #66AFBB;
+}
+.upload-file {
+    display: block;
+    margin-bottom: 5%;
+    width: 50%;
+}
+.profpict-preview {
+    margin-bottom: 5%;
+}
+#upload-btn {
+    display: block;
+    margin-bottom: 5%;
+    vertical-align: bottom;
 }
 
-.profile-pic:hover {
-    background-color: rgba(0,0,0,.5);
-    z-index: 10000;
-    color: #fff;
-    transition: all .3s ease;
-    text-decoration: none;
-}
-
-.profile-pic span {
-    display: inline-block;
-    padding-top: 4.5em;
-    padding-bottom: 4.5em;
-}
 
 .save-btn {
     margin-top: 5%;

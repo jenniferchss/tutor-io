@@ -6,7 +6,9 @@ import GreenAlert from "./GreenAlert";
 
 
 function EditMyProfile() {
-    
+    const [fileInputState, setFileInputState] = useState("");
+    const [previewSource, setPreviewSource] = useState("");
+    const [selectedFile, setSelectedFile] = useState("");
     const [fName, setFName] = useState("")
     const [lName, setLName] = useState("")
     const [major, setMajor] = useState("")
@@ -18,6 +20,17 @@ function EditMyProfile() {
     const [message, setMessage] = useState("");
     const history = useHistory();
     
+    function handleFileInputChange(event) {
+        const file = event.target.files[0]
+        previewFile(file);
+    }
+    function previewFile(file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setPreviewSource(reader.result);
+        }
+    }
 
     function handleChangeFName(event) {
         const fname = event.target.value;
@@ -109,6 +122,29 @@ function EditMyProfile() {
         })
     }, [])
 
+    function handleSubmitFile(event) {
+        console.log("submitting");
+        event.preventDefault();
+        if (!previewSource) return;
+        uploadImage(previewSource);
+    }
+
+    async function uploadImage(base64EncodedImage) {
+        console.log(base64EncodedImage);
+        const token = localStorage.getItem('usertoken')
+        try {
+            await axios().post('/user/uploadImage', {
+                data: base64EncodedImage,
+                headers: {
+                    Authorization: token
+                }
+            })
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
     function handleSave(event) {
         event.preventDefault();
         const token = localStorage.getItem('usertoken');
@@ -145,8 +181,28 @@ function EditMyProfile() {
                 {message ? <GreenAlert msg={message}/> : null}
                 <h3 className="page-title">Edit My Profile</h3>
                 <hr></hr>
+                <form onSubmit={handleSubmitFile}>
+                    <p><a href="#" className="profile-pic">Change profile picture</a></p>
+                    <input
+                        type="file"
+                        name="image"
+                        onChange={handleFileInputChange}
+                        value={fileInputState}
+                        className="form-input upload-file custom-file-input"
+                    />
+                    <label class="custom-file-label choose-image" for="customFile">Choose image</label>
+                    {previewSource && (
+                        <img 
+                        src={previewSource}
+                        alt="chosen"
+                        className="profpict-preview"
+                        style={{height: '150px'}}/>
+                    )}
+                    <button className="btn btn-sm btn-info" id="upload-btn" type="submit">Upload</button>
+                </form>
+                
+
                 <form onSubmit={handleSave}>
-                <p><a href="#" className="profile-pic">Change profile picture</a></p>
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label htmlFor="inputFirstName">First Name</label>

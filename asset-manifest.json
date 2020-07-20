@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/tutor-io/static/css/main.96400312.chunk.css",
-    "main.js": "/tutor-io/static/js/main.2b2baa1d.chunk.js",
-    "main.js.map": "/tutor-io/static/js/main.2b2baa1d.chunk.js.map",
+    "main.js": "/tutor-io/static/js/main.9097e94d.chunk.js",
+    "main.js.map": "/tutor-io/static/js/main.9097e94d.chunk.js.map",
     "runtime-main.js": "/tutor-io/static/js/runtime-main.ea3cba02.js",
     "runtime-main.js.map": "/tutor-io/static/js/runtime-main.ea3cba02.js.map",
     "static/css/2.829c9cb5.chunk.css": "/tutor-io/static/css/2.829c9cb5.chunk.css",
     "static/js/2.beaa698f.chunk.js": "/tutor-io/static/js/2.beaa698f.chunk.js",
     "static/js/2.beaa698f.chunk.js.map": "/tutor-io/static/js/2.beaa698f.chunk.js.map",
     "index.html": "/tutor-io/index.html",
-    "precache-manifest.05fd64de9f921bb77e6f20ef1c9115d5.js": "/tutor-io/precache-manifest.05fd64de9f921bb77e6f20ef1c9115d5.js",
+    "precache-manifest.68853828e5e884ec76a6467b742d9d2c.js": "/tutor-io/precache-manifest.68853828e5e884ec76a6467b742d9d2c.js",
     "service-worker.js": "/tutor-io/service-worker.js",
     "static/css/2.829c9cb5.chunk.css.map": "/tutor-io/static/css/2.829c9cb5.chunk.css.map",
     "static/css/main.96400312.chunk.css.map": "/tutor-io/static/css/main.96400312.chunk.css.map",
@@ -40,6 +40,6 @@
     "static/css/2.829c9cb5.chunk.css",
     "static/js/2.beaa698f.chunk.js",
     "static/css/main.96400312.chunk.css",
-    "static/js/main.2b2baa1d.chunk.js"
+    "static/js/main.9097e94d.chunk.js"
   ]
 }

@@ -208,9 +208,9 @@ router.post("/updateRating",
     ratingController.countAverage
 )
 
-router.post('/addImage', 
-    upload.any(), 
-    imageController.createApp
-);
+// router.post('/addImage', 
+//     upload.any(), 
+//     imageController.createApp
+// );
 
 module.exports = router;

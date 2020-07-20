@@ -1,19 +1,22 @@
 import React from "react";
 import logo from "../images/logo.png";
 import { useHistory } from "react-router-dom";
-// import autocomplete from "./AutoComplete.jsx";
-// import { Dropdown } from 'semantic-ui-react';
-// import Select from "react-dropdown-select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import IconButton from '@material-ui/core/IconButton';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
+import axios from "../axios";
 
 
 function LoggedInNav(props) {
-    const modulesList = ["CS1010", "CS1101S", "CS2030"]
+    // const modulesList = ["CS1010", "CS1101S", "CS2030"]
     const history = useHistory();
     // const [searchBar, setSearchBar] = useState("")
-    const [moduleCode, setModuleCode] = useState(modulesList[0])
+    const [options, setOptions] = useState([])
+    const [moduleCode, setModuleCode] = useState(options[0])
     const [inputCode, setInputCode] = useState("")
 
     function handleClickLogout() {
@@ -44,6 +47,26 @@ function LoggedInNav(props) {
   //     {label: "CS2030", value: 4},
   // ];
 
+  useEffect(() => {
+    axios().get('/user/getAllModules')
+    .then ( res => {
+        // console.log("GET MODULES: " + JSON.stringify(res.data, null, 2))
+        setOptions(res.data);
+    })
+    .catch (err => {
+        console.log(err);
+    });
+  }, [])
+
+
+    const groupedOptions = options.map((option) => {
+      const firstLetter = option.name[0].toUpperCase();
+      return {
+        firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+        ...option,
+      };
+  });
+
     return (<nav className="sidenav navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow">
     <a className="navbar-brand navbar-loggedin col-md-3 col-lg-2 mr-0 px-3" href="/dashboard">
         <img src={logo} width="120" alt="tutorio-logo" loading="lazy" />
@@ -54,22 +77,35 @@ function LoggedInNav(props) {
     </button>
 
     <form className="form-control form-control-dark w-100 outer" autoComplete="off" action="/action_page.php">
-      {/* <div class="autocomplete form-control form-control-light w-100 inner"> */}
-      <input id="myInput" className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/>
-      {/* <Dropdown
-        placeholder='Search'
-        
-        search
-        selection
-        options={dropdownOptions}
-      /> */}
-      {/* <Select 
-        className="search-bar form-control form-control-light w-100"
-        options={dropdownList} 
-        onChange={handleChangeSearchBar} 
-        value={searchBar}
-        placeholder="Search..."/> */}
-      {/* </div> */}
+      
+      {/* <input id="myInput" className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/> */}
+      <Autocomplete
+        value={moduleCode}
+        onChange={(event, newValue) => {
+        setModuleCode(newValue.name);
+        }}
+        inputValue={inputCode}
+        onInputChange={(event, newInputValue) => {
+        setInputCode(newInputValue);
+        }}
+        id="controllable-states-demo"
+        // options={groupedOptions.map((option) => option.name)}
+        options={groupedOptions.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+        groupBy={(option) => option.firstLetter}
+        getOptionLabel={(option) => option.name}
+        // style={{ width: 300 }}
+        renderInput={(params) => <TextField {...params} label="Search Module Code / Tutor Name" variant="filled" size="small" fullWidth />}
+        // renderInput={(params) => <Paper component="form" >
+        //   <InputBase
+        //     placeholder="Search Google Maps"
+        //     inputProps={{ 'aria-label': 'search google maps' }}
+        //   />
+        //   <IconButton type="submit" aria-label="search">
+        //     <SearchIcon />
+        //   </IconButton>
+        // </Paper>}
+      />
+      
       {/* <Autocomplete
           className="search-bar form-control form-control-light w-100"
           value={moduleCode}

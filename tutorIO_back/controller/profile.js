@@ -167,7 +167,7 @@ exports.uploadImage = async (req, res) => {
 
         console.log("uploadedResponse " + uploadedResponse);
 
-        userProfile.image = uploadedResponse.public_id;
+        userProfile.image = uploadedResponse.url;
         await userProfile.save();
        
         res.json("Image uploaded");

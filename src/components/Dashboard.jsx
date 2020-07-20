@@ -10,6 +10,7 @@ import axios from "../axios";
 const currentTime = new Date().getHours();
 
 function Dashboard(props) {
+    const [imageId, setImageId] = useState("");
     const [fName, setFName] = useState("");
     const [lName, setLName] = useState("");
     const [major, setMajor] = useState("");
@@ -26,6 +27,7 @@ function Dashboard(props) {
     const [isTutor, setIsTutor] = useState(false);
     const [calendarURL, setCalendarURL] = useState("");
     // console.log("first render: " + calendarURL);
+    
 
     useEffect(() => {
         const token = localStorage.getItem('usertoken');
@@ -39,6 +41,7 @@ function Dashboard(props) {
             if (res.data.tutor === undefined) {
                 console.log("LOAD DATA no tutor: " + JSON.stringify(res, null, 2));
                 console.log("res.data.tutor: " + res.data.tutor);
+                const imageId = res.data.image;
                 const fname = res.data.firstName;
                 const lname = res.data.lastName;
                 const major = res.data.major;
@@ -49,6 +52,7 @@ function Dashboard(props) {
                 const qualif = res.data.qualifications;
                 const isTutor = res.data.isTutor;
                 const calendarURL = res.data.calendarLink;
+                setImageId(imageId);
                 setFName(fname);
                 setLName(lname);
                 setMajor(major);
@@ -64,6 +68,7 @@ function Dashboard(props) {
             }
             else {
                 console.log("LOAD DATA tutor: " + JSON.stringify(res, null, 2));
+                const imageId = res.data.tutor.tutorProfile.image;
                 const fname = res.data.tutor.tutorProfile.firstName;
                 const lname = res.data.tutor.tutorProfile.lastName;
                 const major = res.data.tutor.tutorProfile.major;
@@ -79,6 +84,7 @@ function Dashboard(props) {
                 const comments = res.data.Comments;
                 const isTutor = res.data.tutor.tutorProfile.isTutor;
                 const calendarURL = res.data.tutor.tutorProfile.calendarLink;
+                setImageId(imageId);
                 setFName(fname);
                 setLName(lname);
                 setMajor(major);
@@ -118,6 +124,7 @@ function Dashboard(props) {
                 
                 
                 <Profile
+                    imageId={imageId}
                     fName={fName}
                     lName={lName}
                     major={major}

@@ -3,8 +3,10 @@ import SideNav from "./SideNav";
 import Rating from "./Rating";
 import Comments from "./Comments";
 import axios from "../axios";
+import {Image} from "cloudinary-react";
 
 function TutorProfile() {
+    const [imageId, setImageId] = useState("");
     const [fName, setFName] = useState("");
     const [lName, setLName] = useState("");
     const [major, setMajor] = useState("");
@@ -26,6 +28,7 @@ function TutorProfile() {
 
         axios().get('/user/tutorProfile/'+userid)
         .then (res => {
+            const imageId = res.data.tutor.tutorProfile.image;
             const fname = res.data.tutor.tutorProfile.firstName;
             const lname = res.data.tutor.tutorProfile.lastName;
             const major = res.data.tutor.tutorProfile.major;
@@ -41,6 +44,7 @@ function TutorProfile() {
             const comments = res.data.Comments;
             const isTutor = res.data.tutor.tutorProfile.isTutor;
             console.log("LOAD DATA: " + JSON.stringify(res, null, 2));
+            setImageId(imageId);
             setFName(fname);
             setLName(lname);
             setMajor(major);
@@ -72,7 +76,21 @@ function TutorProfile() {
         <h4 className="profile-title card-header">PROFILE</h4>
         <div className="row card-body">
             <div className="col-6 col-md-4 avatar-col">
-                <img src={require("../images/profile@2x.png")} className="profpict" alt="profpict" />
+                {imageId ? 
+                    <Image 
+                        key={imageId}
+                        cloudName="dahuvufbf"
+                        publicId={imageId}
+                        className="avatar"
+                        width="100%"
+                        crop="scale"
+                    /> : 
+                    <img 
+                        src={require("../images/profile@2x.png")} 
+                        className="avatar" 
+                        alt="profpict" 
+                    />
+                }
             </div>
             <div className="col-sm-6 col-md-8 right-profile">
                     <h3 className="name-dashboard">{fName} {lName}</h3>

@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import axios from "../axios";
 
 function MySchedule(props) {
-    // const [calendarURL, setCalendarURL] = useState(props.calendarURL);
     const [URL, setURL] = useState("");
-    // console.log("before input: " + calendarURL)
-    // console.log("URL: " + URL)
     
     function handleChangeURL(event) {
         const URL = event.target.value;
@@ -16,7 +13,6 @@ function MySchedule(props) {
         const token = localStorage.getItem('usertoken');
         const store = URL;
         
-        // console.log("after input: " + calendarURL);
 
         axios().post('/user/updateCalendarLink', {
             link: store,
@@ -30,12 +26,11 @@ function MySchedule(props) {
         .catch( err => {
             console.log(err)
         });
-        // setCalendarURL(URL);
     }
 
     return (<div className='card'>
         <h4 className='profile-title card-header'>MY SCHEDULE</h4>
-        {localStorage.getItem('calendarURL') === "" ? 
+        {props.calendarURL === "" ? 
         <div className="form-group sync-calendar">
             <label className="inputCalURL"
             htmlFor="inputURL">Sync Google Calendar</label>

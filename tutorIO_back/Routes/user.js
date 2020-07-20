@@ -7,7 +7,7 @@ const tutorController = require('../controller/tutor');
 const moduleController = require('../controller/module');
 const commentController = require('../controller/comment');
 const ratingController = require('../controller/rating');
-const emailController = require('../controller/email');
+// const emailController = require('../controller/email');
 // const imageController = require('../controller/image');
 // const upload = require('../config/multerConfig');
 
@@ -106,7 +106,7 @@ router.post("/uploadImage",
     auth.getLoggedInUser,
     profileController.uploadImage
 )
-+
+
 // Router for Tutors
 
 /**
@@ -208,9 +208,9 @@ router.post("/updateRating",
     ratingController.countAverage
 )
 
-router.post('/addImage', 
-    upload.any(), 
-    imageController.createApp
-);
+// router.post('/addImage', 
+//     upload.any(), 
+//     imageController.createApp
+// );
 
 module.exports = router;

@@ -832,10 +832,24 @@ label {
     margin-top: 0;
 }
 .profpict {
-    width: 100%;
+    /* width: 100%;
+    border-radius: 50%;
     margin-top: 5%;
+    margin-bottom: 5%;
     display: inline;
+    position: relative;
+    overflow: hidden;
+    border-width: 1rem;
+    border-color: #5c5c5c; */
 }
+.avatar {
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center right;
+}
+
 ul {
     list-style-type: none;
 }
@@ -926,22 +940,22 @@ td {
     
 }
 .profile-pic {
-    color: #999;
+    color: #66AFBB;
+}
+.upload-file {
+    display: block;
+    margin-bottom: 5%;
+    
+}
+.profpict-preview {
+    margin-bottom: 5%;
+}
+#upload-btn {
+    display: block;
+    margin-bottom: 5%;
+    vertical-align: bottom;
 }
 
-.profile-pic:hover {
-    background-color: rgba(0,0,0,.5);
-    z-index: 10000;
-    color: #fff;
-    transition: all .3s ease;
-    text-decoration: none;
-}
-
-.profile-pic span {
-    display: inline-block;
-    padding-top: 4.5em;
-    padding-bottom: 4.5em;
-}
 
 .save-btn {
     margin-top: 5%;
@@ -955,6 +969,9 @@ td {
 }
 #password-title {
     color: black;
+}
+.savepw-btn {
+    margin-bottom: 25%;
 }
 
 
@@ -985,7 +1002,7 @@ td {
 }
 .tutor-img {
     width: 75%;
-    margin: 15% 5% 10% 15%;
+    margin: 25% 5% 10% 15%;
 }
 .pricetag {
     color: #66AFBB;

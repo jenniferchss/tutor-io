@@ -1,13 +1,26 @@
-import React, { useState, useEffect } from "react";
-
+import React from "react";
+import {Image} from "cloudinary-react";
 
 function Profile(props) {
     
     return (<div className="profile card">
         <h4 className="profile-title card-header">PROFILE</h4>
         <div className="row card-body">
-            <div className="col-6 col-md-4 avatar-col">
-                <img src={require("../images/profile@2x.png")} className="profpict" alt="profpict" />
+            <div className="col-6 col-md-4 avatar-col profpict">
+                {props.imageId ? 
+                    <Image 
+                        key={props.imageId}
+                        cloudName="dahuvufbf"
+                        publicId={props.imageId}
+                        className="avatar"
+                        width="100%"
+                        crop="scale"
+                    /> : 
+                    <img 
+                        src={require("../images/profile@2x.png")} 
+                        className="avatar" 
+                        alt="profpict" 
+                    />}
             </div>
             <div className="col-sm-6 col-md-8 right-profile">
                     <h3 className="name-dashboard">{props.fName} {props.lName}</h3>

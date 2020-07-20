@@ -17,7 +17,7 @@ function TutorRegistration() {
     const [fee, setFee] = useState("")
     const [alert, setAlert] = useState("");
     const [message, setMessage] = useState("");
-    const history = useHistory();
+    // const history = useHistory();
     // const [toDelete, setToDelete] = useState("");
 
     // console.log("moduleCode: " + JSON.stringify(moduleCode, null, 2));

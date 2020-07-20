@@ -7,6 +7,7 @@ import ScienceTab from "./ScienceTab";
 import SDETab from "./SDETab";
 import EnginTab from "./EnginTab";
 import SideNav from "./SideNav";
+import {Image} from "cloudinary-react";
 
 
 function TutorListing() {
@@ -77,7 +78,15 @@ function TutorListing() {
             <div className="card mb-3 tutor-card" key={tutor}>
                 <div className="row no-gutters">
                 <div className="col-md-3">
-                <img src={require("../images/profile@2x.png")} className="card-img tutor-img" alt="tutor-img" />
+                {tutor.tutorProfile.image === "" ? <img src={require("../images/profile@2x.png")} className="card-img tutor-img" alt="tutor-img" />
+                : <Image 
+                        key={tutor.tutorProfile.image}
+                        cloudName="dahuvufbf"
+                        publicId={tutor.tutorProfile.image}
+                        className="tutor-img"
+                        width="100%"
+                        crop="scale"
+                />} 
                 </div>
                 <div className="col-md-6">
                     <div className="card-body">

@@ -19,7 +19,7 @@ return (<div className="white-container" id="howitworks">
             
             <div className="card-body">
             <h5 className="card-title subtitle">Find Your Tutor</h5>
-            <p className="card-text">Click on the ‘Modules’ tab to find the modules you need a help in and you will be spoilt with choices of qualified tutors who are teaching the module you selected.</p>
+            <p className="card-text why-tutee">Click on the ‘Modules’ tab to find the modules you need a help in and you will be spoilt with choices of qualified tutors who are teaching the module you selected.</p>
             </div>
             
         </div>
@@ -29,7 +29,7 @@ return (<div className="white-container" id="howitworks">
             
             <div className="card-body">
             <h5 className="card-title subtitle">Contact & Schedule</h5>
-            <p className="card-text">After you have chosen the tutor of your choice, head up to his/her profile and contact him/her via telegram. You will then be able to negotiate the fee and make an appointment directly.</p>
+            <p className="card-text why-tutee">After you have chosen the tutor of your choice, head up to his/her profile and contact him/her via telegram. You will then be able to negotiate the fee and make an appointment directly.</p>
             </div>
             
         </div>
@@ -38,7 +38,7 @@ return (<div className="white-container" id="howitworks">
             
             <div className="card-body">
             <h5 className="card-title subtitle">Rate & Give Feedbacks</h5>
-            <p className="card-text">Once you are done with your consultations and lessons, you will be able to give feedbacks and rate your tutor accordingly!</p>
+            <p className="card-text why-tutee">Once you are done with your consultations and lessons, you will be able to give feedbacks and rate your tutor accordingly!</p>
             </div>
             
         </div>

@@ -44,8 +44,12 @@ function Signin(props) {
             else if (err.response.data.message === "Incorrect Password !") {
                 setMessage("Incorrect password!");
             }
+            else if (err.response.data.message === "User is not verified") {
+                setMessage("Account is not verified yet. Please confirm your email address first.")
+                history.push('/failedverify')
+            }
             else {
-                setMessage("Have you connected to the database?");
+                setMessage("Error has occurred. Please refresh the page.");
             }
         });
         

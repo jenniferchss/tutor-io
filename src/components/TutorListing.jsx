@@ -8,6 +8,7 @@ import SDETab from "./SDETab";
 import EnginTab from "./EnginTab";
 import SideNav from "./SideNav";
 import {Image} from "cloudinary-react";
+import Rating from '@material-ui/lab/Rating';
 
 
 function TutorListing() {
@@ -100,8 +101,9 @@ function TutorListing() {
                     </div>
                 </div>
                 <div className="col-md-3">
+                    {tutor.totalRating === undefined ? <Rating className="rate-view" name="pristine" value={null} /> : <Rating className="rate-view" name="read-only" value={tutor.totalRating} readOnly />}
                     <h3 className="pricetag">${tutor.fee}</h3>
-                    <p className="text-muted">per hour</p>
+                    <p className="per-hr text-muted">per hour</p>
                 </div>
             </div>   
         </div>)

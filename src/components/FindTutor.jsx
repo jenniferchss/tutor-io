@@ -14,7 +14,7 @@ function FindTutor() {
           })
           .then ( res => {
             console.log("tutor list: " + JSON.stringify(res, null, 2))
-            setTutorList(res);
+            // setTutorList(res);
           })
           .catch (err => {
             console.log(err);
@@ -34,8 +34,8 @@ function FindTutor() {
             <div className="editprofile">
                 <div className="card tab-content">
 
-                    <h4 className="tutlist-modcode"><strong>{tutorList.length} </strong>results found</h4>
-
+                    <h4 className="tutlist-modcode"><strong>{tutorList.length} </strong>tutors found</h4>
+{/* 
                     {tutorList.map(tutor => {
                     return (
                         <div className="card mb-3 tutor-card" key={tutor}>
@@ -68,7 +68,7 @@ function FindTutor() {
                             </div>
                         </div>   
                     </div>)
-                    })}
+                    })} */}
 
                 </div>
             </div>

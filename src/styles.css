@@ -1093,9 +1093,35 @@ td {
     width: 75%;
     margin: 25% 5% 10% 15%;
 }
+.rate-view {
+    padding-top: 25%;
+}
 .pricetag {
     color: #66AFBB;
-    padding-top: 15%;
+    padding-top: 5%;
+}
+@media (max-width:770px) {
+    .tutor-img {
+        display: block;
+        width: 50%;
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+        text-align: center;
+    }
+    .rate-view {
+        padding-top: 0;
+        padding-left: 6%;
+    }
+    .pricetag {
+        color: #66AFBB;
+        padding-top: 5%;
+        padding-left: 6%;
+    }
+    .per-hr {
+        padding-left: 6%;
+    }
 }
 
 

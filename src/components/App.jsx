@@ -19,6 +19,7 @@ import TutorRegistration from "./TutorRegistration";
 import EditMyProfile from "./EditMyProfile";
 import Privacy from "./Privacy";
 import TutorListing from "./TutorListing";
+import FindTutor from "./FindTutor";
 import NotFoundPage from "./NotFoundPage";
 import Footer from "./Footer";
 import axios from "../axios";
@@ -168,6 +169,7 @@ class App extends React.Component {
             <ModulesOfSde {...props} isLoggedIn={isLoggedIn} />
           )}/>
         <Route path="/profile" exact component ={TutorProfile}/>
+        <Route path="/findtutor" exact component={FindTutor}/>
         <Route path="*" exact component={NotFoundPage}/>
        </Switch>
       </div>}

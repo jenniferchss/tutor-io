@@ -73,25 +73,25 @@ function Signup(props) {
                 <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
                 
                 <div className="form-row">
-                    <div className="form-group col-md-6">
+                    <div className="col-md-6">
                         <label htmlFor="inputFName" className="sr-only username-input">First Name</label>
                         <input 
                             onChange={handleChangeFName}
                             type="firstName" 
                             id="inputFName" 
-                            className="form-control" 
+                            className="form-control signup-name signup-fname" 
                             placeholder="First name" 
                             value={firstName}
                             required autoFocus
                         />
                     </div>
-                    <div className="form-group col-md-6">
+                    <div className="col-md-6">
                         <label htmlFor="inputLName" className="sr-only username-input">Last Name</label>
                         <input 
                             onChange={handleChangeLName}
                             type="lastName" 
                             id="inputLName" 
-                            className="form-control" 
+                            className="form-control signup-name signup-lname" 
                             placeholder="Last name" 
                             value={lastName}
                             required

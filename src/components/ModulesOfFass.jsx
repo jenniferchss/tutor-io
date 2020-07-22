@@ -4,18 +4,18 @@ import FASSTab from "./FASSTab";
 import SideNav from "./SideNav";
 import Footer from "./Footer";
 import { useHistory } from "react-router-dom";
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 function ModulesOfFass(props) {
+  const [options, setOptions] = useState([])
   const [moduleList, setModuleList] = useState([]);
+  const [moduleCode, setModuleCode] = useState(options[0])
+  const [inputCode, setInputCode] = useState("")
   const history = useHistory();
 
   useEffect(() => {
-    axios().get('/user/findSpecificModules/Arts_&_Social_Sciences', {
-      // params: {
-      //   faculty: 'Arts_&_Social_Sciences'
-      // }
-      
-    })
+    axios().get('/user/findSpecificModules/Arts_&_Social_Sciences')
     .then(res => {
       console.log(res);
       setModuleList(res.data);
@@ -23,7 +23,26 @@ function ModulesOfFass(props) {
     .catch (err => {
       console.log(err);
     });
+
+    //GET MODULE CODE LIST//
+    axios().get('/user/findSpecificModules/Arts_&_Social_Sciences')
+    .then ( res => {
+        // console.log("GET MODULES: " + JSON.stringify(res.data, null, 2))
+        setOptions(res.data);
+    })
+    .catch (err => {
+        console.log(err);
+    });
   }, [])
+
+  const groupedOptions = options.map((option) => {
+    console.log("firstletter: " + option.moduleCode);
+    const firstLetter = option.moduleCode[0].toUpperCase();
+    return {
+      firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+      ...option,
+    };
+  });
 
   function redirectLogIn() {
     history.push('/signin');
@@ -45,6 +64,24 @@ function ModulesOfFass(props) {
       <div className="well mods-list">
       <FASSTab />
       <div className="card tab-content">
+        <Autocomplete
+            className="list-of-mods"
+            value={moduleCode}
+            onChange={(event, newValue) => {
+            setModuleCode(newValue.name);
+            }}
+            inputValue={inputCode}
+            onInputChange={(event, newInputValue) => {
+            setInputCode(newInputValue);
+            }}
+            id="controllable-states-demo"
+            // options={groupedOptions.map((option) => option.name)}
+            options={groupedOptions.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            groupBy={(option) => option.firstLetter}
+            getOptionLabel={(option) => option.moduleCode}
+            style={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Search Module" size="small" />}
+        />
         <table className="table mod-list">
               <thead>
                   <tr>
@@ -95,6 +132,24 @@ function ModulesOfFass(props) {
         <div className="well mods-list">
         <FASSTab />
           <div className="card tab-content">
+            <Autocomplete
+              className="list-of-mods"
+              value={moduleCode}
+              onChange={(event, newValue) => {
+              setModuleCode(newValue.name);
+              }}
+              inputValue={inputCode}
+              onInputChange={(event, newInputValue) => {
+              setInputCode(newInputValue);
+              }}
+              id="controllable-states-demo"
+              // options={groupedOptions.map((option) => option.name)}
+              options={groupedOptions.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+              groupBy={(option) => option.firstLetter}
+              getOptionLabel={(option) => option.moduleCode}
+              style={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} label="Search Module" size="small" />}
+            />
             <table className="table mod-list">
                   <thead>
                       <tr>

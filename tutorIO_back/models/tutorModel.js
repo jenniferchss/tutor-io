@@ -30,6 +30,12 @@ const TutorSchema = mongoose.Schema({
     },
     totalRating: {
         type: Number
+    },
+    firstName: {
+        type: String
+    },
+    lastName: {
+        type: String
     }
 });
 

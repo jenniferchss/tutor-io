@@ -92,7 +92,8 @@ exports.createTutor = async (req, res) => {
             tutor = new Tutor({
                 "userID": userProfile.userID,
                 "tutorProfile": userProfile,
-                "name" : userProfile.firstName + userProfile.lastName
+                "firstName" : userProfile.firstName,
+                "lastName" : userProfile.lastName
             })
 
             console.log(tutor.tutorProfile)

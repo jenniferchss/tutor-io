@@ -42,6 +42,13 @@ exports.signUp = async (req, res, next) => {
         password,
       } = req.body;  
 
+
+      let fN = firstName.toLowerCase()
+      let fName = fN[0].toUpperCase() + string.substring(1)
+      
+      let lN = lastName.toLowerCase()
+      let lName = lN[0].toUpperCase() + string.substring(1)
+
       let user = await User.findOne({
             email: email
       });
@@ -53,8 +60,8 @@ exports.signUp = async (req, res, next) => {
       } 
 
       user = new User({
-          firstName,
-          lastName,
+          fName,
+          lName,
           email,
           password
       });

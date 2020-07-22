@@ -294,10 +294,62 @@ exports.getTutorsProfile = async(req, res) => {
 
 exports.findTutor = async(req, res, next) => {
     try {
-        let tutorName = req.body.tutorName;
-        let tutors = await findTutorByName(tutorName);
-        console.log("Tutors " + tutors)
-        req.teachingTutors = tutors
+        let searchName = req.body.tutorName;
+        
+        if (!searchName) {
+            res.status(400).json({message: "No user found"})
+        }
+
+        let fullName = searchName.split(' ')
+        let firstName = fullName[0]
+        let lastName = fullName[fullName.length - 1]
+        let allTutor = await Tutor.find();
+        let tutorList = []
+
+        if (lastName != '') {
+            firstName.toLowerCase()
+            firstName[0].toUpperCase() + string.substring(1)
+
+            lastName.toLowerCase()
+            lastName[0].toUpperCase() + string.substring(1)
+
+            for (var i = 0; i < allTutor.length(); i++) {
+                if (firstName === allTutor[i].firstName && lastName === allTutor[i].lastName) {
+                    tutorList.push(allTutor[i]);
+                    allTutor.pull(allTutor[i]);
+                } else if (firstName === allTutor[i].firstName) {
+                    tutorList.push(allTutor[i]);
+                    allTutor.pull(allTutor[i]);
+                } else if (lastName === allTutor[i].lastName) {
+                    tutorList.push(allTutor[i]);
+                    allTutor.pull(allTutor[i]);
+                } else if (lastName === allTutor[i].firstName) {
+                    tutorList.push(allTutor[i]);
+                    allTutor.pull(allTutor[i]);
+                } else if (firstName === allTutor[i].lastName) {
+                    tutorList.push(allTutor[i]);
+                    allTutor.pull(allTutor[i]);
+                } 
+            }
+
+        } else {
+            firstName.toLowerCase()
+            firstName[0].toUpperCase() + string.substring(1)
+            let name = firstName;
+
+            for (var i = 0; i < allTutor.length(); i++) {
+                if (name === allTutor[i].firstName) {
+                    tutorList.push(allTutor[i]);
+                    allTutor.pull(allTutor[i]);
+                } else if (name === allTutor[i].lastName) {
+                    tutorList.push(allTutor[i]);
+                    allTutor.pull(allTutor[i]);
+                }
+            }
+        }
+        
+        console.log("Tutors " + tutorList)
+        req.teachingTutors = tutorList
         next();
     } catch (err) {
         res.status(400).json({message: "Error in fetching tutor"})

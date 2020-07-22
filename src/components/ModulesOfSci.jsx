@@ -4,9 +4,14 @@ import ScienceTab from "./ScienceTab";
 import SideNav from "./SideNav";
 import Footer from "./Footer";
 import { useHistory } from "react-router-dom";
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 function ModulesOfSci(props) {
+  const [options, setOptions] = useState([])
   const [moduleList, setModuleList] = useState([]);
+  const [moduleCode, setModuleCode] = useState(options[0])
+  const [inputCode, setInputCode] = useState("")
   const history = useHistory();
 
   useEffect(() => {
@@ -18,7 +23,26 @@ function ModulesOfSci(props) {
     .catch (err => {
       console.log(err);
     });
+
+    //GET MODULE CODE LIST//
+    axios().get('/user/findSpecificModules/Science')
+    .then ( res => {
+        // console.log("GET MODULES: " + JSON.stringify(res.data, null, 2))
+        setOptions(res.data);
+    })
+    .catch (err => {
+        console.log(err);
+    });
   }, [])
+
+  const groupedOptions = options.map((option) => {
+    console.log("firstletter: " + option.moduleCode);
+    const firstLetter = option.moduleCode[0].toUpperCase();
+    return {
+      firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+      ...option,
+    };
+  });
 
   function redirectLogIn() {
     history.push('/signin');
@@ -39,6 +63,24 @@ function ModulesOfSci(props) {
     <div className="well mods-list">
     <ScienceTab />
     <div className="card tab-content">
+      <Autocomplete
+            className="list-of-mods"
+            value={moduleCode}
+            onChange={(event, newValue) => {
+            setModuleCode(newValue.name);
+            }}
+            inputValue={inputCode}
+            onInputChange={(event, newInputValue) => {
+            setInputCode(newInputValue);
+            }}
+            id="controllable-states-demo"
+            // options={groupedOptions.map((option) => option.name)}
+            options={groupedOptions.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            groupBy={(option) => option.firstLetter}
+            getOptionLabel={(option) => option.moduleCode}
+            style={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Search Module" size="small" />}
+        />
       <table className="table mod-list">
             <thead>
                 <tr>
@@ -84,11 +126,28 @@ function ModulesOfSci(props) {
   <div className="right-side-modlist">
   <div className="row">
     <SideNav />
-
     <main role="main" className="col-md-9 ml-sm-auto col-lg-10 mods-pg">
       <div className="well mods-list">
       <ScienceTab />
         <div className="card tab-content">
+          <Autocomplete
+            className="list-of-mods"
+            value={moduleCode}
+            onChange={(event, newValue) => {
+            setModuleCode(newValue.name);
+            }}
+            inputValue={inputCode}
+            onInputChange={(event, newInputValue) => {
+            setInputCode(newInputValue);
+            }}
+            id="controllable-states-demo"
+            // options={groupedOptions.map((option) => option.name)}
+            options={groupedOptions.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            groupBy={(option) => option.firstLetter}
+            getOptionLabel={(option) => option.moduleCode}
+            style={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Search Module" size="small" />}
+          />
           <table className="table mod-list">
                 <thead>
                     <tr>

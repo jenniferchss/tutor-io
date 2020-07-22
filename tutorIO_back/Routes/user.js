@@ -184,6 +184,11 @@ router.get("/tutorProfile/:tutorID",
     tutorController.getTutorProfile
 )
 
+router.get("/findTutor",
+    tutorController.findTutor,
+    tutorController.getTutorsProfile
+)
+
 // Routes for comments
 
 router.post("/postComment",

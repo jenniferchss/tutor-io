@@ -158,7 +158,7 @@ exports.uploadImage = async (req, res) => {
         let userProfile = await getUserProfile(id);
 
         const fileStr = req.body.fileString;
-        console.log("fileStr " + fileStr)
+        // console.log("fileStr " + fileStr)
         
         const uploadedResponse = await cloudinary.uploader.upload(
             fileStr, {

@@ -63,6 +63,16 @@ const findRating = async (id) => {
     })
 }
 
+const findTutorByName = async(name) => {
+    return new Promise((resolve,reject) => {
+        Tutor.find({"name" : name})
+        .then(tutors => {
+            resolve(tutors)
+        })
+        .catch(err => reject(err.message))
+    })
+}
+
 exports.createTutor = async (req, res) => {
     try {
         const ID = req.user.id
@@ -82,6 +92,7 @@ exports.createTutor = async (req, res) => {
             tutor = new Tutor({
                 "userID": userProfile.userID,
                 "tutorProfile": userProfile,
+                "name" : userProfile.firstName + userProfile.lastName
             })
 
             console.log(tutor.tutorProfile)
@@ -277,6 +288,18 @@ exports.getTutorsProfile = async(req, res) => {
         
     } catch(err) {
         res.status(400).json({ message: "Error in Fetching user" });
+    }
+}
+
+exports.findTutor = async(req, res, next) => {
+    try {
+        let tutorName = req.body.tutorName;
+        let tutors = await findTutorByName(tutorName);
+        console.log("Tutors " + tutors)
+        req.teachingTutors = tutors
+        next();
+    } catch (err) {
+        res.status(400).json({message: "Error in fetching tutor"})
     }
 }
 

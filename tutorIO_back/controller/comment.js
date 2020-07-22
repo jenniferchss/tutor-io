@@ -46,12 +46,19 @@ exports.postComment = async (req, res) => {
         let isTutor = commentProfile.isTutor;
         let cID = commentProfile.userID;
 
+        var currentTime = new Date()
+        var month = currentTime.getMonth() + 1
+        var day = currentTime.getDate()
+        var year = currentTime.getFullYear()
+        var date = year + "-" + month + "-" + day
+
         let comment = new Comment({
             content: content,
             firstName: cFname,
             lastName: cLname,
             isTutor: isTutor,
-            userID : cID
+            userID : cID,
+            createdAt: date
         });
 
         comment.save();

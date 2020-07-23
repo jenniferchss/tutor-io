@@ -46,11 +46,11 @@ exports.postComment = async (req, res) => {
         let isTutor = commentProfile.isTutor;
         let cID = commentProfile.userID;
 
-        var currentTime = new Date()
-        var month = currentTime.getMonth() + 1
-        var day = currentTime.getDate()
-        var year = currentTime.getFullYear()
-        var date = year + "-" + month + "-" + day
+        // var currentTime = new Date()
+        // var month = currentTime.getMonth() + 1
+        // var day = currentTime.getDate()
+        // var year = currentTime.getFullYear()
+        // var date = year + "-" + month + "-" + day
 
         let comment = new Comment({
             content: content,
@@ -58,7 +58,6 @@ exports.postComment = async (req, res) => {
             lastName: cLname,
             isTutor: isTutor,
             userID : cID,
-            createdAt: date
         });
 
         comment.save();

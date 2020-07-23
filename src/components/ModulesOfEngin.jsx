@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from "./LoadingIndicator";
 
 function ModulesOfEngin(props) {
   const [options, setOptions] = useState([])
@@ -90,6 +91,7 @@ function ModulesOfEngin(props) {
                   </tr>
               </thead>
               <tbody>
+                <LoadingIndicator/>
                 {moduleList.map(mod => {return (
                     <tr key={mod.moduleCode}>
                     <td className="table-content">
@@ -158,6 +160,7 @@ function ModulesOfEngin(props) {
                       </tr>
                   </thead>
                   <tbody>
+                    <LoadingIndicator/>
                     {moduleList.map(mod => {
                       return (
                         <tr key={mod.moduleCode}>

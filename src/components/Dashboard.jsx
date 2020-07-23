@@ -6,6 +6,7 @@ import Rating from "./Rating";
 import Comments from "./Comments";
 import axios from "../axios";
 import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from "./LoadingIndicator";
 
 
 const currentTime = new Date().getHours();
@@ -118,12 +119,13 @@ function Dashboard(props) {
         <div className="row">
             <SideNav />
 
-            <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">    
+            <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+                   
                 {currentTime < 12 && <h3 className="welcome-title">Good morning, <strong>{fName}</strong>! </h3>}
                 {currentTime >= 12 && currentTime < 18 ? <h3 className="welcome-title">Good afternoon, <strong>{fName}</strong>! </h3> : null}
                 {currentTime >= 18 && <h3 className="welcome-title">Good evening, <strong>{fName}</strong>! </h3>}
                 
-                
+                <LoadingIndicator/> 
                 <Profile
                     imageId={imageId}
                     fName={fName}

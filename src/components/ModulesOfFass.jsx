@@ -6,6 +6,8 @@ import Footer from "./Footer";
 import { useHistory } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from "./LoadingIndicator";
 
 function ModulesOfFass(props) {
   const [options, setOptions] = useState([])
@@ -15,14 +17,14 @@ function ModulesOfFass(props) {
   const history = useHistory();
 
   useEffect(() => {
-    axios().get('/user/findSpecificModules/Arts_&_Social_Sciences')
+    trackPromise(axios().get('/user/findSpecificModules/Arts_&_Social_Sciences')
     .then(res => {
       console.log(res);
       setModuleList(res.data);
     })
     .catch (err => {
       console.log(err);
-    });
+    }));
 
     //GET MODULE CODE LIST//
     axios().get('/user/findSpecificModules/Arts_&_Social_Sciences')
@@ -90,6 +92,7 @@ function ModulesOfFass(props) {
                   </tr>
               </thead>
               <tbody>
+                <LoadingIndicator/>
                 {moduleList.map(mod => {return (
                     <tr key={mod.moduleCode}>
                     <td className="table-content">
@@ -158,6 +161,7 @@ function ModulesOfFass(props) {
                       </tr>
                   </thead>
                   <tbody>
+                    <LoadingIndicator/>
                     {moduleList.map(mod => {
                       return (
                         <tr key={mod.moduleCode}>

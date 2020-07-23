@@ -6,6 +6,8 @@ import Footer from "./Footer";
 import { useHistory } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from "./LoadingIndicator";
 
 function ModulesOfSde(props) {
   const [options, setOptions] = useState([])
@@ -15,14 +17,14 @@ function ModulesOfSde(props) {
   const history = useHistory();
 
   useEffect(() => {
-    axios().get('/user/findSpecificModules/School_Of_Design_And_Environment')
+    trackPromise(axios().get('/user/findSpecificModules/School_Of_Design_And_Environment')
     .then(res => {
       console.log(res);
       setModuleList(res.data);
     })
     .catch (err => {
       console.log(err);
-    });
+    }));
 
     //GET MODULE CODE LIST//
     axios().get('/user/findSpecificModules/School_Of_Design_And_Environment')
@@ -88,6 +90,7 @@ function ModulesOfSde(props) {
                   </tr>
               </thead>
               <tbody>
+                <LoadingIndicator/>
                 {moduleList.map(mod => {return (
                     <tr key={mod.moduleCode}>
                     <td className="table-content">
@@ -156,6 +159,7 @@ function ModulesOfSde(props) {
                       </tr>
                   </thead>
                   <tbody>
+                    <LoadingIndicator/>
                     {moduleList.map(mod => {
                       return (
                         <tr key={mod.moduleCode}>

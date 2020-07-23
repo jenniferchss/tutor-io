@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "../axios";
 import Alert from "./Alert";
 import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from "./LoadingIndicator";
 
 function Signin(props) {    
     const [emailaddress, setEmailaddress] = useState("")
@@ -64,7 +65,7 @@ function Signin(props) {
             
             <h1 className="joinus-title h3 mb-3 font-weight-normal text-center">Welcome back!</h1>
             {/* <h5>Status: {props.isLoggedIn}</h5> */}
-
+            <LoadingIndicator/>
             <label htmlFor="inputEmail" className="sr-only email-input">Email address</label>
             <input 
                 onChange={handleChangeEmail}

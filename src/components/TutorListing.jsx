@@ -9,6 +9,9 @@ import EnginTab from "./EnginTab";
 import SideNav from "./SideNav";
 import {Image} from "cloudinary-react";
 import Rating from '@material-ui/lab/Rating';
+import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from "./LoadingIndicator";
+
 
 
 function TutorListing() {
@@ -17,7 +20,7 @@ function TutorListing() {
     useEffect(() => {
         const moduleCode = localStorage.getItem('request');
 
-        axios().get('/user/findSpecificTutor/'+moduleCode)
+        trackPromise(axios().get('/user/findSpecificTutor/'+moduleCode)
         .then (res => {
             console.log("LOAD PROFILES: " + JSON.stringify(res, null, 2));
             console.log(res.data)
@@ -26,7 +29,7 @@ function TutorListing() {
         })
         .catch (err => {
             console.log(err);
-        })
+        }));
     }, []);
     
     function selectTab(item) {
@@ -70,7 +73,7 @@ function TutorListing() {
     <div className="card tab-content">
 
         <h4 className="tutlist-modcode">Module: <strong className="modcode-title">{localStorage.getItem('request')}</strong></h4>
-
+        <LoadingIndicator/>
         {tutorList.map(tutor => {
         return (
             <div className="card mb-3 tutor-card" key={tutor}>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "../axios";
 import { useHistory } from "react-router-dom";
 import Alert from "./Alert";
+import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from "./LoadingIndicator";
 
 function Signup(props) {
     const [firstName, setFirstName] = useState("")
@@ -47,7 +49,7 @@ function Signup(props) {
             setAlert('Password do not match!');
         }
         else {
-        axios().post ('/user/signup',{
+        trackPromise(axios().post ('/user/signup',{
             firstName: firstName,
             lastName: lastName,
             email: emailaddress,
@@ -60,7 +62,8 @@ function Signup(props) {
         })
         .catch(function(err) {
             console.error(err);
-            setAlert('Username / Email is already registered')});
+            setAlert('Username / Email is already registered')
+        }));
         }
     }
     
@@ -71,7 +74,7 @@ function Signup(props) {
             <form onSubmit={handleSubmit} className="login-form">
                 
                 <h1 className="joinus-title h3 mb-3 font-weight-normal">Join our Big Family!</h1>
-                
+                <LoadingIndicator/>
                 <div className="form-row">
                     <div className="col-md-6">
                         <label htmlFor="inputFName" className="sr-only username-input">First Name</label>

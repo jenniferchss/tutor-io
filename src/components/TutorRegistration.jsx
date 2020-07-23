@@ -3,9 +3,10 @@ import SideNav from "./SideNav";
 import axios from "../axios";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { useHistory } from 'react-router-dom';
 import Alert from "./Alert";
 import GreenAlert from "./GreenAlert";
+import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from "./LoadingIndicator";
 
 
 function TutorRegistration() {
@@ -26,7 +27,7 @@ function TutorRegistration() {
         const token = localStorage.getItem('usertoken');
 
         //GET USER TUTOR STATUS//
-        axios().get('/user/userProfile', {
+        trackPromise(axios().get('/user/userProfile', {
             headers:{
               Authorization: token
             }
@@ -39,7 +40,7 @@ function TutorRegistration() {
         })
         .catch (err => {
             console.log(err);
-        });
+        }));
 
         //GET ALL MODULE CODE LIST//
         axios().get('/user/getAllModules')
@@ -52,7 +53,7 @@ function TutorRegistration() {
         });
 
         //GET ALL TAUGHT MODULES//
-        axios().get('/user/getTaughtModules', {
+        trackPromise(axios().get('/user/getTaughtModules', {
             headers:{
               Authorization: token
             }
@@ -63,10 +64,10 @@ function TutorRegistration() {
         })
         .catch (err => {
             console.log(err);
-        });
+        }));
 
         //GET TUTOR FEES
-        axios().get('/user/getFee', {
+        trackPromise(axios().get('/user/getFee', {
             headers:{
                 Authorization: token
               }
@@ -77,7 +78,7 @@ function TutorRegistration() {
         })
         .catch (err => {
             console.log(err);
-        });
+        }));
 
     }, [])
 
@@ -234,8 +235,7 @@ function TutorRegistration() {
             <SideNav />
 
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
-                {alert ? <Alert msg={alert}/> : null}
-                {message ? <GreenAlert msg={message}/> : null}
+                
 
                 <h3 className="page-title" 
                     data-toggle="tooltip" 
@@ -243,7 +243,9 @@ function TutorRegistration() {
                     title="You are by default a tutee. You can be a tutor by simply registering the module you want to teach below.">
                     Tutor Registration</h3>
                 <hr></hr>
-
+                {alert ? <Alert msg={alert}/> : null}
+                {message ? <GreenAlert msg={message}/> : null}
+                <LoadingIndicator/>
                 <div id="before-reg" className={`${isTutor ? "hide-div" : ""}`}>
                     <h5 className="tutor-reg">Do you want to register to be a tutor?</h5>
                     <button onClick={handleClickYes} type="submit" className="btn btn-info">Yes, I want to help my peers!</button>
@@ -290,6 +292,7 @@ function TutorRegistration() {
                         </thead>
                         
                         <ul id="ul-regmod"className="mod-reg-ul">
+                            <LoadingIndicator/>
                             {modulesTaught.map(module => {
                                 // setToDelete(module);
                                 return (
@@ -303,6 +306,7 @@ function TutorRegistration() {
 
                     <label className="module-code">FEE OFFERED</label>
                     <small className="small-note-fee">This fee will be displayed on your profile, and this fee will be offered for all modules you are teaching. You can put in a range if you are offering different prices for different modules!</small>
+                    <LoadingIndicator/>
                     <div className="form-row fee-offered">
                         <div className="form-group col-md-6">
                             <input 

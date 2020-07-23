@@ -3,26 +3,9 @@ import axios from "../axios";
 import SideNav from "./SideNav";
 import {Image} from "cloudinary-react";
 import Rating from '@material-ui/lab/Rating';
-import { usePromiseTracker } from "react-promise-tracker";
-import Loader from 'react-loader-spinner';
+import LoadingIndicator from "./LoadingIndicator";
 import { trackPromise } from 'react-promise-tracker';
 
-const LoadingIndicator = props => {
-    const { promiseInProgress } = usePromiseTracker();
-    return (
-        promiseInProgress &&
-        <div style={{
-            width: "100%",
-            height: "100",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: "99"
-        }}>
-            <Loader type="ThreeDots" color="#66afbb" height="100" width="100" />
-        </div>
-    );
-}
 
 function FindTutor() {
     const [tutorList, setTutorList] = useState([]);

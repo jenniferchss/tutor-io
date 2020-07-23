@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import { useHistory } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { trackPromise } from 'react-promise-tracker';
 
 function ModulesOfComp(props) {
   const [options, setOptions] = useState([])
@@ -15,14 +16,14 @@ function ModulesOfComp(props) {
   const history = useHistory();
 
   useEffect(() => {
-    axios().get('/user/findSpecificModules/School_Of_Computing')
+    trackPromise(axios().get('/user/findSpecificModules/School_Of_Computing')
     .then(res => {
       console.log(res);
       setModuleList(res.data);
     })
     .catch (err => {
       console.log(err);
-    });
+    }));
 
     //GET MODULE CODE LIST//
     axios().get('/user/findSpecificModules/School_Of_Computing')

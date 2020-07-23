@@ -3,6 +3,26 @@ import axios from "../axios";
 import SideNav from "./SideNav";
 import {Image} from "cloudinary-react";
 import Rating from '@material-ui/lab/Rating';
+import { usePromiseTracker } from "react-promise-tracker";
+import Loader from 'react-loader-spinner';
+import { trackPromise } from 'react-promise-tracker';
+
+const LoadingIndicator = props => {
+    const { promiseInProgress } = usePromiseTracker();
+    return (
+        promiseInProgress &&
+        <div style={{
+            width: "100%",
+            height: "100",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: "99"
+        }}>
+            <Loader type="ThreeDots" color="#66afbb" height="100" width="100" />
+        </div>
+    );
+}
 
 function FindTutor() {
     const [tutorList, setTutorList] = useState([]);
@@ -11,7 +31,7 @@ function FindTutor() {
         const tutorname = localStorage.getItem('tutorname');
         console.log("tutorname: " + tutorname);
 
-        axios().post('/user/findTutor', {
+        trackPromise(axios().post('/user/findTutor', {
             tutorName: tutorname
         })
         .then ( res => {
@@ -20,7 +40,7 @@ function FindTutor() {
         })
         .catch (err => {
             console.log(err);
-        });
+        }));
     }, []);
 
     function handleClick(userid) {
@@ -35,8 +55,8 @@ function FindTutor() {
         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 mods-pg">
             <div className="editprofile">
                 <div className="card tab-content">
-
                     <h4 className="tutlist-modcode"><strong>{tutorList.length} </strong>tutor(s) found</h4>
+                    <LoadingIndicator />
 
                     {tutorList.map(tutor => {
                     return (

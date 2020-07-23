@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "../axios";
 import Alert from "./Alert";
+import { trackPromise } from 'react-promise-tracker';
 
 function Signin(props) {    
     const [emailaddress, setEmailaddress] = useState("")
@@ -22,7 +23,7 @@ function Signin(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        axios().post ('/user/login',{
+        trackPromise(axios().post ('/user/login',{
             email: emailaddress,
             password: password
         })
@@ -51,8 +52,7 @@ function Signin(props) {
             else {
                 setMessage("Error has occurred. Please refresh the page.");
             }
-        });
-        
+        }));
     }
 
 

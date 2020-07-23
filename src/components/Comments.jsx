@@ -72,7 +72,7 @@ function Comments(props) {
                         <h5 className="name-comment">
                         <a onClick={() => handleClick(mod[0].userID)} href="/profile">{mod[0].firstName} {mod[0].lastName}</a>
                         </h5>
-                        <small className="date-comment text-muted">{mod[0].createdAt}</small>
+                        <small className="date-comment text-muted">posted on: {mod[0].createdAt.slice(0,10)}</small>
                         <p>{mod[0].content}</p>
                     </div>
 

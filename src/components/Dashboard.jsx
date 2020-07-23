@@ -5,6 +5,7 @@ import MySchedule from "./MySchedule.jsx";
 import Rating from "./Rating";
 import Comments from "./Comments";
 import axios from "../axios";
+import { trackPromise } from 'react-promise-tracker';
 
 
 const currentTime = new Date().getHours();
@@ -32,7 +33,7 @@ function Dashboard(props) {
     useEffect(() => {
         const token = localStorage.getItem('usertoken');
 
-        axios().get('/user/userProfile', {
+        trackPromise(axios().get('/user/userProfile', {
             headers:{
               Authorization: token
             }
@@ -110,7 +111,7 @@ function Dashboard(props) {
         })
         .catch (err => {
             console.log(err);
-        })
+        }));
     }, []);
 
     return (<div className="dashboard container-fluid">

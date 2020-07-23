@@ -18,9 +18,6 @@ function TutorListing() {
         const moduleCode = localStorage.getItem('request');
 
         axios().get('/user/findSpecificTutor/'+moduleCode)
-        // , {
-        //     params: moduleCode
-        // })
         .then (res => {
             console.log("LOAD PROFILES: " + JSON.stringify(res, null, 2));
             console.log(res.data)

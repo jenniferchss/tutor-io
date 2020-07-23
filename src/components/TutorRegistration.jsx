@@ -53,7 +53,7 @@ function TutorRegistration() {
         });
 
         //GET ALL TAUGHT MODULES//
-        trackPromise(axios().get('/user/getTaughtModules', {
+        axios().get('/user/getTaughtModules', {
             headers:{
               Authorization: token
             }
@@ -64,10 +64,10 @@ function TutorRegistration() {
         })
         .catch (err => {
             console.log(err);
-        }));
+        });
 
         //GET TUTOR FEES
-        trackPromise(axios().get('/user/getFee', {
+        axios().get('/user/getFee', {
             headers:{
                 Authorization: token
               }
@@ -78,9 +78,9 @@ function TutorRegistration() {
         })
         .catch (err => {
             console.log(err);
-        }));
+        });
 
-    }, [])
+    }, []);
 
     const groupedOptions = options.map((option) => {
         const firstLetter = option.name[0].toUpperCase();
@@ -115,7 +115,6 @@ function TutorRegistration() {
         let moduleTitle = "";
         let faculty = "";
 
-
         let i = 0;
         for (i = 0; i<2231; i++) {
             if (options[i].name === moduleCode) {
@@ -128,7 +127,10 @@ function TutorRegistration() {
             }
         }
 
-        axios().put ('/user/addModule',{
+        console.log("moduleTitle: " + moduleTitle);
+        console.log("faculty: " + faculty);
+
+        axios().put('/user/addModule',{
             name: moduleCode,
             moduleTitle: moduleTitle,
             faculty: faculty,
@@ -142,7 +144,8 @@ function TutorRegistration() {
                 setAlert("You have registered this module before!")
             }
             else {
-                setMessage("You have successfully registered!")
+                setMessage("You have successfully registered!");
+                window.location.reload();
             }
         })
         .catch(function(err) {
@@ -192,7 +195,6 @@ function TutorRegistration() {
     }
 
     function handleSaveFee(event) {
-        event.preventDefault();
         const token = localStorage.getItem('usertoken');
         axios().put('/user/updateFee', {
             fee: fee,
@@ -292,7 +294,7 @@ function TutorRegistration() {
                         </thead>
                         
                         <ul id="ul-regmod"className="mod-reg-ul">
-                            <LoadingIndicator/>
+                            {/* <LoadingIndicator/> */}
                             {modulesTaught.map(module => {
                                 // setToDelete(module);
                                 return (
@@ -306,7 +308,7 @@ function TutorRegistration() {
 
                     <label className="module-code">FEE OFFERED</label>
                     <small className="small-note-fee">This fee will be displayed on your profile, and this fee will be offered for all modules you are teaching. You can put in a range if you are offering different prices for different modules!</small>
-                    <LoadingIndicator/>
+                    {/* <LoadingIndicator/> */}
                     <div className="form-row fee-offered">
                         <div className="form-group col-md-6">
                             <input 

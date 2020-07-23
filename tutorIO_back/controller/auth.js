@@ -44,10 +44,10 @@ exports.signUp = async (req, res, next) => {
 
 
       let fN = firstName.toLowerCase()
-      let fName = fN[0].toUpperCase() + string.substring(1)
+      let fName = fN[0].toUpperCase() + fN.substring(1)
       
       let lN = lastName.toLowerCase()
-      let lName = lN[0].toUpperCase() + string.substring(1)
+      let lName = lN[0].toUpperCase() + lN.substring(1)
 
       let user = await User.findOne({
             email: email

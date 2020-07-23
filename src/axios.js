@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const AXIOS_CONFIG = {
-  baseURL: "http://localhost:5000",
+  baseURL: "https://ancient-spire-15588.herokuapp.com/",
   timeout: 5000,
   headers: {
     'Accept-Version': 1,

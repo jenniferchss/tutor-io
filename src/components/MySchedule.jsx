@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "../axios";
+import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from "./LoadingIndicator";
 
 function MySchedule(props) {
     const [URL, setURL] = useState("");
@@ -14,18 +16,19 @@ function MySchedule(props) {
         const store = URL;
         
 
-        axios().post('/user/updateCalendarLink', {
+        trackPromise(axios().post('/user/updateCalendarLink', {
             link: store,
             headers:{
                 Authorization: token
             }
         })
         .then( res => {
-            console.log("UPDATE CALENDAR: " + res)
+            console.log("UPDATE CALENDAR: " + res);
+            window.location.reload();
         })
         .catch( err => {
             console.log(err)
-        });
+        }));
     }
 
     return (<div className='card'>
@@ -43,6 +46,7 @@ function MySchedule(props) {
                 <li>And you're good to go!</li>
             </ol>
             </small>
+            <LoadingIndicator/>
             <input 
                 onChange={handleChangeURL}
                 type="text" 

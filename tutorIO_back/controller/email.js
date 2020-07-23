@@ -16,7 +16,7 @@ exports.verifyUserRegis = async response => {
         const token = response.token
         // TODO: Create a column in db called "emailverifytoken"
         // Generate a short length secure string ~ 16 chars
-        const domain = 'http://localhost:3000'
+        const domain = 'https://tutor-io-c7c0c.web.app'
     
         // /verify?token=acbdabcdabcdabcd&email=abcdef%40gmail.com -> URL (percent) Encode
      
@@ -53,7 +53,7 @@ exports.sendForgotEmail = async response => {
         console.log("user " + user)
         console.log("token " + token)
         
-        const domain = 'http://localhost:3000'
+        const domain = 'https://tutor-io-c7c0c.web.app'
     
         // /verify?token=acbdabcdabcdabcd&email=abcdef%40gmail.com -> URL (percent) Encode
         // const token = response.token;

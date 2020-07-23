@@ -5,10 +5,14 @@ const cors = require('cors');
 const allowedOrigins = [
 	'http://localhost:3000',
 	'http://localhost:5000',
+	'http://tutor-io-c7c0c.web.app',
+	'http://ancient-spire-15588.herokuapp.com/',
 	'https://tutor.io',
 	'http://localhost:3000/',
 	'http://localhost:5000/',
-	'https://tutor.io/'
+	'https://tutor.io/',
+	'https://tutor-io-c7c0c.web.app',
+	'https://ancient-spire-15588.herokuapp.com/'
 ];
 
 exports.corsConfig = {

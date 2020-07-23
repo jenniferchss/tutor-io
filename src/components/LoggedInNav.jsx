@@ -22,11 +22,11 @@ function LoggedInNav(props) {
     function handleSearchChange(event) {
       const search = event.target.value;
       setSearchTutor(search);
-  }
+    }
 
     function handleSearch() {
       localStorage.setItem('tutorname', searchTutor);
-      history.push('/findTutor');
+      history.push('/findtutor');
     };
 
 
@@ -39,7 +39,7 @@ function LoggedInNav(props) {
     <span className="navbar-toggler-icon"></span>
     </button>
 
-    <form onSubmit={handleSearch} className="form-control form-control-dark w-100 outer" autoComplete="off" action="/action_page.php">
+    <form onSubmit={handleSearch} className="form-control form-control-dark w-100 outer" autoComplete="off">
       
       <input 
         id="myInput" 

@@ -63,15 +63,15 @@ const findRating = async (id) => {
     })
 }
 
-const findTutorByName = async(name) => {
-    return new Promise((resolve,reject) => {
-        Tutor.find({"name" : name})
-        .then(tutors => {
-            resolve(tutors)
-        })
-        .catch(err => reject(err.message))
-    })
-}
+// const findTutorByName = async(name) => {
+//     return new Promise((resolve,reject) => {
+//         Tutor.find({"name" : name})
+//         .then(tutors => {
+//             resolve(tutors)
+//         })
+//         .catch(err => reject(err.message))
+//     })
+// }
 
 exports.createTutor = async (req, res) => {
     try {
@@ -294,8 +294,9 @@ exports.getTutorsProfile = async(req, res) => {
 
 exports.findTutor = async(req, res, next) => {
     try {
+        console.log("req.body: " + JSON.stringify(req.body, null, 2) );
         let searchName = req.body.tutorName;
-        
+        console.log("SEARCH: " + searchName);
         if (!searchName) {
             res.status(400).json({message: "No user found"})
         }
@@ -305,54 +306,60 @@ exports.findTutor = async(req, res, next) => {
         let lastName = fullName[fullName.length - 1]
         let allTutor = await Tutor.find();
         let tutorList = []
+        console.log("fullName: " + fullName);
+        console.log("lastName: " + lastName);
 
-        if (lastName != '') {
+        if (fullName.length > 1) {
             firstName.toLowerCase()
-            firstName[0].toUpperCase() + string.substring(1)
+            let fName = firstName[0].toUpperCase() + firstName.substring(1)
 
             lastName.toLowerCase()
-            lastName[0].toUpperCase() + string.substring(1)
+            let lName = lastName[0].toUpperCase() + lastName.substring(1)
 
-            for (var i = 0; i < allTutor.length(); i++) {
-                if (firstName === allTutor[i].firstName && lastName === allTutor[i].lastName) {
+            for (var i = 0; i < allTutor.length; i++) {
+                if (fName === allTutor[i].firstName && lName === allTutor[i].lastName) {
                     tutorList.push(allTutor[i]);
-                    allTutor.pull(allTutor[i]);
-                } else if (firstName === allTutor[i].firstName) {
+                    allTutor.splice(i,1);
+                } else if (fName === allTutor[i].firstName) {
                     tutorList.push(allTutor[i]);
-                    allTutor.pull(allTutor[i]);
-                } else if (lastName === allTutor[i].lastName) {
+                    allTutor.splice(i,1);
+                } else if (lName === allTutor[i].lastName) {
                     tutorList.push(allTutor[i]);
-                    allTutor.pull(allTutor[i]);
-                } else if (lastName === allTutor[i].firstName) {
+                    allTutor.splice(i,1);
+                } else if (lName === allTutor[i].firstName) {
                     tutorList.push(allTutor[i]);
-                    allTutor.pull(allTutor[i]);
-                } else if (firstName === allTutor[i].lastName) {
+                    allTutor.splice(i,1);
+                } else if (fName === allTutor[i].lastName) {
                     tutorList.push(allTutor[i]);
-                    allTutor.pull(allTutor[i]);
+                    allTutor.splice(i,1);
                 } 
             }
 
         } else {
             firstName.toLowerCase()
-            firstName[0].toUpperCase() + string.substring(1)
-            let name = firstName;
+            let fName = firstName[0].toUpperCase() + firstName.substring(1)
+            // console.log("FNAME: " + fName);
+            // console.log("ALL TUTOR: " + allTutor);
 
-            for (var i = 0; i < allTutor.length(); i++) {
-                if (name === allTutor[i].firstName) {
+            for (i = 0; i < allTutor.length; i++) {
+                if (fName === allTutor[i].firstName) {
+                    // console.log("ALLTUTOR[" + i +"]: "+ allTutor[i])
                     tutorList.push(allTutor[i]);
-                    allTutor.pull(allTutor[i]);
-                } else if (name === allTutor[i].lastName) {
+                    // console.log("TUTORLIST: " + tutorList);
+                    allTutor.splice(i,1);
+                    // console.log("ALLTUTOR: " + allTutor);
+                } else if (fName === allTutor[i].lastName) {
                     tutorList.push(allTutor[i]);
-                    allTutor.pull(allTutor[i]);
+                    allTutor.splice(i,1);
                 }
             }
         }
         
-        console.log("Tutors " + tutorList)
+        console.log("TUTORS: " + tutorList)
         req.teachingTutors = tutorList
         next();
     } catch (err) {
-        res.status(400).json({message: "Error in fetching tutor"})
+        console.log(JSON.stringify(err, null, 2))
     }
 }
 

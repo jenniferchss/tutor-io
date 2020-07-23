@@ -2,23 +2,45 @@ import React, { useState, useEffect } from "react";
 import axios from "../axios";
 import SideNav from "./SideNav";
 import {Image} from "cloudinary-react";
+import Rating from '@material-ui/lab/Rating';
+import { usePromiseTracker } from "react-promise-tracker";
+import Loader from 'react-loader-spinner';
+import { trackPromise } from 'react-promise-tracker';
+
+const LoadingIndicator = props => {
+    const { promiseInProgress } = usePromiseTracker();
+    return (
+        promiseInProgress &&
+        <div style={{
+            width: "100%",
+            height: "100",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: "99"
+        }}>
+            <Loader type="ThreeDots" color="#66afbb" height="100" width="100" />
+        </div>
+    );
+}
 
 function FindTutor() {
     const [tutorList, setTutorList] = useState([]);
     
     useEffect(() => {
         const tutorname = localStorage.getItem('tutorname');
+        console.log("tutorname: " + tutorname);
 
-        axios().get('/user/findTutor', {
+        trackPromise(axios().post('/user/findTutor', {
             tutorName: tutorname
-          })
-          .then ( res => {
-            console.log("tutor list: " + JSON.stringify(res, null, 2))
-            setTutorList(res);
-          })
-          .catch (err => {
+        })
+        .then ( res => {
+            console.log("tutor list: " + JSON.stringify(res.data, null, 2))
+            setTutorList(res.data);
+        })
+        .catch (err => {
             console.log(err);
-          });
+        }));
     }, []);
 
     function handleClick(userid) {
@@ -33,8 +55,8 @@ function FindTutor() {
         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 mods-pg">
             <div className="editprofile">
                 <div className="card tab-content">
-
-                    <h4 className="tutlist-modcode"><strong>{tutorList.length} </strong>results found</h4>
+                    <h4 className="tutlist-modcode"><strong>{tutorList.length} </strong>tutor(s) found</h4>
+                    <LoadingIndicator />
 
                     {tutorList.map(tutor => {
                     return (
@@ -63,8 +85,9 @@ function FindTutor() {
                                 </div>
                             </div>
                             <div className="col-md-3">
+                                {tutor.totalRating === undefined ? <Rating className="rate-view" name="pristine" value={null} /> : <Rating className="rate-view" name="read-only" value={tutor.totalRating} readOnly />}
                                 <h3 className="pricetag">${tutor.fee}</h3>
-                                <p className="text-muted">per hour</p>
+                                <p className="per-hr text-muted">per hour</p>
                             </div>
                         </div>   
                     </div>)

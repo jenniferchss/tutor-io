@@ -184,7 +184,7 @@ router.get("/tutorProfile/:tutorID",
     tutorController.getTutorProfile
 )
 
-router.get("/findTutor",
+router.post("/findTutor",
     tutorController.findTutor,
     tutorController.getTutorsProfile
 )

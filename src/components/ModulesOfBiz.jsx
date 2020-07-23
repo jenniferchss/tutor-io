@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import { useHistory } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { trackPromise } from 'react-promise-tracker';
 
 function ModulesOfBiz(props) {
   const [options, setOptions] = useState([])
@@ -15,7 +16,7 @@ function ModulesOfBiz(props) {
   const history = useHistory();
 
   useEffect(() => {
-    axios().get('/user/findSpecificModules/School_Of_Business')
+    trackPromise(axios().get('/user/findSpecificModules/School_Of_Business')
     .then(res => {
       console.log(res.data);
       setModuleList(res.data);
@@ -23,7 +24,7 @@ function ModulesOfBiz(props) {
     })
     .catch (err => {
       console.log(err);
-    });
+    }));
 
     //GET MODULE CODE LIST//
     axios().get('/user/findSpecificModules/School_Of_Business')

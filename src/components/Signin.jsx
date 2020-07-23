@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "../axios";
 import Alert from "./Alert";
+import { trackPromise } from 'react-promise-tracker';
 
 function Signin(props) {    
     const [emailaddress, setEmailaddress] = useState("")
@@ -22,7 +23,7 @@ function Signin(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        axios().post ('/user/login',{
+        trackPromise(axios().post ('/user/login',{
             email: emailaddress,
             password: password
         })
@@ -44,11 +45,14 @@ function Signin(props) {
             else if (err.response.data.message === "Incorrect Password !") {
                 setMessage("Incorrect password!");
             }
-            else {
-                setMessage("Have you connected to the database?");
+            else if (err.response.data.message === "User is not verified") {
+                setMessage("Account is not verified yet. Please confirm your email address first.")
+                history.push('/failedverify')
             }
-        });
-        
+            else {
+                setMessage("Error has occurred. Please refresh the page.");
+            }
+        }));
     }
 
 

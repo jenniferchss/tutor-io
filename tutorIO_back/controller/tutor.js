@@ -302,18 +302,19 @@ exports.findTutor = async(req, res, next) => {
         }
 
         let fullName = searchName.split(' ')
-        let firstName = fullName[0]
-        let lastName = fullName[fullName.length - 1]
+        let ffName = fullName[0]
+        let llName = fullName[fullName.length - 1]
         let allTutor = await Tutor.find();
         let tutorList = []
         console.log("fullName: " + fullName);
         console.log("lastName: " + lastName);
 
         if (fullName.length > 1) {
-            firstName.toLowerCase()
+            
+            let firstName = ffName.toLowerCase()
             let fName = firstName[0].toUpperCase() + firstName.substring(1)
 
-            lastName.toLowerCase()
+            let lastName = llName.toLowerCase()
             let lName = lastName[0].toUpperCase() + lastName.substring(1)
 
             for (var i = 0; i < allTutor.length; i++) {
@@ -336,7 +337,7 @@ exports.findTutor = async(req, res, next) => {
             }
 
         } else {
-            firstName.toLowerCase()
+            let firstName = ffName.toLowerCase()
             let fName = firstName[0].toUpperCase() + firstName.substring(1)
             // console.log("FNAME: " + fName);
             // console.log("ALL TUTOR: " + allTutor);

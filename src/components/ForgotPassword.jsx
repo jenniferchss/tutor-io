@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "../axios";
 import Alert from "./Alert";
 import GreenAlert from "./GreenAlert";
+import LoadingIndicator from "./LoadingIndicator";
+import { trackPromise } from 'react-promise-tracker';
 
 function ForgotPassword() {
     const [email, setEmail] = useState("")
@@ -14,7 +16,7 @@ function ForgotPassword() {
     }
 
     function handleSend() {
-        axios().post('/user/forgetPassword', {
+        trackPromise(axios().post('/user/forgetPassword', {
             email: email
         })
         .then (res => {
@@ -24,7 +26,7 @@ function ForgotPassword() {
         .catch(function(err) {
             console.error(err);
             setWarning('Email address is not registered.')
-        });
+        }));
     }
 
 
@@ -42,6 +44,7 @@ function ForgotPassword() {
 
            <p className="card-text pls-verify-text">Please enter your email address and click 
            on the link sent to reset your password.</p>
+           <LoadingIndicator/>
            <input
                 onChange={handleChangeEmail}
                 type="text" 

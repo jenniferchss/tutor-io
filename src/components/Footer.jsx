@@ -18,10 +18,10 @@ return (<footer className="pt-4 pt-md-5 footer">
 
       <div className="col-6 col-md border-right">
         <ul className="list-unstyled text-small">
-          <li><a className="footer-info" href="#">Our Founders</a></li>
-          <li><a className="footer-info" href="#">Contact Us</a></li>
-          <li><a className="footer-info" href="#">   +65 6123 4567</a></li>
-          <li><a className="footer-info" href="#">   tutorio@gmail.com</a></li>
+          {/* <li className="footer-info">Our Founders</li> */}
+          <li className="footer-info">Contact Us :</li>
+          <li className="footer-info"><img src={require("../images/phone.svg")} alt="phone" height="16"/>  +65 6123 4567</li>
+          <li className="footer-info"><img src={require("../images/email.svg")} alt="phone" height="13"/>  tutorio@gmail.com</li>
         </ul>
       </div>
 

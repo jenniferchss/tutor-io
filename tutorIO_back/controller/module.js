@@ -38,7 +38,7 @@ const findTutor = async(id) => {
 
 exports.createModuleAddTutor = async(req, res) =>  {
     try{
-        const reqModule = req.body
+        const reqModule = req.reqModule
         console.log("temp Module: " + reqModule)
         const reqTutor = req.tempTutor
         console.log("temp Tutor: " + reqTutor)
@@ -194,6 +194,31 @@ exports.removeTaughtModules = async (req, res, next) => {
         next();
     } catch (err) {
         res.status(400).json({message: "Error in removing modules"})
+    }
+}
+
+exports.registerModule = async(req, res, next) => {
+    try {
+        let moduleCode = req.body.name
+        let i = 0;
+        for (i = 0; i<2231; i++) {
+            if (result[i].name === moduleCode) {
+                // console.log("options: " + JSON.stringify(options[i], null, 2));
+                // console.log("moduleTile: " + options[i].moduleTitle);
+                // console.log("faculty: " + options[i].faculty);
+                req.moduleTitle = result[i].moduleTitle;
+                req.faculty = result[i].faculty;
+                // console.log("KETEMU: " + moduleTitle + ", " + faculty);
+            }
+        }
+        req.moduleCode = moduleCode;
+
+        console.log("reqModuleTitle " + req.moduleTitle)
+        console.log("req.faculty " + req.faculty)
+        console.log("req.moduleCode " + req.moduleCode)
+        next();
+    } catch (err) {
+        res.json(err);
     }
 }
     

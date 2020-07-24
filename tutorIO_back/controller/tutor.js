@@ -153,12 +153,16 @@ exports.tutorRegisterModule = async(req, res, next) => {
         let tutor = await Tutor.findOne({"userID" : req.user.id}).then(items => {
             return items
         })
-        let module = req.body
-        console.log(module)
-        if (tutor.taughtModules.includes(module.name)) {
+        req.reqModule = {
+            name: req.moduleCode,
+            moduleTitle: req.moduleTitle,
+            faculty: req.faculty
+        }
+        // console.log(module)
+        if (tutor.taughtModules.includes(reqModule.name)) {
             res.json("Registered")
         } else {
-            tutor.taughtModules.push(module.name)
+            tutor.taughtModules.push(reqModule.name)
             tutor.save()
             req.tempTutor = tutor
             next();

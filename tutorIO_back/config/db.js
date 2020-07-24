@@ -14,4 +14,4 @@ const InitiateMongoServer = async () => {
 
 module.exports = InitiateMongoServer;
 
-// MONGODB_URL = mongodb+srv://admin-robin:Arisanbahagia00@cluster0.nqolm.mongodb.net/userDB
+

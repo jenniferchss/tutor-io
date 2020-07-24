@@ -141,6 +141,7 @@ router.get("/findSpecificTutor/:module",
 
 router.put("/addModule",
     auth.getLoggedInUser,
+    moduleController.registerModule,
     tutorController.tutorRegisterModule,
     moduleController.createModuleAddTutor
 )
